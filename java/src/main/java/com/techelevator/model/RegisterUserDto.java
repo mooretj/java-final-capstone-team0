@@ -17,6 +17,7 @@ public class RegisterUserDto {
     private String confirmPassword;
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
+    private boolean isBrewer;
 
     public String getUsername() {
         return username;
@@ -48,5 +49,13 @@ public class RegisterUserDto {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isBrewer() {
+        return isBrewer;
+    }
+
+    public void setBrewer(boolean brewer) {
+        isBrewer = brewer;
     }
 }
