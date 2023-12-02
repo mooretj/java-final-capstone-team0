@@ -6,16 +6,20 @@
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">Username:</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+      </div>
+      <div class="check-brewer-input">
+        <label for="isBrewer">Brewer:</label>
+        <input type="checkbox" id="brewer-check" v-model="user.brewer" />
       </div>
       <button type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
@@ -34,6 +38,7 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        brewer: false
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
