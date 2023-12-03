@@ -37,4 +37,9 @@ public class BreweryController {
         return breweryDao.getBreweryById(id);
         }
 
+    @RequestMapping(path = "/breweries/{breweryName}", method = RequestMethod.GET)
+    public List<Brewery> getBreweryByName(@RequestParam(required = false, defaultValue = "") String breweryName) {
+        return breweryDao.getBreweryByName(breweryName);
+    }
+
 }
