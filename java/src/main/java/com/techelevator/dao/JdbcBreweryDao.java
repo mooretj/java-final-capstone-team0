@@ -58,8 +58,8 @@ public class JdbcBreweryDao implements BreweryDao {
         String insertBrewerySql = "INSERT INTO brewery (brewery_name, website, open_hour, close_hour, history) " +
                 "values (?, ?, ?, ?, ?) RETURNING brewery_id";
         try {
-            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, newBrewery.getBreweryName(), newBrewery.getWebSite(),
-                    newBrewery.getOpenHour(), newBrewery.getCloseHour(), newBrewery.getHistory());
+            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getWebsite(),
+                    brewery.getOpenHour(), brewery.getCloseHour(), brewery.getHistory());
             newBrewery = getBreweryById(newBreweryId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -72,7 +72,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history";
+        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {

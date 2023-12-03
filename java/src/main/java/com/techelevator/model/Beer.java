@@ -1,14 +1,22 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class Beer {
 
     private int id;
     private int brewery_id;
+    @JsonProperty("beer_name")
     private String name;
+    @JsonProperty("beer_img")
     private String imgUrl;
+    @JsonProperty("beer_description")
     private String description;
     private double abv;
+    @JsonProperty("beer_type")
     private String type;
+    @JsonSetter("is_available")
     private boolean isAvailable;
 
     public Beer() { }
