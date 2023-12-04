@@ -7,13 +7,32 @@
   </template>
   
   <script>
+  import beerService from "../services/BeerService";
   export default {
-    props: {
-      beers: {
-        type: Array,
-        required: true
+    data() {
+      return {
+      beers: []
       }
     },
+    methods: {
+    getBeers() {
+      beerService.list()
+        .then(response => {
+          this.beers = response.data;
+          this.isLoading = false;
+        })
+        .catch(error => {
+          this.handleError();
+        })
+    },
+    handleErrorResponse() {
+      this.isLoading = false;
+      this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
+    }
+  },
+  created() {
+    this.getBeers();
+  }
   };
   </script>
   
