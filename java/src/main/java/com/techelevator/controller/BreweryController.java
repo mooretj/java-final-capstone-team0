@@ -23,13 +23,16 @@ public class BreweryController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
     public Brewery addBrewery(@Valid @RequestBody Brewery newBrewery) {
-        return breweryDao.createBrewery((newBrewery));
-
-    }
-
-    @RequestMapping(path = "/breweries", method = RequestMethod.GET)
-    public List<Brewery> list() {
-        return breweryDao.getBreweries();
+        Brewery brewery = null;
+        try {
+            brewery = breweryDao.createBrewery((newBrewery));
+            if (brewery == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
+        }
+    return brewery;
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
@@ -37,9 +40,14 @@ public class BreweryController {
         return breweryDao.getBreweryById(id);
         }
 
-    @RequestMapping(path = "/breweries/{breweryName}", method = RequestMethod.GET)
-    public List<Brewery> getBreweryByName(@RequestParam(required = false, defaultValue = "") String breweryName) {
-        return breweryDao.getBreweryByName(breweryName);
+    @RequestMapping(path = "/breweries", method = RequestMethod.GET)
+    public List<Brewery> getBreweryByName(@RequestParam(required = false, value="name", defaultValue = "") String breweryName) {
+        if(breweryName.isEmpty()) {
+            return breweryDao.getBreweries();
+        }
+        else {
+            return breweryDao.getBreweryByName(breweryName);
+        }
     }
 
 }
