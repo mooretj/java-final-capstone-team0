@@ -20,7 +20,7 @@
     },
     data(){
       return {
-        beerId: this.$route.params.beerId,
+        id:this.$route.params.beerId,
         beer: {},
         isLoading: true
       }
