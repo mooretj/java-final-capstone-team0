@@ -54,6 +54,7 @@ public class JdbcBeerDao implements BeerDao{
     @Override
     public List<Beer> getBeerByName(String name) {
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
+<<<<<<< HEAD
         List<Beer> beers = new ArrayList<>();
         name = "%" + name + "%";
         String sql = "SELECT beer_id, brewery_id, beer_name, beer_img, beer_description, abv, beer_type, is_available FROM beer WHERE beer_name ILIKE ?";
@@ -61,6 +62,15 @@ public class JdbcBeerDao implements BeerDao{
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, name);
             while (rowSet.next()) {
                 beers.add(mapRowToBeer(rowSet));
+=======
+        List<Beer> beers = null;
+        String sql = "SELECT beer_id, brewery_id, beer_name, beer_img, beer_description, abv, beer_type, is_available FROM beer WHERE beer_name = '?'";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, name);
+            while (rowSet.next()) {
+                Beer beer = mapRowToBeer(rowSet);
+                beers.add(beer);
+>>>>>>> 24a62e98ae26aaebb82fde37835583eb755259ff
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -75,7 +85,8 @@ public class JdbcBeerDao implements BeerDao{
                 "beer_description, abv, beer_type, is_available) VALUES (?, ?, ?, ?, ?, ?, ?) " +
                 "RETURNING beer_id;";
         try {
-            int newBeerId = jdbcTemplate.queryForObject(insertBeerSql, int.class, beer.getName());
+            int newBeerId = jdbcTemplate.queryForObject(insertBeerSql, int.class, beer.getBreweryId(), beer.getName(), beer.getImgUrl(), beer.getDescription(),
+                    beer.getAbv(), beer.getType(), beer.isAvailable());
             newBeer = getBeerById(newBeerId);
         }  catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -87,7 +98,7 @@ public class JdbcBeerDao implements BeerDao{
 
     private Beer mapRowToBeer(SqlRowSet rs) {
         Beer beer = new Beer();
-        beer.setId(rs.getInt("beer_id"));
+        beer.setBeerId(rs.getInt("beer_id"));
         beer.setBreweryId(rs.getInt("brewery_id"));
         beer.setName(rs.getString("beer_name"));
         beer.setImgUrl(rs.getString("beer_img"));

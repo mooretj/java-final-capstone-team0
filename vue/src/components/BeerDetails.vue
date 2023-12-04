@@ -1,6 +1,6 @@
 <template>
     <header class="flex">
-      <h1>{{ beer.name }}</h1>
+      <h1>{{ beer.beer_name }}</h1>
       <div class="actions">
         <button class="btn-edit" v-on:click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
         <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
@@ -8,22 +8,22 @@
     </header>
     <div class="Description">
       <label>Beer Description:</label>&nbsp;
-      <span>{{ beerDescription }}</span>
+      <span>{{ beer.beer_description }}</span>
     </div>
 
-    <div class="BeerImage">
+    <!-- <div class="BeerImage">
       <label>Beer Description:</label>&nbsp;
-      <img src={{ beerImage }} alt="">
-    </div>
+      <img src={{ beer.beer_image }} alt="">
+    </div> -->
 
     <div class="abv">
       <label>Beer ABV:</label>&nbsp;
-      <span>{{ beerABV }}</span>
+      <span>{{ beer.abv }}</span>
     </div>
 
-    <div class="BeerType">
+    <div class="type">
       <label>Beer Type:</label>&nbsp;
-      <span>{{ beerType }}</span>
+      <span>{{ beer.beer_type }}</span>
     </div>
 
 
@@ -44,7 +44,7 @@
         )
         ) {
           beerService
-            .deleteBeer(this.beer.id)
+            .deleteBeer(this.beer.beerId)
             .then(response => {
               if (response.status === 200) {
                 this.$store.commit(
@@ -54,7 +54,7 @@
                     type: 'success'
                   }
                 );
-                this.$router.push({ name: 'BeerDetailsView', params: { id: this.beer.beerId }});
+                this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.beer.beerId }});
               }
             })
             .catch(error => {

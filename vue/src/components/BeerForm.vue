@@ -4,15 +4,15 @@
             <h1>Add A New Beer:</h1>
             <div class="form-input-group">
                 <label for="name">Beer Name: </label>
-                <input type="text" id="name" v-model="editBeer.name"  />
+                <input type="text" id="name" v-model="editBeer.beer_name"  />
             </div>
             <div class="form-input-group">
                 <label for="description">Description: </label>
-                <input type="text" id="description" v-model="editBeer.description" />
+                <input type="text" id="description" v-model="editBeer.beer_description" />
             </div>
             <div class="form-input-group">
                 <label for="img">Beer Image URL: </label>
-                <input type="text" id="beerImage" v-model="editBeer.beerImage" />
+                <input type="text" id="beerImage" v-model="editBeer.beer_img" />
             </div>
             <div class="form-input-group">
                 <label for="abv">ABV: </label>
@@ -20,7 +20,7 @@
             </div>
             <div class="form-input-group">
                 <label for="beerType">Beer Type: </label>
-                <input type="text"  id="beerType" v-model="editBeer.beerType" />
+                <input type="text"  id="beerType" v-model="editBeer.beer_type" />
             </div>
             <button class="btn-submit" type="submit">Add Beer</button>
             <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
@@ -42,13 +42,13 @@
         data() {
             return {
                 editBeer: {
-                    id: this.beer.id,
+                  beer_id: this.beer.beer_id,
                     brewery_id: this.brewery_id,
-                    name: this.beer.name,
-                    description: this.beer.description,
-                    beerImage: this.beer.beerImage,
+                    beer_name: this.beer.beer_name,
+                    beer_description: this.beer.beer_description,
+                    beer_img: this.beer.beer_img,
                     abv: this.beer.abv,
-                    beerType:this.beer.beerType,
+                    beer_type:this.beer.beer_type,
                 }
             };
         },
@@ -57,7 +57,7 @@
       if (!this.validateForm()) {
         return;
       }
-      if (this.editBeer.id === 0) {
+      if (this.editBeer.beerId === 0) {
         beerService
           .addBeer(this.editBeer)
           .then(response => {
@@ -69,7 +69,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerListDetailsView', params: { id: this.editBeer.id }});
+              this.$router.push({ name: 'BeerListDetailsView', params: { beerId: this.editBeer.beerId }});
             }
           })
           .catch(error => {
@@ -89,7 +89,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerDetailsView', params: { id: this.editBeer.id }});
+              this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beerId }});
             }
           })
           .catch(error => {
@@ -128,16 +128,16 @@
       if (this.editBeer.description.length === 0) {
         msg += 'The beer must contain a description.';
       }
-      this.editBeer.beerImage = this.editBeer.beerImage.trim();
-      if (this.editBeer.beerImage.length === 0) {
+      this.editBeer.imgUrl = this.editBeer.imgUrl.trim();
+      if (this.editBeer.imgUrl.length === 0) {
         msg += 'The beer must contain an image URL.';
       }
       this.editBeer.abv = this.editBeer.abv.trim();
       if (this.editBeer.abv.length === 0) {
         msg += 'The beer must contain an ABV.';
       }
-      this.editBeer.beerType = this.editBeer.beerType.trim();
-      if (this.editBeer.beerType.length === 0) {
+      this.editBeer.type = this.editBeer.type.trim();
+      if (this.editBeer.type.length === 0) {
         msg += 'The beer must contain its beer type.';
       }
       if (msg.length > 0) {

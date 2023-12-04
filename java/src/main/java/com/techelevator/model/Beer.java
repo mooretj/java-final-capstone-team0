@@ -1,11 +1,12 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Beer {
 
-    private int id;
+    @JsonProperty("beer_id")
+    private int beerId;
+    @JsonProperty("brewery_id")
     private int breweryId;
     @JsonProperty("beer_name")
     private String name;
@@ -13,17 +14,18 @@ public class Beer {
     private String imgUrl;
     @JsonProperty("beer_description")
     private String description;
+    @JsonProperty("abv")
     private double abv;
     @JsonProperty("beer_type")
     private String type;
-    @JsonSetter("is_available")
+    @JsonProperty("is_available")
     private boolean isAvailable;
 
     public Beer() { }
 
-    public Beer(int id, int breweryId, String name, String imgUrl,
+    public Beer(int beerId, int breweryId, String name, String imgUrl,
                 String description, double abv, String type, boolean isAvailable) {
-        this.id = id;
+        this.beerId = beerId;
         this.breweryId = breweryId;
         this.name = name;
         this.imgUrl = imgUrl;
@@ -33,12 +35,12 @@ public class Beer {
         this.isAvailable = isAvailable;
     }
 
-    public int getId() {
-        return id;
+    public int getBeerId() {
+        return beerId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBeerId(int beerId) {
+        this.beerId = beerId;
     }
 
     public int getBreweryId() {
@@ -100,7 +102,7 @@ public class Beer {
     @Override
     public String toString() {
         return "Beer{" +
-                 "Id=" + id +
+                 "Id=" + beerId +
                 ", Brewery Id=" + breweryId +
                 ", Name='" + name + '\'' +
                 ", Img Url='" + imgUrl + '\'' +

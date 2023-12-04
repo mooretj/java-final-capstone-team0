@@ -11,6 +11,7 @@ import AddBeerView from '../views/AddBeerView.vue'
 import BeerDetailsView from '../views/BeerDetailsView.vue';
 import EditBeerView from '../views/EditBeerView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
+import BeerListView from '../components/BeerList.vue';
 
 
 
@@ -80,36 +81,62 @@ const routes = [
       requiresAuth: false
     }
   },
+
+  {
+    path: '/beers',
+    name: 'BeerListView',
+    component: BeerListView,
+    meta: {
+      requiresAuth: false
+    }
+  },
   {
     path: '/beers/:beerId',
     name: 'BeerDetailsView',
-    component: BeerDetailsView
+    component: BeerDetailsView,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: '/beers/create',
-    name: 'AddBeerView',
-    component: AddBeerView
+    component: AddBeerView,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: '/beers/:beerId/edit',
     name: 'EditBeerView',
-    component: EditBeerView
+    component: EditBeerView,
+    meta: {
+      requiresAuth: false
+    }
   },
-  {
-    path: '/brewery/:breweryId/beers/:beerId',
-    name: 'BeerDetailsView',
-    component: BeerDetailsView
-  },
-  {
-    path: '/topic/:breweryId/beers/create',
-    name: 'AddBeerView',
-    component: AddBeerView
-  },
-  {
-    path: '/brewery/:breweryId/beers/:beerId/edit',
-    name: 'EditBeerView',
-    component: EditBeerView
-  },
+  // {
+  //   path: '/brewery/:breweryId/beers/:beerId',
+  //   name: 'BeerDetailsView',
+  //   component: BeerDetailsView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
+  // {
+  //   path: '/topic/:breweryId/beers/create',
+  //   name: 'AddBeerView',
+  //   component: AddBeerView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
+  // {
+  //   path: '/brewery/:breweryId/beers/:beerId/edit',
+  //   name: 'EditBeerView',
+  //   component: EditBeerView,
+  //       meta: {
+  //     requiresAuth: false
+  //   }
+  // },
 
 
 ];
