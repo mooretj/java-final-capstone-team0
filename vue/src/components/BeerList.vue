@@ -12,8 +12,8 @@
       <h1>Beers</h1>
       <button class="btn-add" v-on:click="$router.push({ name: 'AddBeerView' })">Add Beer</button>
     </header>
-    <beerList v-bind:beers="beers"/>
   </div>
+
   </template>
   
   <script>
@@ -51,4 +51,3 @@
   <style>
 
   </style>
-  
