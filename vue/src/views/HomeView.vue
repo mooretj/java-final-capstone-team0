@@ -7,7 +7,7 @@
       <h1>Beers</h1>
       <button class="btn-add" v-on:click="$router.push({ name: 'AddBeerView' })">Add Beer</button>
     </header>
-    <topic-list v-bind:beers="beers"/>
+    <beerList v-bind:beers="beers"/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import beerList from '../components/BeerList.vue';
 
 export default {
   components: {
-    beerList
+    beerList,
   },
   data() {
     return {
@@ -48,5 +48,5 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 </style>
