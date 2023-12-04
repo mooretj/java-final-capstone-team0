@@ -1,7 +1,6 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BeerDao;
-import com.techelevator.exception.DaoException;
 import com.techelevator.model.Beer;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +29,15 @@ public class BeerController {
     @RequestMapping(path = "/beers", method = RequestMethod.GET)
     public List<Beer> list() {
         return beerDao.getBeers();
+    }
+
+    @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
+    public Beer getBeerById(@PathVariable int id) {
+        return beerDao.getBeerById(id);
+    }
+
+    @RequestMapping(path = "/beers?beer_name={beerName}", method = RequestMethod.GET)
+    public List<Beer> getBeerByName(@RequestParam(required = false) String beerName) {
+        return beerDao.getBeerByName(beerName);
     }
 }

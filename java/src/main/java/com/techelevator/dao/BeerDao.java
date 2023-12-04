@@ -10,7 +10,7 @@ public interface BeerDao {
 
     Beer getBeerById(int id);
 
-    Beer getBeerByName(String name);
+    List<Beer> getBeerByName(String name);
 
     Beer createBeer(Beer beer);
 }
