@@ -66,22 +66,13 @@ const routes = [
     }
   },
   {
-    path: "/new_brewery",
-    name: "AddBrewery",
+    path: "/breweries/create",
+    name: "AddBreweryView",
     component: AddBreweryView,
     meta: {
       requiresAuth: false
     }
   },
-  {
-    path: "/add_beer",
-    name: "AddBeer",
-    component: AddBeerView,
-    meta: {
-      requiresAuth: false
-    }
-  },
-
   {
     path: '/beers',
     name: 'BeerListView',
@@ -116,7 +107,7 @@ const routes = [
     }
   },
   // {
-  //   path: '/brewery/:breweryId/beers/:beerId',
+  //   path: '/breweries/:breweryId/beers/:beerId',
   //   name: 'BeerDetailsView',
   //   component: BeerDetailsView,
   //   meta: {
@@ -124,7 +115,7 @@ const routes = [
   //   }
   // },
   // {
-  //   path: '/topic/:breweryId/beers/create',
+  //   path: '/breweries/:breweryId/beers/create',
   //   name: 'AddBeerView',
   //   component: AddBeerView,
   //   meta: {
@@ -132,7 +123,7 @@ const routes = [
   //   }
   // },
   // {
-  //   path: '/brewery/:breweryId/beers/:beerId/edit',
+  //   path: '/breweries/:breweryId/beers/:beerId/edit',
   //   name: 'EditBeerView',
   //   component: EditBeerView,
   //       meta: {
