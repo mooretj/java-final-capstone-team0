@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcBeerDao implements BeerDao{
+public class JdbcBeerDao implements BeerDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcBeerDao(JdbcTemplate jdbcTemplate){
+    public JdbcBeerDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -54,15 +54,16 @@ public class JdbcBeerDao implements BeerDao{
     @Override
     public List<Beer> getBeerByName(String name) {
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
-        List<Beer> beers = null;
-        String sql = "SELECT beer_id, brewery_id, beer_name, beer_img, beer_description, abv, beer_type, is_available FROM beer WHERE beer_name = '?'";
+        List<Beer> beers = new ArrayList<>();
+        name = "%" + name + "%";
+        String sql = "SELECT beer_id, brewery_id, beer_name, beer_img, beer_description, abv, beer_type, is_available FROM beer WHERE beer_name ILIKE ?";
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, name);
             while (rowSet.next()) {
-                Beer beer = mapRowToBeer(rowSet);
-                beers.add(beer);
+                beers.add(mapRowToBeer(rowSet));
             }
-        } catch (CannotGetJdbcConnectionException e) {
+
+        }catch(CannotGetJdbcConnectionException e){
             throw new DaoException("Unable to connect to server or database", e);
         }
         return beers;
