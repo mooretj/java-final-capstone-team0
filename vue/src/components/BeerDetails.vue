@@ -8,22 +8,22 @@
     </header>
     <div class="Description">
       <label>Beer Description:</label>&nbsp;
-      <span>{{ beerDescription }}</span>
+      <span>{{ beer.beerDescription }}</span>
     </div>
 
-    <div class="BeerImage">
+    <!-- <div class="BeerImage">
       <label>Beer Description:</label>&nbsp;
       <img src={{ beerImage }} alt="">
-    </div>
+    </div> -->
 
     <div class="abv">
       <label>Beer ABV:</label>&nbsp;
-      <span>{{ beerABV }}</span>
+      <span>{{ beer.beerABV }}</span>
     </div>
 
-    <div class="BeerType">
+    <div class="type">
       <label>Beer Type:</label>&nbsp;
-      <span>{{ beerType }}</span>
+      <span>{{ beer.type }}</span>
     </div>
 
 
@@ -44,7 +44,7 @@
         )
         ) {
           beerService
-            .deleteBeer(this.beer.id)
+            .deleteBeer(this.beer.beerId)
             .then(response => {
               if (response.status === 200) {
                 this.$store.commit(
@@ -54,7 +54,7 @@
                     type: 'success'
                   }
                 );
-                this.$router.push({ name: 'BeerDetailsView', params: { id: this.beer.beerId }});
+                this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.beer.beerId }});
               }
             })
             .catch(error => {

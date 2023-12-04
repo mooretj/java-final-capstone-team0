@@ -4,7 +4,7 @@
     </div>
     <div v-else>
       <nav>
-        <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link>
+        <!-- <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link> -->
       </nav>
       <beer-details v-bind:beer="beer" />
     </div>
@@ -20,7 +20,7 @@
     },
     data(){
       return {
-        id:this.$route.params.beerId,
+        beerId:this.$route.params.beerId,
         beer: {},
         isLoading: true
       }

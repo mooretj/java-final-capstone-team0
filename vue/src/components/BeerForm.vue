@@ -42,13 +42,13 @@
         data() {
             return {
                 editBeer: {
-                    id: this.beer.id,
-                    brewery_id: this.brewery_id,
+                  beerId: this.beer.beerId,
+                    breweryId: this.breweryId,
                     name: this.beer.name,
                     description: this.beer.description,
-                    beerImage: this.beer.beerImage,
+                    imgUrl: this.beer.imgUrl,
                     abv: this.beer.abv,
-                    beerType:this.beer.beerType,
+                    type:this.beer.type,
                 }
             };
         },
@@ -57,7 +57,7 @@
       if (!this.validateForm()) {
         return;
       }
-      if (this.editBeer.id === 0) {
+      if (this.editBeer.beerId === 0) {
         beerService
           .addBeer(this.editBeer)
           .then(response => {
@@ -69,7 +69,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerListDetailsView', params: { id: this.editBeer.id }});
+              this.$router.push({ name: 'BeerListDetailsView', params: { beerId: this.editBeer.beerId }});
             }
           })
           .catch(error => {
@@ -89,7 +89,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerDetailsView', params: { id: this.editBeer.id }});
+              this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beerId }});
             }
           })
           .catch(error => {
@@ -128,16 +128,16 @@
       if (this.editBeer.description.length === 0) {
         msg += 'The beer must contain a description.';
       }
-      this.editBeer.beerImage = this.editBeer.beerImage.trim();
-      if (this.editBeer.beerImage.length === 0) {
+      this.editBeer.imgUrl = this.editBeer.imgUrl.trim();
+      if (this.editBeer.imgUrl.length === 0) {
         msg += 'The beer must contain an image URL.';
       }
       this.editBeer.abv = this.editBeer.abv.trim();
       if (this.editBeer.abv.length === 0) {
         msg += 'The beer must contain an ABV.';
       }
-      this.editBeer.beerType = this.editBeer.beerType.trim();
-      if (this.editBeer.beerType.length === 0) {
+      this.editBeer.type = this.editBeer.type.trim();
+      if (this.editBeer.type.length === 0) {
         msg += 'The beer must contain its beer type.';
       }
       if (msg.length > 0) {
