@@ -14,12 +14,12 @@ export default {
         return http.get(`/beers/${id}`);
     },
 
-    add(beer) {
+    addBeer(beer) {
         return http.post('/beers', beer);
     },
 
     updateBeer(beer) {
-        return http.put(`/beers/${beer.id}`, beer);
+        return http.put(`/beers/${beer.beerId}`, beer);
     },
 
     deleteBeer(beerId) {

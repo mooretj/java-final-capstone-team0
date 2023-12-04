@@ -17,6 +17,7 @@ import beerList from '../components/BeerList.vue';
 
 
 export default {
+  
   components: {
     beerList,
   },
