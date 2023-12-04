@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const http = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: "http://localhost:9000"
 });
 
 export default {
 
     list() {
-        return axios.get('/beers');
+        return http.get('/beers');
     },
 
     get(id) {
@@ -15,7 +15,7 @@ export default {
     },
 
     add(beer) {
-        return axios.post('/beers', beer);
+        return http.post('/beers', beer);
     },
 
     updateBeer(beer) {
