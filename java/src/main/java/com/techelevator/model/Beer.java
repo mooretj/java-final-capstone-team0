@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 public class Beer {
 
     private int id;
-    private int brewery_id;
+    private int breweryId;
     @JsonProperty("beer_name")
     private String name;
     @JsonProperty("beer_img")
@@ -21,10 +21,10 @@ public class Beer {
 
     public Beer() { }
 
-    public Beer(int id, int brewery_id, String name, String imgUrl,
+    public Beer(int id, int breweryId, String name, String imgUrl,
                 String description, double abv, String type, boolean isAvailable) {
         this.id = id;
-        this.brewery_id = brewery_id;
+        this.breweryId = breweryId;
         this.name = name;
         this.imgUrl = imgUrl;
         this.description = description;
@@ -41,12 +41,12 @@ public class Beer {
         this.id = id;
     }
 
-    public int getBrewery_id() {
-        return brewery_id;
+    public int getBreweryId() {
+        return breweryId;
     }
 
-    public void setBrewery_id(int brewery_id) {
-        this.brewery_id = brewery_id;
+    public void setBreweryId(int breweryId) {
+        this.breweryId = breweryId;
     }
 
     public String getName() {
@@ -100,13 +100,13 @@ public class Beer {
     @Override
     public String toString() {
         return "Beer{" +
-                 "id=" + id +
-                ", brewery_id=" + brewery_id +
-                ", name='" + name + '\'' +
-                ", img_url='" + imgUrl + '\'' +
-                ", description='" + description + '\'' +
-                ", abv=" + abv + '\'' +
-                ", type='" + type + '\'' +
-                ", is_available=" + isAvailable;
+                 "Id=" + id +
+                ", Brewery Id=" + breweryId +
+                ", Name='" + name + '\'' +
+                ", Img Url='" + imgUrl + '\'' +
+                ", Description='" + description + '\'' +
+                ", ABV=" + abv + '\'' +
+                ", Type='" + type + '\'' +
+                ", Is Available=" + isAvailable;
     }
 }
