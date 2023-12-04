@@ -1,11 +1,12 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Beer {
 
+    @JsonProperty("beer_id")
     private int id;
+    @JsonProperty("brewery_id")
     private int breweryId;
     @JsonProperty("beer_name")
     private String name;
@@ -13,10 +14,11 @@ public class Beer {
     private String imgUrl;
     @JsonProperty("beer_description")
     private String description;
+    @JsonProperty("abv")
     private double abv;
     @JsonProperty("beer_type")
     private String type;
-    @JsonSetter("is_available")
+    @JsonProperty("is_available")
     private boolean isAvailable;
 
     public Beer() { }
