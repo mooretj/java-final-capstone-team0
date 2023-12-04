@@ -11,7 +11,7 @@
     props: {
       beers: {
         type: Array,
-        required: true
+        required: false
       }
     },
   };

@@ -19,7 +19,7 @@ export default {
     },
 
     updateBeer(beer) {
-        return http.put(`/beers/${beer.id}`, beer);
+        return http.put(`/beers/${beer.beerId}`, beer);
     },
 
     deleteBeer(beerId) {

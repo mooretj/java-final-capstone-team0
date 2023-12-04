@@ -22,7 +22,7 @@
                 <label for="beerType">Beer Type: </label>
                 <input type="text"  id="beerType" v-model="editBeer.beer_type" />
             </div>
-            <button class="btn-submit" type="submit">Add Beer</button>
+            <button class="btn-submit" type="submit" v-on:click="submitForm">Add Beer</button>
             <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
         </form>
       </div>
@@ -35,7 +35,7 @@
         props: {
     beer: {
       type: Object,
-      required: true
+      required: false
     },
         },
 

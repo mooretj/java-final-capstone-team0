@@ -33,7 +33,7 @@
   import beerService from '../services/BeerService';
   export default {
     props: {
-      beer: { type: Object, required: true }
+      beer: { type: Object, required: false }
     },
     computed: {
 
