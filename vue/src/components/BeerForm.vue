@@ -4,15 +4,15 @@
             <h1>Add A New Beer:</h1>
             <div class="form-input-group">
                 <label for="name">Beer Name: </label>
-                <input type="text" id="name" v-model="editBeer.name"  />
+                <input type="text" id="name" v-model="editBeer.beer_name"  />
             </div>
             <div class="form-input-group">
                 <label for="description">Description: </label>
-                <input type="text" id="description" v-model="editBeer.description" />
+                <input type="text" id="description" v-model="editBeer.beer_description" />
             </div>
             <div class="form-input-group">
                 <label for="img">Beer Image URL: </label>
-                <input type="text" id="beerImage" v-model="editBeer.beerImage" />
+                <input type="text" id="beerImage" v-model="editBeer.beer_img" />
             </div>
             <div class="form-input-group">
                 <label for="abv">ABV: </label>
@@ -20,7 +20,7 @@
             </div>
             <div class="form-input-group">
                 <label for="beerType">Beer Type: </label>
-                <input type="text"  id="beerType" v-model="editBeer.beerType" />
+                <input type="text"  id="beerType" v-model="editBeer.beer_type" />
             </div>
             <button class="btn-submit" type="submit">Add Beer</button>
             <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
@@ -42,13 +42,13 @@
         data() {
             return {
                 editBeer: {
-                  beerId: this.beer.beerId,
-                    breweryId: this.breweryId,
-                    name: this.beer.name,
-                    description: this.beer.description,
-                    imgUrl: this.beer.imgUrl,
+                  beer_id: this.beer.beer_id,
+                    brewery_id: this.brewery_id,
+                    beer_name: this.beer.beer_name,
+                    beer_description: this.beer.beer_description,
+                    beer_img: this.beer.beer_img,
                     abv: this.beer.abv,
-                    type:this.beer.type,
+                    beer_type:this.beer.beer_type,
                 }
             };
         },

@@ -84,8 +84,8 @@ const routes = [
 
   {
     path: '/beers',
-    name: 'HomeView',
-    component: HomeView,
+    name: 'BeerListView',
+    component: BeerListView,
     meta: {
       requiresAuth: false
     }
