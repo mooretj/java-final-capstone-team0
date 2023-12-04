@@ -7,6 +7,14 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import AddBreweryView from '../views/AddBreweryView.vue'
+import AddBeerView from '../views/AddBeerView.vue'
+import BeerDetailsView from '../views/BeerDetailsView.vue';
+import EditBeerView from '../views/EditBeerView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
+
+
+
+
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -17,6 +25,13 @@ import AddBreweryView from '../views/AddBreweryView.vue'
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
+
+  {
+    path: "/not-found",
+    name: "NotFoundView",
+    component: NotFoundView
+  },
+  
   {
     path: '/',
     name: 'home',
@@ -56,7 +71,47 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-  }
+  },
+  {
+    path: "/add_beer",
+    name: "AddBeer",
+    component: AddBeerView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/beers/:beerId',
+    name: 'BeerDetailsView',
+    component: BeerDetailsView
+  },
+  {
+    path: '/beers/create',
+    name: 'AddBeerView',
+    component: AddBeerView
+  },
+  {
+    path: '/beers/:beerId/edit',
+    name: 'EditBeerView',
+    component: EditBeerView
+  },
+  {
+    path: '/brewery/:breweryId/beers/:beerId',
+    name: 'BeerDetailsView',
+    component: BeerDetailsView
+  },
+  {
+    path: '/topic/:breweryId/beers/create',
+    name: 'AddBeerView',
+    component: AddBeerView
+  },
+  {
+    path: '/brewery/:breweryId/beers/:beerId/edit',
+    name: 'EditBeerView',
+    component: EditBeerView
+  },
+
+
 ];
 
 // Create the router
