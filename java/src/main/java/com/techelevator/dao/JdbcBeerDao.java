@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Beer;
-import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class JdbcBeerDao implements BeerDao{
@@ -88,8 +86,8 @@ public class JdbcBeerDao implements BeerDao{
 
     private Beer mapRowToBeer(SqlRowSet rs) {
         Beer beer = new Beer();
-        beer.setId(rs.getInt("user_id"));
-        beer.setBrewery_id(rs.getInt("brewery_id"));
+        beer.setId(rs.getInt("beer_id"));
+        beer.setBreweryId(rs.getInt("brewery_id"));
         beer.setName(rs.getString("beer_name"));
         beer.setImgUrl(rs.getString("beer_img"));
         beer.setDescription(rs.getString("beer_description"));

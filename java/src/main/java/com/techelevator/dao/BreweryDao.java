@@ -10,7 +10,7 @@ public interface BreweryDao {
 
     Brewery getBreweryById(int id);
 
-    Brewery getBreweryByName(String BreweryName);
+    List<Brewery> getBreweryByName(String BreweryName);
 
     Brewery createBrewery(Brewery brewery);
 
