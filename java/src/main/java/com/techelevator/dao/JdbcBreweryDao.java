@@ -72,7 +72,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history";
+        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
