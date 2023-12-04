@@ -100,10 +100,12 @@ const routes = [
   },
   {
     path: '/beers/create',
+    name: 'AddBeerView',
     component: AddBeerView,
     meta: {
       requiresAuth: false
     }
+    
   },
   {
     path: '/beers/:beerId/edit',

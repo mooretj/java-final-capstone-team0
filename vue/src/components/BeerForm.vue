@@ -1,7 +1,14 @@
 <template>
     <div class="text-center">
         <form v-on:submit.prevent="submitForm">
-            <h1>Add A New Beer:</h1>
+          <div class="form-input-group">
+                <label for="beerId">Beer ID: </label>
+                <input type="text" id="beerId" v-model="editBeer.beer_id" />
+            </div>
+          <div class="form-input-group">
+                <label for="breweryId">Brewery ID: </label>
+                <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
+            </div>
             <div class="form-input-group">
                 <label for="name">Beer Name: </label>
                 <input type="text" id="name" v-model="editBeer.beer_name"  />
@@ -16,13 +23,13 @@
             </div>
             <div class="form-input-group">
                 <label for="abv">ABV: </label>
-                <input type="abv" id="abv" v-model="editBeer.abv" />
+                <input type="abv" id="abv" v-model="editBeer.beer_abv" />
             </div>
             <div class="form-input-group">
                 <label for="beerType">Beer Type: </label>
                 <input type="text"  id="beerType" v-model="editBeer.beer_type" />
             </div>
-            <button class="btn-submit" type="submit" v-on:click="submitForm">Add Beer</button>
+            <button class="btn-submit" type="submit" v-on:click="submit">Add Beer</button>
             <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
         </form>
       </div>
@@ -54,14 +61,14 @@
         },
         methods: {
         submitForm() {
-      if (!this.validateForm()) {
-        return;
-      }
-      if (this.editBeer.beerId === 0) {
+      // if (!this.validateForm()) {
+      //   return;
+      // }
+      if (this.editBeer.beer_id ==0) {
         beerService
           .addBeer(this.editBeer)
           .then(response => {
-            if (response.status === 201) {
+            if (response.status == 201) {
               this.$store.commit(
                 'SET_NOTIFICATION',
                 {
@@ -69,7 +76,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerListDetailsView', params: { beerId: this.editBeer.beerId }});
+              this.$router.push({ name: 'BeerListView'});
             }
           })
           .catch(error => {
@@ -81,7 +88,7 @@
         beerService
           .updateBeer(this.editBeer)
           .then(response => {
-            if (response.status === 200) {
+            if (response.status == 200) {
               this.$store.commit(
                 'SET_NOTIFICATION',
                 {
@@ -89,7 +96,7 @@
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beerId }});
+              this.$router.push({ name: 'BeerDetailsView', params: { beer_id: this.editBeer.beer_id }});
             }
           })
           .catch(error => {
@@ -118,33 +125,33 @@
     },
 
     validateForm() {
-      let msg = '';
+      // let msg = '';
 
-      this.editBeer.name = this.editBeer.name.trim();
-      if (this.editBeer.name.length === 0) {
-        msg += 'The new beer must have a name. ';
-      }
-      this.editBeer.description = this.editBeer.description.trim();
-      if (this.editBeer.description.length === 0) {
-        msg += 'The beer must contain a description.';
-      }
-      this.editBeer.imgUrl = this.editBeer.imgUrl.trim();
-      if (this.editBeer.imgUrl.length === 0) {
-        msg += 'The beer must contain an image URL.';
-      }
-      this.editBeer.abv = this.editBeer.abv.trim();
-      if (this.editBeer.abv.length === 0) {
-        msg += 'The beer must contain an ABV.';
-      }
-      this.editBeer.type = this.editBeer.type.trim();
-      if (this.editBeer.type.length === 0) {
-        msg += 'The beer must contain its beer type.';
-      }
-      if (msg.length > 0) {
-        this.$store.commit('SET_NOTIFICATION', msg);
-        return false;
-      }
-      return true;
+      // this.editBeer.beer_name = this.editBeer.beer_name.trim();
+      // if (this.editBeer.beer_name.length === 0) {
+      //   msg += 'The new beer must have a name. ';
+      // }
+      // this.editBeer.beer_description = this.editBeer.beer_description.trim();
+      // if (this.editBeer.beer_description.length === 0) {
+      //   msg += 'The beer must contain a description.';
+      // }
+      // this.editBeer.beer_img = this.editBeer.beer_img.trim();
+      // if (this.editBeer.beer_img.length === 0) {
+      //   msg += 'The beer must contain an image URL.';
+      // }
+      // this.editBeer.beer_abv = this.editBeer.beer_abv.trim();
+      // if (this.editBeer.beer_abv.length === 0) {
+      //   msg += 'The beer must contain an ABV.';
+      // }
+      // this.editBeer.beer_type = this.editBeer.beer_type.trim();
+      // if (this.editBeer.beer_type.length === 0) {
+      //   msg += 'The beer must contain its beer type.';
+      // }
+      // if (msg.length > 0) {
+      //   this.$store.commit('SET_NOTIFICATION', msg);
+      //   return false;
+      // }
+      // return true;
     },
   }
 }

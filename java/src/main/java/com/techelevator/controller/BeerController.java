@@ -21,7 +21,7 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/new_beer", method = RequestMethod.POST)
+    @RequestMapping(path = "/beers", method = RequestMethod.POST)
     public Beer addBeer(@Valid @RequestBody Beer newBeer) {
         Beer beer = null;
         try {

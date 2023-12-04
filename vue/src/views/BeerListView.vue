@@ -17,9 +17,6 @@ import beerList from '../components/BeerList.vue';
 
 
 export default {
-  props: {
-    beers: []
-  },
   
   components: {
     beerList,

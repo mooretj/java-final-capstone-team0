@@ -14,7 +14,7 @@
       return {
         beer: {
           beerId: 0,
-          breweryId: Number(this.$route.params.breweryId),
+          breweryId: this.$route.params.breweryId,
           name: '',
           description: '',
           imgUrl: '',

@@ -14,7 +14,7 @@ export default {
         return http.get(`/beers/${id}`);
     },
 
-    add(beer) {
+    addBeer(beer) {
         return http.post('/beers', beer);
     },
 
