@@ -21,21 +21,25 @@ public class BreweryController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/new_brewery", method = RequestMethod.POST)
-    public void addBrewery(@Valid @RequestBody Brewery newBrewery) {
-        try{
-            Brewery brewery = breweryDao.createBrewery((newBrewery));
-            if (brewery == null) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Brewery registration failed.");
-            }
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Brewery registration failed.");
-        }
+    @RequestMapping(path = "/breweries", method = RequestMethod.POST)
+    public Brewery addBrewery(@Valid @RequestBody Brewery newBrewery) {
+        return breweryDao.createBrewery((newBrewery));
+
     }
 
     @RequestMapping(path = "/breweries", method = RequestMethod.GET)
     public List<Brewery> list() {
         return breweryDao.getBreweries();
+    }
+
+    @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
+    public Brewery getBreweryById(@PathVariable int id) {
+        return breweryDao.getBreweryById(id);
+        }
+
+    @RequestMapping(path = "/breweries/{breweryName}", method = RequestMethod.GET)
+    public List<Brewery> getBreweryByName(@RequestParam(required = false, defaultValue = "") String breweryName) {
+        return breweryDao.getBreweryByName(breweryName);
     }
 
 }

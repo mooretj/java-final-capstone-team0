@@ -1,12 +1,17 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalTime;
 
 public class Brewery {
     private int id;
+    @JsonProperty("brewery_name")
     private String breweryName;
-    private String webSite;
+    private String website;
+    @JsonProperty("open_hour")
     private LocalTime openHour;
+    @JsonProperty("close_hour")
     private LocalTime closeHour;
     private String history;
 
@@ -34,12 +39,12 @@ public class Brewery {
         this.breweryName = breweryName;
     }
 
-    public String getWebSite() {
-        return webSite;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setWebSite(String webSite) {
-        this.webSite = webSite;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public LocalTime getOpenHour() {
@@ -58,10 +63,10 @@ public class Brewery {
         this.closeHour = closeHour;
     }
 
-    public Brewery(int Id, String breweryName, String webSite, LocalTime openHour, LocalTime closeHour, String history) {
+    public Brewery(int Id, String breweryName, String website, LocalTime openHour, LocalTime closeHour, String history) {
         this.id = id;
         this.breweryName = breweryName;
-        this.webSite = webSite;
+        this.website = website;
         this.openHour = openHour;
         this.closeHour = closeHour;
         this.history = history;
@@ -74,7 +79,7 @@ public class Brewery {
         return "Brewery{" +
                 "id=" + id +
                 ", Brewery Name='" + breweryName + '\'' +
-                ", Website=" + webSite +
+                ", Website=" + website +
                 ", Open Hour=" + openHour +
                 ", Close Hour=" + closeHour +
                 ", History=" + history +
