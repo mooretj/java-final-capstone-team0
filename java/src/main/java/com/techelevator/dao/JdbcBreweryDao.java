@@ -38,7 +38,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweryByName(String breweryName) {
         if(breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
-        List<Brewery> breweries = null;
+        List<Brewery> breweries = new ArrayList<>();
         breweryName = "%" + breweryName + "%";
         String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery WHERE brewery_name ILIKE ?";
         try {

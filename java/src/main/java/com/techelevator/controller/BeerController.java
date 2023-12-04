@@ -20,15 +20,40 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+<<<<<<< HEAD
+    @RequestMapping(path = "/new_beer", method = RequestMethod.POST)
+    public Beer addBeer(@Valid @RequestBody Beer newBeer) {
+        Beer beer = null;
+        try {
+            beer = beerDao.createBeer(newBeer);
+            if (beer == null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
+        }
+        return beer;
+    }
+
+    @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
+    public Beer getBeerById(@PathVariable int id) {
+        return beerDao.getBeerById(id);
+=======
     @RequestMapping(path = "/beers", method = RequestMethod.POST)
     public Beer addBeer(@Valid @RequestBody Beer newBeer) {
         return beerDao.createBeer(newBeer);
 
+>>>>>>> 24a62e98ae26aaebb82fde37835583eb755259ff
     }
 
     @RequestMapping(path = "/beers", method = RequestMethod.GET)
-    public List<Beer> list() {
-        return beerDao.getBeers();
+    public List<Beer> list(@RequestParam(required = false, value = "name", defaultValue = "")String name) {
+        if(name.isEmpty()) {
+            return beerDao.getBeers();
+        }
+        else {
+            return beerDao.getBeerByName(name);
+        }
     }
 
     @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
