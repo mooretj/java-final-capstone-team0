@@ -21,16 +21,10 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/new_beer", method = RequestMethod.POST)
-    public void addBeer(@Valid @RequestBody Beer newBeer) {
-        try {
-            Beer beer = beerDao.createBeer(newBeer);
-            if (beer == null) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
-            }
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
-        }
+    @RequestMapping(path = "/beers", method = RequestMethod.POST)
+    public Beer addBeer(@Valid @RequestBody Beer newBeer) {
+        return beerDao.createBeer(newBeer);
+
     }
 
     @RequestMapping(path = "/beers", method = RequestMethod.GET)

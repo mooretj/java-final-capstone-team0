@@ -74,7 +74,8 @@ public class JdbcBeerDao implements BeerDao{
                 "beer_description, abv, beer_type, is_available) VALUES (?, ?, ?, ?, ?, ?, ?) " +
                 "RETURNING beer_id;";
         try {
-            int newBeerId = jdbcTemplate.queryForObject(insertBeerSql, int.class, beer.getName());
+            int newBeerId = jdbcTemplate.queryForObject(insertBeerSql, int.class, beer.getBreweryId(), beer.getName(), beer.getImgUrl(), beer.getDescription(),
+                    beer.getAbv(), beer.getType(), beer.isAvailable());
             newBeer = getBeerById(newBeerId);
         }  catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
