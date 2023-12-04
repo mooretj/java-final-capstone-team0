@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BeerDao;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Beer;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,6 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
     @RequestMapping(path = "/new_beer", method = RequestMethod.POST)
     public Beer addBeer(@Valid @RequestBody Beer newBeer) {
         Beer beer = null;
@@ -35,16 +35,6 @@ public class BeerController {
         return beer;
     }
 
-    @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
-    public Beer getBeerById(@PathVariable int id) {
-        return beerDao.getBeerById(id);
-=======
-    @RequestMapping(path = "/beers", method = RequestMethod.POST)
-    public Beer addBeer(@Valid @RequestBody Beer newBeer) {
-        return beerDao.createBeer(newBeer);
-
->>>>>>> 24a62e98ae26aaebb82fde37835583eb755259ff
-    }
 
     @RequestMapping(path = "/beers", method = RequestMethod.GET)
     public List<Beer> list(@RequestParam(required = false, value = "name", defaultValue = "")String name) {
