@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalTime;
 
 public class Brewery {
+    @JsonProperty("brewery_id")
     private int id;
     @JsonProperty("brewery_name")
     private String breweryName;
@@ -13,6 +14,7 @@ public class Brewery {
     private LocalTime openHour;
     @JsonProperty("close_hour")
     private LocalTime closeHour;
+    @JsonProperty("history")
     private String history;
 
     public String getHistory() {
@@ -63,7 +65,7 @@ public class Brewery {
         this.closeHour = closeHour;
     }
 
-    public Brewery(int Id, String breweryName, String website, LocalTime openHour, LocalTime closeHour, String history) {
+    public Brewery(int id, String breweryName, String website, LocalTime openHour, LocalTime closeHour, String history) {
         this.id = id;
         this.breweryName = breweryName;
         this.website = website;
