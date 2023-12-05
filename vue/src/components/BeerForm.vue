@@ -69,13 +69,13 @@
           .addBeer(this.editBeer)
           .then(response => {
             if (response.status == 201) {
-              this.$store.commit(
-                'SET_NOTIFICATION',
-                {
-                  message: 'A new beer was added.',
-                  type: 'success'
-                }
-              );
+              // this.$store.commit(
+              //   'SET_NOTIFICATION',
+              //   {
+              //     message: 'A new beer was added.',
+              //     type: 'success'
+              //   }
+              // );
               this.$router.push({ name: 'BeerListView'});
             }
           })

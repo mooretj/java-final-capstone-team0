@@ -10,17 +10,17 @@ export default {
         return http.get(`breweries/${breweryId}/beers`);
     },
 
-    // get(id) {
-    //     return http.get(`breweries/$beers/${id}`);
-    // },
+    get(id) {
+        return http.get(`/beers/${id}`);
+    },
 
     addBeer(beer) {
-        return http.post(`breweries/${beer.breweryId}/beers`, beer);
+        return http.post(`breweries/${beer.brewery_id}/beers`, beer);
     },
 
-    updateBeer(beer) {
-        return http.put(`breweries/${beer.breweryId}/beers/${beer.beerId}`, beer);
-    },
+    // updateBeer(beer) {
+    //     return http.put(`breweries/${beer.brewery_id}/beers/${beer.beerId}`, beer);
+    // },
 
     // deleteBeer(beerId) {
     //     return http.delete(`breweries/${beer.breweryId}/beers/${beerId}`);

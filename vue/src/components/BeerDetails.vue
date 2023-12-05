@@ -13,7 +13,8 @@
     </div>
 
     <div class="beerImage">
-      <img src={{ beer.beer_image }} alt="">
+      <p>Here is where the image will be</p>
+      <img src='https://media.licdn.com/dms/image/D5635AQG1_HyvOyqt6g/profile-framedphoto-shrink_800_800/0/1700698588280?e=1702411200&v=beta&t=S8X3LvebEFqxPnAVz_XgCeeso7-wS7q4SSL84PRcb4M' alt="">
     </div>
 
     <div class="abv">
@@ -33,7 +34,7 @@
   import beerService from '../services/BeerService';
   export default {
     props: {
-      beer: { type: Object, required: false }
+      beer: { type: Object, required: true }
     },
     computed: {
 
