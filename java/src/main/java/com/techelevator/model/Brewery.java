@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.time.LocalTime;
 
@@ -9,6 +10,8 @@ public class Brewery {
     private int id;
     @JsonProperty("brewery_name")
     private String breweryName;
+    @JsonProperty("brewery_main_img")
+    private String breweryImg;
     private String website;
     @JsonProperty("open_hour")
     private LocalTime openHour;
@@ -16,6 +19,14 @@ public class Brewery {
     private LocalTime closeHour;
     @JsonProperty("history")
     private String history;
+
+    public String getBreweryImg() {
+        return breweryImg;
+    }
+
+    public void setBreweryImg(String breweryImg) {
+        this.breweryImg = breweryImg;
+    }
 
     public String getHistory() {
         return history;
@@ -65,9 +76,10 @@ public class Brewery {
         this.closeHour = closeHour;
     }
 
-    public Brewery(int id, String breweryName, String website, LocalTime openHour, LocalTime closeHour, String history) {
+    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, String history) {
         this.id = id;
         this.breweryName = breweryName;
+        this.breweryImg = breweryImg;
         this.website = website;
         this.openHour = openHour;
         this.closeHour = closeHour;
@@ -80,7 +92,8 @@ public class Brewery {
     public String toString() {
         return "Brewery{" +
                 "id=" + id +
-                ", Brewery Name='" + breweryName + '\'' +
+                ", Brewery Name='" + breweryName +
+                ", Brewery Img =" + breweryImg +
                 ", Website=" + website +
                 ", Open Hour=" + openHour +
                 ", Close Hour=" + closeHour +

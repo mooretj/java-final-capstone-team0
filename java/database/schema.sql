@@ -22,6 +22,7 @@ CREATE TABLE user_contact (
 CREATE TABLE brewery (
 	brewery_id SERIAL UNIQUE,
 	brewery_name varchar(50) NOT NULL,
+	brewery_main_img varchar(50),
 	website varchar(200),
 	open_hour time,
 	close_hour time,
