@@ -5,8 +5,10 @@
     <div v-else>
       <header class="flex">
         <h1>Breweries</h1>
+        
       </header>
       <breweryList v-bind:breweries="breweries"/>
+      <button class="btn-add" v-on:click="$router.push({ name: 'AddListView' })">Add Brewery</button>
     </div>
   </template>
   

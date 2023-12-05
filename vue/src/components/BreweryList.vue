@@ -4,7 +4,6 @@
   </div>
   <div v-else>
     <header class="flex">
-      <h1>Breweries</h1>
       <div class="brewery" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
         {{ brewery.brewery_name }}  
