@@ -17,8 +17,8 @@
 
     <div class="hours">
       <label>Hours:</label>&nbsp;
-      <span>{{ brewery.open_hour }}</span>
-      <span>{{ brewery.close_hour }}</span>
+        <div><span>{{ brewery.open_hour }}</span> - <span>{{ brewery.close_hour }}</span></div>
+            
     </div>
 
     <div class="beers">

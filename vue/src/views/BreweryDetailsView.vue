@@ -20,7 +20,7 @@
     },
     data(){
       return {
-        breweryId:this.$route.params.breweryId,
+        breweryId: this.$route.params.breweryId,
         brewery: {},
         isLoading: true
       }

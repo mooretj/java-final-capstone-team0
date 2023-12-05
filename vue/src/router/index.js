@@ -13,6 +13,7 @@ import EditBeerView from '../views/EditBeerView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
 import BeerListView from '../components/BeerList.vue';
 import BreweryListView from '../views/BreweryListView.vue';
+import BreweryDetailsView from '../views/BreweryDetailsView.vue';
 
 
 
@@ -70,6 +71,14 @@ const routes = [
     path: "/breweries",
     name: "BreweryListView",
     component: BreweryListView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/breweries/:breweryId',
+    name: 'BreweryDetailsView',
+    component: BreweryDetailsView,
     meta: {
       requiresAuth: false
     }
