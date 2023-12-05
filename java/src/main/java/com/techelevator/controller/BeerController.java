@@ -70,6 +70,11 @@ public class BeerController {
         return beerDao.deleteBeerById(beerId);
     }
 
+    /**
+     * Updates a specifc Beer by its ID
+     * @param beer
+     * @param beerId
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.PUT)
     public Beer updateBeerById(@Valid @RequestBody Beer beer, @PathVariable int beerId) {
