@@ -126,7 +126,7 @@ public class JdbcBeerDao implements BeerDao {
         Beer updatedBeer = null;
         String sql = "UPDATE beer SET beer_name = ?, beer_img = ?, beer_description = ?, abv = ?, beer_type = ?, is_available = ? WHERE beer_id = ?;";
         try {
-            int numberOfRows = jdbcTemplate.update(sql, beer.getName(), beer.getImgUrl(), beer.getDescription(), beer.getAbv(), beer.getType(), beer.getBeerId());
+            int numberOfRows = jdbcTemplate.update(sql, beer.getName(), beer.getImgUrl(), beer.getDescription(), beer.getAbv(), beer.getType(), beer.isAvailable(), beer.getBeerId());
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one.");
             }
