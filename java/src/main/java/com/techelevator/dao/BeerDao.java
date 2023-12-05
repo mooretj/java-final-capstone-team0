@@ -17,4 +17,6 @@ public interface BeerDao {
     int deleteBeerById(int id);
 
     List<Beer> getBeersByBreweryId(int breweryId);
+
+    Beer updateBeerById(Beer beer);
 }
