@@ -8,7 +8,7 @@
         
       </header>
       <breweryList v-bind:breweries="breweries"/>
-      <button class="btn-add" v-on:click="$router.push({ name: 'AddListView' })">Add Brewery</button>
+      <button class="btn-add" v-on:click="$router.push({ name: 'AddBreweryView' })">Add Brewery</button>
     </div>
   </template>
   
