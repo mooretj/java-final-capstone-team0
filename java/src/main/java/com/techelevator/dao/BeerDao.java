@@ -13,4 +13,8 @@ public interface BeerDao {
     List<Beer> getBeerByName(String name);
 
     Beer createBeer(Beer beer);
+
+    int deleteBeerById(int id);
+
+    List<Beer> getBeersByBreweryId(int breweryId);
 }

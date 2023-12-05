@@ -52,6 +52,22 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
+    public List<Beer> getBeersByBreweryId(int breweryId) {
+        List<Beer> beers = new ArrayList<>();
+        String sql = "SELECT beer_id, brewery_id, beer_name, beer_img, beer_description, abv, beer_type, is_available FROM beer WHERE brewery_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
+            while (results.next()) {
+                Beer beer = mapRowToBeer(results);
+                beers.add(beer);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return beers;
+    }
+
+    @Override
     public List<Beer> getBeerByName(String name) {
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
         List<Beer> beers = new ArrayList<>();
@@ -85,6 +101,24 @@ public class JdbcBeerDao implements BeerDao {
             throw new DaoException("Data integrity violation", e);
         }
         return newBeer;
+    }
+
+    @Override
+    public int deleteBeerById(int id) {
+        int rowsAffected = 0;
+        String brewerySql = "DELETE FROM brewery_beer WHERE beer_id = ?";
+        String sql = "DELETE FROM beer WHERE beer_id = ?;";
+        try {
+            jdbcTemplate.update(brewerySql, id);
+           rowsAffected = jdbcTemplate.update(sql, id);
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to the server.", e);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation.", e);
+        }
+        return rowsAffected;
     }
 
     private Beer mapRowToBeer(SqlRowSet rs) {
