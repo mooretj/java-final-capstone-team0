@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import beerService from '../services/BeerService.js';
 import beerList from '../components/BeerList.vue';
 
 
