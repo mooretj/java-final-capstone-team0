@@ -8,7 +8,7 @@ public interface BeerDao {
 
     List<Beer> getBeers();
 
-    Beer getBeerById(int breweryId, int beerId);
+    Beer getBeerById(int beerId);
 
     List<Beer> getBeerByName(String name);
 

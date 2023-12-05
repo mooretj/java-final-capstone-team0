@@ -27,10 +27,10 @@ public class BeerController {
         try {
             beer = beerDao.createBeer(newBeer);
             if (beer == null) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User registration failed.");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Beer registration failed.");
             }
         } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Beer registration failed.");
         }
         return beer;
     }
@@ -52,8 +52,13 @@ public class BeerController {
     }
 
     @RequestMapping(path = "breweries/{breweryId}/beers/{beerId}", method = RequestMethod.GET)
-    public Beer getBeerById(@PathVariable int breweryId, int beerId) {
-        return beerDao.getBeerById(breweryId, beerId);
+    public Beer getBeerById(@PathVariable int beerId) {
+        return beerDao.getBeerById(beerId);
+    }
+
+    @RequestMapping(path = "breweries/{breweryId}/beers/{beerId}", method = RequestMethod.DELETE)
+    public int deleteBeerById(@PathVariable int beerId) {
+        return beerDao.deleteBeerById(beerId);
     }
 
 //    @RequestMapping(path = "/beers?beer_name={beerName}", method = RequestMethod.GET)
