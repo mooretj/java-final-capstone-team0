@@ -22,7 +22,7 @@
     </div>
 
     <div class="beers">
-        <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView' })">See Beers</button>
+        <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
     </div>
 
 

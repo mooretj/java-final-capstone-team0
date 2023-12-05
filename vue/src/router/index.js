@@ -17,8 +17,6 @@ import BreweryDetailsView from '../views/BreweryDetailsView.vue';
 
 
 
-
-
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -76,6 +74,22 @@ const routes = [
     }
   },
   {
+    path: "/beers",
+    name: "BeerListView",
+    component: BeerListView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/beers/:beerId',
+    name: 'BeerDetailsView',
+    component: BeerDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: '/breweries/:breweryId',
     name: 'BreweryDetailsView',
     component: BreweryDetailsView,
@@ -92,23 +106,16 @@ const routes = [
     }
   },
   {
-    path: '/beers',
+    path: '/breweries/:breweryId/beers',
     name: 'BeerListView',
     component: BeerListView,
     meta: {
       requiresAuth: false
     }
   },
+  
   {
-    path: '/beers/:beerId',
-    name: 'BeerDetailsView',
-    component: BeerDetailsView,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/beers/create',
+    path: '/breweries/:breweryId/beers/create',
     name: 'AddBeerView',
     component: AddBeerView,
     meta: {
