@@ -53,9 +53,9 @@
                     brewery_id: this.beer.brewery_id,
                     beer_name: this.beer.beer_name,
                     beer_description: this.beer.beer_description,
-                    beer_img: this.beer_img,
+                    beer_img: this.beer.beer_img,
                     abv: this.beer.abv,
-                    beer_type: this.beer_type,
+                    beer_type: this.beer.beer_type,
                 }
             };
         },
@@ -105,7 +105,7 @@
       }
     },
     cancelForm() {
-      this.$router.push({name: "BeerListView"});
+      this.$router.push({name: "BeerDetailsView"});
     },
 
     handleErrorResponse(error, verb) {
