@@ -12,6 +12,7 @@ import BeerDetailsView from '../views/BeerDetailsView.vue';
 import EditBeerView from '../views/EditBeerView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
 import BeerListView from '../components/BeerList.vue';
+import BreweryListView from '../views/BreweryListView.vue';
 
 
 
@@ -61,6 +62,14 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/breweries",
+    name: "BreweryListView",
+    component: BreweryListView,
     meta: {
       requiresAuth: false
     }
