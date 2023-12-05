@@ -16,4 +16,6 @@ public interface BreweryDao {
 
     int deleteBreweryById(int id);
 
+    Brewery updateBreweryById(Brewery brewery);
+
 }

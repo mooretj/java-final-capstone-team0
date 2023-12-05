@@ -23,7 +23,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById(int id) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery WHERE brewery_id = ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, open_hour, close_hour, history FROM brewery WHERE brewery_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
             if (results.next()) {
@@ -40,7 +40,7 @@ public class JdbcBreweryDao implements BreweryDao {
         if(breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
         List<Brewery> breweries = new ArrayList<>();
         breweryName = "%" + breweryName + "%";
-        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery WHERE brewery_name ILIKE ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, open_hour, close_hour, history FROM brewery WHERE brewery_name ILIKE ?";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, breweryName);
             while (result.next()) {
@@ -56,10 +56,10 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery createBrewery(Brewery brewery) {
         Brewery newBrewery = null;
-        String insertBrewerySql = "INSERT INTO brewery (brewery_name, website, open_hour, close_hour, history) " +
-                "values (?, ?, ?, ?, ?) RETURNING brewery_id";
+        String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, open_hour, close_hour, history) " +
+                "values (?, ?, ?, ?, ?, ?) RETURNING brewery_id";
         try {
-            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getWebsite(),
+            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(),
                     brewery.getOpenHour(), brewery.getCloseHour(), brewery.getHistory());
             newBrewery = getBreweryById(newBreweryId);
         } catch (CannotGetJdbcConnectionException e) {
@@ -73,7 +73,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, website, open_hour, close_hour, history FROM brewery";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, open_hour, close_hour, history FROM brewery";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -103,10 +103,32 @@ public class JdbcBreweryDao implements BreweryDao {
         return numberOfRowsAffected;
     }
 
+    @Override
+    public Brewery updateBreweryById(Brewery brewery) {
+        Brewery updatedBrewery = null;
+        String sql = "UPDATE brewery SET brewery_name = ?, brewery_main_img = ?, website = ?, open_hour = ?, close_hour = ?, history = ? WHERE brewery_id = ?;";
+        try {
+            int numberOfRows = jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(), brewery.getOpenHour(), brewery.getCloseHour(), brewery.getHistory(), brewery.getId());
+            if (numberOfRows == 0) {
+                throw new DaoException("Zero rows affected, expected at least one.");
+            } else {
+                updatedBrewery = getBreweryById(brewery.getId());
+            }
+        }
+            catch (CannotGetJdbcConnectionException e) {
+                throw new DaoException("Unable to connect to the server.", e);
+            }
+            catch (DataIntegrityViolationException e) {
+                throw new DaoException("Data integrity violation.", e);
+            }
+            return updatedBrewery;
+    }
+
         private Brewery mapRowToBrewery(SqlRowSet b) {
             Brewery brewery = new Brewery();
             brewery.setId(b.getInt("brewery_id"));
             brewery.setBreweryName(b.getString("brewery_name"));
+            brewery.setBreweryImg(b.getString("brewery_main_img"));
             brewery.setWebsite(b.getString("website"));
             brewery.setOpenHour(b.getTime("open_hour").toLocalTime());
             brewery.setCloseHour(b.getTime("close_hour").toLocalTime());
