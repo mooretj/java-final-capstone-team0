@@ -6,15 +6,15 @@
         <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
       </div>
     </header>
-    <div class="Description">
+    
+    <div class="description">
       <label>Beer Description:</label>&nbsp;
       <span>{{ beer.beer_description }}</span>
     </div>
 
-    <!-- <div class="BeerImage">
-      <label>Beer Description:</label>&nbsp;
+    <div class="beerImage">
       <img src={{ beer.beer_image }} alt="">
-    </div> -->
+    </div>
 
     <div class="abv">
       <label>Beer ABV:</label>&nbsp;

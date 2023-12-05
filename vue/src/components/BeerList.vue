@@ -26,7 +26,7 @@
     },
     methods: {
     getBeers() {
-      beerService.list()
+      beerService.list(this.$route.params.breweryId)
         .then(response => {
           this.beers = response.data;
           this.isLoading = false;

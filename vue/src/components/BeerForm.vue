@@ -29,7 +29,7 @@
                 <label for="beerType">Beer Type: </label>
                 <input type="text"  id="beerType" v-model="editBeer.beer_type" />
             </div>
-            <button class="btn-submit" type="submit" v-on:click="submit">Add Beer</button>
+            <button class="btn-submit" type="submit">Add Beer</button>
             <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
         </form>
       </div>
@@ -49,13 +49,13 @@
         data() {
             return {
                 editBeer: {
-                  beer_id: this.beer.beer_id,
-                    brewery_id: this.brewery_id,
-                    beer_name: this.beer.beer_name,
-                    beer_description: this.beer.beer_description,
-                    beer_img: this.beer.beer_img,
+                    beer_id: this.beer.beerId,
+                    brewery_id: this.beer.breweryId,
+                    beer_name: this.beer.name,
+                    beer_description: this.beer.description,
+                    beer_img: this.beer.imgUrl,
                     abv: this.beer.abv,
-                    beer_type:this.beer.beer_type,
+                    beer_type:this.beer.type,
                 }
             };
         },

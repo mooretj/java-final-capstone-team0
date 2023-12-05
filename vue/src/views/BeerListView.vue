@@ -7,13 +7,12 @@
       <h1>Beers</h1>
       
     </header>
-    <beerList v-bind:beers="beers"/>
+    <beerList/>
   </div>
 </template>
 
 <script>
 import beerList from '../components/BeerList.vue';
-
 
 export default {
   

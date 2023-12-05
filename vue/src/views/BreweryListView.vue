@@ -7,7 +7,7 @@
         <h1>Breweries</h1>
         
       </header>
-      <breweryList v-bind:breweries="breweries"/>
+      <breweryList/>
       <button class="btn-add" v-on:click="$router.push({ name: 'AddBreweryView' })">Add Brewery</button>
     </div>
   </template>
