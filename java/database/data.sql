@@ -9,7 +9,7 @@ INSERT INTO brewery (brewery_name,website,open_hour,close_hour,history) VALUES (
 
 INSERT INTO brewer (brewery_id,user_id) VALUES (1,3);
 
-INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (1,'Good Shit','picture of beer','It''s good shit','6.9','IPA',true);
+INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (1,'A Typical Lager','picture of beer','It''s pretty good.','6.9','Lager',true);
 
 INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (1,1);
 

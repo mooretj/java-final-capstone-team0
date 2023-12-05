@@ -64,7 +64,7 @@
       // if (!this.validateForm()) {
       //   return;
       // }
-      if (this.editBeer.beer_id ==0) {
+      if (this.editBeer.beer_id == 0) {
         beerService
           .addBeer(this.editBeer)
           .then(response => {
@@ -104,9 +104,8 @@
           });
       }
     },
-
-        cancelForm() {
-      this.$router.back();
+    cancelForm() {
+      this.$router.push({name: "BeerListView"});
     },
 
     handleErrorResponse(error, verb) {

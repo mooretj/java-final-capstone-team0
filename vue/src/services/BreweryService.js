@@ -10,7 +10,7 @@ export default {
         return http.get('/breweries');
     },
 
-    add(brewery) {
+    addBrewery(brewery) {
         return http.post('/breweries', brewery);
     }
 
