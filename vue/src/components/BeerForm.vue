@@ -55,7 +55,7 @@
                     beer_description: this.beer.beer_description,
                     beer_img: this.beer.beer_img,
                     abv: this.beer.abv,
-                    beer_type:this.beer.beer_type,
+                    beer_type: this.beer.beer_type,
                 }
             };
         },

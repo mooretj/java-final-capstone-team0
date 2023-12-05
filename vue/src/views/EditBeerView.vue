@@ -31,20 +31,20 @@
           this.beer = response.data;
           this.isLoading = false;
         })
-        .catch(error => {
-          if (error.response) {
-            if (error.response.status == 404) {
-              this.$router.push({name: 'NotFoundView'});
-            } else {
-              this.$store.commit('SET_NOTIFICATION',
-              `Error getting beer. Response received was "${error.response.statusText}".`);
-            }
-          } else if (error.request) {
-            this.$store.commit('SET_NOTIFICATION', `Error getting beer. Server could not be reached.`);
-          } else {
-            this.$store.commit('SET_NOTIFICATION', `Error getting beer. Request could not be created.`);
-          }
-        })
+        // .catch(error => {
+        //   if (error.response) {
+        //     if (error.response.status == 404) {
+        //       this.$router.push({name: 'NotFoundView'});
+        //     } else {
+        //       this.$store.commit('SET_NOTIFICATION',
+        //       `Error getting beer. Response received was "${error.response.statusText}".`);
+        //     }
+        //   } else if (error.request) {
+        //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Server could not be reached.`);
+        //   } else {
+        //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Request could not be created.`);
+        //   }
+        // })
     }
   },
   created() {
