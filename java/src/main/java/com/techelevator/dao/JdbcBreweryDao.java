@@ -87,6 +87,22 @@ public class JdbcBreweryDao implements BreweryDao {
         return breweries;
     }
 
+    @Override
+    public int deleteBreweryById(int breweryId) {
+        int numberOfRowsAffected = 0;
+        String sql = "DELETE FROM brewery WHERE brewery_id = ?;";
+        try {
+            numberOfRowsAffected = jdbcTemplate.update(sql, breweryId);
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to the server.", e);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation.", e);
+        }
+        return numberOfRowsAffected;
+    }
+
         private Brewery mapRowToBrewery(SqlRowSet b) {
             Brewery brewery = new Brewery();
             brewery.setId(b.getInt("brewery_id"));

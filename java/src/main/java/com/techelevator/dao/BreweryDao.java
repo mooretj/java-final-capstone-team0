@@ -14,4 +14,6 @@ public interface BreweryDao {
 
     Brewery createBrewery(Brewery brewery);
 
+    int deleteBreweryById(int id);
+
 }

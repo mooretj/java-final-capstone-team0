@@ -21,8 +21,8 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/beers", method = RequestMethod.POST)
-    public Beer addBeer(@Valid @RequestBody Beer newBeer) {
+    @RequestMapping(path = "breweries/{breweryId}/beers", method = RequestMethod.POST)
+    public Beer addBeer(@PathVariable int breweryId, @Valid @RequestBody Beer newBeer) {
         Beer beer = null;
         try {
             beer = beerDao.createBeer(newBeer);
@@ -36,23 +36,28 @@ public class BeerController {
     }
 
 
-    @RequestMapping(path = "/beers", method = RequestMethod.GET)
-    public List<Beer> list(@RequestParam(required = false, value = "name", defaultValue = "")String name) {
-        if(name.isEmpty()) {
-            return beerDao.getBeers();
-        }
-        else {
-            return beerDao.getBeerByName(name);
-        }
+//    @RequestMapping(path = "/beers", method = RequestMethod.GET)
+//    public List<Beer> list(@RequestParam(required = false, value = "name", defaultValue = "")String name) {
+//        if(name.isEmpty()) {
+//            return beerDao.getBeers();
+//        }
+//        else {
+//            return beerDao.getBeerByName(name);
+//        }
+//    }
+
+    @RequestMapping(path = "breweries/{breweryId}/beers", method = RequestMethod.GET)
+    public List<Beer> list(@PathVariable int breweryId) {
+        return beerDao.getBeersByBreweryId(breweryId);
     }
 
-    @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
-    public Beer getBeerById(@PathVariable int id) {
-        return beerDao.getBeerById(id);
+    @RequestMapping(path = "breweries/{breweryId}/beers/{beerId}", method = RequestMethod.GET)
+    public Beer getBeerById(@PathVariable int breweryId, int beerId) {
+        return beerDao.getBeerById(breweryId, beerId);
     }
 
-    @RequestMapping(path = "/beers?beer_name={beerName}", method = RequestMethod.GET)
-    public List<Beer> getBeerByName(@RequestParam(required = false) String beerName) {
-        return beerDao.getBeerByName(beerName);
-    }
+//    @RequestMapping(path = "/beers?beer_name={beerName}", method = RequestMethod.GET)
+//    public List<Beer> getBeerByName(@RequestParam(required = false) String beerName) {
+//        return beerDao.getBeerByName(beerName);
+//    }
 }
