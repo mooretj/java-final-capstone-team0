@@ -14,6 +14,7 @@ import NotFoundView from '../views/NotFoundView.vue';
 import BeerListView from '../components/BeerList.vue';
 import BreweryListView from '../views/BreweryListView.vue';
 import BreweryDetailsView from '../views/BreweryDetailsView.vue';
+import AddReviewView from '../views/AddReviewView.vue';
 
 
 
@@ -127,6 +128,14 @@ const routes = [
       requiresAuth: false
     }
   },
+  {
+    path: '/beers/:beerId/reviews/create',
+    name: 'AddReviewView',
+    component: AddReviewView,
+    meta: {
+      requiresAuth: false
+    }
+  }
   // {}
   //   path: '/breweries/:breweryId/beers/:beerId',
   //   name: 'BeerDetailsView',
