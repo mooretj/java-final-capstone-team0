@@ -1,10 +1,8 @@
 <template>
-    <header class="flex">
       <h1>{{ brewery.brewery_name }}</h1>
       <div class="actions">
         
       </div>
-    </header>
     
     <div class="BreweryImage">
       <img :src=brewery.brewery_main_img alt="">
