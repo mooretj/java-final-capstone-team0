@@ -1,7 +1,5 @@
 <template>
-    <header class="flex">
       <h1>{{ beer.beer_name }}</h1>
-    </header>
     
     <div class="beerImage">
       <img :src=beer.beer_img alt="">

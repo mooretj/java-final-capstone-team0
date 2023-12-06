@@ -5,7 +5,6 @@
   </div>
 
   <div v-else>
-    <header class="flex">
       <h1>Beers</h1>
       <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
@@ -13,7 +12,6 @@
       </router-link>
     </div>
       <button class="btn-add" v-on:click="$router.push({ name: 'AddBeerView' })">Add Beer</button>
-    </header>
   </div>
 
 </template>
