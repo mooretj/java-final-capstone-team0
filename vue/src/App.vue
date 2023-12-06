@@ -30,6 +30,10 @@
 </template>
 
 <style>
+* {
+  color: white;
+}
+
 header{
 
   background-color: rgb(0, 0, 0);
@@ -39,6 +43,7 @@ header{
   justify-content: space-between;
   align-items: bottom;
   height: 100px;
+  
 }
 
 img#logo{
