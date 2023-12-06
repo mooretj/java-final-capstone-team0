@@ -45,7 +45,7 @@
         )
         ) {
           beerService
-            .deleteBeer(this.beer.beerId)
+            .deleteBeer(this.$route.params.beerId)
             .then(response => {
               if (response.status === 200) {
                 this.$store.commit(
@@ -55,7 +55,7 @@
                     type: 'success'
                   }
                 );
-                this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.beer.beerId }});
+                this.$router.back();
               }
             })
             .catch(error => {
