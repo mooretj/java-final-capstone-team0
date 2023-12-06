@@ -13,8 +13,9 @@
     </div>
 
     <div class="beerImage">
-      <p>Here is where the image will be</p>
-      <img src='https://media.licdn.com/dms/image/D5635AQG1_HyvOyqt6g/profile-framedphoto-shrink_800_800/0/1700698588280?e=1702411200&v=beta&t=S8X3LvebEFqxPnAVz_XgCeeso7-wS7q4SSL84PRcb4M' alt="">
+      <img v-bind:src="beer.beer_main_img" alt="">
+      <!-- <p>Here is where the image will be</p>
+      <img src='https://media.licdn.com/dms/image/D5635AQG1_HyvOyqt6g/profile-framedphoto-shrink_800_800/0/1700698588280?e=1702411200&v=beta&t=S8X3LvebEFqxPnAVz_XgCeeso7-wS7q4SSL84PRcb4M' alt=""> -->
     </div>
 
     <div class="abv">
@@ -44,29 +45,30 @@
         if (confirm("Are you sure you want to delete this beer? This action cannot be undone."
         )
         ) {
+
           beerService
-            .deleteBeer(this.$route.params.beerId)
+            .deleteBeer(this.beer.beer_id)
             .then(response => {
-              if (response.status === 200) {
-                this.$store.commit(
-                  'SET_NOTIFICATION',
-                  {
-                    message: `Beer ${this.beer.name} was successfully deleted.`,
-                    type: 'success'
-                  }
-                );
+              // if (response.status === 200) {
+                // this.$store.commit(
+                //   'SET_NOTIFICATION',
+                //   {
+                //     message: `Beer ${this.beer.name} was successfully deleted.`,
+                //     type: 'success'
+                //   }
+                // );
                 this.$router.back();
-              }
+              // }
             })
             .catch(error => {
-              if (error.response) {
-                this.$store.commit('SET_NOTIFICATION',
-                  `Error deleting beer. Response received was "${error.response.statusText}".`);
-              } else if (error.request) {
-                this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Server could not be reached.');
-              } else {
-                this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Request could not be created.');
-              }
+              // if (error.response) {
+              //   this.$store.commit('SET_NOTIFICATION',
+              //     `Error deleting beer. Response received was "${error.response.statusText}".`);
+              // } else if (error.request) {
+              //   this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Server could not be reached.');
+              // } else {
+              //   this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Request could not be created.');
+              // }
             });
         }
       },

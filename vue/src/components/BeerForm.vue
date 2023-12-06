@@ -45,7 +45,6 @@
       required: false
     },
         },
-
         data() {
             return {
                 editBeer: {
@@ -68,7 +67,7 @@
         beerService
           .addBeer(this.editBeer)
           .then(response => {
-            if (response.status == 201) {
+            // if (response.status == 201) {
               // this.$store.commit(
               //   'SET_NOTIFICATION',
               //   {
@@ -77,28 +76,27 @@
               //   }
               // );
               this.$router.push({ name: 'BeerListView'});
-            }
+            // }
           })
           .catch(error => {
             this.handleErrorResponse(error, 'adding');
           });
       } else {
-        
-
         beerService
           .updateBeer(this.editBeer)
           .then(response => {
-            if (response.status == 200) {
-              this.$store.commit(
-                'SET_NOTIFICATION',
-                {
-                  message: `Message ${this.editBeer.name} was updated.`,
-                  type: 'success'
-                }
-              );
-              this.$router.push({ name: 'BeerDetailsView', params: { beer_id: this.editBeer.beer_id }});
-            }
-          })
+            // if (response.status == 201) {
+              // this.$store.commit(
+              //   'SET_NOTIFICATION',
+              //   {
+              //     message: `Message ${this.editBeer.name} was updated.`,
+              //     type: 'success'
+              //   }
+              // );
+              this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
+              // this.$router.push('/');
+              // this.$router.back();
+            })
           .catch(error => {
             this.handleErrorResponse(error, 'updating');
           });
