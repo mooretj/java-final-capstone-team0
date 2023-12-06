@@ -1,9 +1,9 @@
 <template>
-    <h1>Add A New Beer</h1>
-    <beer-form v-bind:beer="beer" />
-  </template>
+  <h1>Add A New Beer</h1>
+  <beer-form v-bind:beer="beer" />
+</template>
   
-  <script>
+<script>
   import beerForm from '../components/BeerForm.vue';
   
   export default {
@@ -24,11 +24,10 @@
       }
     } 
   };
-  </script>
+</script>
 
 
 
-  <style scoped>
+<style scoped>
 
-
-  </style>
+</style>

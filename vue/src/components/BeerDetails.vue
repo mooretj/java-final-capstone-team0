@@ -4,9 +4,9 @@
     </header>
     
     <div class="beerImage">
-      <!-- <img src="{ beer.beer_img }" alt=""> -->
+      <img :src=beer.beer_img alt="">
       <!-- <p>Here is where the image will be</p> --->
-      <img src='https://cdn.shopify.com/s/files/1/0054/6682/files/how_to_make_beer_480x480.jpg?v=1682910325' alt="">
+      <!-- <img src='https://cdn.shopify.com/s/files/1/0054/6682/files/how_to_make_beer_480x480.jpg?v=1682910325' alt=""> -->
       <!-- <img src='https://immigrantsonbrewing.com/wp-content/uploads/2021/05/pilsner-500x650.png' alt=""> -->
     </div>
 
@@ -42,23 +42,21 @@
     },
     methods: {
       deleteBeer() {
-        if (confirm("Are you sure you want to delete this beer? This action cannot be undone."
-        )
-        ) {
-
+        if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
+        {
           beerService
             .deleteBeer(this.beer.beer_id)
             .then(response => {
-              // if (response.status === 200) {
-                // this.$store.commit(
-                //   'SET_NOTIFICATION',
-                //   {
-                //     message: `Beer ${this.beer.name} was successfully deleted.`,
-                //     type: 'success'
-                //   }
-                // );
+              if (response.status === 200) {
+                this.$store.commit(
+                  'SET_NOTIFICATION',
+                  {
+                    message: `Beer ${this.beer.name} was successfully deleted.`,
+                    type: 'success'
+                  }
+                );
                 this.$router.back();
-              // }
+              }
             })
             .catch(error => {
               // if (error.response) {

@@ -10,8 +10,8 @@ export default {
         return http.get('/breweries');
     },
 
-    get(id) {
-        return http.get(`/breweries/${id}`);
+    get(breweryId) {
+        return http.get(`/breweries/${breweryId}`);
     },
 
     addBrewery(brewery) {

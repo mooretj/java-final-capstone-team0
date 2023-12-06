@@ -1,13 +1,16 @@
 <template>
+
     <div class="loading" v-if="isLoading">
       <p>Loading...</p>
     </div>
+
     <div v-else>
       <!-- <nav> -->
         <!-- <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link> -->
       <!-- </nav> -->
       <beer-details v-bind:beer="beer" />
     </div>
+
   </template>
   
   <script>
@@ -18,7 +21,7 @@
     components: {
       beerDetails,
     },
-    data(){
+    data() {
       return {
         beer: {},
         isLoading: true
@@ -37,11 +40,11 @@
       },
       handleErrorResponse(error) {
         if (error.response.status == 404) {
-            this.$router.push({name: 'NotFoundView'});
-          } else {
-            this.isLoading = false;
-            this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
-          }
+          this.$router.push({name: 'NotFoundView'});
+        } else {
+          this.isLoading = false;
+          // this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
+        }
       }
     },
     created() {

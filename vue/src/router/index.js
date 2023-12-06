@@ -26,13 +26,11 @@ import BreweryDetailsView from '../views/BreweryDetailsView.vue';
  * If they have (or don't need to) they're allowed to go about their way.
  */
 const routes = [
-
   {
     path: "/not-found",
     name: "NotFoundView",
     component: NotFoundView
   },
-  
   {
     path: '/',
     name: 'home',
@@ -113,7 +111,6 @@ const routes = [
       requiresAuth: false
     }
   },
-  
   {
     path: '/breweries/:breweryId/beers/create',
     name: 'AddBeerView',
@@ -121,7 +118,6 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-    
   },
   {
     path: '/beers/:beerId/edit',
@@ -131,7 +127,7 @@ const routes = [
       requiresAuth: false
     }
   },
-  // {
+  // {}
   //   path: '/breweries/:breweryId/beers/:beerId',
   //   name: 'BeerDetailsView',
   //   component: BeerDetailsView,
