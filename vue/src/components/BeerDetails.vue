@@ -1,20 +1,18 @@
 <template>
     <header class="flex">
       <h1>{{ beer.beer_name }}</h1>
-      <div class="actions">
-        <button class="btn-edit" v-on:click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
-        <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
-      </div>
     </header>
     
+    <div class="beerImage">
+      <img :src=beer.beer_img alt="">
+      <!-- <p>Here is where the image will be</p> --->
+      <!-- <img src='https://cdn.shopify.com/s/files/1/0054/6682/files/how_to_make_beer_480x480.jpg?v=1682910325' alt=""> -->
+      <!-- <img src='https://immigrantsonbrewing.com/wp-content/uploads/2021/05/pilsner-500x650.png' alt=""> -->
+    </div>
+
     <div class="description">
       <label>Beer Description:</label>&nbsp;
       <span>{{ beer.beer_description }}</span>
-    </div>
-
-    <div class="beerImage">
-      <p>Here is where the image will be</p>
-      <img src='https://media.licdn.com/dms/image/D5635AQG1_HyvOyqt6g/profile-framedphoto-shrink_800_800/0/1700698588280?e=1702411200&v=beta&t=S8X3LvebEFqxPnAVz_XgCeeso7-wS7q4SSL84PRcb4M' alt="">
     </div>
 
     <div class="abv">
@@ -27,7 +25,10 @@
       <span>{{ beer.beer_type }}</span>
     </div>
 
-
+    <div class="actions">
+        <button class="btn-edit" v-on:click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
+        <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
+    </div>
   </template>
   
   <script>
@@ -41,11 +42,10 @@
     },
     methods: {
       deleteBeer() {
-        if (confirm("Are you sure you want to delete this beer? This action cannot be undone."
-        )
-        ) {
+        if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
+        {
           beerService
-            .deleteBeer(this.$route.params.beerId)
+            .deleteBeer(this.beer.beer_id)
             .then(response => {
               if (response.status === 200) {
                 this.$store.commit(
@@ -59,14 +59,14 @@
               }
             })
             .catch(error => {
-              if (error.response) {
-                this.$store.commit('SET_NOTIFICATION',
-                  `Error deleting beer. Response received was "${error.response.statusText}".`);
-              } else if (error.request) {
-                this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Server could not be reached.');
-              } else {
-                this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Request could not be created.');
-              }
+              // if (error.response) {
+              //   this.$store.commit('SET_NOTIFICATION',
+              //     `Error deleting beer. Response received was "${error.response.statusText}".`);
+              // } else if (error.request) {
+              //   this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Server could not be reached.');
+              // } else {
+              //   this.$store.commit('SET_NOTIFICATION', 'Error deleting beer. Request could not be created.');
+              // }
             });
         }
       },
@@ -92,6 +92,10 @@
 
   
   <style>
+
+  img {
+    height: 200px;
+  }
 
   </style>
   

@@ -23,11 +23,11 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public Brewery getBreweryById(int id) {
+    public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
         String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, open_hour, close_hour, history FROM brewery WHERE brewery_id = ?";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
             if (results.next()) {
                 brewery = mapRowToBrewery(results);
 //                brewery.setContact(contactDao.getContactByBreweryId(brewery.getId()));
