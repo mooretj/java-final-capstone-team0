@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDao;
+import com.techelevator.dao.ContactDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.Contact;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,9 +17,11 @@ import java.util.List;
 public class BreweryController {
 
     private BreweryDao breweryDao;
+    private ContactDao contactDao;
 
-    public BreweryController(BreweryDao breweryDao) {
+    public BreweryController(BreweryDao breweryDao, ContactDao contactDao) {
         this.breweryDao = breweryDao;
+        this.contactDao = contactDao;
     }
 
     /**
@@ -74,6 +78,22 @@ public class BreweryController {
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.DELETE)
     public int deleteBreweryById(@PathVariable int id) {
         return breweryDao.deleteBreweryById(id);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/breweries/{id}/edit-contact", method = RequestMethod.PUT)
+    public Contact updateContactByBreweryId(@Valid @RequestBody Contact contact, @PathVariable int id) {
+        if (id != contact.getBreweryId() && contact.getBreweryId() != 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Resource ID does not match URL.");
+        }
+        contact.setBreweryId(id);
+        try {
+            Contact updatedContact = contactDao.updateContactByBreweryId(contact);
+            return updatedContact;
+        }
+        catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Brewery not found.");
+        }
     }
 
     /**

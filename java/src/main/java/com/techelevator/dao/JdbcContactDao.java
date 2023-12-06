@@ -65,7 +65,7 @@ public class JdbcContactDao implements ContactDao {
     }
 
     @Override
-    public Contact updateContactById(Contact contact) {
+    public Contact updateContactByBreweryId(Contact contact) {
         Contact updatedContact = null;
         String sql = "UPDATE contact SET email = ?, phone = ?, website = ?, brewery_address = ? WHERE brewery_id = ?;";
         try {
