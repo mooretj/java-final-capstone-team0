@@ -59,14 +59,14 @@ export default {
                         );
 
                     }
-                    this.$router.push("/");
+                    this.$router.push({ name: "BreweryListView" });
                 })
             //   .catch(error => {
             //     this.handleErrorResponse(error, 'adding');
             //   });
         },
         cancelForm() {
-            this.$router.push("/");
+            this.$router.push({ name: "BreweryListView" });
         }
     }
 
