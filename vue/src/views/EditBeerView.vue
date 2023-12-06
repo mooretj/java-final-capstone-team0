@@ -1,55 +1,56 @@
 <template>
+
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
+
   <div v-else>
     <h1>Edit Beer</h1>
     <beer-form v-bind:beer="beer" />
   </div>
-    </template>
-    
-    <script>
 
-    import beerService from '../services/BeerService.js'
-    import beerForm from '../components/BeerForm.vue';
-
+</template>
     
-    export default {
-      components:{
-        beerForm
-      },
-        data() {
-            return {
-                beer: {},
-                isLoading: true
-            }
-        },
-        methods: {
-    getBeer(id) {
+<script>
+  import beerService from '../services/BeerService.js'
+  import beerForm from '../components/BeerForm.vue';
+
+  export default {
+    components:{
+      beerForm
+    },
+    data() {
+        return {
+            beer: {},
+            isLoading: true
+        }
+    },
+    methods: {
+      getBeer(id) {
       beerService.get(id)
         .then(response => {
           this.beer = response.data;
           this.isLoading = false;
         })
-        // .catch(error => {
-        //   if (error.response) {
-        //     if (error.response.status == 404) {
-        //       this.$router.push({name: 'NotFoundView'});
-        //     } else {
-        //       this.$store.commit('SET_NOTIFICATION',
-        //       `Error getting beer. Response received was "${error.response.statusText}".`);
-        //     }
-        //   } else if (error.request) {
-        //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Server could not be reached.`);
-        //   } else {
-        //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Request could not be created.`);
-        //   }
-        // })
-    }
-  },
-  created() {
-    this.getBeer(this.$route.params.beerId);
-  } 
+      // .catch(error => {
+      //   if (error.response) {
+      //     if (error.response.status == 404) {
+      //       this.$router.push({name: 'NotFoundView'});
+      //     } else {
+      //       this.$store.commit('SET_NOTIFICATION',
+      //       `Error getting beer. Response received was "${error.response.statusText}".`);
+      //     }
+      //   } else if (error.request) {
+      //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Server could not be reached.`);
+      //   } else {
+      //     this.$store.commit('SET_NOTIFICATION', `Error getting beer. Request could not be created.`);
+      //   }
+      // })
+      }
+    },
+    created() {
+      this.getBeer(this.$route.params.beerId);
+    } 
 };
 </script>
 

@@ -1,7 +1,9 @@
 <template>
-    <div class="loading" v-if="isLoading">
+
+  <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
+
   <div v-else>
     <header class="flex">
       <h1>Beers</h1>
@@ -14,35 +16,35 @@
     </header>
   </div>
 
-  </template>
+</template>
   
-  <script>
+<script>
   import beerService from "../services/BeerService";
   export default {
     data() {
       return {
-      beers: []
+        beers: []
       }
     },
     methods: {
-    getBeers() {
-      beerService.list(this.$route.params.breweryId)
-        .then(response => {
-          this.beers = response.data;
-          this.isLoading = false;
-        })
-        .catch(error => {
-          this.handleError();
-        })
+      getBeers() {
+        beerService.list(this.$route.params.breweryId)
+          .then(response => {
+            this.beers = response.data;
+            this.isLoading = false;
+          })
+          .catch(error => {
+            this.handleError();
+          })
+      },
+      handleErrorResponse() {
+        this.isLoading = false;
+        this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
+      },
     },
-    handleErrorResponse() {
-      this.isLoading = false;
-      this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
-    },
-  },
-  created() {
-    this.getBeers();
-  }
+    created() {
+      this.getBeers();
+    }
   };
   </script>
   
