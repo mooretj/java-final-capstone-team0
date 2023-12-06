@@ -26,7 +26,7 @@ CREATE TABLE brewery (
 	website varchar(200),
 	open_hour time,
 	close_hour time,
-	history varchar(1000)
+	history varchar(5000)
 );
 
 CREATE TABLE brewer (
