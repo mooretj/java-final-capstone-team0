@@ -6,6 +6,7 @@ const http = axios.create({
 
 export default {
 
+    // If breweryId is 0, all beers are returned
     list(breweryId) {
         return http.get(`breweries/${breweryId}/beers`);
     },
