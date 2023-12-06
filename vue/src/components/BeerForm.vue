@@ -105,7 +105,7 @@
       }
     },
     cancelForm() {
-      this.$router.push({name: "BeerListView"});
+      this.$router.push({name: "BeerDetailsView"});
     },
 
     handleErrorResponse(error, verb) {
