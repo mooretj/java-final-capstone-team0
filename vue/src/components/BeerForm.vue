@@ -1,41 +1,41 @@
 <template>
-    <div class="text-center">
-        <form v-on:submit.prevent="submitForm">
+  <div class="text-center">
+      <form v-on:submit.prevent="submitForm">
+        <div class="form-input-group">
+              <label for="beerId">Beer ID: </label>
+              <input type="text" id="beerId" v-model="editBeer.beer_id" />
+          </div>
+        <div class="form-input-group">
+              <label for="breweryId">Brewery ID: </label>
+              <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
+          </div>
           <div class="form-input-group">
-                <label for="beerId">Beer ID: </label>
-                <input type="text" id="beerId" v-model="editBeer.beer_id" />
-            </div>
+              <label for="name">Beer Name: </label>
+              <input type="text" id="name" v-model="editBeer.beer_name"  />
+          </div>
           <div class="form-input-group">
-                <label for="breweryId">Brewery ID: </label>
-                <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
-            </div>
-            <div class="form-input-group">
-                <label for="name">Beer Name: </label>
-                <input type="text" id="name" v-model="editBeer.beer_name"  />
-            </div>
-            <div class="form-input-group">
-                <label for="description">Description: </label>
-                <input type="text" id="description" v-model="editBeer.beer_description" />
-            </div>
-            <div class="form-input-group">
-                <label for="img">Beer Image URL: </label>
-                <input type="text" id="beerImage" v-model="editBeer.beer_img" />
-            </div>
-            <div class="form-input-group">
-                <label for="abv">ABV: </label>
-                <input type="abv" id="abv" v-model="editBeer.abv" />
-            </div>
-            <div class="form-input-group">
-                <label for="beerType">Beer Type: </label>
-                <input type="text"  id="beerType" v-model="editBeer.beer_type" />
-            </div>
-            <button class="btn-submit" type="submit">Add Beer</button>
-            <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
-        </form>
-      </div>
-    </template>
+              <label for="description">Description: </label>
+              <input type="text" id="description" v-model="editBeer.beer_description" />
+          </div>
+          <div class="form-input-group">
+              <label for="img">Beer Image URL: </label>
+              <input type="text" id="beerImage" v-model="editBeer.beer_img" />
+          </div>
+          <div class="form-input-group">
+              <label for="abv">ABV: </label>
+              <input type="abv" id="abv" v-model="editBeer.abv" />
+          </div>
+          <div class="form-input-group">
+              <label for="beerType">Beer Type: </label>
+              <input type="text"  id="beerType" v-model="editBeer.beer_type" />
+          </div>
+          <button class="btn-submit" type="submit">Add Beer</button>
+          <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
+      </form>
+    </div>
+</template>
     
-    <script>
+<script>
     import beerService from '../services/BeerService.js';
     
     export default {
