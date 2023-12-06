@@ -22,8 +22,8 @@ export default {
     //     return http.put(`breweries/${beer.brewery_id}/beers/${beer.beerId}`, beer);
     // },
 
-    // deleteBeer(beerId) {
-    //     return http.delete(`breweries/${beer.breweryId}/beers/${beerId}`);
-    // },
+    deleteBeer(beerId) {
+        return http.delete(`/beers/${beerId}`);
+    }
 
 }

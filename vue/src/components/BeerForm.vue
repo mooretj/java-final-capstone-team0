@@ -23,7 +23,7 @@
             </div>
             <div class="form-input-group">
                 <label for="abv">ABV: </label>
-                <input type="abv" id="abv" v-model="editBeer.beer_abv" />
+                <input type="abv" id="abv" v-model="editBeer.abv" />
             </div>
             <div class="form-input-group">
                 <label for="beerType">Beer Type: </label>
@@ -49,13 +49,13 @@
         data() {
             return {
                 editBeer: {
-                    beer_id: this.beer.beerId,
-                    brewery_id: this.beer.breweryId,
-                    beer_name: this.beer.name,
-                    beer_description: this.beer.description,
-                    beer_img: this.beer.imgUrl,
+                    beer_id: this.beer.beer_id,
+                    brewery_id: this.beer.brewery_id,
+                    beer_name: this.beer.beer_name,
+                    beer_description: this.beer.beer_description,
+                    beer_img: this.beer.beer_img,
                     abv: this.beer.abv,
-                    beer_type:this.beer.type,
+                    beer_type: this.beer.beer_type,
                 }
             };
         },
