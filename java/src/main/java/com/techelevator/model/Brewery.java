@@ -1,7 +1,6 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.time.LocalTime;
 
@@ -19,6 +18,8 @@ public class Brewery {
     private LocalTime closeHour;
     @JsonProperty("history")
     private String history;
+    @JsonProperty("brewery_contact")
+    private Contact contact;
 
     public String getBreweryImg() {
         return breweryImg;
@@ -76,7 +77,7 @@ public class Brewery {
         this.closeHour = closeHour;
     }
 
-    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, String history) {
+    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, String history, Contact contact) {
         this.id = id;
         this.breweryName = breweryName;
         this.breweryImg = breweryImg;
@@ -84,6 +85,7 @@ public class Brewery {
         this.openHour = openHour;
         this.closeHour = closeHour;
         this.history = history;
+        this.contact = contact;
     }
 
     public Brewery() {}
@@ -98,6 +100,7 @@ public class Brewery {
                 ", Open Hour=" + openHour +
                 ", Close Hour=" + closeHour +
                 ", History=" + history +
+                ", Contact Info=" +
                 '}';
     }
 }
