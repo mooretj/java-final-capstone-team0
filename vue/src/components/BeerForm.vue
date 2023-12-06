@@ -51,7 +51,7 @@
       props: {
         beer: {
           type: Object,
-          required: false
+          required: true
         },
       },
       data() {
@@ -69,9 +69,9 @@
       },
       methods: {
         submitForm() {
-          if (!this.validateForm()) {
-            return;
-          }
+          // if (!this.validateForm()) {
+          //   return;
+          // }
           if (this.editBeer.beer_id == 0) {
             beerService
               .addBeer(this.editBeer)

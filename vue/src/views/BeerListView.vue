@@ -5,9 +5,7 @@
   </div>
 
   <div v-else>
-    <header class="flex">
       <h1>Beers</h1>
-    </header>
     <beerList/>
 
   </div>

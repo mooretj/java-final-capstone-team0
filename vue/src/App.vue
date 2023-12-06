@@ -4,7 +4,7 @@
       <router-link v-bind:to="{ name: 'BreweryListView' }">Breweries</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'BreweryListView' }">News</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'BreweryListView' }">Best Of</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'BreweryListView' }">Reviews</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'BreweryListView' }">Reviews</router-link>
     </div>
     <div> 
       <img id="logo" src="src/assets/logo_resized.jpg" alt="beerimage">
@@ -35,10 +35,10 @@
 }
 
 header{
-
   background-color: rgb(0, 0, 0);
   display: flex;
-  align-items: flex-end;border-style: solid;
+  align-items: flex-end;
+  border-style: none;
   border-color: white;
   justify-content: space-between;
   align-items: bottom;
@@ -47,15 +47,17 @@ header{
 }
 
 img#logo{
-height: 90px;}
+height: 70px;
+align-items: center;
+}
 
 a{
   color: white;
+  text-decoration: none;
 }
 
 div #nav{
   color: white;
-  
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>
