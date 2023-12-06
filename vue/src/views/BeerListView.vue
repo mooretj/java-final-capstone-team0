@@ -9,6 +9,7 @@
       <h1>Beers</h1>
     </header>
     <beerList/>
+
   </div>
 
 </template>
