@@ -77,6 +77,14 @@ public class Brewery {
         this.closeHour = closeHour;
     }
 
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
     public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, String history, Contact contact) {
         this.id = id;
         this.breweryName = breweryName;
@@ -100,7 +108,8 @@ public class Brewery {
                 ", Open Hour=" + openHour +
                 ", Close Hour=" + closeHour +
                 ", History=" + history +
-                ", Contact Info=" +
+                ", Contact Info=Email: " + contact.getEmail() +
+                " Phone: " + contact.getPhone() + " Address: " + contact.getAddress() +
                 '}';
     }
 }

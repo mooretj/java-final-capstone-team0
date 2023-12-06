@@ -15,6 +15,10 @@
             </div>
 
             <div class="form-input-group">
+                <label for="mainImg">Brewery Image: </label>
+                <input type="text" id="mainImg" v-model="editBrewery.brewery_main_img" />
+            </div>
+            <div class="form-input-group">
                 <label for="open">Opening Hour: </label>
                 <input type="time" id="open" v-model="editBrewery.open_hour" />
             </div>
@@ -45,6 +49,7 @@ export default {
             editBrewery: {
                 brewery_id: 0,
                 brewery_name: '',
+                brewery_main_img: '',
                 website: '',
                 open_hour: null,
                 close_hour: null,
