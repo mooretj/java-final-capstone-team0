@@ -15,9 +15,11 @@ import java.util.List;
 public class JdbcBreweryDao implements BreweryDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final ContactDao contactDao;
 
-    public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
+    public JdbcBreweryDao(JdbcTemplate jdbcTemplate, ContactDao contactDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.contactDao = contactDao;
     }
 
     @Override
@@ -28,6 +30,7 @@ public class JdbcBreweryDao implements BreweryDao {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
             if (results.next()) {
                 brewery = mapRowToBrewery(results);
+//                brewery.setContact(contactDao.getContactByBreweryId(brewery.getId()));
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -44,7 +47,9 @@ public class JdbcBreweryDao implements BreweryDao {
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, breweryName);
             while (result.next()) {
-                breweries.add(mapRowToBrewery(result));
+                Brewery brewery = mapRowToBrewery(result);
+//                brewery.setContact(contactDao.getContactByBreweryId(brewery.getId()));
+                breweries.add(brewery);
             }
         }
         catch (CannotGetJdbcConnectionException e) {
@@ -78,6 +83,7 @@ public class JdbcBreweryDao implements BreweryDao {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
                 Brewery brewery = mapRowToBrewery(results);
+//                brewery.setContact(contactDao.getContactByBreweryId(brewery.getId()));
                 breweries.add(brewery);
             }
         }
@@ -92,6 +98,7 @@ public class JdbcBreweryDao implements BreweryDao {
         int numberOfRowsAffected = 0;
         String sql = "DELETE FROM brewery WHERE brewery_id = ?;";
         try {
+//            contactDao.deleteContactByBreweryId(breweryId);
             numberOfRowsAffected = jdbcTemplate.update(sql, breweryId);
         }
         catch (CannotGetJdbcConnectionException e) {
@@ -133,6 +140,7 @@ public class JdbcBreweryDao implements BreweryDao {
             brewery.setOpenHour(b.getTime("open_hour").toLocalTime());
             brewery.setCloseHour(b.getTime("close_hour").toLocalTime());
             brewery.setHistory(b.getString("history"));
+            brewery.setContact(contactDao.getContactByBreweryId(brewery.getId()));
             return brewery;
         }
 }

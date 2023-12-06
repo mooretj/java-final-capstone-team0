@@ -1,23 +1,39 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Contact {
-    private int phone;
+    @JsonProperty("brewery_id")
+    private int breweryId;
+    @JsonProperty("phone")
+    private String phone;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("address")
     private String address;
 
     public Contact() {}
 
-    public Contact(int phone, String email, String address){
+    public Contact(int breweryId, String phone, String email, String address){
+        this.breweryId = breweryId;
         this.phone = phone;
         this.email = email;
         this.address = address;
     }
 
-    public int getPhone() {
+    public int getBreweryId() {
+        return breweryId;
+    }
+
+    public void setBreweryId(int breweryId) {
+        this.breweryId = breweryId;
+    }
+
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

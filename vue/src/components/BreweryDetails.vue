@@ -5,15 +5,15 @@
         
       </div>
     </header>
+    
+    <div class="BreweryImage">
+      <img src=brewery.brewery_main_img alt="">
+    </div>
+
     <div class="history">
       <label>Brewery History:</label>&nbsp;
       <span>{{ brewery.history }}</span>
     </div>
-
-    <!-- <div class="BeerImage">
-      <label>Beer Description:</label>&nbsp;
-      <img src={{ beer.beer_image }} alt="">
-    </div> -->
 
     <div class="hours">
       <label>Hours:</label>&nbsp;
