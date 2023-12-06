@@ -8,6 +8,10 @@
         
       </header>
       <breweryList/>
+
+      <div>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1E6x1Dagt6pIMuxneEINkxGuYs8o0vIs&ehbc=2E312F" width="640" height="480"></iframe>
+  </div>
       <button class="btn-add" v-on:click="$router.push({ name: 'AddBreweryView' })">Add Brewery</button>
     </div>
   </template>
