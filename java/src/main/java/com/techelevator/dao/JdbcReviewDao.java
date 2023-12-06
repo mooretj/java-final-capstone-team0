@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Review;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -35,8 +36,37 @@ public class JdbcReviewDao implements ReviewDao {
     }
 
     @Override
-    public List<Review> getReviewsByBeerId(int beerId) {
-        return null;
+    public Review getReviewById(int reviewId) {
+        Review review = null;
+        String sql = "SELECT * FROM review WHERE review_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
+            if (results.next()) {
+                review = mapRowToReview(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return review;
+    }
+
+    @Override
+    public Review createReview(Review review) {
+        Review newReview = null;
+        String insertReviewSql = "INSERT INTO review (review_id, user_id, beer_id, title, body, rating) " +
+                "VALUES (?, ?, ?, ?, ?, ?) " +
+                "RETURNING review_id;";
+        try {
+            int newReviewId = jdbcTemplate.queryForObject(insertReviewSql, int.class,
+                    review.getReviewId(), review.getUserId(), review.getBeerId(),
+                    review.getTitle(), review.getBody(), review.getRating());
+            newReview = getReviewById(newReviewId);
+        }  catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return newReview;
     }
 
     private Review mapRowToReview(SqlRowSet rs) {
