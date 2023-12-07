@@ -36,16 +36,16 @@ public class JdbcContactDao implements ContactDao {
     public Contact createBreweryContact(Contact contact) {
         Contact newContact = null;
         String insertBrewerySql = "INSERT INTO brewery_contact (brewery_id, email, phone, brewery_address) " +
-                "values (?, ?, ?, ?)";
+                "values (?, ?, ?, ?) returning brewery_id";
         try {
-            jdbcTemplate.queryForObject(insertBrewerySql, int.class, contact.getBreweryId(), contact.getEmail(), contact.getPhone(), contact.getAddress());
-            contact = getContactByBreweryId(contact.getBreweryId());
+            int newContactBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, contact.getBreweryId(), contact.getEmail(), contact.getPhone(), contact.getAddress());
+            newContact = getContactByBreweryId(newContactBreweryId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
-        return contact;
+        return newContact;
     }
 
     @Override
