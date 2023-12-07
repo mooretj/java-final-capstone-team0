@@ -13,8 +13,8 @@
     data() {
       return {
         beer: {
-          beerId: 0,
-          breweryId: Number(this.$route.params.breweryId),
+          beer_id: 0,
+          brewery_id: Number(this.$route.params.breweryId),
           name: '',
           description: '',
           imgUrl: '',

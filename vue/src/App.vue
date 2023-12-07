@@ -111,6 +111,8 @@ div #nav{
   font-size:14px;
 }
 
-
+input, textarea, button {
+  color: black;
+}
 
 </style>

@@ -8,15 +8,15 @@
         <div class="review" v-for="review in reviews" v-bind:key="review.review_id">
             <div class='review-title'>
                 <label>Review Title</label>
-                <h1>{{ review.title }}</h1>
+                <h1>{{ this.review.title }}</h1>
             </div>
             <div class='review-body'>
                 <label>Review Body</label>
-                <p>{{ review.body }}</p>
+                <p>{{ this.review.body }}</p>
             </div>
             <div class='rating'>
                 <label>Rating</label>
-                <h2>{{ review.rating }}</h2>
+                <h2>{{ this.review.rating }}</h2>
             </div>
         </div>
 
