@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, user_contact, brewery_contact, brewer, brewery_beer, beer, brewery;
+DROP TABLE IF EXISTS users, user_contact, brewery, brewer, brewery_contact, brewery_hours, beer, brewery_beer, review;
 
 CREATE TABLE users (
 	user_id SERIAL UNIQUE,
@@ -37,14 +37,31 @@ CREATE TABLE brewer (
 	CONSTRAINT FK_brewery_id_brewery FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id)
 );
 
-
-
 CREATE TABLE brewery_contact (
 	brewery_id int,
 	email varchar(100) NOT NULL,
 	phone varchar(10) NOT NULL,
 	brewery_address varchar(200) NOT NULL UNIQUE,
 	CONSTRAINT FK_brewery_brewery_contact FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id)
+);
+
+CREATE TABLE brewery_hours (
+    brewery_id int,
+    sunday_open time,
+    sunday_close time,
+    monday_open time,
+    monday_close time,
+    tuesday_open time,
+    tuesday_close time,
+    wednesday_open time,
+    wednesday_close time,
+    thursday_open time,
+    thursday_close time,
+    friday_open time,
+    friday_close time,
+    saturday_open time,
+    saturday_close time,
+    CONSTRAINT FK_brewery_brewery_hours FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id)
 );
 
 CREATE TABLE beer (
