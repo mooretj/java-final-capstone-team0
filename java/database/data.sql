@@ -5,22 +5,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 
 INSERT INTO users (username,password_hash,role,is_brewer) VALUES ('brewer','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', true);
 
-INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Immigrant Son', 'https://immigrantsonbrewing.com/','https://www.cleveland.com/resizer/YfH5HU8fR1I34UEC8EontY6nK2o=/arc-anglerfish-arc2-prod-advancelocal/public/GGK433FUAZHENAWO2ZUHT5ZMYA.jpg', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead. Meticulously weaving traditional classic recipes with imaginative flair, we will share our tale with you in the most authentic way we know how to share: at our table, in a glass, and in a can.
-
-You’ll come across our brew house’s homage to classic beer recipes while in tandem experiencing
-the integrative path of creative experimental and locally inspired brews– each beer An integral part of telling our tale.
-
-Our kitchen will reintroduce you to comfort foods with an incomparable
-Immigrant Son wist and captivate you with remarkable creations as the seasons change.
-
-Like most tales, the community plays a pivotal part in our business.
-In order to build a strong and sustainable neighborhood, we partner with our neighbors and local vendors whenever possible, to support their wisdoms and expertise to bring you the freshest and most unique creations.
-
-We are a culmination of our “ancestors’ wildest dreams.”*
-We have set our sights on creating an unequivocal, brighter present and future by honoring the
-best of our collective heritage and our roots. We will bring you on this journey by cultivating that dream and crafting it into the beer and food we have designed for you.
-
-We are one through our beer and food.');
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Immigrant Son', 'https://immigrantsonbrewing.com/', 'https://www.cleveland.com/resizer/YfH5HU8fR1I34UEC8EontY6nK2o=/arc-anglerfish-arc2-prod-advancelocal/public/GGK433FUAZHENAWO2ZUHT5ZMYA.jpg', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead. Meticulously weaving traditional classic recipes with imaginative flair, we will share our tale with you in the most authentic way we know how to share: at our table, in a glass, and in a can.');
 
 INSERT INTO brewer (brewery_id,user_id) VALUES (1,3);
 
@@ -34,5 +19,7 @@ INSERT INTO user_contact (user_id,email,phone,user_address) VALUES (1,'email@ema
 
 INSERT INTO brewery_contact (brewery_id,email,phone,brewery_address) VALUES (1, 'info@immigrantsonbrewing.com', '2166004483', '18120 Sloane Ave
 Lakewood, OH 44107');
+
+INSERT INTO brewery_hours (brewery_id, sunday_open, sunday_close, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close) VALUES (1,'00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00');
 
 COMMIT TRANSACTION;
