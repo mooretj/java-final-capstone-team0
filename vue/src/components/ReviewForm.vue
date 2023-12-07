@@ -37,9 +37,9 @@ export default {
     data() {
       return {
         editReview: {
-            reviewId: this.review.reviewId,
-            userId: this.review.userId,
-            beer_id: this.review.beerId,
+            review_id: this.review.review_id,
+            user_id: this.review.user_id,
+            beer_id: this.review.beer_id,
             title: this.review.title,
             body: this.review.body,
             rating: this.review.rating

@@ -6,6 +6,10 @@ const http = axios.create({
 
 export default {
 
+    listBeerReviews(beerId) {
+        return http.get(`beers/${beerId}/reviews`);
+    },
+
     addReview(review) {
         return http.post(`beers/${review.beer_id}/reviews`, review);
     },
