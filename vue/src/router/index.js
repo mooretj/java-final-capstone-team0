@@ -73,14 +73,14 @@ const routes = [
       requiresAuth: false
     }
   },
-  {
-    path: "/beers",
-    name: "BeerListView",
-    component: BeerListView,
-    meta: {
-      requiresAuth: false
-    }
-  },
+  // {
+  //   path: "/beers",
+  //   name: "BeerListView",
+  //   component: BeerListView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
   {
     path: '/beers/:beerId',
     name: 'BeerDetailsView',
