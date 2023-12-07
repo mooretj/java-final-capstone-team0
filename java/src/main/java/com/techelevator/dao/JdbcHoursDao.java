@@ -16,6 +16,7 @@ public class JdbcHoursDao implements HoursDao {
     public JdbcHoursDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @Override
     public Hours getHoursByBreweryId(int breweryId) {
         Hours hours = null;
@@ -98,33 +99,48 @@ public class JdbcHoursDao implements HoursDao {
             } else {
                 updatedHours = getHoursByBreweryId(hours.getBreweryId());
             }
-        }
-        catch (CannotGetJdbcConnectionException e) {
+        } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to the server.", e);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation.", e);
         }
         return updatedHours;
     }
 
     public Hours mapRowToHours(SqlRowSet rs) {
-        return new Hours(
-                rs.getInt("brewery_id"),
-                rs.getTime("sunday_open"),
-                rs.getTime("sunday_close"),
-                rs.getTime("monday_open"),
-                rs.getTime("monday_close"),
-                rs.getTime("tuesday_open"),
-                rs.getTime("tuesday_close"),
-                rs.getTime("wednesday_open"),
-                rs.getTime("wednesday_close"),
-                rs.getTime("thursday_open"),
-                rs.getTime("thursday_close"),
-                rs.getTime("friday_open"),
-                rs.getTime("friday_close"),
-                rs.getTime("saturday_open"),
-                rs.getTime("saturday_close"));
-    }
+        Hours hours = new Hours();
+        hours.setBreweryId(rs.getInt("brewery_id"));
+        hours.setSundayOpen(rs.getTime("sunday_open").toLocalTime());
+        hours.setSundayClose(rs.getTime("sunday_open").toLocalTime());
+        hours.setMondayOpen(rs.getTime("sunday_open").toLocalTime());
+        hours.setMondayClose(rs.getTime("sunday_close").toLocalTime());
+        hours.setTuesdayOpen(rs.getTime("tuesday_open").toLocalTime());
+        hours.setTuesdayClose(rs.getTime("tuesday_close").toLocalTime());
+        hours.setWednesdayOpen(rs.getTime("wednesday_open").toLocalTime());
+        hours.setWednesdayClose(rs.getTime("wednesday_close").toLocalTime());
+        hours.setThursdayOpen(rs.getTime("thursday_open").toLocalTime());
+        hours.setThursdayClose(rs.getTime("thursday_close").toLocalTime());
+        hours.setFridayOpen(rs.getTime("friday_open").toLocalTime());
+        hours.setFridayClose(rs.getTime("friday_close").toLocalTime());
+        hours.setSaturdayOpen(rs.getTime("saturday_open").toLocalTime());
+        hours.setSaturdayClose(rs.getTime("saturday_close").toLocalTime());
+        return hours;
 
+//        return new Hours(
+//                rs.getInt("brewery_id"),
+//                rs.getTime("sunday_open"),
+//                rs.getTime("sunday_close"),
+//                rs.getTime("monday_open"),
+//                rs.getTime("monday_close"),
+//                rs.getTime("tuesday_open"),
+//                rs.getTime("tuesday_open"),
+//                rs.getTime("wednesday_open"),
+//                rs.getTime("wednesday_close"),
+//                rs.getTime("thursday_open"),
+//                rs.getTime("thursday_close"),
+//                rs.getTime("friday_open"),
+//                rs.getTime("friday_close"),
+//                rs.getTime("saturday_open"),
+//                rs.getTime("saturday_close"));
+    }
 }
