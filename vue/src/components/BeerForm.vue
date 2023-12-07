@@ -94,16 +94,16 @@
             beerService
               .updateBeer(this.editBeer)
               .then(response => {
-                if (response.status == 201) {
-                  this.$store.commit(
-                    'SET_NOTIFICATION',
-                    {
-                      message: `Message ${this.editBeer.name} was updated.`,
-                      type: 'success'
-                    }
-                  );
+                // if (response.status == 201) {
+                //   this.$store.commit(
+                //     'SET_NOTIFICATION',
+                //     {
+                //       message: `Message ${this.editBeer.name} was updated.`,
+                //       type: 'success'
+                //     }
+                //   );
                   this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
-                }
+                // }
               })
               .catch(error => {
                 this.handleErrorResponse(error, 'updating');

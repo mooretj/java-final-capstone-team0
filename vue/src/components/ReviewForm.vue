@@ -59,7 +59,7 @@ export default {
         editReview: {
             reviewId: this.review.reviewId,
             userId: this.review.userId,
-            beer_id: this.beer.beer_id,
+            beer_id: this.review.beerId,
             title: this.review.title,
             body: this.review.body,
             rating: this.review.rating
