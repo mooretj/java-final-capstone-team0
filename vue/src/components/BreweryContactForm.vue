@@ -6,17 +6,17 @@
 
             <div class="form-input-group">
                 <label for="email">Email: </label>
-                <input type="text" id="email" v-model="editBrewery.brewery_contact.email" />
+                <input type="text" id="email" v-model="editContact.email" />
             </div>
 
             <div class="form-input-group">
                 <label for="phone">Phone: </label>
-                <input type="text" id="phone" v-model="editBrewery.brewery_contact.phone" />
+                <input type="text" id="phone" v-model="editContact.phone" />
             </div>
 
             <div class="form-input-group">
                 <label for="address">Address: </label>
-                <input type="text" id="address" v-model="editBrewery.brewery_contact.brewery_address" />
+                <input type="text" id="address" v-model="editContact.brewery_address" />
             </div>
 
             <button type="submit" v-on:click="submit" >Submit</button>
@@ -32,18 +32,21 @@ import breweryService from '../services/BreweryService.js'
 export default {
     data() {
         return {
+            breweryId: this.$route.params.breweryId,
             editContact: {
-                brewery_id: this.$route.params.brewery_id,
                 email: '',
-                phone: '0',
+                phone: '',
                 brewery_address: ''
             }
         }
     },
     methods: {
         submitForm() {
+            if(this.editContact.phone.length != 10){
+                alert("Not a valid phone number");
+            }else{
             breweryService
-                .editContact(this.editContact)
+                .editContact(this.editContact, this.$route.params.breweryId)
                 .then(response => {
                     // if (response.status == 201) {
                     //     this.$store.commit(
@@ -55,14 +58,15 @@ export default {
                     //     );
 
                     // }
-                    this.$router.push({ name: "BreweryDetailsView", params: { brewery_id: this.$route.params.brewery_id } });
+                    this.$router.push({ name: "BreweryDetailsView", params: { breweryId: this.$route.params.breweryId } });
                 })
             //   .catch(error => {
             //     this.handleErrorResponse(error, 'adding');
             //   });
+            }
         },
         cancelForm() {
-            this.$router.push({ name: "BreweryDetailsView", params: { brewery_id: this.$route.params.brewery_id }  });
+            this.$router.push({ name: "BreweryDetailsView", params: { breweryId: this.$route.params.breweryId }  });
         }
     }
 

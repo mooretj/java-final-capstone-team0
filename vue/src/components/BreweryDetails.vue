@@ -23,12 +23,15 @@
       <div>
         Email: <span>{{ brewery.brewery_contact.email }}</span>
         Phone: <span>{{ brewery.brewery_contact.phone }}</span>
-        Address: <span>{{ brewery.brewery_contact.address }}</span>
+        Address: <span>{{ brewery.brewery_contact.brewery_address }}</span>
       </div>
     </div>
 
     <div class="beers">
         <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
+    </div>
+    <div>
+        <button class="btn-edit-contact" v-on:click="$router.push({ name: 'EditContactView', params: { breweryId: brewery.brewery_id }})">Edit Contact Info</button>
     </div>
 </template>
   

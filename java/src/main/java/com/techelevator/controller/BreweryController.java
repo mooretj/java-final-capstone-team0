@@ -81,7 +81,7 @@ public class BreweryController {
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/breweries/{id}/edit-contact", method = RequestMethod.PUT)
+    @RequestMapping(path = "/breweries/{id}/contact", method = RequestMethod.PUT)
     public Contact updateContactByBreweryId(@Valid @RequestBody Contact contact, @PathVariable int id) {
         if (id != contact.getBreweryId() && contact.getBreweryId() != 0) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Resource ID does not match URL.");
@@ -89,10 +89,11 @@ public class BreweryController {
         contact.setBreweryId(id);
         try {
             Contact updatedContact = contactDao.updateContactByBreweryId(contact);
+
             return updatedContact;
         }
         catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Brewery not found.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found.");
         }
     }
 
