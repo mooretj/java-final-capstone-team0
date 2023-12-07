@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,11 +21,11 @@ public class JdbcReviewDao implements ReviewDao {
     }
 
     @Override
-    public List<Review> getReviews() {
-        List<Review> reviews = null;
-        String sql = "SELECT * FROM review";
+    public List<Review> getReviewsByBeerId(int beerId) {
+        List<Review> reviews = new ArrayList<>();
+        String sql = "SELECT review_id, user_id, beer_id, title, body, rating FROM review WHERE beer_id = ?";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
             while (results.next()) {
                 Review review = mapRowToReview(results);
                 reviews.add(review);

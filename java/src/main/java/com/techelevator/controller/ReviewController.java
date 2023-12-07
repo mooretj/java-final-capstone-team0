@@ -9,6 +9,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Path;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -39,6 +41,11 @@ public class ReviewController {
     @RequestMapping(path = "reviews/{reviewId}", method = RequestMethod.GET)
     public Review getReviewByReviewId(@PathVariable int reviewId) {
         return reviewDao.getReviewById(reviewId);
+    }
+
+    @RequestMapping(path = "beers/{beerId}/reviews", method = RequestMethod.GET)
+    public List<Review> getReviews(@PathVariable int beerId) {
+        return reviewDao.getReviewsByBeerId(beerId);
     }
 
 }

@@ -16,9 +16,9 @@
         data() {
             return {
                 review: {
-                    reviewId: 0,
-                    userId: Number(this.$store.state.user.id),
-                    beerId: Number(this.$route.params.beerId),
+                    review_id: 0,
+                    user_id: Number(this.$store.state.user.id),
+                    beer_id: Number(this.$route.params.beerId),
                     title: '',
                     body: '',
                     rating: 0
