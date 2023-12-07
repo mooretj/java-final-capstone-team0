@@ -1,15 +1,13 @@
 <template>
-
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
 
   <div v-else>
-      <h1>Beers</h1>
-    <beerList/>
+    <h1>Beers</h1>
+    <beerList />
 
   </div>
-
 </template>
 
 <script>
@@ -28,5 +26,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

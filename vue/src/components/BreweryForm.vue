@@ -29,7 +29,20 @@
 
             <div class="form-input-group">
                 <label for="history">Short History: </label>
-                <input type="history" id="history" v-model="editBrewery.history" />
+                <input type="text" id="history" v-model="editBrewery.history" />
+            </div>
+
+            <div class="form-input-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" v-model="editBrewery.brewery_contact.email">
+            </div>
+            <div class="form-input-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" v-model="editBrewery.brewery_contact.phone">
+            </div>
+            <div class="form-input-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" v-model="editBrewery.brewery_contact.brewery_address">
             </div>
 
             <button type="submit" v-on:click="submit">Add Brewery</button>
@@ -39,7 +52,7 @@
 </template>
 
 <script>
-    import breweryService from '../services/BreweryService';
+    import breweryService from '../services/BreweryService.js';
     export default {
         props: {
             brewery: {
@@ -50,13 +63,19 @@
         data() {
             return {
                 editBrewery: {
-                    brewery_id: this.editBrewery.brewery_id,
-                    brewery_name: this.editBrewery.brewery_name,
-                    brewery_main_img: this.editBrewery.brewery_main_img,
-                    website: this.editBrewery.website,
-                    open_hour: this.editBrewery.open_hour,
-                    close_hour: this.editBrewery.close_hour,
-                    history: this.edit.brewery_history
+                    brewery_id: this.brewery.brewery_id,
+                    brewery_name: this.brewery.brewery_name,
+                    brewery_main_img: this.brewery.brewery_main_img,
+                    website: this.brewery.website,
+                    open_hour: this.brewery.open_hour,
+                    close_hour: this.brewery.close_hour,
+                    history: this.brewery.brewery_history,
+                    brewery_contact: {
+                        brewery_id: this.brewery.brewery_id,
+                        email: this.brewery.brewery_contact.email,
+                        phone: this.brewery.brewery_contact.phone,
+                        brewery_address: this.brewery.brewery_contact.brewery_address
+                    }
                 }
             }
         },

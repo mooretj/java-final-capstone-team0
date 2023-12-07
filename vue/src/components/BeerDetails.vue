@@ -3,9 +3,6 @@
     
     <div class="beerImage">
       <img :src=beer.beer_img alt="">
-      <!-- <p>Here is where the image will be</p> --->
-      <!-- <img src='https://cdn.shopify.com/s/files/1/0054/6682/files/how_to_make_beer_480x480.jpg?v=1682910325' alt=""> -->
-      <!-- <img src='https://immigrantsonbrewing.com/wp-content/uploads/2021/05/pilsner-500x650.png' alt=""> -->
     </div>
 
     <div class="description">
@@ -25,6 +22,7 @@
 
     <div class='actions'>
       <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
+      <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
     </div>
 
     <div class="actions">
@@ -35,7 +33,7 @@
   </template>
   
   <script>
-  import beerService from '../services/BeerService';
+  import beerService from '../services/BeerService.js';
   export default {
     props: {
       beer: { type: Object, required: true }

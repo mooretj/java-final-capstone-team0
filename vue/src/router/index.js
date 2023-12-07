@@ -15,7 +15,8 @@ import BeerListView from '../components/BeerList.vue';
 import BreweryListView from '../views/BreweryListView.vue';
 import BreweryDetailsView from '../views/BreweryDetailsView.vue';
 import AddReviewView from '../views/AddReviewView.vue';
-import EditContactView from '../views/EditContactView.vue'
+import EditContactView from '../views/EditContactView.vue';
+import ReviewListView from '../views/ReviewListView.vue';
 
 
 /**
@@ -126,6 +127,14 @@ const routes = [
     component: EditBeerView,
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: '/beers/:beerId/reviews',
+    name: 'ReviewListView',
+    component: ReviewListView,
+    meta: {
+      requiresAuth: false
     }
   },
   {

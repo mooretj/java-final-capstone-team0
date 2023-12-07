@@ -4,27 +4,27 @@
 
         <div class="form-input-group">
           <label for="beerId">Beer ID: </label>
-          <input type="text" id="beerId" v-model="editBeer.beer_id" />
+          <input type="text" id="beerId" v-model="editBeer.beerId" />
         </div>
 
         <div class="form-input-group">
           <label for="breweryId">Brewery ID: </label>
-          <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
+          <input type="text" id="breweryId" v-model="editBeer.breweryId" />
         </div>
 
         <div class="form-input-group">
           <label for="name">Beer Name: </label>
-          <input type="text" id="name" v-model="editBeer.beer_name"  />
+          <input type="text" id="name" v-model="editBeer.beerName"  />
         </div>
 
         <div class="form-input-group">
           <label for="description">Description: </label>
-          <input type="text" id="description" v-model="editBeer.beer_description" />
+          <input type="text" id="description" v-model="editBeer.beerDescription" />
         </div>
 
         <div class="form-input-group">
           <label for="img">Beer Image URL: </label>
-          <input type="text" id="beerImage" v-model="editBeer.beer_img" />
+          <input type="text" id="beerImage" v-model="editBeer.beerImg" />
         </div>
 
         <div class="form-input-group">
@@ -34,10 +34,10 @@
 
         <div class="form-input-group">
           <label for="beerType">Beer Type: </label>
-          <input type="text"  id="beerType" v-model="editBeer.beer_type" />
+          <input type="text"  id="beerType" v-model="editBeer.beerType" />
         </div>
 
-        <button class="btn-submit" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
+        <button class="btn-submit" type="submit">{{ this.editBeer.beerId == 0 || this.editBeer.beerId == null? "Add Beer" : "Edit Beer"}}</button>
         <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
 
       </form>
@@ -57,7 +57,7 @@
       data() {
         return {
           editBeer: {
-              beer_id: this.beer.beer_id,
+              beer_id: this.beer.beerId,
               brewery_id: this.beer.brewery_id,
               beer_name: this.beer.beer_name,
               beer_description: this.beer.beer_description,

@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.Contact;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -62,12 +63,15 @@ public class JdbcBreweryDao implements BreweryDao {
 
     @Override
     public Brewery createBrewery(Brewery brewery) {
-        Brewery newBrewery = null;
+        Brewery newBrewery = new Brewery();
         String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, hours, history) " +
                 "values (?, ?, ?, ?, ?) RETURNING brewery_id";
         try {
             int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(),
                     brewery.getHours(), brewery.getHistory());
+            Contact newContact = brewery.getContact();
+            newContact.setBreweryId(newBreweryId);
+            contactDao.createBreweryContact(newContact);
             newBrewery = getBreweryById(newBreweryId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -100,7 +104,7 @@ public class JdbcBreweryDao implements BreweryDao {
         int numberOfRowsAffected = 0;
         String sql = "DELETE FROM brewery WHERE brewery_id = ?;";
         try {
-//            contactDao.deleteContactByBreweryId(breweryId);
+            contactDao.deleteContactByBreweryId(breweryId);
             numberOfRowsAffected = jdbcTemplate.update(sql, breweryId);
         }
         catch (CannotGetJdbcConnectionException e) {
