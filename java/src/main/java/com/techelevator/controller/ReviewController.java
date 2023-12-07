@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Path;
 import javax.validation.Valid;
 
 @RestController
@@ -20,10 +21,11 @@ public class ReviewController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "reviews", method = RequestMethod.POST)
-    public Review addReview(@Valid @RequestBody Review newReview) {
+    @RequestMapping(path = "beers/{beerId}/reviews", method = RequestMethod.POST)
+    public Review addReview(@Valid @RequestBody Review newReview, @PathVariable int beerId) {
         Review review = null;
         try {
+            newReview.setUserId(newReview.getUserId());
             review = reviewDao.createReview(newReview);
             if (review == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Review submission failed.");

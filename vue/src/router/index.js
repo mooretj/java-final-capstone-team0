@@ -18,7 +18,6 @@ import AddReviewView from '../views/AddReviewView.vue';
 import EditContactView from '../views/EditContactView.vue'
 
 
-
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -38,7 +37,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
@@ -102,7 +101,7 @@ const routes = [
     name: "AddBreweryView",
     component: AddBreweryView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -118,7 +117,7 @@ const routes = [
     name: 'AddBeerView',
     component: AddBeerView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -126,7 +125,7 @@ const routes = [
     name: 'EditBeerView',
     component: EditBeerView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -134,7 +133,7 @@ const routes = [
     name: 'AddReviewView',
     component: AddReviewView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -145,30 +144,6 @@ const routes = [
       requiresAuth: false
     }
   }
-  // {}
-  //   path: '/breweries/:breweryId/beers/:beerId',
-  //   name: 'BeerDetailsView',
-  //   component: BeerDetailsView,
-  //   meta: {
-  //     requiresAuth: false
-  //   }
-  // },
-  // {
-  //   path: '/breweries/:breweryId/beers/create',
-  //   name: 'AddBeerView',
-  //   component: AddBeerView,
-  //   meta: {
-  //     requiresAuth: false
-  //   }
-  // },
-  // {
-  //   path: '/breweries/:breweryId/beers/:beerId/edit',
-  //   name: 'EditBeerView',
-  //   component: EditBeerView,
-  //       meta: {
-  //     requiresAuth: false
-  //   }
-  // },
 
 
 ];

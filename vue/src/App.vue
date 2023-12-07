@@ -31,7 +31,7 @@
 
 <style>
 * {
-  color: white;
+  color: orangered;
 }
 
 header{

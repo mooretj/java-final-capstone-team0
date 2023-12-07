@@ -72,7 +72,7 @@
           // if (!this.validateForm()) {
           //   return;
           // }
-          if (this.editBeer.beer_id == 0) {
+          if (this.editBeer.beer_id == 0 ) {
             beerService
               .addBeer(this.editBeer)
               .then(response => {
@@ -84,7 +84,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.back({ name: 'BeerListView'});
+                  this.$router.push({ name: 'BeerListView'});
                 // }
               })
               .catch(error => {
@@ -111,7 +111,7 @@
           }
     },
     cancelForm() {
-      this.$router.push({name: "BeerDetailsView", params: { beerId: this.editBeer.beer_id}});
+      this.$router.push({ name: "BeerListView" });
     },
 
     handleErrorResponse(error, verb) {
