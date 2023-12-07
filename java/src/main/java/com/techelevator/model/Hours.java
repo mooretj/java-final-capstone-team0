@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hours {
@@ -11,8 +12,8 @@ public class Hours {
     @JsonProperty("brewery_id")
     private int breweryId;
 
-    private List<LocalTime> open;
-    private List<LocalTime> close;
+    private List<LocalTime> open = new ArrayList<>();
+    private List<LocalTime> close = new ArrayList<>();
 
 //    @JsonProperty("sunday_open")
 //    private LocalTime sundayOpen;
