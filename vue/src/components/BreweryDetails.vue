@@ -1,8 +1,8 @@
 <template>
-      <h1>{{ brewery.brewery_name }}</h1>
-      <div class="actions">
-        
-      </div>
+    <h1>{{ brewery.brewery_name }}</h1>
+    <div class="actions">
+      
+    </div>
     
     <div class="BreweryImage">
       <img :src=brewery.brewery_main_img alt="">
@@ -14,8 +14,30 @@
     </div>
 
     <div class="hours">
-      <label>Hours:</label>&nbsp;
-        <div><span>{{ brewery.open_hour }}</span> - <span>{{ brewery.close_hour }}</span></div>    
+      <label>Hours of Operation</label>&nbsp;
+      <div class="week">
+        <div>
+          Sunday: {{ brewery.brewery_hours.sunday_open }} - {{ brewery.brewery_hours.sunday_close }}
+        </div>
+        <div>
+          Monday: {{ brewery.brewery_hours.monday_open }} - {{ brewery.brewery_hours.monday_close }}
+        </div>
+        <div>
+          Tuesday: {{ brewery.brewery_hours.tuesday_open }} - {{ brewery.brewery_hours.tuesday_close }}
+        </div>
+        <div>
+          Wednesday: {{ brewery.brewery_hours.wednesday_open }} - {{ brewery.brewery_hours.wednesday_close }}
+        </div>
+        <div>
+          Thursday: {{ brewery.brewery_hours.thursday_open }} - {{ brewery.brewery_hours.thursday_close }}
+        </div>
+        <div>
+          Friday: {{ brewery.brewery_hours.friday_open }} - {{ brewery.brewery_hours.friday_close }}
+        </div>
+        <div>
+          Saturday: {{ brewery.brewery_hours.saturday_open }} - {{ brewery.brewery_hours.saturday_close }}
+        </div>
+      </div>
     </div>
 
     <div class="contact-info">
