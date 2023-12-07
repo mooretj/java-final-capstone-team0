@@ -93,6 +93,9 @@
 
   
   <style>
+  button{
+    color: black;
+  }
 
   img {
     height: 200px;
