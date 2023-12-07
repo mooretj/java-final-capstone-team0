@@ -1,7 +1,7 @@
 <template>
     <div class="text-center">
         <h1>Add Brewery</h1>
-        <brewery-form/>>
+        <brewery-form v-bind:brewery="brewery"/>>
     </div>
 </template>
 
@@ -14,14 +14,20 @@ export default {
     },
     data() {
         return {
-            editBrewery: {
+            brewery: {
                 brewery_id: 0,
                 brewery_name: '',
                 brewery_main_img: '',
                 website: '',
                 open_hour: null,
                 close_hour: null,
-                history: ''
+                history: '',
+                brewery_contact: {
+                    brewery_id: 0,
+                    email: '',
+                    phone: '',
+                    brewery_address: ''
+                }
             }
         }
     }

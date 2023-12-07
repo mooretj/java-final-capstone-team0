@@ -34,6 +34,7 @@ public class BreweryController {
         Brewery brewery = null;
         try {
             brewery = breweryDao.createBrewery(newBrewery);
+
             if (brewery == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Brewery registration failed.");
             }

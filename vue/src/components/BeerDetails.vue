@@ -35,7 +35,7 @@
   </template>
   
   <script>
-  import beerService from '../services/BeerService';
+  import beerService from '../services/BeerService.js';
   export default {
     props: {
       beer: { type: Object, required: true }
