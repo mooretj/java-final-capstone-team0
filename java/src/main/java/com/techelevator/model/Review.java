@@ -82,7 +82,7 @@ public class Review {
         return "Review{" +
                 "Review Id=" + userId +
                 ", User Id=" + userId +
-                ", Beer Id='" + beerId + '\'' +
+                ", Beer Id=" + beerId +
                 ", Title='" + title + '\'' +
                 ", Body='" + body + '\'' +
                 ", Rating=" + rating + "}";

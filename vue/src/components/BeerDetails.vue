@@ -23,10 +23,15 @@
       <span>{{ beer.beer_type }}</span>
     </div>
 
+    <div class='actions'>
+      <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
+    </div>
+
     <div class="actions">
         <button class="btn-edit" v-on:click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
         <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
     </div>
+
   </template>
   
   <script>

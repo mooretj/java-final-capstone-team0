@@ -2,26 +2,6 @@
     <div class="text-center">
         <form v-on:submit.prevent="submitForm">
   
-          <!-- <div class="form-input-group">
-            <label for="beerId">Beer ID: </label>
-            <input type="text" id="beerId" v-model="editBeer.beer_id" />
-          </div>
-  
-          <div class="form-input-group">
-            <label for="breweryId">Brewery ID: </label>
-            <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
-          </div>
-  
-          <div class="form-input-group">
-            <label for="name">Beer Name: </label>
-            <input type="text" id="name" v-model="editBeer.beer_name"  />
-          </div>
-  
-          <div class="form-input-group">
-            <label for="description">Description: </label>
-            <input type="text" id="description" v-model="editBeer.beer_description" />
-          </div> -->
-  
           <div class="form-input-group">
             <label for="reviewTitle">Review Title: </label>
             <input type="text" id="reviewTitle" v-model="editReview.title" />
@@ -33,7 +13,7 @@
           </div>
   
           <div class="form-input-group">
-            <label for="beerType">Rating: </label>
+            <label for="beerRating">Rating: </label>
             <input type="range"  id="beerRating" name='rating' min='0' max='5' v-model="editReview.rating" />
           </div>
   
@@ -51,7 +31,7 @@ export default {
     props: {
       review: {
         type: Object,
-        required: false
+        required: true
       },
     },
     data() {
@@ -59,7 +39,7 @@ export default {
         editReview: {
             reviewId: this.review.reviewId,
             userId: this.review.userId,
-            beer_id: this.beer.beer_id,
+            beer_id: this.review.beerId,
             title: this.review.title,
             body: this.review.body,
             rating: this.review.rating
@@ -68,10 +48,10 @@ export default {
     },
     methods: {
       submitForm() {
-        if (!this.validateForm()) {
-          return;
-        }
-        if (this.editReview.reviewId == 0) {
+        // if (!this.validateForm()) {
+        //   return;
+        // }
+        if (this.editReview.reviewId == 0 || this.editReview.reviewId == null) {
           reviewService
             .addReview(this.editReview)
             .then(response => {
@@ -83,7 +63,7 @@ export default {
                 //     type: 'success'
                 //   }
                 // );
-                this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editReview.beer_id }});
+                this.$router.push({ name: "BeerDetailsView", params: { beerId: this.review.beer_id}});
               // }
             })
             .catch(error => {
@@ -93,16 +73,16 @@ export default {
           reviewService
             .updateReview(this.editReview)
             .then(response => {
-              if (response.status == 201) {
-                this.$store.commit(
-                  'SET_NOTIFICATION',
-                  {
-                    message: `Message ${this.editReview.title} was updated.`,
-                    type: 'success'
-                  }
-                );
-                this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editReview.beer_id }});
-              }
+            //   if (response.status == 201) {
+            //     this.$store.commit(
+            //       'SET_NOTIFICATION',
+            //       {
+            //         message: `Message ${this.editReview.title} was updated.`,
+            //         type: 'success'
+            //       }
+            //     );
+                this.$router.push({ name: "BeerDetailsView", params: {beerId: this.review.beer_id}});
+            //   }
             })
             .catch(error => {
               this.handleErrorResponse(error, 'updating');
@@ -110,7 +90,7 @@ export default {
         }
   },
   cancelForm() {
-    this.$router.push({name: "BeerDetailsView"});
+    this.$router.push({name: "BeerDetailsView", params: {beerId: this.review.beer_id}});
   },
 
   handleErrorResponse(error, verb) {
