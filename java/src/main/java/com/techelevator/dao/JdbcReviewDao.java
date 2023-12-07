@@ -38,7 +38,7 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review getReviewById(int reviewId) {
         Review review = null;
-        String sql = "SELECT * FROM review WHERE review_id = ?";
+        String sql = "SELECT user_id, review_id, beer_id, title, body, rating FROM review WHERE review_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
             if (results.next()) {
@@ -53,12 +53,11 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review createReview(Review review) {
         Review newReview = null;
-        String insertReviewSql = "INSERT INTO review (review_id, user_id, beer_id, title, body, rating) " +
-                "VALUES (?, ?, ?, ?, ?, ?) " +
+        String insertReviewSql = "INSERT INTO review (user_id, beer_id, title, body, rating) " +
+                "VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING review_id;";
         try {
-            int newReviewId = jdbcTemplate.queryForObject(insertReviewSql, int.class,
-                    review.getReviewId(), review.getUserId(), review.getBeerId(),
+            int newReviewId = jdbcTemplate.queryForObject(insertReviewSql, int.class, review.getUserId(), review.getBeerId(),
                     review.getTitle(), review.getBody(), review.getRating());
             newReview = getReviewById(newReviewId);
         }  catch (CannotGetJdbcConnectionException e) {

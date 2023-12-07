@@ -37,7 +37,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
@@ -101,7 +101,7 @@ const routes = [
     name: "AddBreweryView",
     component: AddBreweryView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -117,7 +117,7 @@ const routes = [
     name: 'AddBeerView',
     component: AddBeerView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -125,7 +125,7 @@ const routes = [
     name: 'EditBeerView',
     component: EditBeerView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -133,33 +133,9 @@ const routes = [
     name: 'AddReviewView',
     component: AddReviewView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   }
-  // {}
-  //   path: '/breweries/:breweryId/beers/:beerId',
-  //   name: 'BeerDetailsView',
-  //   component: BeerDetailsView,
-  //   meta: {
-  //     requiresAuth: false
-  //   }
-  // },
-  // {
-  //   path: '/breweries/:breweryId/beers/create',
-  //   name: 'AddBeerView',
-  //   component: AddBeerView,
-  //   meta: {
-  //     requiresAuth: false
-  //   }
-  // },
-  // {
-  //   path: '/breweries/:breweryId/beers/:beerId/edit',
-  //   name: 'EditBeerView',
-  //   component: EditBeerView,
-  //       meta: {
-  //     requiresAuth: false
-  //   }
-  // },
 
 
 ];

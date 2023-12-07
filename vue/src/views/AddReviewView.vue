@@ -14,7 +14,7 @@
             return {
                 review: {
                     reviewId: 0,
-                    userId: Number(this.$store.id),
+                    userId: Number(this.$store.state.user.id),
                     beerId: Number(this.$route.params.beerId),
                     title: '',
                     body: '',
