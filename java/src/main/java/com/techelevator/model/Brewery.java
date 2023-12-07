@@ -11,11 +11,10 @@ public class Brewery {
     private String breweryName;
     @JsonProperty("brewery_main_img")
     private String breweryImg;
+    @JsonProperty("website")
     private String website;
-    @JsonProperty("open_hour")
-    private LocalTime openHour;
-    @JsonProperty("close_hour")
-    private LocalTime closeHour;
+    @JsonProperty("brewery_hours")
+    private Hours hours;
     @JsonProperty("history")
     private String history;
     @JsonProperty("brewery_contact")
@@ -61,20 +60,12 @@ public class Brewery {
         this.website = website;
     }
 
-    public LocalTime getOpenHour() {
-        return openHour;
+    public Hours getHours() {
+        return hours;
     }
 
-    public void setOpenHour(LocalTime openHour) {
-        this.openHour = openHour;
-    }
-
-    public LocalTime getCloseHour() {
-        return closeHour;
-    }
-
-    public void setCloseHour(LocalTime closeHour) {
-        this.closeHour = closeHour;
+    public void setHours(Hours hours) {
+        this.hours = hours;
     }
 
     public Contact getContact() {
@@ -85,13 +76,12 @@ public class Brewery {
         this.contact = contact;
     }
 
-    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, String history, Contact contact) {
+    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, Hours hours, String history, Contact contact) {
         this.id = id;
         this.breweryName = breweryName;
         this.breweryImg = breweryImg;
         this.website = website;
-        this.openHour = openHour;
-        this.closeHour = closeHour;
+        this.hours = hours;
         this.history = history;
         this.contact = contact;
     }
@@ -105,8 +95,7 @@ public class Brewery {
                 ", Brewery Name='" + breweryName +
                 ", Brewery Img =" + breweryImg +
                 ", Website=" + website +
-                ", Open Hour=" + openHour +
-                ", Close Hour=" + closeHour +
+                ", Hours=" + hours +
                 ", History=" + history +
                 ", Contact Info=Email: " + contact.getEmail() +
                 " Phone: " + contact.getPhone() + " Address: " + contact.getAddress() +

@@ -2,9 +2,11 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDao;
 import com.techelevator.dao.ContactDao;
+import com.techelevator.dao.HoursDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.Contact;
+import com.techelevator.model.Hours;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,10 +20,12 @@ public class BreweryController {
 
     private BreweryDao breweryDao;
     private ContactDao contactDao;
+    private HoursDao hoursDao;
 
-    public BreweryController(BreweryDao breweryDao, ContactDao contactDao) {
+    public BreweryController(BreweryDao breweryDao, ContactDao contactDao, HoursDao hoursDao) {
         this.breweryDao = breweryDao;
         this.contactDao = contactDao;
+        this.hoursDao = hoursDao;
     }
 
     /**
@@ -89,11 +93,26 @@ public class BreweryController {
         contact.setBreweryId(id);
         try {
             Contact updatedContact = contactDao.updateContactByBreweryId(contact);
-
             return updatedContact;
         }
         catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found.");
+        }
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/breweries/{id}/hours", method = RequestMethod.PUT)
+    public Hours updateHoursByBreweryId(@Valid @RequestBody Hours hours, @PathVariable int id) {
+        if (id != hours.getBreweryId() && hours.getBreweryId() != 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Resource ID does not match URL.");
+        }
+        hours.setBreweryId(id);
+        try {
+            Hours updatedHours = hoursDao.updateHours(hours);
+            return updatedHours;
+        }
+        catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Hours not found.");
         }
     }
 
@@ -112,8 +131,7 @@ public class BreweryController {
         try {
             Brewery updatedBrewery = breweryDao.updateBreweryById(brewery);
             return updatedBrewery;
-        }
-        catch (DaoException e) {
+        } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Brewery not found.");
         }
     }
