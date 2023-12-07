@@ -54,6 +54,9 @@
   </script>
   
   <style scoped>
-    
+    template {
+        width: 300px;
+        height: 400px;
+    }
   </style>
   
