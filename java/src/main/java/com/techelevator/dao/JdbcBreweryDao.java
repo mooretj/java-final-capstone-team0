@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.Contact;
+import com.techelevator.model.Hours;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,7 +29,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, hours, history FROM brewery WHERE brewery_id = ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery WHERE brewery_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
             if (results.next()) {
@@ -64,14 +65,20 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery createBrewery(Brewery brewery) {
         Brewery newBrewery = new Brewery();
-        String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, hours, history) " +
-                "values (?, ?, ?, ?, ?) RETURNING brewery_id";
+        String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, history) " +
+                "VALUES (?, ?, ?, ?) RETURNING brewery_id";
         try {
             int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(),
-                    brewery.getHours(), brewery.getHistory());
+                    brewery.getHistory());
+
             Contact newContact = brewery.getContact();
             newContact.setBreweryId(newBreweryId);
             contactDao.createBreweryContact(newContact);
+
+            Hours newHours = brewery.getHours();
+            newHours.setBreweryId(newBreweryId);
+            hoursDao.createHours(newHours);
+
             newBrewery = getBreweryById(newBreweryId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

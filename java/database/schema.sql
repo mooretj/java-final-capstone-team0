@@ -24,8 +24,6 @@ CREATE TABLE brewery (
 	brewery_name varchar(50) NOT NULL,
 	brewery_main_img varchar(150),
 	website varchar(200),
-	open_hour time,
-	close_hour time,
 	history varchar(5000)
 );
 

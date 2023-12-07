@@ -38,7 +38,6 @@ public class BreweryController {
         Brewery brewery = null;
         try {
             brewery = breweryDao.createBrewery(newBrewery);
-
             if (brewery == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Brewery registration failed.");
             }
@@ -57,7 +56,7 @@ public class BreweryController {
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
     public Brewery getBreweryById(@PathVariable int id) {
         return breweryDao.getBreweryById(id);
-        }
+    }
 
     /**
      * Returns all Breweries in the system
