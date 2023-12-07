@@ -1,7 +1,10 @@
 <template>
-    <h1>Add a review</h1>
-    <review-form v-bind:review='review'/>
+    <div class="text-center">
+        <h1>Add a review</h1>
+        <review-form v-bind:review='review'/>
+    </div>
 </template>
+    
 
 <script>
     import ReviewForm from '../components/ReviewForm.vue';

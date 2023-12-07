@@ -17,7 +17,6 @@ import BreweryDetailsView from '../views/BreweryDetailsView.vue';
 import AddReviewView from '../views/AddReviewView.vue';
 
 
-
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
