@@ -47,7 +47,7 @@ public class JdbcBreweryDao implements BreweryDao {
         if(breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
         List<Brewery> breweries = new ArrayList<>();
         breweryName = "%" + breweryName + "%";
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, hours, history FROM brewery WHERE brewery_name ILIKE ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery WHERE brewery_name ILIKE ?";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, breweryName);
             while (result.next()) {
@@ -91,7 +91,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, hours, history FROM brewery";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -126,9 +126,9 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery updateBreweryById(Brewery brewery) {
         Brewery updatedBrewery = null;
-        String sql = "UPDATE brewery SET brewery_name = ?, brewery_main_img = ?, website = ?, hours = ?, history = ? WHERE brewery_id = ?;";
+        String sql = "UPDATE brewery SET brewery_name = ?, brewery_main_img = ?, website = ?, history = ? WHERE brewery_id = ?;";
         try {
-            int numberOfRows = jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(), brewery.getHours(), brewery.getHistory(), brewery.getId());
+            int numberOfRows = jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(), brewery.getHistory(), brewery.getId());
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one.");
             } else {

@@ -76,7 +76,7 @@ public class Brewery {
         this.contact = contact;
     }
 
-    public Brewery(int id, String breweryName, String breweryImg, String website, LocalTime openHour, LocalTime closeHour, Hours hours, String history, Contact contact) {
+    public Brewery(int id, String breweryName, String breweryImg, String website, Hours hours, String history, Contact contact) {
         this.id = id;
         this.breweryName = breweryName;
         this.breweryImg = breweryImg;

@@ -25,7 +25,7 @@ public class JdbcHoursDao implements HoursDao {
                 "tuesday_open, tuesday_close," +
                 "wednesday_open, wednesday_close, " +
                 "thursday_open, thursday_close, " +
-                "friday_open, friday_close " +
+                "friday_open, friday_close, " +
                 "saturday_open, saturday_close " +
                 "FROM brewery_hours " +
                 "WHERE brewery_id = ?;";
