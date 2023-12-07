@@ -51,7 +51,7 @@ public class JdbcContactDao implements ContactDao {
     @Override
     public int deleteContactByBreweryId(int breweryId) {
         int numberOfRowsAffected = 0;
-        String sql = "DELETE FROM contact WHERE brewery_id = ?;";
+        String sql = "DELETE FROM brewery_contact WHERE brewery_id = ?;";
         try {
             numberOfRowsAffected = jdbcTemplate.update(sql, breweryId);
         }
@@ -65,15 +65,20 @@ public class JdbcContactDao implements ContactDao {
     }
 
     @Override
-    public Contact updateContactById(Contact contact) {
+    public Contact updateContactByBreweryId(Contact contact) {
+
         Contact updatedContact = null;
-        String sql = "UPDATE contact SET email = ?, phone = ?, website = ?, brewery_address = ? WHERE brewery_id = ?;";
+        String sql = "UPDATE brewery_contact SET email = ?, phone = ?, brewery_address = ? WHERE brewery_id = ?;";
+
         try {
             int numberOfRows = jdbcTemplate.update(sql, contact.getEmail(), contact.getPhone(), contact.getAddress(), contact.getBreweryId());
             if (numberOfRows == 0) {
+
                 throw new DaoException("Zero rows affected, expected at least one.");
+
             } else {
                 updatedContact = getContactByBreweryId(contact.getBreweryId());
+
             }
         }
         catch (CannotGetJdbcConnectionException e) {

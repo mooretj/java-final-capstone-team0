@@ -6,5 +6,5 @@ public interface ContactDao {
     Contact getContactByBreweryId(int breweryId);
     Contact createBreweryContact(Contact contact);
     int deleteContactByBreweryId(int breweryId);
-    Contact updateContactById(Contact contact);
+    Contact updateContactByBreweryId(Contact contact);
 }

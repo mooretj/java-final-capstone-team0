@@ -9,7 +9,7 @@ public class Contact {
     private String phone;
     @JsonProperty("email")
     private String email;
-    @JsonProperty("address")
+    @JsonProperty("brewery_address")
     private String address;
 
     public Contact() {}

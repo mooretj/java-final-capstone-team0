@@ -16,6 +16,10 @@ export default {
 
     addBrewery(brewery) {
         return http.post('/breweries', brewery);
+    },
+
+    editContact(contact, breweryId) {
+        return http.put(`/breweries/${breweryId}/contact`, contact);
     }
 
 }

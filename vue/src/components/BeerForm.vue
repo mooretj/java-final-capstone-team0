@@ -37,7 +37,7 @@
           <input type="text"  id="beerType" v-model="editBeer.beer_type" />
         </div>
 
-        <button class="btn-submit" type="submit">Add Beer</button>
+        <button class="btn-submit" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
         <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
 
       </form>
@@ -84,7 +84,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
+                  this.$router.push({ name: 'BeerListView'});
                 // }
               })
               .catch(error => {
@@ -95,13 +95,13 @@
               .updateBeer(this.editBeer)
               .then(response => {
                 // if (response.status == 201) {
-                //   this.$store.commit(
-                //     'SET_NOTIFICATION',
-                //     {
-                //       message: `Message ${this.editBeer.name} was updated.`,
-                //       type: 'success'
-                //     }
-                //   );
+                  // this.$store.commit(
+                  //   'SET_NOTIFICATION',
+                  //   {
+                  //     message: `Message ${this.editBeer.name} was updated.`,
+                  //     type: 'success'
+                  //   }
+                  // );
                   this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
                 // }
               })
@@ -111,7 +111,7 @@
           }
     },
     cancelForm() {
-      this.$router.back();
+      this.$router.push({ name: "BeerListView" });
     },
 
     handleErrorResponse(error, verb) {
