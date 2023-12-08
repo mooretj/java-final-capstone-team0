@@ -5,7 +5,7 @@
 
     <div v-else>
         <h1>Reviews</h1>
-        <reviewList />
+        <reviewList v-bind:reviews='reviews'/>
     </div>
 </template>
   
@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             reviews: [],
-            isLoading: true
+            isLoading: false
         };
     }
 }
