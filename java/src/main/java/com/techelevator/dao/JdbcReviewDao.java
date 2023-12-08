@@ -51,6 +51,7 @@ public class JdbcReviewDao implements ReviewDao {
         return review;
     }
 
+
     @Override
     public Review createReview(Review review) {
         Review newReview = null;
@@ -61,11 +62,21 @@ public class JdbcReviewDao implements ReviewDao {
             int newReviewId = jdbcTemplate.queryForObject(insertReviewSql, int.class, review.getUserId(), review.getBeerId(),
                     review.getTitle(), review.getBody(), review.getRating());
             newReview = getReviewById(newReviewId);
-        }  catch (CannotGetJdbcConnectionException e) {
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            System.err.println("Error connecting to the database");
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
+            System.err.println("Data integrity violation");
             throw new DaoException("Data integrity violation", e);
-        }
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred");
+            throw new DaoException("An unexpected error occurred", e);}
+//        }catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DaoException("Data integrity violation", e);
+//        }
         return newReview;
     }
 

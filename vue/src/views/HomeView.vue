@@ -42,15 +42,16 @@
     <hr id="hr2B" class="hr2B">
 
     <h2 id="LatestReviews">Featured Brewery</h2>
-    <div id="featuredBrewey">
-      <img id="featured" src="src/assets/taps.jpg" alt="">
+
+
+    <div id="featuredBrewery" class="featuredBrewery">
+    </div>
 
 
       <div class="pint3">
         <img id="taps" src="src/assets/pint.png" alt="">
       </div>
 
-    </div>
     <hr id="hr2A" class="hr2A">
     <hr id="hr2B" class="hr2B">
 
@@ -71,9 +72,9 @@ export default {
 
 <style >
 h1#FindYour {
-  font-size: 3.5vw;
+  font-size: 3vw;
   color: white;
-  text-shadow: black 3px 3px 4px;
+  text-shadow: black 2px 2px 4px;
   z-index: 1;
 }
 
@@ -99,8 +100,8 @@ body {
 }
 
 input#addressEntry {
-  height: 3vw;
-  font-size: 2vw;
+  height: 48px;
+  font-size: 14px;
   border-style: none;
   color: black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
@@ -222,4 +223,15 @@ html {
   background-color: white;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
+<<<<<<< HEAD
+=======
+
+
+#featuredBrewery{
+  height: 600px;
+  background-color: black;
+}
+
+
+>>>>>>> f86c964b025da6c73495070f560f84c823da3c01
 </style>

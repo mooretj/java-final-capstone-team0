@@ -64,12 +64,12 @@ footer {
 
 img#logo {
   z-index: 0;
-  width: 180px;
+  width: 150px;
   height: auto;
   align-items: center;
   position: absolute;
 left: 50%;
-translate: -90px -4px;
+translate: -75px 0px;
 }
 
 a{
@@ -111,6 +111,8 @@ div #nav{
   font-size:14px;
 }
 
-
+input, textarea, button {
+  color: black;
+}
 
 </style>
