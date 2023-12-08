@@ -15,6 +15,10 @@ export default {
         return http.get(`/beers/${beerId}`);
     },
 
+    getIds() {
+        return http.get('/random');
+    },
+
     addBeer(beer) {
         return http.post(`/breweries/${beer.brewery_id}/beers`, beer);
     },

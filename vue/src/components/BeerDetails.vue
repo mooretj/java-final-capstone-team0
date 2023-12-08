@@ -20,7 +20,7 @@
       <span>{{ beer.beer_type }}</span>
     </div>
 
-    <div class='actions'>
+    <div class=actions>
       <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
       <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
     </div>
@@ -92,11 +92,11 @@
   
 
   
-  <style>
+  <style scoped>
 
-  img {
-    height: 200px;
-  }
+img {
+      max-height: 300px;
+    }
 
   </style>
   

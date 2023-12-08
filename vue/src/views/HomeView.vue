@@ -17,16 +17,19 @@
     <h2 id="LatestReviews">Latest Beer Reviews</h2>
     <div id="reviews" class="reviews">
 
-      <div id="review1" class="review">TEST
+      <div id="review1" class="review">
         <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
+        <beer-details-card-view />
       </div>
 
-      <div id="review2" class="review">TEST
+      <div id="review2" class="review">
         <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
+        <beer-details-card-view/>
       </div>
 
-      <div id="review3" class="review">TEST
+      <div id="review3" class="review">
         <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
+        <beer-details-card-view/>
       </div>
 
     </div>
@@ -59,11 +62,14 @@
 </template>
 
 <script>
+import BeerDetailsCardView from './BeerDetailsCardView.vue';
+
 export default {
+    components: { BeerDetailsCardView }
 };
 </script>
 
-<style>
+<style >
 h1#FindYour {
   font-size: 3.5vw;
   color: white;
@@ -216,6 +222,4 @@ html {
   background-color: white;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
-
-
 </style>
