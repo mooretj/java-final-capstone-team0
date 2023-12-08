@@ -72,6 +72,7 @@
           // if (!this.validateForm()) {
           //   return;
           // }
+          if(this.$store.state.user.brewer == true || this.$store.state.user.authorities.name === "ROLE_ADMIN") {
           if (this.editBeer.beer_id == 0 ) {
             beerService
               .addBeer(this.editBeer)
@@ -109,7 +110,11 @@
                 this.handleErrorResponse(error, 'updating');
               });
           }
-    },
+    }
+    else {
+      alert("You must be authorized to do that.")
+    }
+  },
     cancelForm() {
       this.$router.push({ name: "BeerDetailsView", params: { beerId: this.beer.beer_id } });
     },

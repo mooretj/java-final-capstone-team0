@@ -5,21 +5,7 @@
 
     <div v-else>
         <h1>Reviews</h1>
-        <div class="review" v-for="review in reviews" v-bind:key="review.review_id">
-            <div class='review-title'>
-                <label>Review Title</label>
-                <h1>{{ this.review.title }}</h1>
-            </div>
-            <div class='review-body'>
-                <label>Review Body</label>
-                <p>{{ this.review.body }}</p>
-            </div>
-            <div class='rating'>
-                <label>Rating</label>
-                <h2>{{ this.review.rating }}</h2>
-            </div>
-        </div>
-
+        <reviews v-bind:reviews='reviews'/>
     </div>
 </template>
     
