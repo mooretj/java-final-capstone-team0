@@ -68,8 +68,8 @@ public class JdbcBreweryDao implements BreweryDao {
         String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, history) " +
                 "VALUES (?, ?, ?, ?) RETURNING brewery_id";
         try {
-            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(),
-                    brewery.getHistory());
+            int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(),
+                    brewery.getBreweryImg(), brewery.getWebsite(), brewery.getHistory());
 
             Contact newContact = brewery.getContact();
             newContact.setBreweryId(newBreweryId);

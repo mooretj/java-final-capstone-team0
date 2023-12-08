@@ -18,16 +18,6 @@
             </div>
 
             <div class="form-input-group">
-                <label for="open">Opening Hour: </label>
-                <input type="time" id="open" v-model="editBrewery.open_hour" />
-            </div>
-
-            <div class="form-input-group">
-                <label for="close">Closing Hour: </label>
-                <input type="time" id="close" v-model="editBrewery.close_hour" />
-            </div>
-
-            <div class="form-input-group">
                 <label for="history">Short History: </label>
                 <input type="text" id="history" v-model="editBrewery.history" />
             </div>
@@ -43,6 +33,49 @@
             <div class="form-input-group">
                 <label for="address">Address:</label>
                 <input type="text" id="address" v-model="editBrewery.brewery_contact.brewery_address">
+            </div>
+
+            <label for="hours">Hours of Operation</label>
+            <div class="form-input-group">
+                <label for="sunday">Sunday:</label>
+                <input type="time" id="sunday" v-model="editBrewery.brewery_hours.sunday_open"> -
+                <input type="time" id="sunday" v-model="editBrewery.brewery_hours.sunday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="monday">Monday:</label>
+                <input type="time" id="monday" v-model="editBrewery.brewery_hours.monday_open"> -
+                <input type="time" id="monday" v-model="editBrewery.brewery_hours.monday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="tuesday">Tuesday: </label>
+                <input type="time" id="tuesday" v-model="editBrewery.brewery_hours.tuesday_open"> -
+                <input type="time" id="tuesday" v-model="editBrewery.brewery_hours.tuesday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="wednesday">Wednesday: </label>
+                <input type="time" id="wednesday" v-model="editBrewery.brewery_hours.wednesday_open"> -
+                <input type="time" id="wednesday" v-model="editBrewery.brewery_hours.wednesday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="thursday">Thursday: </label>
+                <input type="time" id="thursday" v-model="editBrewery.brewery_hours.thursday_open"> -
+                <input type="time" id="thursday" v-model="editBrewery.brewery_hours.thursday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="friday">Friday: </label>
+                <input type="time" id="friday" v-model="editBrewery.brewery_hours.friday_open"> -
+                <input type="time" id="friday" v-model="editBrewery.brewery_hours.friday_close">
+            </div>
+
+            <div class="form-input-group">
+                <label for="saturday">Saturday: </label>
+                <input type="time" id="saturday" v-model="editBrewery.brewery_hours.saturday_open"> -
+                <input type="time" id="saturday" v-model="editBrewery.brewery_hours.saturday_close">
             </div>
 
             <button type="submit" v-on:click="submit">Add Brewery</button>
@@ -67,14 +100,29 @@
                     brewery_name: this.brewery.brewery_name,
                     brewery_main_img: this.brewery.brewery_main_img,
                     website: this.brewery.website,
-                    open_hour: this.brewery.open_hour,
-                    close_hour: this.brewery.close_hour,
                     history: this.brewery.brewery_history,
                     brewery_contact: {
                         brewery_id: this.brewery.brewery_id,
                         email: this.brewery.brewery_contact.email,
                         phone: this.brewery.brewery_contact.phone,
                         brewery_address: this.brewery.brewery_contact.brewery_address
+                    },
+                    brewery_hours: {
+                        brewery_id: this.brewery.brewery_hours.brewery_id,
+                        sunday_open: this.brewery.brewery_hours.sunday_open,
+                        sunday_close: this.brewery.brewery_hours.sunday_close,
+                        monday_open: this.brewery.brewery_hours.monday_open,
+                        monday_close: this.brewery.brewery_hours.monday_close,
+                        tuesday_open: this.brewery.brewery_hours.tuesday_open,
+                        tuesday_close: this.brewery.brewery_hours.tuesday_close,
+                        wednesday_open: this.brewery.brewery_hours.wednesday_open,
+                        wednesday_close: this.brewery.brewery_hours.wednesday_close,
+                        thursday_open: this.brewery.brewery_hours.thursday_open,
+                        thursday_close: this.brewery.brewery_hours.thursday_close,
+                        friday_open: this.brewery.brewery_hours.friday_open,
+                        friday_close: this.brewery.brewery_hours.friday_close,
+                        saturday_open: this.brewery.brewery_hours.saturday_open,
+                        saturday_close: this.brewery.brewery_hours.saturday_close
                     }
                 }
             }
@@ -144,4 +192,5 @@
 </script>
 
 <style>
+   
 </style>
