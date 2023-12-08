@@ -19,4 +19,6 @@ public interface BeerDao {
     List<Beer> getBeersByBreweryId(int breweryId);
 
     Beer updateBeerById(Beer beer);
+
+    List<Integer> getBeerIds();
 }

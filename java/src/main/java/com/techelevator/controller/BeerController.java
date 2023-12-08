@@ -90,4 +90,10 @@ public class BeerController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Beer not found.");
         }
     }
+
+    @RequestMapping(path = "/random", method = RequestMethod.GET)
+    public List<Integer> getIds() {
+            return beerDao.getBeerIds();
+
+    }
 }

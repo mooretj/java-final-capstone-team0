@@ -1,5 +1,5 @@
 <template>
-
+    <div class="card">
     <div class="loading" v-if="isLoading">
       <p>Loading...</p>
     </div>
@@ -8,22 +8,24 @@
       <!-- <nav> -->
         <!-- <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link> -->
       <!-- </nav> -->
-      <beer-details v-bind:beer="beer" />
+      
+      <beer-card-details v-bind:beer="beer" />
     </div>
-
+    </div>
   </template>
   
   <script>
   import beerService from '../services/BeerService';
-  import beerDetails from '../components/BeerDetails.vue';
+  import beerCardDetails from '../components/BeerCardDetails.vue';
   
   export default {
     components: {
-      beerDetails,
+      beerCardDetails,
     },
     data() {
       return {
         beer: {},
+        beerIds: {},
         isLoading: true
       }
     },
@@ -45,15 +47,26 @@
           this.isLoading = false;
           // this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
         }
-      }
+      },
+      getBeerIds() {
+        beerService.getIds()
+        .then(response => {
+            this.beerIds = response.data;
+            let randomInt = Math.floor(Math.random() * this.beerIds.length)
+            this.getBeer(this.beerIds[randomInt]);
+        })
+        .catch(error => {
+            this.handleErrorResponse(error);
+          });
+        }
     },
     created() {
-      this.getBeer(this.$route.params.beerId);
+        this.getBeerIds()
     }
   };
   </script>
   
   <style scoped>
-    
+
   </style>
   
