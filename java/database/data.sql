@@ -2,10 +2,20 @@ BEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-
 INSERT INTO users (username,password_hash,role,is_brewer) VALUES ('brewer','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', true);
+INSERT INTO users (username,password_hash,role,is_brewer) VALUES ('test','$2a$10$sfLRfv5JTn8RHm1i.MNz6OX0OveA3hEuwj39g2U2hokawUCSp31nG','ROLE_USER',false);
 
-INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Immigrant Son', 'https://immigrantsonbrewing.com/', 'https://www.cleveland.com/resizer/YfH5HU8fR1I34UEC8EontY6nK2o=/arc-anglerfish-arc2-prod-advancelocal/public/GGK433FUAZHENAWO2ZUHT5ZMYA.jpg', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead. Meticulously weaving traditional classic recipes with imaginative flair, we will share our tale with you in the most authentic way we know how to share: at our table, in a glass, and in a can.');
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Immigrant Son', 'https://www.immigrantsonbrewing.com/', 'https://www.cleveland.com/resizer/YfH5HU8fR1I34UEC8EontY6nK2o=/arc-anglerfish-arc2-prod-advancelocal/public/GGK433FUAZHENAWO2ZUHT5ZMYA.jpg', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead. Meticulously weaving traditional classic recipes with imaginative flair, we will share our tale with you in the most authentic way we know how to share: at our table, in a glass, and in a can.');
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Masthead Brewing Co.','https://www.mastheadbrewingco.com/,','https://ohio.org/static/uploads/068t000000DFFSHAA5.jpg','Masthead Brewing Company is located in the historic Bryant Building at 1261 Superior Avenue in downtown Cleveland. Our building was originally built in 1921 as an automotive dealership and is now listed on the National Register of Historic Places.') +
+('The taproom features 300 seats, a 100’ long bar, and an additional 50 seat dog friendly patio with a view of downtown Cleveland. We’ve become known for our ever evolving lineup of juicy New England IPAs, Neapolitan-style pizza, and our barrel aged beer utilizing exclusively allocated whiskey barrels from top-rated distilleries.')
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES ('Goldhorn Brewery', 'https://www.goldhornbrewery.com','','')
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
+INSERT INTO brewery (brewery_name,website,brewery_main_img,history) VALUES
 
 INSERT INTO brewer (brewery_id,user_id) VALUES (1,3);
 
