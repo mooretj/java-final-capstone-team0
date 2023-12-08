@@ -1,8 +1,8 @@
 <template>
     <h1>{{ brewery.brewery_name }}</h1>
-    <div class="actions">
+    <!-- <div class="actions">
       
-    </div>
+    </div> -->
     
     <div class="BreweryImage">
       <img :src=brewery.brewery_main_img alt="">
