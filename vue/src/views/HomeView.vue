@@ -223,8 +223,6 @@ html {
   background-color: white;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
-<<<<<<< HEAD
-=======
 
 
 #featuredBrewery{
@@ -233,5 +231,4 @@ html {
 }
 
 
->>>>>>> f86c964b025da6c73495070f560f84c823da3c01
 </style>
