@@ -67,6 +67,7 @@ h1#FindYour {
 h2 {
   margin-top: -20px;
   margin-left: 28px;
+  margin-bottom: 0px;
   font-size: 28px;
   color: white;
   text-shadow: black 3px 3px 4px;
@@ -184,23 +185,9 @@ html {
   transform: translate(52%, -900%);
 }
 
-
-
-.review{
-  height: 400px;
-  width: 30%;
-  margin: -10px 1vw 30px 1vw;
-  background-color: gray;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-
-
-
-
 #featuredBrewery{
+  margin-top: 20px;
+  margin-bottom: 40px;
   height: 600px;
   background-color: black;
 }
