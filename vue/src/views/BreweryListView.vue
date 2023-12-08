@@ -34,7 +34,8 @@
   </script>
   
   <style >
-  .map {
-    
+  iframe {
+    display: block;
+    margin: auto;
   }
   </style>
