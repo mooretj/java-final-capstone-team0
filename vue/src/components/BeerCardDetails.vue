@@ -29,9 +29,6 @@ export default {
   props: {
     beer: { type: Object, required: true }
   },
-  computed: {
-
-  },
   methods: {
     deleteBeer() {
       if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 

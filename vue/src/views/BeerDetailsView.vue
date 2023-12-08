@@ -54,6 +54,14 @@
   </script>
   
   <style scoped>
-    
+    .review{
+  height: 400px;
+  width: 30%;
+  margin: -10px 1vw 30px 1vw;
+  background-color: gray;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
   </style>
   
