@@ -42,6 +42,7 @@
 }
 
 header {
+  width: 100%;
   margin-top: 0px;
   justify-content: space-between;
   background-color: rgb(0, 0, 0);
@@ -68,7 +69,7 @@ img#logo {
   align-items: center;
   position: absolute;
 left: 50%;
-translate: -75px 0px;
+translate: -83px 5px;
 }
 
 a{
@@ -81,8 +82,8 @@ color: #CA801B;
 }
 
  div #topnav{
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -96,10 +97,7 @@ color: #CA801B;
   
 }
 
-div #logo{
-  display: flex;
-  translate: -50;
-}
+
 
 div #nav{
   display: flex;
@@ -107,7 +105,7 @@ div #nav{
   align-items: flex-end;
   color: gray;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size:14px;
+  font-size: 14px;
 }
 
 input, textarea, button {
