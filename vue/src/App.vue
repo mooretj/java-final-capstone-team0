@@ -39,6 +39,7 @@
 <style>
 * {
   color: white;
+  viewport-fit:auto;
 }
 
 header {
