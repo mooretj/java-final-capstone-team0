@@ -8,10 +8,10 @@
       <h1>Beers</h1>
       <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
-        {{ beer.beer_name }}  
+        <h2>{{ beer.beer_name }}</h2>  
       </router-link>
     </div>
-      <button class="btn-add" v-on:click="$router.push({ name: 'AddBeerView' })">Add Beer</button>
+      <button class="btn-add" v-on:click="addBeer">Add Beer</button>
   </div>
 
 </template>
@@ -25,6 +25,14 @@
       }
     },
     methods: {
+      addBeer() {
+        if(this.$store.state.user.brewer == true) {
+          this.$router.push({ name: 'AddBeerView' })
+        }
+        else {
+          alert("You must be authorized to do that.")
+        }
+      },
       getBeers() {
         beerService.list(this.$route.params.breweryId)
           .then(response => {
@@ -48,6 +56,14 @@
   
 
   
-  <style>
-
+  <style scoped>
+.beer {
+  text-align: center;
+  max-width: 20%;
+  padding-top: 40px;
+  margin-bottom: 5px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: rgb(36, 36, 36);
+}
   </style>

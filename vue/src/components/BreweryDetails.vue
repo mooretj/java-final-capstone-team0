@@ -53,7 +53,7 @@
         <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
     </div>
     <div>
-        <button class="btn-edit-contact" v-on:click="$router.push({ name: 'EditContactView', params: { breweryId: brewery.brewery_id }})">Edit Contact Info</button>
+        <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
     </div>
 </template>
   
@@ -61,6 +61,16 @@
   export default {
     props: {
       brewery: { type: Object, required: false }
+    },
+    methods: {
+      editContact() {
+        if(this.$store.state.user.brewer == true) {
+          this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id }})
+        }
+        else {
+          alert("You must be authorized to do that.")
+        }
+      }
     }   
   }
 </script>
