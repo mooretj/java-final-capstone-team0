@@ -13,47 +13,107 @@
       <span>{{ brewery.history }}</span>
     </div>
 
-    <div class="hours">
+    <!-- <div class="hours">
       <label>Hours of Operation</label>&nbsp;
       <div class="week">
         <div>
-          Sunday: {{ brewery.brewery_hours.sunday_open.slice(0, 5) }} - {{ brewery.brewery_hours.sunday_close.slice(0, 5) }}
+          Sunday: {{ this.convertTime(brewery.brewery_hours.sunday_open) }} - {{ this.convertTime(brewery.brewery_hours.sunday_close) }}
         </div>
         <div>
-          Monday: {{ brewery.brewery_hours.monday_open.slice(0, 5) }} - {{ brewery.brewery_hours.monday_close.slice(0, 5) }}
+          Monday: {{ this.convertTime(brewery.brewery_hours.monday_open) }} - {{ this.convertTime(brewery.brewery_hours.monday_close) }}
         </div>
         <div>
-          Tuesday: {{ brewery.brewery_hours.tuesday_open.slice(0, 5) }} - {{ brewery.brewery_hours.tuesday_close.slice(0, 5) }}
+          Tuesday: {{ this.convertTime(brewery.brewery_hours.tuesday_open) }} - {{ this.convertTime(brewery.brewery_hours.tuesday_close) }}
         </div>
         <div>
-          Wednesday: {{ brewery.brewery_hours.wednesday_open.slice(0, 5) }} - {{ brewery.brewery_hours.wednesday_close.slice(0, 5) }}
+          Wednesday: {{ this.convertTime(brewery.brewery_hours.wednesday_open) }} - {{ this.convertTime(brewery.brewery_hours.wednesday_close) }}
         </div>
         <div>
-          Thursday: {{ brewery.brewery_hours.thursday_open.slice(0, 5) }} - {{ brewery.brewery_hours.thursday_close.slice(0, 5) }}
+          Thursday: {{ this.convertTime(brewery.brewery_hours.thursday_open) }} - {{ this.convertTime(brewery.brewery_hours.thursday_close) }}
         </div>
         <div>
-          Friday: {{ brewery.brewery_hours.friday_open.slice(0, 5) }} - {{ brewery.brewery_hours.friday_close.slice(0, 5) }}
+          Friday: {{ this.convertTime(brewery.brewery_hours.friday_open) }} - {{ this.convertTime(brewery.brewery_hours.friday_close) }}
         </div>
         <div>
-          Saturday: {{ brewery.brewery_hours.saturday_open.slice(0, 5) }} - {{ brewery.brewery_hours.saturday_close.slice(0, 5) }}
+          Saturday: {{ this.convertTime(brewery.brewery_hours.saturday_open) }} - {{ this.convertTime(brewery.brewery_hours.saturday_close) }}
         </div>
       </div>
+    </div> -->
+    <div class="hours">
+      <label>Hours of Operation</label>
+      <table id="week">
+        <tr>
+          <th>Day</th>
+          <th>Open</th>
+          <th>Close</th>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.sunday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.sunday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Monday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.monday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.monday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.tuesday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.tuesday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.wednesday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.wednesday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.thursday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.thursday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.friday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.friday_close) }}</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.saturday_open) }}</td>
+          <td>{{ this.convertTime(brewery.brewery_hours.saturday_close) }}</td>
+        </tr>
+      </table>
     </div>
 
     <div class="contact-info">
       <label>Contact Info</label>
-      <div>
-        <div>
-          Email: <span>{{ brewery.brewery_contact.email }}</span>
-        </div>
-        <div>
-          Phone: <span>{{ brewery.brewery_contact.phone }}</span>
-        </div>
-        <div>
-          Address: <span>{{ brewery.brewery_contact.brewery_address }}</span>
-        </div>
-      </div>
+      <table>
+        <tr>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Email Address</th>
+        </tr>
+        <tr>
+          <td>{{ brewery.brewery_contact.brewery_address }}</td>
+          <td>{{ brewery.brewery_contact.phone }}</td>
+          <td>{{ brewery.brewery_contact.email }}</td>
+        </tr>
+      </table>
     </div>
+
+
+        <!-- <div>
+          <div>
+            Email: <span>{{ brewery.brewery_contact.email }}</span>
+          </div>
+          <div>
+            Phone: <span>{{ brewery.brewery_contact.phone }}</span>
+          </div>
+          <div>
+            Address: <span>{{ brewery.brewery_contact.brewery_address }}</span>
+          </div>
+        </div> -->
+    
 
     <div class="beers">
         <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
@@ -67,13 +127,34 @@
   export default {
     props: {
       brewery: { type: Object, required: false }
-    }   
+    },
+    methods: {
+      convertTime(t) {
+        let hoursAsNum = Number(t.slice(0,2));
+        let formattedTime;
+        if (hoursAsNum == 0) {
+          formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
+        }
+        else if (hoursAsNum == 12) {
+          formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
+        }
+        else if (hoursAsNum > 12) {
+          formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+        }
+        else {
+          formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+        }
+        return formattedTime;
+      }
+    } 
   }
 </script>
   
 
   
 <style>
+
+
 
 </style>
   
