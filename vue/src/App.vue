@@ -42,7 +42,6 @@
 }
 
 header {
-
   margin-top: 0px;
   justify-content: space-between;
   background-color: rgb(0, 0, 0);
@@ -114,5 +113,8 @@ div #nav{
 input, textarea, button {
   color: black;
 }
+
+
+
 
 </style>

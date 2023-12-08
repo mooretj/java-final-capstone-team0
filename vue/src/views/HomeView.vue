@@ -1,6 +1,5 @@
 <template>
   <body>
-
     <div class="container">
       <img id="taps" src="src/assets/taps.jpg" alt="">
       <div class="centered">
@@ -88,15 +87,12 @@ h2 {
 }
 
 body {
-
   background-image: url("src/assets/woodBG.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   box-shadow: 0 0 500px rgba(0, 0, 0, 1) inset;
-
-
 }
 
 input#addressEntry {
