@@ -4,7 +4,6 @@
     </div>
 
     <div v-else>
-        <h1>Reviews</h1>
         <reviewList v-bind:reviews='reviews'/>
     </div>
 </template>

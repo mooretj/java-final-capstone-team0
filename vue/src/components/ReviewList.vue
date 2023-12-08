@@ -47,8 +47,11 @@ export default {
     
 <style scoped>
 .review-display {
-    margin: 10px;
-    padding: 10px;
+    border: 1px solid gray;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: rgb(36, 36, 36);
 }
 
 </style>
