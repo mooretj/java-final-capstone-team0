@@ -20,8 +20,10 @@
       <span>{{ beer.beer_type }}</span>
     </div>
 
-    <div class='actions'>
+    <div class=actions>
       <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
+      </div>
+      <div>
       <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
     </div>
 
@@ -43,6 +45,7 @@
     },
     methods: {
       deleteBeer() {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
         if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
         {
           beerService
@@ -70,6 +73,10 @@
               // }
             });
         }
+      }
+      else {
+        alert("You must be a authorized to do that.")
+      }
       },
 
       handleErrorResponse(error, verb) {
@@ -92,14 +99,15 @@
   
 
   
-  <style>
+  <style scoped>
   button{
+    margin: 20px;
     color: black;
   }
 
-  img {
-    height: 200px;
-  }
+img {
+      max-height: 300px;
+    }
 
   </style>
   

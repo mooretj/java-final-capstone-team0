@@ -1,6 +1,5 @@
 <template>
   <body>
-
     <div class="container">
       <img id="taps" src="src/assets/taps.jpg" alt="">
       <div class="centered">
@@ -15,21 +14,9 @@
     <hr id="hr1A" class="hr1A">
     <hr id="hr1B" class="hr1B">
     <h2 id="LatestReviews">Latest Beer Reviews</h2>
-    <div id="reviews" class="reviews">
+    
+      <BeerDetailsCardView/>
 
-      <div id="review1" class="review">TEST
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-      </div>
-
-      <div id="review2" class="review">TEST
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-      </div>
-
-      <div id="review3" class="review">TEST
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-      </div>
-
-    </div>
 
     <div class="pint2">
       <img id="taps" src="src/assets/pint.png" alt="">
@@ -60,7 +47,12 @@
 </template>
 
 <script>
+import BeerDetailsCardView from './BeerDetailsCardView.vue';
+
 export default {
+  components: {
+    BeerDetailsCardView
+  }
 };
 </script>
 
@@ -82,15 +74,12 @@ h2 {
 }
 
 body {
-
   background-image: url("src/assets/woodBG.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   box-shadow: 0 0 500px rgba(0, 0, 0, 1) inset;
-
-
 }
 
 input#addressEntry {
@@ -195,10 +184,7 @@ html {
   transform: translate(52%, -900%);
 }
 
-.reviews {
-  margin: -10px 2vw 0px 2vw;  display: flex;
-  justify-content: space-evenly;
-}
+
 
 .review{
   height: 400px;
@@ -211,12 +197,7 @@ html {
 }
 
 
-.review:hover{
-  transform: rotateY(180deg) scale(1.1);
-  margin: -10px 1vw 30px 1vw;
-  background-color: white;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
-}
+
 
 
 #featuredBrewery{

@@ -141,7 +141,26 @@ public class JdbcBeerDao implements BeerDao {
             throw new DaoException("Data integrity violation.", e);
         }
         return updatedBeer;
+    }
+
+    @Override
+    public List<Integer> getBeerIds() {
+        List<Integer> beerIds = new ArrayList<>();
+        String sql = "SELECT beer_id FROM beer ORDER BY RANDOM() LIMIT 3";
+        try {
+
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+            while (results.next()) {
+                Integer id = results.getInt("beer_id");
+                beerIds.add(id);
+
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
         }
+        return beerIds;
+    }
 
     private Beer mapRowToBeer(SqlRowSet rs) {
         Beer beer = new Beer();

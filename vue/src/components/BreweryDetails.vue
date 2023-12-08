@@ -1,12 +1,27 @@
 <template>
+  <div class="BreweryDetails">
+  <div id="one" class="BreweryDetails">      
+    <div id="BreweryImage" class="BreweryImage">
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
+  </div>
+</div>
+  <div id="two" class="BreweryDetails">2</div>
+
+
+
+</div>
+
+
+
+  <div class="">
+    <div>
     <h1>{{ brewery.brewery_name }}</h1>
+  </div>
     <!-- <div class="actions">
       
     </div> -->
     
-    <div class="BreweryImage">
-      <img :src=brewery.brewery_main_img alt="">
-    </div>
+
 
     <div class="history">
       <label>Brewery History:</label>&nbsp;
@@ -119,8 +134,9 @@
         <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
     </div>
     <div>
-        <button class="btn-edit-contact" v-on:click="$router.push({ name: 'EditContactView', params: { breweryId: brewery.brewery_id }})">Edit Contact Info</button>
+        <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
     </div>
+  </div>
 </template>
   
 <script>
@@ -145,14 +161,39 @@
           formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
         }
         return formattedTime;
+      },
+      editContact() {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+          this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id }})
+        }
+        else {
+          alert("You must be authorized to do that.")
+        }
       }
-    } 
+    }   
   }
 </script>
   
 
   
 <style>
+.BreweryDetails{
+  margin-left: 12px;
+  margin-right: 12px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 600px;
+  border-color: white;
+  border-style: solid;
+}
+
+.BreweryImage{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+
+}
 
 
 

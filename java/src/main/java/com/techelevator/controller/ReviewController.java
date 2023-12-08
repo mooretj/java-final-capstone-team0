@@ -27,7 +27,6 @@ public class ReviewController {
     public Review addReview(@Valid @RequestBody Review newReview, @PathVariable int beerId) {
         Review review = null;
         try {
-            newReview.setUserId(newReview.getUserId());
             review = reviewDao.createReview(newReview);
             if (review == null) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Review submission failed.");
