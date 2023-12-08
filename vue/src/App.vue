@@ -53,7 +53,7 @@ header {
 }
 
 footer {
-  margin-top: -20px;
+  margin-top: 20px;
   background-color: rgb(0, 0, 0);
   border-color: white;
   height: 50px;

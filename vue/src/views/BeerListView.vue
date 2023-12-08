@@ -4,7 +4,7 @@
   </div>
 
   <div v-else>
-    <h1>Beers</h1>
+    <!-- <h1>Beers</h1> -->
     <beerList />
 
   </div>
