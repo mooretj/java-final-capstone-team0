@@ -6,13 +6,16 @@
         <h1 id="FindYour">Find Your New Favorite Brewery</h1>
         <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip">
       </div>
-      <div class="pint1">
-        <img id="taps" src="src/assets/pint.png" alt="">
-      </div>
     </div>
 
-    <hr id="hr1A" class="hr1A">
-    <hr id="hr1B" class="hr1B">
+    <div class="pint2">
+      <img id="taps" src="src/assets/pint.png" alt="">
+    </div>
+<div class="line2">
+    <hr id="hr2A" class="hr2A">
+    <hr id="hr2B" class="hr2B">
+  </div>
+
     <h2 id="LatestReviews">Latest Beer Reviews</h2>
     
       <BeerDetailsCardView/>
@@ -21,10 +24,10 @@
     <div class="pint2">
       <img id="taps" src="src/assets/pint.png" alt="">
     </div>
-
+<div class="line2">
     <hr id="hr2A" class="hr2A">
     <hr id="hr2B" class="hr2B">
-
+  </div>
     <h2 id="LatestReviews">Featured Brewery</h2>
 
 
@@ -32,7 +35,7 @@
     </div>
 
 
-      <div class="pint3">
+      <div class="pint2">
         <img id="taps" src="src/assets/pint.png" alt="">
       </div>
 
@@ -57,8 +60,12 @@ export default {
 </script>
 
 <style>
+
+
 h1#FindYour {
-  font-size: 3vw;
+  width: 60vw;
+
+  font-size: 4vw;
   color: white;
   text-shadow: black 2px 2px 4px;
   z-index: 1;
@@ -67,11 +74,15 @@ h1#FindYour {
 h2 {
   margin-top: -20px;
   margin-left: 28px;
+  margin-bottom: 0px;
   font-size: 28px;
   color: white;
   text-shadow: black 3px 3px 4px;
   z-index: 1;
 }
+
+
+
 
 body {
   background-image: url("src/assets/woodBG.jpg");
@@ -83,6 +94,7 @@ body {
 }
 
 input#addressEntry {
+width: 80vh;
   height: 48px;
   font-size: 14px;
   border-style: none;
@@ -111,24 +123,31 @@ img#featured {
 
 
 html {
+
   display: flex;
   justify-content: center;
   background-color: black;
 }
 
 .container {
+  width: 101%;
+
   display: flex;
   position: relative;
+  justify-content: center;
   text-align: center;
   color: white;
 
 }
 
 .centered {
+  
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 25%;
+  top: 35%;
   transform: translate(-50%, -50%);
   left: 50%;
 }
@@ -153,7 +172,7 @@ html {
   display: flex;
   flex-direction: column;
   position: absolute;
-  transform: translate(-50%, -10px);
+  transform: translate(-20px, -10px);
   left: 50%;
 }
 
@@ -169,38 +188,28 @@ html {
 }
 
 #hr1A {
+  width: 49%;
   transform: translate(-52%, -400%);
 }
 
 #hr1B {
-  transform: translate(52%, -900%);
+  width: 49%;
+  transform: translate(51.7%, -900%);
 }
 
 #hr2A {
-  transform: translate(-52%, -400%);
+  width: 49%;
+  transform: translate(-54%, -400%);
 }
 
 #hr2B {
+  width: 49%;
   transform: translate(52%, -900%);
 }
 
-
-
-.review{
-  height: 400px;
-  width: 30%;
-  margin: -10px 1vw 30px 1vw;
-  background-color: gray;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-
-
-
-
 #featuredBrewery{
+  margin-top: 20px;
+  margin-bottom: 40px;
   height: 600px;
   background-color: black;
 }
