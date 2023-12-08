@@ -5,6 +5,10 @@
 
     <div v-else>
         <h1>Reviews</h1>
+        <div class='review-display' v-for='review in reviews' v-bind:key='review.review_id'>
+            <h2>{{ review.title }}</h2>
+            <p>{{ review.body }}</p>
+        </div>
         <reviews v-bind:reviews='reviews'/>
     </div>
 </template>
@@ -41,4 +45,10 @@ export default {
     
   
     
-<style></style>
+<style scoped>
+.review-display {
+    margin: 10px;
+    padding: 10px;
+}
+
+</style>
