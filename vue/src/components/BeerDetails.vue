@@ -28,8 +28,8 @@
     </div>
 
     <div class="actions">
-        <button class="btn-edit" v-on:click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
-        <button class="btn-delete" v-on:click="deleteBeer">Delete</button>
+      <button class="btn-edit" @click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
+      <button class="btn-delete" @click="deleteBeer">Delete</button>
     </div>
 
   </template>

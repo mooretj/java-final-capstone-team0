@@ -111,9 +111,9 @@ public class JdbcHoursDao implements HoursDao {
         Hours hours = new Hours();
         hours.setBreweryId(rs.getInt("brewery_id"));
         hours.setSundayOpen(rs.getTime("sunday_open").toLocalTime());
-        hours.setSundayClose(rs.getTime("sunday_open").toLocalTime());
-        hours.setMondayOpen(rs.getTime("sunday_open").toLocalTime());
-        hours.setMondayClose(rs.getTime("sunday_close").toLocalTime());
+        hours.setSundayClose(rs.getTime("sunday_close").toLocalTime());
+        hours.setMondayOpen(rs.getTime("monday_open").toLocalTime());
+        hours.setMondayClose(rs.getTime("monday_close").toLocalTime());
         hours.setTuesdayOpen(rs.getTime("tuesday_open").toLocalTime());
         hours.setTuesdayClose(rs.getTime("tuesday_close").toLocalTime());
         hours.setWednesdayOpen(rs.getTime("wednesday_open").toLocalTime());

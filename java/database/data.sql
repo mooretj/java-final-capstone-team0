@@ -45,6 +45,6 @@ INSERT INTO user_contact (user_id,email,phone,user_address) VALUES (1,'email@ema
 INSERT INTO brewery_contact (brewery_id,email,phone,brewery_address) VALUES (1, 'info@immigrantsonbrewing.com', '2166004483', '18120 Sloane Ave
 Lakewood, OH 44107');
 
-INSERT INTO brewery_hours (brewery_id, sunday_open, sunday_close, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close) VALUES (1,'00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00','00:00');
+INSERT INTO brewery_hours (brewery_id, sunday_open, sunday_close, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close) VALUES (1,'01:00','02:00','03:00','04:00','05:00','06:00','00:00','12:00','19:00','19:30','20:00','21:00','22:00','23:00');
 
 COMMIT TRANSACTION;
