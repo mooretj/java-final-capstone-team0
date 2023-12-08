@@ -146,7 +146,7 @@ public class JdbcBeerDao implements BeerDao {
     @Override
     public List<Integer> getBeerIds() {
         List<Integer> beerIds = new ArrayList<>();
-        String sql = "SELECT beer_id FROM beer";
+        String sql = "SELECT beer_id FROM beer ORDER BY RANDOM() LIMIT 3";
         try {
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -154,7 +154,7 @@ public class JdbcBeerDao implements BeerDao {
             while (results.next()) {
                 Integer id = results.getInt("beer_id");
                 beerIds.add(id);
-                System.out.println(beerIds);
+
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

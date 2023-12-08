@@ -99,15 +99,11 @@
   
 
   
-<<<<<<< HEAD
   <style scoped>
-=======
-  <style>
   button{
     margin: 20px;
     color: black;
   }
->>>>>>> f86c964b025da6c73495070f560f84c823da3c01
 
 img {
       max-height: 300px;

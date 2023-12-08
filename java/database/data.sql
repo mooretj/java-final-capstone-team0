@@ -15,6 +15,8 @@ INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,i
 
 INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (1,'IPA','https://immigrantsonbrewing.com/wp-content/uploads/2021/05/ipa-500x650.png','Our ISB IPA is YOUR Midwest IPA. Pouring pale orange in color, this IPA is all about hop flavor, aroma, and bitterness. Our hop blend gives generous notes of citrus, pine,& stone fruit supported by a light malt backbone and dry finish – Like a walk through the woods of Ohio.','7','IPA',true);
 
+INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (1,'Hungarian Pearl','https://immigrantsonbrewing.com/wp-content/uploads/2022/03/12oz-Cans-SingleCan_Kolsch-R1-500x650.png','Our crisp and clear kölsch pours golden in color and has a light malty sweetness with subtle fruit and hop character. You’ll get a kick out of this beer that can appease any palate or occasion. It’s summer in a glass!','5','Kolsch',true);
+
 INSERT INTO review (user_id, beer_id, title, body, rating)
                     VALUES (1,1,'Natural perfection in a glass',
                     	   'Alpine Amber Harmony is a symphony of malt and hops that dance together in perfect balance. The amber hues mirror the scenic mountains, and each sip is a serene hike through flavor.',

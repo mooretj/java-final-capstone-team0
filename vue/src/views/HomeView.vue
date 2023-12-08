@@ -15,24 +15,9 @@
     <hr id="hr1A" class="hr1A">
     <hr id="hr1B" class="hr1B">
     <h2 id="LatestReviews">Latest Beer Reviews</h2>
-    <div id="reviews" class="reviews">
+    
+      <BeerDetailsCardView/>
 
-      <div id="review1" class="review">
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-        <beer-details-card-view />
-      </div>
-
-      <div id="review2" class="review">
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-        <beer-details-card-view/>
-      </div>
-
-      <div id="review3" class="review">
-        <!-- <img src="src/assets/logo_resized.jpg" alt=""> -->
-        <beer-details-card-view/>
-      </div>
-
-    </div>
 
     <div class="pint2">
       <img id="taps" src="src/assets/pint.png" alt="">
@@ -66,11 +51,13 @@
 import BeerDetailsCardView from './BeerDetailsCardView.vue';
 
 export default {
-    components: { BeerDetailsCardView }
+  components: {
+    BeerDetailsCardView
+  }
 };
 </script>
 
-<style >
+<style>
 h1#FindYour {
   font-size: 3vw;
   color: white;
@@ -201,10 +188,7 @@ html {
   transform: translate(52%, -900%);
 }
 
-.reviews {
-  margin: -10px 2vw 0px 2vw;  display: flex;
-  justify-content: space-evenly;
-}
+
 
 .review{
   height: 400px;
@@ -217,14 +201,7 @@ html {
 }
 
 
-.review:hover{
-  transform: rotateY(180deg) scale(1.1);
-  margin: -10px 1vw 30px 1vw;
-  background-color: white;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
-}
-<<<<<<< HEAD
-=======
+
 
 
 #featuredBrewery{
@@ -233,5 +210,4 @@ html {
 }
 
 
->>>>>>> f86c964b025da6c73495070f560f84c823da3c01
 </style>
