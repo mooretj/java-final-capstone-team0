@@ -45,7 +45,7 @@
     },
     methods: {
       deleteBeer() {
-        if(this.$store.state.user.brewer == true) {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
         if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
         {
           beerService

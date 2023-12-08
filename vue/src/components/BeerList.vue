@@ -26,7 +26,7 @@
     },
     methods: {
       addBeer() {
-        if(this.$store.state.user.brewer == true) {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
           this.$router.push({ name: 'AddBeerView' })
         }
         else {

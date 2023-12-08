@@ -1,12 +1,27 @@
 <template>
+  <div class="BreweryDetails">
+  <div id="one" class="BreweryDetails">      
+    <div id="BreweryImage" class="BreweryImage">
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
+  </div>
+</div>
+  <div id="two" class="BreweryDetails">2</div>
+
+
+
+</div>
+
+
+
+  <div class="">
+    <div>
     <h1>{{ brewery.brewery_name }}</h1>
+  </div>
     <!-- <div class="actions">
       
     </div> -->
     
-    <div class="BreweryImage">
-      <img :src=brewery.brewery_main_img alt="">
-    </div>
+
 
     <div class="history">
       <label>Brewery History:</label>&nbsp;
@@ -61,6 +76,7 @@
     <div>
         <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
     </div>
+  </div>
 </template>
   
 <script>
@@ -70,7 +86,7 @@
     },
     methods: {
       editContact() {
-        if(this.$store.state.user.brewer == true) {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
           this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id }})
         }
         else {
@@ -84,6 +100,23 @@
 
   
 <style>
+.BreweryDetails{
+  margin-left: 12px;
+  margin-right: 12px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 600px;
+  border-color: white;
+  border-style: solid;
+}
+
+.BreweryImage{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+
+}
 
 </style>
   
