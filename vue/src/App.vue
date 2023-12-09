@@ -44,34 +44,36 @@
 
 header {
   width: 100%;
-  margin-top: 0px;
   justify-content: space-between;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   display: flex;
   border-style: none;
   border-color: white;
   height: 90px;
 }
 
+img#logo {
+  z-index: 0;
+  width: 170px;
+  height: auto;
+  align-items: center;
+  position: absolute;
+left: 50%;
+translate: -85px ;
+}
+
+
+
 footer {
-  margin-top: 20px;
-  background-color: rgb(0, 0, 0);
+  width: 100%;
+  background-color: black;
   border-color: white;
-  height: 50px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-img#logo {
-  z-index: 0;
-  width: 150px;
-  height: auto;
-  align-items: center;
-  position: absolute;
-left: 50%;
-translate: -83px 5px;
-}
 
 a{
   color: gainsboro;
