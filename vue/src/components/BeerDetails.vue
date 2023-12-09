@@ -28,7 +28,7 @@
     </div>
 
     <div class="actions">
-      <button class="btn-edit" @click="$router.push({ name: 'EditBeerView', params: {beerId: beerId} })">Edit</button>
+      <button class="btn-edit" @click="editBeer">Edit</button>
       <button class="btn-delete" @click="deleteBeer">Delete</button>
     </div>
 
@@ -44,6 +44,14 @@
 
     },
     methods: {
+      editBeer() {
+        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+          this.$router.push({ name: 'EditBeerView', params: {beerId: this.$route.params.beerId} })
+        }
+        else {
+          alert("You must be authorized to do that.")
+        }
+      },
       deleteBeer() {
         if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
         if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
