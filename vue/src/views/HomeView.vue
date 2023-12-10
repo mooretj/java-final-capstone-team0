@@ -130,7 +130,7 @@ html {
 }
 
 .container {
-  width: 101%;
+  width: 100%;
 
   display: flex;
   position: relative;

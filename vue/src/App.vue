@@ -37,9 +37,16 @@
 </template>
 
 <style>
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   color: white;
-  viewport-fit:auto;
+  viewport-fit: auto;
 }
 
 header {
