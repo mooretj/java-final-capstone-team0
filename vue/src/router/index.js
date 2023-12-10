@@ -17,6 +17,7 @@ import BreweryDetailsView from '../views/BreweryDetailsView.vue';
 import AddReviewView from '../views/AddReviewView.vue';
 import EditContactView from '../views/EditContactView.vue';
 import ReviewListView from '../views/ReviewListView.vue';
+import EditHoursView from '../views/EditHoursView.vue';
 
 
 /**
@@ -152,9 +153,15 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: '/breweries/:breweryId/hours',
+    name: 'EditHoursView',
+    component: EditHoursView,
+    meta: {
+      requiresAuth: false
+    }
   }
-
-
 ];
 
 // Create the router

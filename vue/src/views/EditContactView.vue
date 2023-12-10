@@ -5,10 +5,7 @@
     </div>
 
     <div v-else>
-      <nav>
-        <!-- <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link> -->
-      </nav>
-      <brewery-contact-form v-bind:contact="contact" v-bind:breweryId="brewery.breweryId"/>
+      <brewery-contact-form v-bind:brewery="brewery"/>
     </div>
 
 </template>
@@ -23,9 +20,9 @@
     },
     data() {
       return {
-        breweryId: this.$route.params.breweryId,
+        // breweryId: this.$route.params.breweryId,
         brewery: {},
-        contact: {},
+        // contact: {},
         isLoading: true
       }
     },
@@ -43,15 +40,12 @@
       handleErrorResponse(error) {
         if (error.response.status == 404) {
           this.$router.push({name: 'NotFoundView'});
-        } else {
-          this.isLoading = false;
-          this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
         }
       }
     },
-    setContact(){
-        this.contact = this.brewery.brewery_contact;
-    },
+    // setContact(){
+    //     this.contact = this.brewery.brewery_contact;
+    // },
     created() {
       this.getBreweryContact(this.$route.params.breweryId);
       this.setContact;
@@ -61,4 +55,3 @@
   
   <style scoped>
   </style>
-  
