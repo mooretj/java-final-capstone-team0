@@ -19,7 +19,8 @@ import breweryService from "../services/BreweryService";
 export default {
   data() {
     return {
-      breweries: []
+      breweries: [],
+      isLoading: true
     }
   },
   methods: {

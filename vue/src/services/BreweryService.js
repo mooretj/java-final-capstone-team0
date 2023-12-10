@@ -20,6 +20,10 @@ export default {
 
     editContact(contact, breweryId) {
         return http.put(`/breweries/${breweryId}/contact`, contact);
+    },
+
+    editHours(hours, breweryId) {
+        return http.put(`/breweries/${breweryId}/hours`, hours)
     }
 
 }

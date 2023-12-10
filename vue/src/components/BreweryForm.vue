@@ -36,46 +36,61 @@
             </div>
 
             <label for="hours">Hours of Operation</label>
+
             <div class="form-input-group">
                 <label for="sunday">Sunday:</label>
-                <input type="time" id="sunday" v-model="editBrewery.brewery_hours.sunday_open"> -
-                <input type="time" id="sunday" v-model="editBrewery.brewery_hours.sunday_close">
+                <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_open"> -
+                <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_close">&nbsp;
+                <label for="sunday">Closed for the day:</label>
+                <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="monday">Monday:</label>
-                <input type="time" id="monday" v-model="editBrewery.brewery_hours.monday_open"> -
-                <input type="time" id="monday" v-model="editBrewery.brewery_hours.monday_close">
+                <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_open"> -
+                <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_close">&nbsp;
+                <label for="monday">Closed for the day:</label>
+                <input type="checkbox" id="monday" @click="mondayNull = !mondayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="tuesday">Tuesday: </label>
-                <input type="time" id="tuesday" v-model="editBrewery.brewery_hours.tuesday_open"> -
-                <input type="time" id="tuesday" v-model="editBrewery.brewery_hours.tuesday_close">
+                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_open"> -
+                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_close">&nbsp;
+                <label for="tuesday">Closed for the day:</label>
+                <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="wednesday">Wednesday: </label>
-                <input type="time" id="wednesday" v-model="editBrewery.brewery_hours.wednesday_open"> -
-                <input type="time" id="wednesday" v-model="editBrewery.brewery_hours.wednesday_close">
+                <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editBrewery.brewery_hours.wednesday_open"> -
+                <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editBrewery.brewery_hours.wednesday_close">&nbsp;
+                <label for="wednesday">Closed for the day:</label>
+                <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="thursday">Thursday: </label>
-                <input type="time" id="thursday" v-model="editBrewery.brewery_hours.thursday_open"> -
-                <input type="time" id="thursday" v-model="editBrewery.brewery_hours.thursday_close">
+                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editBrewery.brewery_hours.thursday_open"> -
+                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editBrewery.brewery_hours.thursday_close">&nbsp;
+                <label for="thursday">Closed for the day:</label>
+                <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="friday">Friday: </label>
-                <input type="time" id="friday" v-model="editBrewery.brewery_hours.friday_open"> -
-                <input type="time" id="friday" v-model="editBrewery.brewery_hours.friday_close">
+                <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_open"> -
+                <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_close">&nbsp;
+                <label for="friday">Closed for the day:</label>
+                <input type="checkbox" id="friday" @click="fridayNull = !fridayNull">
             </div>
 
             <div class="form-input-group">
                 <label for="saturday">Saturday: </label>
-                <input type="time" id="saturday" v-model="editBrewery.brewery_hours.saturday_open"> -
-                <input type="time" id="saturday" v-model="editBrewery.brewery_hours.saturday_close">
+                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editBrewery.brewery_hours.saturday_open"> -
+                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editBrewery.brewery_hours.saturday_close">&nbsp;
+                <label for="saturday">Closed for the day:</label>
+                <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull">
             </div>
 
             <button type="submit" v-on:click="submit">Add Brewery</button>
@@ -92,6 +107,9 @@
                 type: Object,
                 required: true
             }
+        },
+        computed: {
+            ian: false
         },
         data() {
             return {
@@ -124,7 +142,14 @@
                         saturday_open: this.brewery.brewery_hours.saturday_open,
                         saturday_close: this.brewery.brewery_hours.saturday_close
                     }
-                }
+                },
+                sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
+                mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
+                tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
+                wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
+                thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
+                fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
+                saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
             }
         },
         methods: {
@@ -133,6 +158,7 @@
                 //     return;
                 // }
                 // if (this.editBrewery.brewery_id == 0) {
+                    this.adjustForClosedDays();
                     breweryService
                     .addBrewery(this.editBrewery)
                     .then(response => {
@@ -186,6 +212,36 @@
             //         this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
             //     }
             // }
+            adjustForClosedDays() {
+                if (this.sundayNull) {
+                    this.editBrewery.brewery_hours.sunday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.sunday_close = "00:00:00";
+                }
+                if (this.mondayNull) {
+                    this.editBrewery.brewery_hours.monday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.monday_close = "00:00:00";
+                }
+                if (this.tuesdayNull) {
+                    this.editBrewery.brewery_hours.tuesday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.tuesday_close = "00:00:00";
+                }
+                if (this.wednesdayNull) {
+                    this.editBrewery.brewery_hours.wednesday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.wednesday_close = "00:00:00";
+                }
+                if (this.thursdayNull) {
+                    this.editBrewery.brewery_hours.thursday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.thursday_close = "00:00:00";
+                }
+                if (this.fridayNull) {
+                    this.editBrewery.brewery_hours.friday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.friday_close = "00:00:00";
+                }
+                if (this.saturdayNull) {
+                    this.editBrewery.brewery_hours.saturday_open = "00:00:00";
+                    this.editBrewery.brewery_hours.saturday_close = "00:00:00";
+                }
+        }
         },
     
     }
