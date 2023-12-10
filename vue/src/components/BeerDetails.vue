@@ -20,7 +20,7 @@
       <span>{{ beer.beer_type }}</span>
     </div>
 
-    <div class=actions>
+    <div class='review-actions'>
       <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
       </div>
       <div>
@@ -30,6 +30,10 @@
     <div class="actions">
       <button class="btn-edit" @click="editBeer">Edit</button>
       <button class="btn-delete" @click="deleteBeer">Delete</button>
+    </div>
+
+    <div class='return'>
+      <button @click="this.$router.push({ name: 'BeerListView', params: {breweryId: this.beer.brewery_id} })">Back to Beer List</button>
     </div>
 
   </template>

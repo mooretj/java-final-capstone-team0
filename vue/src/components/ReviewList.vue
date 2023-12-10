@@ -8,8 +8,18 @@
         <div class='review-display' v-for='review in reviews' v-bind:key='review.review_id'>
             <h2>{{ review.title }}</h2>
             <p>{{ review.body }}</p>
+            <div class="rating">
+                <p>{{ review.rating }}/5 pints</p>
+                <img src="../assets/pint.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"
+                    v-for="n in review.rating" v-bind:key="n" />
+            </div>
         </div>
-        <reviews v-bind:reviews='reviews'/>
+        <reviews v-bind:reviews='reviews' />
+    </div>
+
+    <div class='return'>
+        <button @click="this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.$route.params.beerId } })">Back to
+            Beer</button>
     </div>
 </template>
     
@@ -33,8 +43,8 @@ export default {
                 })
         },
         handleErrorResponse() {
-          this.isLoading = false;
-          this.$store.commit('SET_NOTIFICATION', `Could not get review data from server.`);
+            this.isLoading = false;
+            this.$store.commit('SET_NOTIFICATION', `Could not get review data from server.`);
         },
     },
     created() {
@@ -47,11 +57,24 @@ export default {
     
 <style scoped>
 .review-display {
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
     border: 1px solid gray;
     padding: 30px;
-    border-radius: 10px;
     margin: 5px 15px 5px 15px;
-    background-color: rgb(36, 36, 36);
+    border-radius: 20px;
+    border: 1px solid #CA801B;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: black;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 
+img {
+    width: 25px;
+}
+
+h2 {
+    color: #CA801B;
+}
 </style>

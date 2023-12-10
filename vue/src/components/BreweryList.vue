@@ -11,6 +11,10 @@
         <h2>{{ brewery.brewery_name }}</h2>
       </router-link>
     </div>
+    <div>
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E6x1Dagt6pIMuxneEINkxGuYs8o0vIs&ehbc=2E312F&noprof=1"
+        width="640" height="480"></iframe>
+    </div>
   </div>
 </template>
   
@@ -48,6 +52,7 @@ export default {
 
   
 <style scoped>
+
 .brewery {
   text-align: center;
   max-width: 20%;
@@ -56,4 +61,5 @@ export default {
   border-radius: 10px;
   background-color: rgb(36, 36, 36);
 }
+
 </style>

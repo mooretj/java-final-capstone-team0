@@ -1,8 +1,7 @@
 <template>
-
   <div class="BreweryDetails">
 
-    <div id="one" class="BreweryDetails">   
+    <div id="one" class="BreweryDetails">
 
       <div id="BreweryImage" class="BreweryImage">
         <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
@@ -84,15 +83,24 @@
       </div>
 
       <div class="beers">
-          <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
+        <button class="btn-see-beers"
+          v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See Beers</button>
       </div>
 
-      <div class="edit-contact">
+      <div class='edit-actions' v-if='this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN"' >
+        <div class="edit-contact">
           <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
+        </div>
+
+        <div class="edit-hours">
+          <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
+        </div>
       </div>
 
-      <div class="edit-hours">
-          <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
+      <br>
+
+      <div class='return'>
+        <button @click="this.$router.push({ name: 'BreweryListView' })">Back to Breweries</button>
       </div>
 
     </div>
@@ -100,62 +108,64 @@
 </template>
   
 <script>
-  export default {
+import { RouterLink } from 'vue-router';
+
+export default {
     props: {
-      brewery: { type: Object, required: false }
+        brewery: { type: Object, required: false }
     },
     data() {
-      return {
-        sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
-        mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
-        tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
-        wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
-        thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
-        fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
-        saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
-      }
+        return {
+            sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
+            mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
+            tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
+            wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
+            thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
+            fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
+            saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
+        };
     },
     methods: {
-      convertTime(t) {
-        let hoursAsNum = Number(t.slice(0,2));
-        let formattedTime;
-        if (hoursAsNum == 0) {
-          formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
-        }
-        else if (hoursAsNum == 12) {
-          formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
-        }
-        else if (hoursAsNum > 12) {
-          formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
-        }
-        else {
-          formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
-        }
-        return formattedTime;
-      },
-      editContact() {
-        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-          this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id }})
-        }
-        else {
-          alert("You must be authorized to edit contact information.")
-        }
-      },
-      editHours() {
-        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-          this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id }})
-        }
-        else {
-          alert("You must be authorized to to edit hours of operation.")
-        }
-      },
-    }   
-  }
+        convertTime(t) {
+            let hoursAsNum = Number(t.slice(0, 2));
+            let formattedTime;
+            if (hoursAsNum == 0) {
+                formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
+            }
+            else if (hoursAsNum == 12) {
+                formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
+            }
+            else if (hoursAsNum > 12) {
+                formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+            }
+            else {
+                formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+            }
+            return formattedTime;
+        },
+        editContact() {
+            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+                this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
+            }
+            else {
+                alert("You must be authorized to edit contact information.");
+            }
+        },
+        editHours() {
+            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+                this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
+            }
+            else {
+                alert("You must be authorized to to edit hours of operation.");
+            }
+        },
+    },
+    components: { RouterLink }
+}
 </script>
   
 <style>
-
-.BreweryDetails{
+.BreweryDetails {
   margin-left: 12px;
   margin-right: 12px;
   display: grid;
@@ -165,7 +175,7 @@
   border-style: solid;
 }
 
-.BreweryImage{
+.BreweryImage {
   display: flex;
   align-items: center;
   justify-content: start;
@@ -174,9 +184,11 @@
 }
 
 #two {
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
+
 
 </style>
   
