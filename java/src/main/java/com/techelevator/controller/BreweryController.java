@@ -84,6 +84,10 @@ public class BreweryController {
         return breweryDao.deleteBreweryById(id);
     }
 
+    /**
+     * Updates a brewery's contact information
+     * @param id
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/breweries/{id}/contact", method = RequestMethod.PUT)
     public Contact updateContactByBreweryId(@Valid @RequestBody Contact contact, @PathVariable int id) {
@@ -100,6 +104,10 @@ public class BreweryController {
         }
     }
 
+    /**
+     * Updates a brewery's hours of operation
+     * @param id
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/breweries/{id}/hours", method = RequestMethod.PUT)
     public Hours updateHoursByBreweryId(@Valid @RequestBody Hours hours, @PathVariable int id) {

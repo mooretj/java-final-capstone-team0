@@ -14,9 +14,9 @@
     </div>
 
     <div id="topnav" class="topnav">
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login&nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''">Login&nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'register' }" v-if="this.$store.state.token == ''">Register</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''">Logout</router-link>
     </div>
   </header>
 
@@ -37,9 +37,16 @@
 </template>
 
 <style>
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   color: white;
-  viewport-fit:auto;
+  viewport-fit: auto;
 }
 
 header {

@@ -27,11 +27,6 @@
 </div>
     
 
-  
-
-  
-
-
 </template>
 
 <script>
@@ -147,8 +142,7 @@ width: 350px;
 height: 350px;
 border-radius: 20px;
   border: 1px solid #CA801B;
-  background-color: rgba(0, 0, 0, 0.603);
-  
+  background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
@@ -158,7 +152,7 @@ border-radius: 20px;
     width: 350px;
     height: 350px;
     border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.603);
+  background-color: rgba(0, 0, 0, 0.75);
   border: 1px solid #CA801B;
   color: white;
   transform: rotateY(180deg);
