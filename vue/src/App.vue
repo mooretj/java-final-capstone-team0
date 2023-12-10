@@ -14,8 +14,8 @@
     </div>
 
     <div id="topnav" class="topnav">
-      <router-link v-bind:to="{ name: 'login' }">Login</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'register' }">Register</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login&nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
   </header>
@@ -45,6 +45,7 @@
 header {
   width: 100%;
   margin-top: 0px;
+  
   justify-content: space-between;
   background-color: rgb(0, 0, 0);
   display: flex;

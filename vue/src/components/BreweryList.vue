@@ -50,9 +50,13 @@ export default {
 .brewery {
   text-align: center;
   max-width: 20%;
-  padding-top: 40px;
+  margin: 10px;
   border: 1px solid gray;
   border-radius: 10px;
   background-color: rgb(36, 36, 36);
+}
+
+h2 {
+  margin: 10px;
 }
 </style>

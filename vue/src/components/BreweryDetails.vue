@@ -1,17 +1,12 @@
 <template>
 
-  <div class="BreweryDetails">
+  <div class="BreweryDetailsMain" id="overlay">
 
-    <div id="one" class="BreweryDetails">   
-
-      <div id="BreweryImage" class="BreweryImage">
-        <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
-      </div>
-
-    </div>
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
 
     <div id="two" class="BreweryDetails">
 
+      <div class="details-left">
       <div class="name">
         <h1>{{ brewery.brewery_name }}</h1>
       </div>
@@ -35,8 +30,18 @@
             <td>{{ brewery.brewery_contact.email }}</td>
           </tr>
         </table>
+
+        
+      </div>
+      <div class="beers">
+          <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
       </div>
 
+      <div class="edit" v-if="getBrewer()">
+          <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
+      </div>
+    </div>
+    <div class="details-right">
       <div class="hours">
         <label>Hours of Operation</label>
         <table id="week">
@@ -82,20 +87,16 @@
           </tr>
         </table>
       </div>
-
-      <div class="beers">
-          <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
-      </div>
-
-      <div class="edit">
-          <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
-      </div>
+</div>
+      
 
     </div>
   </div>
 </template>
   
 <script>
+  import breweryService from '../services/BreweryService.js';
+
   export default {
     props: {
       brewery: { type: Object, required: false }
@@ -125,21 +126,40 @@
         else {
           alert("You must be authorized to do that.")
         }
+      },
+      getBrewers() {
+        breweryService.getBrewerss(this.$route.params.breweryId)
+        .then(response => {
+          let set = response.data;
+          return set.includes(this.$store.state.user.id);
+        })
       }
     }   
   }
 </script>
   
-<style>
+<style scoped>
+/* #overlay {
+  position: relative;
+}
 
-.BreweryDetails{
+#overlay::before {
+  
+  content: "/00a0";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+} */
+.BreweryDetailsMain{
+  margin-top: 20px;
   margin-left: 12px;
   margin-right: 12px;
-  display: grid;
+  height: auto;
+  display: flex;
   grid-template-columns: 50% 50%;
   grid-template-rows: 600px;
-  border-color: white;
-  border-style: solid;
+  
+  z-index: 10;
 }
 
 .BreweryImage{
@@ -147,12 +167,27 @@
   align-items: center;
   justify-content: start;
   height: 100%;
-
+  position: relative;
+  z-index:1;
 }
+
 
 #two {
  display: flex;
- flex-direction: column;
+ 
+ padding: 20px;
+ align-items: start;
+ background-image: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%);
+ z-index: 15;
+}
+
+img {
+  width: 900px;
+  height: auto;
+}
+
+h1 {
+  margin-top: 0px;
 }
 
 </style>
