@@ -34,6 +34,14 @@ public class Review {
     }
 
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getReviewId() {
         return reviewId;
     }
@@ -81,14 +89,7 @@ public class Review {
     public void setRating(int rating) {
         this.rating = rating;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    
 
     public String getBreweryName() {
         return breweryName;

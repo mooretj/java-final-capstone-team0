@@ -14,8 +14,8 @@ export default {
         return http.post(`beers/${review.beer_id}/reviews`, review);
     },
 
-    getReviewById(reviewId) {
-        return http.get(`reviews/${reviewId}`);
+    getRandomReviewByBeerId(beerId) {
+        return http.get(`reviews/random/${beerId}`)
     }
 
 }

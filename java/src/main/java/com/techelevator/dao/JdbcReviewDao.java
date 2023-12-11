@@ -23,6 +23,7 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review getReviewById(int reviewId) {
         Review review = null;
+
         String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
                 "FROM review " +
                 "JOIN users ON review.user_id = users.user_id " +
@@ -43,6 +44,7 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public List<Review> getReviewsByBeerId(int beerId) {
         List<Review> reviews = new ArrayList<>();
+
         String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
                 "FROM review " +
                 "JOIN users ON review.user_id = users.user_id " +
@@ -64,6 +66,7 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review getRandomReviewByBeerId(int beerId) {
         Review randomReview = null;
+
         String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
                 "FROM review JOIN users ON review.user_id = users.user_id " +
                 "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
