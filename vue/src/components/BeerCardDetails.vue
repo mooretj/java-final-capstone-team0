@@ -5,7 +5,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <div class="beerName" id="beerName">
-            <h3>BreweryName's {{ beer.beer_name }}</h3>
+            <h3>{{ review.brewery_name }}: {{ beer.beer_name }}</h3>
           </div>
           <div id="beerCardFront" class="beerCardFront">
             <div id="container">
@@ -27,16 +27,16 @@
         </div>
         <div class="flip-card-back">
           <div class="beer">
-            <label>Beer ABV:</label>
+            <label>ABV:</label>
             <span>{{ beer.abv }}%</span>
           </div>
 
           <div class="beer">
-            <label>Beer Type:</label>
+            <label>Style:</label>
             <span>{{ beer.beer_type }}</span>
           </div>
           <div class="beer">
-            <label>Beer Description:</label>
+            <label>Description:</label>
             <span>{{ beer.beer_description }}</span>
           </div>
         </div>
