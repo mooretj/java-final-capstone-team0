@@ -96,7 +96,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  margin-top: 0px;
+  box-shadow: 0 0 1000px rgba(0, 0, 0, 1) inset;
 }
 
 input#addressEntry {
@@ -140,8 +140,6 @@ html {
 }
 
 .container {
-  width: 100%;
-  margin-bottom: 40px;
   display: flex;
   position: relative;
   justify-content: center;
@@ -192,8 +190,8 @@ html {
   width: 25px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  transform: translate(-50%, -10px);
+  position: absolute;
+  transform: translate(-10px, -20px);
   left: 50%;
 }
 
@@ -231,3 +229,24 @@ html {
 
 
 </style>
+
+
+
+
+
+
+
+
+
+
+
+Message Justin Falasca
+
+
+
+
+
+
+
+
+
