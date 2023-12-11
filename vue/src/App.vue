@@ -42,8 +42,14 @@
 
 <style>
 * {
-  color: white;
-  viewport-fit: auto;
+color: white;
+viewport-fit:auto;
+-ms-overflow-style: none;
+scrollbar-width:none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 header {

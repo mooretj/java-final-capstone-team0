@@ -12,6 +12,8 @@ public interface BreweryDao {
 
     List<Brewery> getBreweryByName(String BreweryName);
 
+    Brewery getRandomBrewery();
+
     Brewery createBrewery(Brewery brewery);
 
     int deleteBreweryById(int id);

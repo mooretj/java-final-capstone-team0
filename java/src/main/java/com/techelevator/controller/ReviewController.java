@@ -37,14 +37,22 @@ public class ReviewController {
         return review;
     }
 
-    @RequestMapping(path = "reviews/{reviewId}", method = RequestMethod.GET)
-    public Review getReviewByReviewId(@PathVariable int reviewId) {
-        return reviewDao.getReviewById(reviewId);
+    @ResponseStatus(HttpStatus.ACCEPTED)
+
+
+    @RequestMapping(path = "reviews/random/{beerId}", method = RequestMethod.GET)
+    public Review getRandomReviewByBeerId(@PathVariable int beerId) {
+        return reviewDao.getRandomReviewByBeerId(beerId);
     }
 
     @RequestMapping(path = "beers/{beerId}/reviews", method = RequestMethod.GET)
     public List<Review> getReviews(@PathVariable int beerId) {
         return reviewDao.getReviewsByBeerId(beerId);
+    }
+
+    @RequestMapping(path = "reviews/{reviewId}", method = RequestMethod.GET)
+    public Review getReviewByReviewId(@PathVariable int reviewId) {
+        return reviewDao.getReviewById(reviewId);
     }
 
 }

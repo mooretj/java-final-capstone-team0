@@ -32,6 +32,7 @@
 
 
     <div id="featuredBrewery" class="featuredBrewery">
+      <BreweryDetailsCardView/>
     </div>
 
 
@@ -54,11 +55,13 @@
 
 <script>
 import BeerDetailsCardView from './BeerDetailsCardView.vue';
+import BreweryDetailsCardView from './BreweryDetailsCardView.vue';
 
 export default {
   components: {
-    BeerDetailsCardView
-  }
+    BeerDetailsCardView,
+    BreweryDetailsCardView
+}
 };
 </script>
 

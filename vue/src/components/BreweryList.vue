@@ -121,4 +121,8 @@ h2 {
   font-size: 2vh;
   margin: 10px;
 }
+
+.map {
+  margin-top: 28px;
+}
 </style>

@@ -6,10 +6,12 @@ import java.util.List;
 
 public interface ReviewDao {
 
-    List<Review> getReviewsByBeerId(int beerId);
-
     Review getReviewById(int reviewId);
 
+    List<Review> getReviewsByBeerId(int beerId);
+
     Review createReview(Review review);
+
+    Review getRandomReviewByBeerId(int beerId);
 
 }
