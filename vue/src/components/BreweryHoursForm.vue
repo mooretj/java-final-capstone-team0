@@ -9,7 +9,7 @@
                 <input type="time" id="sunday" :disabled="sundayNull" v-model="editHours.sunday_open"> -
                 <input type="time" id="sunday" :disabled="sundayNull" v-model="editHours.sunday_close">&nbsp;
                 <label for="sunday">Closed for the day:</label>
-                <input type="checkbox" id="sunday"  @click="sundayNull = !sundayNull">
+                <input type="checkbox" id="sunday" :checked="sundayNull" @click="sundayNull = !sundayNull">
             </div>
 
             <div class="form-input-group">
@@ -17,7 +17,7 @@
                 <input type="time" id="monday" :disabled="mondayNull" v-model="editHours.monday_open"> -
                 <input type="time" id="monday" :disabled="mondayNull" v-model="editHours.monday_close">&nbsp;
                 <label for="monday">Closed for the day:</label>
-                <input type="checkbox" id="monday"  @click="mondayNull = !mondayNull">
+                <input type="checkbox" id="monday" :checked="mondayNull" @click="mondayNull = !mondayNull">
             </div>
 
             <div class="form-input-group">
@@ -25,7 +25,7 @@
                 <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editHours.tuesday_open"> -
                 <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editHours.tuesday_close">&nbsp;
                 <label for="tuesday">Closed for the day:</label>
-                <input type="checkbox" id="tuesday"  @click="tuesdayNull = !tuesdayNull">
+                <input type="checkbox" id="tuesday" :checked="tuesdayNull" @click="tuesdayNull = !tuesdayNull">
             </div>
 
             <div class="form-input-group">
@@ -33,7 +33,7 @@
                 <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editHours.wednesday_open"> -
                 <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editHours.wednesday_close">&nbsp;
                 <label for="wednesday">Closed for the day:</label>
-                <input type="checkbox" id="wednesday"  @click="wednesdayNull = !wednesdayNull">
+                <input type="checkbox" id="wednesday" :checked="wednesdayNull" @click="wednesdayNull = !wednesdayNull">
             </div>
 
             <div class="form-input-group">
@@ -41,7 +41,7 @@
                 <input type="time" id="thursday" :disabled="thursdayNull" v-model="editHours.thursday_open"> -
                 <input type="time" id="thursday" :disabled="thursdayNull" v-model="editHours.thursday_close">&nbsp;
                 <label for="thursday">Closed for the day:</label>
-                <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
+                <input type="checkbox" id="thursday" :checked="thursdayNull" @click="thursdayNull = !thursdayNull">
             </div>
 
             <div class="form-input-group">
@@ -49,7 +49,7 @@
                 <input type="time" id="friday" :disabled="fridayNull" v-model="editHours.friday_open"> -
                 <input type="time" id="friday" :disabled="fridayNull" v-model="editHours.friday_close">&nbsp;
                 <label for="friday">Closed for the day:</label>
-                <input type="checkbox" id="friday"  @click="fridayNull = !fridayNull">
+                <input type="checkbox" id="friday" :checked="fridayNull" @click="fridayNull = !fridayNull">
             </div>
 
             <div class="form-input-group">
@@ -57,7 +57,7 @@
                 <input type="time" id="saturday" :disabled="saturdayNull" v-model="editHours.saturday_open"> -
                 <input type="time" id="saturday" :disabled="saturdayNull" v-model="editHours.saturday_close">&nbsp;
                 <label for="saturday">Closed for the day:</label>
-                <input type="checkbox" id="saturday"  @click="saturdayNull = !saturdayNull">
+                <input type="checkbox" id="saturday" :checked="saturdayNull" @click="saturdayNull = !saturdayNull">
             </div>
 
             <button type="submit" v-on:click="submit">Submit</button>

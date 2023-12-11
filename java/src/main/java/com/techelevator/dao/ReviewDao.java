@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface ReviewDao {
 
+    Review getReviewById(int reviewId);
+
     List<Review> getReviewsByBeerId(int beerId);
 
-    Review getReviewById(int reviewId);
+    Review getRandomReviewByBeerId(int beerId);
 
     Review createReview(Review review);
 

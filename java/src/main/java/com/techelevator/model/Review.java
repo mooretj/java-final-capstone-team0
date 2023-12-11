@@ -16,16 +16,19 @@ public class Review {
     private String body;
     @JsonProperty("rating")
     private int rating;
+    @JsonProperty("username")
+    private String username;
 
     public Review() { }
 
-    public Review(int reviewId, int userId, int beerId, String title, String body, int rating) {
+    public Review(int reviewId, int userId, int beerId, String title, String body, int rating, String username) {
         this.reviewId = reviewId;
         this.userId = userId;
         this.beerId = beerId;
         this.title = title;
         this.body = body;
         this.rating = rating;
+        this.username = username;
     }
 
 
@@ -77,6 +80,14 @@ public class Review {
         this.rating = rating;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "Review{" +
@@ -85,6 +96,7 @@ public class Review {
                 ", Beer Id=" + beerId +
                 ", Title='" + title + '\'' +
                 ", Body='" + body + '\'' +
-                ", Rating=" + rating + "}";
+                ", Rating=" + rating + '\'' +
+                ", Username=" + username;
     }
 }
