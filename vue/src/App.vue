@@ -60,8 +60,8 @@ height: 90px;
 
 img#logo {
 z-index: 0;
+margin-top: 3px;
 width: 160px;
-margin-top: 5px;
 height: auto;
 align-items: center;
 position: absolute;

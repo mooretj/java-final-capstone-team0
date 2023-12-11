@@ -33,7 +33,7 @@
     </div>
 
     <div class='return'>
-      <button @click="this.$router.push({ name: 'BeerListView', params: {breweryId: this.beer.brewery_id} })">Back to Beer List</button>
+      <button @click="this.$router.push({ name: 'BeerListView', params: {breweryId: this.beer.brewery_id} })">More From This Brewery</button>
     </div>
 
   </template>
