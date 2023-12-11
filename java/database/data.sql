@@ -333,6 +333,70 @@ INSERT INTO review (user_id, beer_id, title, body, rating) VALUES (1, 33, 'Smoot
 
 INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (1,1);
 
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (2,1);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (3,1);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (4,2);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (5,2);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (6,2);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (7,2);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (8,2);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (9,3);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (10,3);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (11,3);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (12,3);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (13,4);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (14,4);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (15,4);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (16,5);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (17,5);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (18,5);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (19,6);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (20,6);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (21,6);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (22,7);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (23,7);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (24,8);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (25,8);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (26,8);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (27,9);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (28,9);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (29,9);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (30,9);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (31,10);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (32,10);
+
+INSERT INTO brewery_beer (beer_id,brewery_id) VALUES (33,10);
+
 
 INSERT INTO user_contact (user_id,email,phone,user_address) VALUES (1,'user@user.com','1111111111','123 User St.');
 
