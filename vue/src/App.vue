@@ -54,7 +54,8 @@ height: 90px;
 
 img#logo {
 z-index: 0;
-width: 170px;
+margin-top: 3px;
+width: 160px;
 height: auto;
 align-items: center;
 position: absolute;

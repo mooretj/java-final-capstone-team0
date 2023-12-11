@@ -17,6 +17,8 @@ public class Review {
     @JsonProperty("rating")
     private int rating;
 
+    private String username;
+
     public Review() { }
 
     public Review(int reviewId, int userId, int beerId, String title, String body, int rating) {
@@ -28,6 +30,14 @@ public class Review {
         this.rating = rating;
     }
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public int getReviewId() {
         return reviewId;

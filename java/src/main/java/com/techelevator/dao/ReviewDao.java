@@ -12,4 +12,6 @@ public interface ReviewDao {
 
     Review createReview(Review review);
 
+    Review getRandomReviewByBeerId(int beerId);
+
 }
