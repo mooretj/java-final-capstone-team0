@@ -37,7 +37,7 @@
           <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
       </div>
 
-      <div class="edit" v-if="getBrewer">
+      <div class="edit" v-if="getBrewers">
           <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
       </div>
     </div>

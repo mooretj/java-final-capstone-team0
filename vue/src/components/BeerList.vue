@@ -19,11 +19,6 @@
       <button @click="this.$router.push({ name: 'BreweryDetailsView', params: {breweryId: this.$route.params.breweryId}})">Back to brewery</button>
     </div>
   </div>
-  <div v-else>
-    <div class='return'>
-      <button @click="this.$router.push({ name: 'home' })">Back Home</button>
-    </div>
-  </div>
 </div>
 </template>
   
@@ -70,7 +65,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100vw;
 }
 .beer {
