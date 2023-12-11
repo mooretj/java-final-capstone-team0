@@ -22,7 +22,7 @@ CREATE TABLE user_contact (
 CREATE TABLE brewery (
 	brewery_id SERIAL UNIQUE,
 	brewery_name varchar(50) NOT NULL,
-	brewery_main_img varchar(150),
+	brewery_main_img varchar(200),
 	website varchar(200),
 	history varchar(5000)
 );

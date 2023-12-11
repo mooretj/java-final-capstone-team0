@@ -19,7 +19,7 @@ export default {
     },
     
     getRandomBrewery() {
-        return http.get("/breweries/random");
+        return http.get('/breweries/random');
     },
 
     addBrewery(brewery) {

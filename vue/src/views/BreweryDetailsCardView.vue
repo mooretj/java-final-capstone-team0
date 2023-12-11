@@ -35,7 +35,7 @@
       getRandomBrewery() {
         breweryService.getRandomBrewery()
         .then(response => {
-          this.beer1 = response.data;
+          this.brewery = response.data;
           this.isLoading = false;
         })
         .catch(error => {

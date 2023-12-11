@@ -1,10 +1,11 @@
 <template>
 
    
-    <div class="BreweryDetailsMain" id="overlay" style="{ background-image: {{brewery.brewery_main_img}};}">
+    <div class="BreweryDetailsMain" id="overlay" :style="`background-image: url(${brewery.brewery_main_img});`">
         <div class="dim">
         <div class="name">
             <h1>{{ brewery.brewery_name }}</h1>
+            <img class="brewery-img" :src="brewery.brewery_main_img" alt=""/>
         </div>
 
         <div class="BreweryDetails">
@@ -36,26 +37,77 @@
   </script>
     
   <style scoped>
+ 
+img {
+    display: none;
+  }
+    h2 {
+    color: #CA801B;
+  }
+  .BreweryDetailsMain {
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 41.74vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .dim {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+  }
 
-  h1 {
-    text-shadow: 1px black;
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    height: 25vw;
+    width: 100%;
+    margin: 0px;
+    text-shadow: black 3px 3px 4px;
+    
   }
 
   .BreweryDetails {
     display: none;
+    height:25vw;
+    
   }
 
-  .dim:hover {
-    display:initial;
-    background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+    .dim:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
   }
-
-  .dim:hover .BreweryDetails {
+    .BreweryDetailsMain:hover img {
+    width: 700px;
     display: initial;
+    
   }
 
-  h2 {
-    color: #CA801B;
+  .BreweryDetailsMain:hover .name {
+    width: 50vw;
+    font-size: 1vw;
+    justify-content: space-around;
+   background-color: rgba(0, 0, 0, 0);
   }
+
+  .BreweryDetailsMain:hover .BreweryDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+  }
+  
   </style>
     
