@@ -2,8 +2,8 @@
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
-
-  <div class='list' v-else>
+<div v-else class="container">
+  <div class='list' >
     <h1>Beers</h1>
     <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
@@ -19,11 +19,7 @@
       <button @click="this.$router.push({ name: 'BreweryDetailsView', params: {breweryId: this.$route.params.breweryId}})">Back to brewery</button>
     </div>
   </div>
-  <div v-else>
-    <div class='return'>
-      <button @click="this.$router.push({ name: 'home' })">Back Home</button>
-    </div>
-  </div>
+</div>
 </template>
   
 <script>
@@ -67,18 +63,22 @@ export default {
 
   
 <style scoped>
-
-.beer {
+.container {
   display: flex;
-    flex-direction: column;
-    font-size: x-large;
-    border: 1px solid gray;
-    padding: 30px;
-    margin: 5px 15px 5px 15px;
-    border-radius: 20px;
-    border: 1px solid #CA801B;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: black;
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+  justify-content: center;
+  width: 100vw;
+}
+.beer {
+  text-align: center;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #CA801B;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: black;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+}
+
+h2 {
+  margin: 10px;
 }
 </style>

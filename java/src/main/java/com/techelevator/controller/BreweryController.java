@@ -144,4 +144,14 @@ public class BreweryController {
         }
     }
 
+    /**
+     * Gets a specific Brewery by its ID
+     * @param id
+     * @return a single Brewery
+     */
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/breweries/{id}/brewers", method = RequestMethod.GET)
+    public List<Integer> getBrewers(@PathVariable int id) {
+        return breweryDao.getBrewers(id);
+    }
 }

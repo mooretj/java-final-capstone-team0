@@ -26,4 +26,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+body {
+  width: 100vw;
+}
+</style>

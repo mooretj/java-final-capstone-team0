@@ -1,16 +1,12 @@
 <template>
-  <div class="BreweryDetails">
 
-    <div id="one" class="BreweryDetails">
+  <div class="BreweryDetailsMain" id="overlay">
 
-      <div id="BreweryImage" class="BreweryImage">
-        <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
-      </div>
-
-    </div>
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
 
     <div id="two" class="BreweryDetails">
 
+      <div class="details-left">
       <div class="name">
         <h1>{{ brewery.brewery_name }}</h1>
       </div>
@@ -27,16 +23,28 @@
             <th>Address</th>
             <th>Phone Number</th>
             <th>Email Address</th>
+            <th>Website</th>
           </tr>
           <tr>
             <td>{{ brewery.brewery_contact.brewery_address }}</td>
             <td>{{ brewery.brewery_contact.phone }}</td>
             <td>{{ brewery.brewery_contact.email }}</td>
+            <td><a :href=brewery.website target="_blank">{{ brewery.website }}</a></td>
           </tr>
         </table>
+
+        
+      </div>
+      <div class="beers">
+          <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
       </div>
 
-      <div class="hours-info">
+      <div class="edit" v-if="getBrewers">
+          <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
+      </div>
+    </div>
+    <div class="details-right">
+      <div class="hours">
         <label>Hours of Operation</label>
         <table id="week">
           <tr>
@@ -105,10 +113,12 @@
 
     </div>
   </div>
+  </div>
 </template>
   
 <script>
-import { RouterLink } from 'vue-router';
+  import breweryService from '../services/BreweryService.js';
+  import { RouterLink } from 'vue-router';
 
 export default {
     props: {
@@ -126,68 +136,103 @@ export default {
         };
     },
     methods: {
-        convertTime(t) {
-            let hoursAsNum = Number(t.slice(0, 2));
-            let formattedTime;
-            if (hoursAsNum == 0) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
-            }
-            else if (hoursAsNum == 12) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
-            }
-            else if (hoursAsNum > 12) {
-                formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
-            }
-            else {
-                formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
-            }
-            return formattedTime;
-        },
-        editContact() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to edit contact information.");
-            }
-        },
-        editHours() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to to edit hours of operation.");
-            }
-        },
-    },
-    components: { RouterLink }
+      getBrewers() {
+      breweryService.getBrewers(this.$route.params.breweryId)
+      .then(response => {
+        let brewers = response.data;
+        return brewers.includes(this.$store.state.user.authorities[0].id);
+      })},
+      convertTime(t) {
+          let hoursAsNum = Number(t.slice(0, 2));
+          let formattedTime;
+          if (hoursAsNum == 0) {
+              formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
+          }
+          else if (hoursAsNum == 12) {
+              formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
+          }
+          else if (hoursAsNum > 12) {
+              formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+          }
+          else {
+              formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+          }
+          return formattedTime;
+      },
+      editContact() {
+          if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+              this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
+          }
+          else {
+              alert("You must be authorized to edit contact information.");
+          }
+      },
+      editHours() {
+          if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+              this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
+          }
+          else {
+              alert("You must be authorized to to edit hours of operation.");
+          }
+      }
+    }
+    // components: { RouterLink }
 }
 </script>
   
-<style>
-.BreweryDetails {
+<style scoped>
+.BreweryDetailsMain {
   margin-left: 12px;
   margin-right: 12px;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 100vw;
   grid-template-columns: 50% 50%;
   grid-template-rows: 600px;
-  border-color: white;
-  border-style: solid;
+  
+  z-index: 10;
 }
+
+
 
 .BreweryImage {
   display: flex;
   align-items: center;
   justify-content: start;
   height: 100%;
-
+  position: relative;
+  z-index:1;
 }
+
 
 #two {
-  display: flex;
-  flex-direction: column;
+ display: flex;
+ 
+ padding: 20px;
+ align-items: start;
+ background-image: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%);
+ z-index: 15;
 }
 
+img {
+  width: 900px;
+  height: auto;
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+.details-left {
+  width: 700px;
+  margin-right: 20px;
+}
+
+.contact-info {
+  justify-content: end;
+  width: 500px;
+}
 
 
 </style>

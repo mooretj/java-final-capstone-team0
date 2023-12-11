@@ -1,4 +1,5 @@
 <template>
+  
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet'>
 
   <div class="loading" v-if="isLoading">
@@ -48,12 +49,15 @@ export default {
     }
   }
 
-}
-</script>
-  
-<style >
-iframe {
+
+  }
+</script> 
+<style scoped>
+.iframe {
   display: block;
   margin: auto;
+} 
+body {
+    width: 100vw;
 }
 </style>
