@@ -282,24 +282,3 @@ height: 600px;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-Message Justin Falasca
-
-
-
-
-
-
-
-
-
