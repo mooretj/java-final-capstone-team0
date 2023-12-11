@@ -1,9 +1,9 @@
 <template>
-      <h1>{{ beer.beer_name }}</h1>
-    
     <div class="beerImage">
       <img :src=beer.beer_img alt="">
     </div>
+
+      <h1>{{ beer.beer_name }}</h1>
 
     <div class="description">
       <label>Beer Description:</label>&nbsp;

@@ -14,6 +14,10 @@ export default {
         return http.get(`/breweries/${breweryId}`);
     },
 
+    getBrewers(breweryId){
+        return http.get(`/breweries/${breweryId}/brewers`);
+    },
+
     addBrewery(brewery) {
         return http.post('/breweries', brewery);
     },

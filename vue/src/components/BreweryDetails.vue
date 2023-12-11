@@ -1,16 +1,12 @@
 <template>
-  <div class="BreweryDetails">
 
-    <div id="one" class="BreweryDetails">
+  <div class="BreweryDetailsMain" id="overlay">
 
-      <div id="BreweryImage" class="BreweryImage">
-        <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
-      </div>
-
-    </div>
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
 
     <div id="two" class="BreweryDetails">
 
+      <div class="details-left">
       <div class="name">
         <h1>{{ brewery.brewery_name }}</h1>
       </div>
@@ -34,9 +30,19 @@
             <td>{{ brewery.brewery_contact.email }}</td>
           </tr>
         </table>
+
+        
+      </div>
+      <div class="beers">
+          <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
       </div>
 
-      <div class="hours-info">
+      <div class="edit" v-if="getBrewers">
+          <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
+      </div>
+    </div>
+    <div class="details-right">
+      <div class="hours">
         <label>Hours of Operation</label>
         <table id="week">
           <tr>
@@ -105,10 +111,12 @@
 
     </div>
   </div>
+  </div>
 </template>
   
 <script>
-import { RouterLink } from 'vue-router';
+  import breweryService from '../services/BreweryService.js';
+  import { RouterLink } from 'vue-router';
 
 export default {
     props: {
@@ -126,6 +134,12 @@ export default {
         };
     },
     methods: {
+      getBrewers() {
+      breweryService.getBrewers(this.$route.params.breweryId)
+      .then(response => {
+        let brewers = response.data;
+        return brewers.includes(this.$store.state.user.authorities[0].id);
+      })},
         convertTime(t) {
             let hoursAsNum = Number(t.slice(0, 2));
             let formattedTime;
@@ -159,20 +173,24 @@ export default {
                 alert("You must be authorized to to edit hours of operation.");
             }
         },
-    },
-    components: { RouterLink }
+    
+    
+    }
+    // components: { RouterLink }
 }
 </script>
   
-<style>
-.BreweryDetails {
+<style scoped>
+.BreweryDetailsMain {
   margin-left: 12px;
   margin-right: 12px;
-  display: grid;
+  display: flex;
+  height: auto;
+  display: flex;
   grid-template-columns: 50% 50%;
   grid-template-rows: 600px;
-  border-color: white;
-  border-style: solid;
+  
+  z-index: 10;
 }
 
 .BreweryImage {
@@ -180,12 +198,27 @@ export default {
   align-items: center;
   justify-content: start;
   height: 100%;
-
+  position: relative;
+  z-index:1;
 }
 
+
 #two {
-  display: flex;
-  flex-direction: column;
+ display: flex;
+ 
+ padding: 20px;
+ align-items: start;
+ background-image: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%);
+ z-index: 15;
+}
+
+img {
+  width: 900px;
+  height: auto;
+}
+
+h1 {
+  margin-top: 0px;
 }
 
 

@@ -18,4 +18,5 @@ public interface BreweryDao {
 
     Brewery updateBreweryById(Brewery brewery);
 
+    List<Integer> getBrewers(int breweryId);
 }

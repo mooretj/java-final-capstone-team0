@@ -2,8 +2,8 @@
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
-
-  <div class='list' v-else>
+<div v-else class="container">
+  <div class='list' >
     <h1>Beers</h1>
     <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
@@ -19,11 +19,7 @@
       <button @click="this.$router.push({ name: 'BreweryDetailsView', params: {breweryId: this.$route.params.breweryId}})">Back to brewery</button>
     </div>
   </div>
-  <div v-else>
-    <div class='return'>
-      <button @click="this.$router.push({ name: 'home' })">Back Home</button>
-    </div>
-  </div>
+</div>
 </template>
   
 <script>
@@ -67,14 +63,20 @@ export default {
 
   
 <style scoped>
-
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
 .beer {
   text-align: center;
-  max-width: 20%;
-  padding-top: 40px;
-  margin-bottom: 5px;
+  margin: 10px;
   border: 1px solid gray;
   border-radius: 10px;
   background-color: rgb(36, 36, 36);
+}
+
+h2 {
+  margin: 10px;
 }
 </style>
