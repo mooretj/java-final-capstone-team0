@@ -18,6 +18,8 @@ public class Review {
     private int rating;
     @JsonProperty("username")
     private String username;
+    @JsonProperty("brewery_name")
+    private String breweryName;
 
     public Review() { }
 
@@ -86,6 +88,14 @@ public class Review {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
     }
 
     @Override

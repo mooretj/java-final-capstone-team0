@@ -23,8 +23,11 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review getReviewById(int reviewId) {
         Review review = null;
-        String sql = "SELECT review_id, users.user_id, beer_id, title, body, rating, username " +
-                "FROM review JOIN users ON review.user_id = users.user_id " +
+        String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
+                "FROM review " +
+                "JOIN users ON review.user_id = users.user_id " +
+                "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
+                "JOIN brewery ON brewery_beer.brewery_id = brewery.brewery_id " +
                 "WHERE review.review_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
@@ -40,9 +43,12 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public List<Review> getReviewsByBeerId(int beerId) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, users.user_id, beer_id, title, body, rating, username " +
-                "FROM review JOIN users ON review.user_id = users.user_id " +
-                "WHERE beer_id = ?";
+        String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
+                "FROM review " +
+                "JOIN users ON review.user_id = users.user_id " +
+                "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
+                "JOIN brewery ON brewery_beer.brewery_id = brewery.brewery_id " +
+                "WHERE review.beer_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
             while (results.next()) {
@@ -58,9 +64,11 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public Review getRandomReviewByBeerId(int beerId) {
         Review randomReview = null;
-        String sql = "SELECT review_id, users.user_id, beer_id, title, body, rating, username " +
+        String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
                 "FROM review JOIN users ON review.user_id = users.user_id " +
-                "WHERE beer_id = ? " +
+                "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
+                "JOIN brewery ON brewery_beer.brewery_id = brewery.brewery_id " +
+                "WHERE review.beer_id = ? " +
                 "ORDER BY RANDOM() LIMIT 1";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
@@ -110,6 +118,7 @@ public class JdbcReviewDao implements ReviewDao {
         review.setBody(rs.getString("body"));
         review.setRating(rs.getInt("rating"));
         review.setUsername(rs.getString("username"));
+        review.setBreweryName(rs.getString("brewery_name"));
         return review;
     }
 }

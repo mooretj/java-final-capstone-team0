@@ -14,11 +14,11 @@
   </div>
 
   <br>
-  <div v-if='this.$route.params.breweryId != 0'>
+  <!-- <div v-if='this.$route.params.breweryId != 0'>
     <div class='return'>
       <button @click="this.$router.push({ name: 'BreweryDetailsView', params: {breweryId: this.$route.params.breweryId}})">Back to brewery</button>
     </div>
-  </div>
+  </div> -->
 </div>
 </template>
   
