@@ -142,41 +142,39 @@ export default {
         let brewers = response.data;
         return brewers.includes(this.$store.state.user.authorities[0].id);
       })},
-        convertTime(t) {
-            let hoursAsNum = Number(t.slice(0, 2));
-            let formattedTime;
-            if (hoursAsNum == 0) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
-            }
-            else if (hoursAsNum == 12) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
-            }
-            else if (hoursAsNum > 12) {
-                formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
-            }
-            else {
-                formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
-            }
-            return formattedTime;
-        },
-        editContact() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to edit contact information.");
-            }
-        },
-        editHours() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to to edit hours of operation.");
-            }
-        },
-    
-    
+      convertTime(t) {
+          let hoursAsNum = Number(t.slice(0, 2));
+          let formattedTime;
+          if (hoursAsNum == 0) {
+              formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
+          }
+          else if (hoursAsNum == 12) {
+              formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
+          }
+          else if (hoursAsNum > 12) {
+              formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+          }
+          else {
+              formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+          }
+          return formattedTime;
+      },
+      editContact() {
+          if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+              this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
+          }
+          else {
+              alert("You must be authorized to edit contact information.");
+          }
+      },
+      editHours() {
+          if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+              this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
+          }
+          else {
+              alert("You must be authorized to to edit hours of operation.");
+          }
+      }
     }
     // components: { RouterLink }
 }
