@@ -23,11 +23,13 @@
             <th>Address</th>
             <th>Phone Number</th>
             <th>Email Address</th>
+            <th>Website</th>
           </tr>
           <tr>
             <td>{{ brewery.brewery_contact.brewery_address }}</td>
             <td>{{ brewery.brewery_contact.phone }}</td>
             <td>{{ brewery.brewery_contact.email }}</td>
+            <td><a :href=brewery.website target="_blank">{{ brewery.website }}</a></td>
           </tr>
         </table>
 
@@ -185,13 +187,16 @@ export default {
   margin-left: 12px;
   margin-right: 12px;
   display: flex;
+  justify-content: center;
   height: auto;
-  display: flex;
+  width: 100vw;
   grid-template-columns: 50% 50%;
   grid-template-rows: 600px;
   
   z-index: 10;
 }
+
+
 
 .BreweryImage {
   display: flex;
@@ -221,6 +226,15 @@ h1 {
   margin-top: 0px;
 }
 
+.details-left {
+  width: 700px;
+  margin-right: 20px;
+}
+
+.contact-info {
+  justify-content: end;
+  width: 500px;
+}
 
 
 </style>

@@ -71,9 +71,11 @@ export default {
 .beer {
   text-align: center;
   margin: 10px;
-  border: 1px solid gray;
   border-radius: 10px;
-  background-color: rgb(36, 36, 36);
+  border: 1px solid #CA801B;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: black;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 
 h2 {
