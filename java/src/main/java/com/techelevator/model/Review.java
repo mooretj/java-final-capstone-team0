@@ -16,18 +16,21 @@ public class Review {
     private String body;
     @JsonProperty("rating")
     private int rating;
-
+    @JsonProperty("username")
     private String username;
+    @JsonProperty("brewery_name")
+    private String breweryName;
 
     public Review() { }
 
-    public Review(int reviewId, int userId, int beerId, String title, String body, int rating) {
+    public Review(int reviewId, int userId, int beerId, String title, String body, int rating, String username) {
         this.reviewId = reviewId;
         this.userId = userId;
         this.beerId = beerId;
         this.title = title;
         this.body = body;
         this.rating = rating;
+        this.username = username;
     }
 
 
@@ -86,6 +89,15 @@ public class Review {
     public void setRating(int rating) {
         this.rating = rating;
     }
+    
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
+    }
 
     @Override
     public String toString() {
@@ -95,6 +107,7 @@ public class Review {
                 ", Beer Id=" + beerId +
                 ", Title='" + title + '\'' +
                 ", Body='" + body + '\'' +
-                ", Rating=" + rating + "}";
+                ", Rating=" + rating + '\'' +
+                ", Username=" + username;
     }
 }

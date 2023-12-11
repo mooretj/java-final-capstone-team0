@@ -38,10 +38,7 @@ public class ReviewController {
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "reviews/{reviewId}")
-    public Review getReviewById(@PathVariable int reviewId) {
-        return reviewDao.getReviewById(reviewId);
-    }
+
 
     @RequestMapping(path = "reviews/random/{beerId}", method = RequestMethod.GET)
     public Review getRandomReviewByBeerId(@PathVariable int beerId) {
@@ -57,4 +54,5 @@ public class ReviewController {
     public Review getReviewByReviewId(@PathVariable int reviewId) {
         return reviewDao.getReviewById(reviewId);
     }
+
 }
