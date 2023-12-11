@@ -85,7 +85,7 @@ CREATE TABLE review (
 	review_id SERIAL UNIQUE,
 	user_id int,
 	beer_id int,
-	title varchar(50);
+	title varchar(50),
 	body varchar(500),
 	rating int CHECK (rating >= 1 AND rating <= 5),
 	CONSTRAINT FK_review_users FOREIGN KEY (user_id) REFERENCES users(user_id),

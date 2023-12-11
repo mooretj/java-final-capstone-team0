@@ -10,8 +10,6 @@ public interface ReviewDao {
 
     List<Review> getReviewsByBeerId(int beerId);
 
-    Review getRandomReviewByBeerId(int beerId);
-
     Review createReview(Review review);
 
     Review getRandomReviewByBeerId(int beerId);
