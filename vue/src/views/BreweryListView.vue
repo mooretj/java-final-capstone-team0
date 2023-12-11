@@ -11,8 +11,6 @@
     <breweryList />
 
     
-    <button class="btn-add" v-on:click="addBrewery">Add Brewery</button>
-    <button @click="this.$router.push({ name: 'home'})">Home</button>
   </div>
 </template>
   

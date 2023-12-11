@@ -1,39 +1,43 @@
 <template>
-  <!-- <div id="hopspotter">
-<img id="hopspotter" src="src/assets/HopSpotter.png" alt="beerimage">
-</div> -->
-<div id="logo">
-<img id="logo" src="src/assets/HopSpotter.png" alt="beerimage">
-</div>
-<header>
-<div id="topnav" class="topnav">
-<router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">Breweries</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BeerListView', params: { breweryId: 0 } }">Beers</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">News</router-link>&nbsp;
-</div>
+  <div id="logo">
+    <img id="logo" src="src/assets/HopSpotter.png" alt="beerimage">
+  </div>
+  <header>
+    <div id="topnav" class="topnav">
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'BreweryListView' }">Brewery Map</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'BeerListView', params: { breweryId: 0 } }">Beers</router-link>&nbsp;
+    </div>
 
-<div id="topnav" class="topnav">
-<router-link v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''">Login&nbsp;|&nbsp;</router-link>
-<router-link v-bind:to="{ name: 'register' }" v-if="this.$store.state.token == ''">Register</router-link>
-<router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''">Logout</router-link>
-</div>
-</header>
+    <div id="topnav" class="topnav">
+      <router-link v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''">Login&nbsp;|&nbsp;</router-link>
+      <router-link v-bind:to="{ name: 'register' }" v-if="this.$store.state.token == ''">Register</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''">Logout</router-link>
+    </div>
+  </header>
 
-<div id="capstone-app">
-<router-view />
-</div>
+  <div id="capstone-app">
+    <router-view />
+  </div>
 
-<footer>
-<div id="nav">
-<router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">Breweries</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BeerListView', params: { breweryId: 0 } }">Beers</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">News</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">Best Of</router-link>&nbsp;|&nbsp;
-<router-link v-bind:to="{ name: 'BreweryListView' }">Reviews</router-link>
-</div>
-</footer>
+  <footer>
+    <div id="nav">
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'BreweryListView' }">Brewery Map</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'BeerListView', params: { breweryId: 0 } }">Beers</router-link>&nbsp;
+    </div>
+    <div>
+    <p class="aboutus">
+      Tech Elevator Sep 2023 CLE Java CLE java-finalcapstone-team0 
+      <br> 
+      tjmoore + joshschaeffer + ianmcgreal + justinfalasca
+      <br>
+      Copyright 2023 
+
+    </p>
+  </div>
+
+  </footer>
 </template>
 
 <style>
@@ -49,101 +53,80 @@ scrollbar-width:none;
 }
 
 header {
-width: 100%;
-justify-content: space-between;
-background-color: black;
-display: flex;
-border-style: none;
-border-color: white;
-height: 90px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: black;
+  display: flex;
+  border-style: none;
+  border-color: white;
+  height: 90px;
 }
 
 img#logo {
-z-index: 0;
-margin-top: 3px;
-width: 160px;
-height: auto;
-align-items: center;
-position: absolute;
-left: 50%;
-translate: -85px ;
+  z-index: 0;
+  width: 160px;
+  margin-top: 5px;
+  height: auto;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  translate: -75px;
 }
 
 
 
 footer {
-width: 100%;
-background-color: black;
-border-color: white;
-height: 90px;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-
-a{
-color: gainsboro;
-text-decoration: none;
-}
-
-a:hover{
-color: #CA801B;
-}
-
-div #topnav{
-margin-left: 30px;
-margin-right: 30px;
-z-index: 1;
-display: flex;
-justify-content: space-between;
-color: gray;
-align-items: center;
-font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-font-size: 16px;
-text-shadow: black 2px 2px 2px;
-
-
+  width: 100%;
+  background-color: black;
+  border-color: white;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
 }
 
 
-
-div #nav{
-display: flex;
-justify-content:center;
-align-items: flex-end;
-color: gray;
-font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-font-size: 14px;
+a {
+  color: gainsboro;
+  text-decoration: none;
 }
 
-input, textarea, button {
-color: black;
+a:hover {
+  color: #CA801B;
 }
 
+div #topnav {
+  margin-left: 30px;
+  margin-right: 30px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  align-items: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  text-shadow: black 2px 2px 2px;
+}
 
+div #nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: gray;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 14px;
+}
 
+.aboutus{
+  font-size: 10px;
+  text-align: center;
+}
 
+input,
+textarea,
+button {
+  color: black;
+}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-Message Justin Falasca
-
-
-
-
-
-
-
-
-
