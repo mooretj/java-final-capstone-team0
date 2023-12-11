@@ -16,7 +16,7 @@
     <hr id="hr2B" class="hr2B">
   </div>
 
-    <h2 id="LatestReviews">Latest Beer Reviews</h2>
+    <h2 id="LatestReviews">Review Flight</h2>
     <div id="BeerReviews" class="BeerReviews">
       <BeerDetailsCardView/>
     </div>
@@ -180,7 +180,7 @@ html {
   display: flex;
   flex-direction: column;
   position: absolute;
-  transform: translate(-12px, -10px);
+  transform: translate(-13px, -10px);
   left: 50%;
 }
 
@@ -191,7 +191,7 @@ html {
   display: flex;
   flex-direction: column;
   position: absolute;
-  transform: translate(-10px, -20px);
+  transform: translate(-13px, -10px);
   left: 50%;
 }
 
@@ -208,7 +208,7 @@ html {
 #hr2A {
   width: 48%;
 
-  transform: translate(-25.65vw, -10px);
+  transform: translate(-25.65vw, -8px);
 }
 
 #hr2B {
@@ -217,36 +217,15 @@ html {
 }
 
 #featuredBrewery{
-  margin-top: -73px;
+  margin-top: -70px;
   height: 800px;
   background-color: gray;
 }
 #blackout{
-  margin-top: -25px;
+  margin-top: -28px;
   height: 20px;
   background-color: black;
 }
 
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-Message Justin Falasca
-
-
-
-
-
-
-
-
-
