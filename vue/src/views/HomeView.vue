@@ -17,9 +17,9 @@
   </div>
 
     <h2 id="LatestReviews">Latest Beer Reviews</h2>
-    
+    <div id="BeerReviews" class="BeerReviews">
       <BeerDetailsCardView/>
-
+    </div>
 
     <div class="pint2">
       <img id="taps" src="src/assets/pint.png" alt="">
@@ -35,12 +35,15 @@
     </div>
 
 
-      <div class="pint2">
+      <div class="pint3">
         <img id="taps" src="src/assets/pint.png" alt="">
       </div>
 
     <hr id="hr2A" class="hr2A">
     <hr id="hr2B" class="hr2B">
+
+    <div id="blackout" class="blackout">
+    </div>
 
   </body>
   <!-- <div>
@@ -61,31 +64,34 @@ export default {
 
 <style>
 
-
 h1#FindYour {
-  width: 60vw;
+  width: 70vw;
 
-  font-size: 4vw;
+  font-size: 3vw;
   color: white;
   text-shadow: black 2px 2px 4px;
   z-index: 1;
 }
 
 h2 {
-  margin-top: -20px;
+  margin-top: 0px;
   margin-left: 28px;
   margin-bottom: 0px;
   font-size: 28px;
   color: white;
   text-shadow: black 3px 3px 4px;
   z-index: 1;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 
 
 
 body {
+  width: 100%;
   background-image: url("src/assets/woodBG.jpg");
+  background-color: black;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -94,16 +100,19 @@ body {
 }
 
 input#addressEntry {
-width: 80vh;
-  height: 48px;
-  font-size: 14px;
+width: 40vw;
+  height: 2.5vw;
+  font-size: 1.5vw;
   border-style: none;
   color: black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 
 }
 
+.BeerReviews{
+  width: 100%;
 
+}
 
 img#taps {
   width: 100%;
@@ -125,6 +134,7 @@ img#featured {
 html {
 
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: black;
 }
@@ -172,7 +182,7 @@ html {
   display: flex;
   flex-direction: column;
   position: absolute;
-  transform: translate(-20px, -10px);
+  transform: translate(-12px, -10px);
   left: 50%;
 }
 
@@ -198,19 +208,24 @@ html {
 }
 
 #hr2A {
-  width: 49%;
-  transform: translate(-54%, -400%);
+  width: 48%;
+
+  transform: translate(-25.65vw, -10px);
 }
 
 #hr2B {
-  width: 49%;
-  transform: translate(52%, -900%);
+  width: 48%;
+  transform: translate(25.65vw, -18px);
 }
 
 #featuredBrewery{
-  margin-top: 20px;
-  margin-bottom: 40px;
-  height: 600px;
+  margin-top: -73px;
+  height: 800px;
+  background-color: gray;
+}
+#blackout{
+  margin-top: -25px;
+  height: 20px;
   background-color: black;
 }
 
