@@ -17,6 +17,10 @@ export default {
     getBrewers(breweryId){
         return http.get(`/breweries/${breweryId}/brewers`);
     },
+    
+    getRandomBrewery() {
+        return http.get('/breweries/random');
+    },
 
     addBrewery(brewery) {
         return http.post('/breweries', brewery);
