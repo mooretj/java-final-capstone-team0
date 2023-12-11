@@ -265,7 +265,7 @@ font-style: italic;
 .flip-card-front {
   width: 400px;
 height: 600px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7) ;
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
@@ -277,6 +277,8 @@ height: 600px;
   background-color: black;
   color: white;
   transform: rotateY(180deg);
+  background-color: rgba(0, 0, 0, 0.7) ;
+
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 </style>
