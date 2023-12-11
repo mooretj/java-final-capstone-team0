@@ -48,37 +48,7 @@
 </div>
 </template>
 
-
-
-
-<!-- <template>
-    <div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <h1 >{{ beer.beer_name }}</h1>
-  
-  <div >
-    <img :src=beer.beer_img alt="">
-  </div>
-    </div>
-    <div class="flip-card-back">
-      <div class="beer">
-    <label>Beer ABV:</label>
-    <span>{{ beer.abv }}%</span>
-  </div>
-
-  <div class="beer">
-    <label>Beer Type:</label>
-    <span>{{ beer.beer_type }}</span>
-  </div>
-  <div class="beer">
-    <label>Beer Description:</label>
-    <span>{{ beer.beer_description }}</span>
-  </div>
-    </div>
-  </div>
-</div>
-</template> -->
+</template>
 
 <script>
 import beerService from '../services/BeerService.js';
@@ -263,18 +233,22 @@ font-style: italic;
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  width: 400px;
-height: 600px;
-  background-color: rgba(0, 0, 0, 0.7) ;
+width: 350px;
+height: 350px;
+border-radius: 20px;
+  border: 1px solid #CA801B;
+  background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 
 /* Style the back side */
 .flip-card-back {
-  width: 400px;
-height: 600px;
-  background-color: black;
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid #CA801B;
   color: white;
   transform: rotateY(180deg);
   background-color: rgba(0, 0, 0, 0.7) ;

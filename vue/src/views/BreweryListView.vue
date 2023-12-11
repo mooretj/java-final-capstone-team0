@@ -1,24 +1,23 @@
 <template>
+  
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet'>
 
-    <div class="loading" v-if="isLoading">
-      <p>Loading...</p>
-    </div>
-
-    <div v-else>
-        <!-- <h1>Breweries</h1> -->
-      <breweryList/>
-
-      <div>
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E6x1Dagt6pIMuxneEINkxGuYs8o0vIs&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+  <div class="loading" v-if="isLoading">
+    <p>Loading...</p>
   </div>
-      <button class="btn-add" v-on:click="addBrewery">Add Brewery</button>
-    </div>
 
+  <div v-else>
+    <!-- <h1>Breweries</h1> -->
+    <breweryList />
+
+    
+    <button class="btn-add" v-on:click="addBrewery">Add Brewery</button>
+    <button @click="this.$router.push({ name: 'home'})">Home</button>
+  </div>
 </template>
   
-  <script>
-  import breweryList from '../components/BreweryList.vue';
+<script>
+import breweryList from '../components/BreweryList.vue';
 
 //   var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
@@ -29,34 +28,36 @@
 // });
 
 
-  export default {
-    components: {
-      breweryList,
-    },
-    data() {
-      return {
-        breweries: [],
-        isLoading: false
-      };
-    },
-    methods: {
-      addBrewery() {
-       if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-          this.$router.push({ name: 'AddBreweryView' })
+export default {
+  components: {
+    breweryList,
+  },
+  data() {
+    return {
+      breweries: [],
+      isLoading: false
+    };
+  },
+  methods: {
+    addBrewery() {
+      if (this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+        this.$router.push({ name: 'AddBreweryView' })
       }
       else {
-      alert("You must be authorized to do that.")
+        alert("You must be authorized to do that.")
       }
     }
-    }
-    
   }
-  </script>
-  
-  <style >
-  iframe {
-    display: block;
-    margin: auto;
+
+
   }
-  
-  </style>
+</script> 
+<style scoped>
+.iframe {
+  display: block;
+  margin: auto;
+} 
+body {
+    width: 100vw;
+}
+</style>

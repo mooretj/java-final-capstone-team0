@@ -30,13 +30,19 @@
 import breweryService from '../services/BreweryService.js'
 
 export default {
+    props: {
+        brewery: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
             breweryId: this.$route.params.breweryId,
             editContact: {
-                email: '',
-                phone: '',
-                brewery_address: ''
+                email: this.brewery.brewery_contact.email,
+                phone: this.brewery.brewery_contact.phone,
+                brewery_address: this.brewery.brewery_contact.brewery_address
             }
         }
     },
@@ -60,16 +66,15 @@ export default {
                     // }
                     this.$router.push({ name: "BreweryDetailsView", params: { breweryId: this.$route.params.breweryId } });
                 })
-            //   .catch(error => {
-            //     this.handleErrorResponse(error, 'adding');
-            //   });
+                .catch(error => {
+                    this.handleErrorResponse(error, 'adding');
+                });
             }
         },
         cancelForm() {
             this.$router.push({ name: "BreweryDetailsView", params: { breweryId: this.$route.params.breweryId }  });
         }
     }
-
 }
 </script>
 

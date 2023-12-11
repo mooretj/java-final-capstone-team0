@@ -144,6 +144,21 @@ public class JdbcBreweryDao implements BreweryDao {
             return updatedBrewery;
     }
 
+    @Override
+    public List<Integer> getBrewers(int breweryId) {
+        List<Integer> brewers = new ArrayList<>();
+        String sql = "SELECT user_id FROM brewer WHERE brewery_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
+            while (results.next()) {
+                brewers.add(results.getInt("user_id"));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return brewers;
+    }
+
     private Brewery mapRowToBrewery(SqlRowSet b) {
         Brewery brewery = new Brewery();
         brewery.setId(b.getInt("brewery_id"));
