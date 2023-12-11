@@ -39,9 +39,12 @@
           <button class="btn-see-beers" v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id }})">See Beers</button>
       </div>
 
-      <div class="edit" v-if="getBrewers">
-          <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
+      <div class='return'>
+        <button @click="this.$router.push({ name: 'BreweryListView' })">Back to Breweries</button>
       </div>
+      <!-- <div class="edit" v-if="getBrewers">
+          <button class="btn-edit-contact" v-on:click="editContact" >Edit Contact Info</button>
+      </div> -->
     </div>
     <div class="details-right">
       <div class="hours">
@@ -90,10 +93,10 @@
         </table>
       </div>
 
-      <div class="beers">
+      <!-- <div class="beers">
         <button class="btn-see-beers"
           v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See Beers</button>
-      </div>
+      </div> -->
 
       <div class='edit-actions' v-if='this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN"' >
         <div class="edit-contact">
@@ -107,9 +110,7 @@
 
       <br>
 
-      <div class='return'>
-        <button @click="this.$router.push({ name: 'BreweryListView' })">Back to Breweries</button>
-      </div>
+      
 
     </div>
   </div>

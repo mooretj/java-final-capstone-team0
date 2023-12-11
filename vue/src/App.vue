@@ -40,6 +40,12 @@
 * {
 color: white;
 viewport-fit:auto;
+-ms-overflow-style: none;
+scrollbar-width:none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 header {
@@ -54,7 +60,8 @@ height: 90px;
 
 img#logo {
 z-index: 0;
-width: 170px;
+width: 160px;
+margin-top: 5px;
 height: auto;
 align-items: center;
 position: absolute;
