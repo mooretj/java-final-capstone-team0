@@ -1,6 +1,6 @@
 <template>
   <div id="all" class="all">
-    <div class="flip-card">
+    <div class="flip-card" @click="this.$router.push({ name: 'BeerDetailsView', params:{ beerId: this.beer.beer_id }})">
 
       <div class="flip-card-inner">
         <div class="flip-card-front">
