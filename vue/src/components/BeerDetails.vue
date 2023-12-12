@@ -27,7 +27,7 @@
       <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
     </div>
 
-    <div class="actions" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
+    <div class="actions" v-if='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
       <button class="btn-edit" @click="editBeer">Edit</button>
       <button class="btn-delete" @click="deleteBeer">Delete</button>
     </div>
