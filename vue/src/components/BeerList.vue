@@ -78,6 +78,10 @@ export default {
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
 
+.beer:hover {
+  border-color: whitesmoke;
+}
+
 h2 {
   margin: 10px;
 }
