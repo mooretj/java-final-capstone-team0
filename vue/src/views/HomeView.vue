@@ -220,7 +220,7 @@ html {
 
 #featuredBrewery{
   margin-top: -70px;
-  height: 800px;
+  height: 85vh;
   background-color: gray;
 }
 #blackout{
