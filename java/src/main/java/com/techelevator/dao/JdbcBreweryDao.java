@@ -29,7 +29,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery WHERE brewery_id = ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, brewery_logo_img, website, history FROM brewery WHERE brewery_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
             if (results.next()) {
@@ -47,7 +47,7 @@ public class JdbcBreweryDao implements BreweryDao {
         if(breweryName == null) throw new IllegalArgumentException("Brewery name cannot be null");
         List<Brewery> breweries = new ArrayList<>();
         breweryName = "%" + breweryName + "%";
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery WHERE brewery_name ILIKE ?";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, brewery_logo_img, website, history FROM brewery WHERE brewery_name ILIKE ?";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, breweryName);
             while (result.next()) {
@@ -65,7 +65,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getRandomBrewery() {
         Brewery randomBrewery = null;
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history " +
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, brewery_logo_img, website, history " +
                 "FROM brewery " +
                 "ORDER BY RANDOM() LIMIT 1";
         try {
@@ -84,11 +84,11 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery createBrewery(Brewery brewery) {
         Brewery newBrewery = new Brewery();
-        String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, website, history) " +
-                "VALUES (?, ?, ?, ?) RETURNING brewery_id";
+        String insertBrewerySql = "INSERT INTO brewery (brewery_name, brewery_main_img, brewery_logo_img, website, history) " +
+                "VALUES (?, ?, ?, ?, ?) RETURNING brewery_id";
         try {
             int newBreweryId = jdbcTemplate.queryForObject(insertBrewerySql, int.class, brewery.getBreweryName(),
-                    brewery.getBreweryImg(), brewery.getWebsite(), brewery.getHistory());
+                    brewery.getBreweryImg(), brewery.getBreweryLogoImg(), brewery.getWebsite(), brewery.getHistory());
 
             Contact newContact = brewery.getContact();
             newContact.setBreweryId(newBreweryId);
@@ -110,7 +110,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> getBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, website, history FROM brewery";
+        String sql = "SELECT brewery_id, brewery_name, brewery_main_img, brewery_logo_img, website, history FROM brewery";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -145,9 +145,9 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery updateBreweryById(Brewery brewery) {
         Brewery updatedBrewery = null;
-        String sql = "UPDATE brewery SET brewery_name = ?, brewery_main_img = ?, website = ?, history = ? WHERE brewery_id = ?;";
+        String sql = "UPDATE brewery SET brewery_name = ?, brewery_main_img = ?, brewery_logo_img = ?, website = ?, history = ? WHERE brewery_id = ?;";
         try {
-            int numberOfRows = jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getWebsite(), brewery.getHistory(), brewery.getId());
+            int numberOfRows = jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getBreweryImg(), brewery.getBreweryLogoImg(), brewery.getWebsite(), brewery.getHistory(), brewery.getId());
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one.");
             } else {
@@ -183,6 +183,7 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setId(b.getInt("brewery_id"));
         brewery.setBreweryName(b.getString("brewery_name"));
         brewery.setBreweryImg(b.getString("brewery_main_img"));
+        brewery.setBreweryLogoImg(b.getString("brewery_logo_img"));
         brewery.setWebsite(b.getString("website"));
         brewery.setHours(hoursDao.getHoursByBreweryId(brewery.getId()));
         brewery.setHistory(b.getString("history"));

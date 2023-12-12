@@ -18,7 +18,14 @@
             <input type="text" id="address" class="textEntry" v-model="editBrewery.brewery_contact.brewery_address"
                 placeholder="Address" />
 
-            <div>
+            <div class="form-input-group">
+                <label for="logoImg">Brewery Logo: </label>
+                <input type="text" id="logoImg" v-model="editBrewery.brewery_logo_img" />
+            </div>
+
+            <div class="form-input-group">
+                <label for="history">Short History: </label>
+                <input type="text" id="history" v-model="editBrewery.history" />
             </div>
 
             <div>
@@ -194,9 +201,34 @@ export default {
                 history: this.brewery.brewery_history,
                 brewery_contact: {
                     brewery_id: this.brewery.brewery_id,
-                    email: this.brewery.brewery_contact.email,
-                    phone: this.brewery.brewery_contact.phone,
-                    brewery_address: this.brewery.brewery_contact.brewery_address
+                    brewery_name: this.brewery.brewery_name,
+                    brewery_main_img: this.brewery.brewery_main_img,
+                    brewery_logo_img: this.brewery.brewery_logo_img,
+                    website: this.brewery.website,
+                    history: this.brewery.brewery_history,
+                    brewery_contact: {
+                        brewery_id: this.brewery.brewery_id,
+                        email: this.brewery.brewery_contact.email,
+                        phone: this.brewery.brewery_contact.phone,
+                        brewery_address: this.brewery.brewery_contact.brewery_address
+                    },
+                    brewery_hours: {
+                        brewery_id: this.brewery.brewery_hours.brewery_id,
+                        sunday_open: this.brewery.brewery_hours.sunday_open,
+                        sunday_close: this.brewery.brewery_hours.sunday_close,
+                        monday_open: this.brewery.brewery_hours.monday_open,
+                        monday_close: this.brewery.brewery_hours.monday_close,
+                        tuesday_open: this.brewery.brewery_hours.tuesday_open,
+                        tuesday_close: this.brewery.brewery_hours.tuesday_close,
+                        wednesday_open: this.brewery.brewery_hours.wednesday_open,
+                        wednesday_close: this.brewery.brewery_hours.wednesday_close,
+                        thursday_open: this.brewery.brewery_hours.thursday_open,
+                        thursday_close: this.brewery.brewery_hours.thursday_close,
+                        friday_open: this.brewery.brewery_hours.friday_open,
+                        friday_close: this.brewery.brewery_hours.friday_close,
+                        saturday_open: this.brewery.brewery_hours.saturday_open,
+                        saturday_close: this.brewery.brewery_hours.saturday_close
+                    }
                 },
                 brewery_hours: {
                     brewery_id: this.brewery.brewery_hours.brewery_id,

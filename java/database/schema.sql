@@ -23,6 +23,7 @@ CREATE TABLE brewery (
 	brewery_id SERIAL UNIQUE,
 	brewery_name varchar(50) NOT NULL,
 	brewery_main_img varchar(200),
+	brewery_logo_img varchar(200),
 	website varchar(200),
 	history varchar(5000)
 );
