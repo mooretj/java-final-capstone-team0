@@ -8,6 +8,7 @@
         <div class='review-display' v-for='review in reviews' v-bind:key='review.review_id'>
             <h2>{{ review.title }}</h2>
             <p>{{ review.body }}</p>
+            <h4>- {{ review.username }}</h4>
             <div class="rating">
                 <p>{{ review.rating }}/5 pints</p>
                 <img src="../assets/pint.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"

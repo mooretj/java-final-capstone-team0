@@ -46,6 +46,7 @@ color: white;
 viewport-fit:auto;
 -ms-overflow-style: none;
 scrollbar-width:none;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 ::-webkit-scrollbar {

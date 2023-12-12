@@ -10,7 +10,7 @@
         <h2>{{ beer.beer_name }}</h2>
       </router-link>
     </div>
-    <button class="btn-add" v-on:click="addBeer">Add Beer</button>
+    <button class="btn-add" v-on:click="addBeer" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>Add Beer</button>
   </div>
 
   <br>
