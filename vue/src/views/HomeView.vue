@@ -210,12 +210,12 @@ html {
 #hr2A {
   width: 48%;
 
-  transform: translate(-25.65vw, -8px);
+  transform: translate(-26vw, -8px);
 }
 
 #hr2B {
   width: 48%;
-  transform: translate(25.65vw, -18px);
+  transform: translate(26vw, -18px);
 }
 
 #featuredBrewery{
