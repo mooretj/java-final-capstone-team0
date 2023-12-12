@@ -68,7 +68,7 @@
             
             <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
             
-            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
+            <a class='contact-info' :href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
           </div>
 
           <!-- <div class="details-right"> -->
