@@ -49,7 +49,17 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  display: initial;
+}
+
+::-webkit-scrollbar-track {
+  background: whitesmoke;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(65,65,65);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(100,100,100);
 }
 
 header {

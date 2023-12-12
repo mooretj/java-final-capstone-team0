@@ -215,7 +215,7 @@ html {
 
 #hr2B {
   width: 48%;
-  transform: translate(26vw, -18px);
+  transform: translate(25.72vw, -18px);
 }
 
 #featuredBrewery{
