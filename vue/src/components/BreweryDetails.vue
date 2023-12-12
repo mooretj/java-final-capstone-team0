@@ -284,7 +284,7 @@ justify-content: center;  display: flex;
 }
 
 h1 {
-  margin-bottom: 5vw;
+  margin-bottom: 2.5vw;
   font-size: 3vw;
   text-shadow: black 3px 3px 4px;
 }
