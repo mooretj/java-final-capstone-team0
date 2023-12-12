@@ -124,6 +124,7 @@ max-width: 50%;
 
 .brewery:hover {
   border-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 h2 {

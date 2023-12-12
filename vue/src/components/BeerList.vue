@@ -93,18 +93,10 @@ export default {
 
 .beer:hover {
   border-color: whitesmoke;
+  background-color: rgba(0,0,0,1);
 }
 
 h2 {
   margin: 10px;
 }
-/* 
-.list {
-  display: flex;
-  flex-direction: column;
-  padding-left: 5vw;
-  padding-right: 5vw;;
-  max-width: 50vw;
-  background-image: ;
-} */
 </style>
