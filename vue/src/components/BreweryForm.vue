@@ -1,6 +1,9 @@
 <template>
-    <form v-on:submit.prevent="submitForm"></form>
+       
+    <form v-on:submit.prevent="submitForm">
+        <div><h1>Add Brewery</h1></div>
     <div class="form">
+        
         <div class="formLeft">
             <div>
                 <input type="text" id="name" class="textEntry" v-model="editBrewery.brewery_name" required
@@ -18,15 +21,11 @@
             <input type="text" id="address" class="textEntry" v-model="editBrewery.brewery_contact.brewery_address"
                 placeholder="Address" />
 
-            <div class="form-input-group">
-                <label for="logoImg">Brewery Logo: </label>
-                <input type="text" id="logoImg" v-model="editBrewery.brewery_logo_img" />
+            <div>
+                <input type="text" id="logoImg" class="textEntry" v-model="editBrewery.brewery_logo_img"
+                    placeholder="Brewery Logo URL" />
             </div>
 
-            <div class="form-input-group">
-                <label for="history">Short History: </label>
-                <input type="text" id="history" v-model="editBrewery.history" />
-            </div>
 
             <div>
                 <input type="text" id="email" class="textEntry" v-model="editBrewery.brewery_contact.email"
@@ -42,10 +41,8 @@
                 <textarea name="history" id="history" rows="5" placeholder="Brewery History" class="history"
                     v-model="editBrewery.history"></textarea>
             </div>
-
         </div>
         <div class="formRight">
-
             <table>
                 <tbody>
                     <tr>
@@ -66,7 +63,6 @@
                         </td>
                     </tr>
                     <tr class="border_bottom">
-
                         <td> <label for="monday">Monday:</label></td>
                         <td> <input type="time" id="monday" :disabled="mondayNull"
                                 v-model="editBrewery.brewery_hours.monday_open"> -
@@ -88,14 +84,6 @@
                             <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
                         </td>
                     </tr>
-
-
-
-
-
-
-
-
                     <tr class="border_bottom">
                         <td><label for="wednesday">Wednesday: </label></td>
                         <td> <input type="time" id="wednesday" :disabled="wednesdayNull"
@@ -108,14 +96,6 @@
                             <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull">
                         </td>
                     </tr>
-
-
-
-
-
-
-
-
                     <tr class="border_bottom">
                         <td><label for="thursday">Thursday: </label></td>
                         <td> <input type="time" id="thursday" :disabled="thursdayNull"
@@ -128,12 +108,6 @@
                             <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
                         </td>
                     </tr>
-
-
-
-
-
-
                     <tr class="border_bottom">
                         <td><label for="friday">Friday: </label></td>
                         <td> <input type="time" id="friday" :disabled="fridayNull"
@@ -145,13 +119,6 @@
                             <input type="checkbox" id="friday" @click="fridayNull = !fridayNull">
                         </td>
                     </tr>
-
-
-
-
-
-
-
                     <tr>
                         <td> <label for="saturday">Saturday: </label></td>
                         <td> <input type="time" id="saturday" :disabled="saturdayNull"
@@ -169,34 +136,16 @@
                 </tbody>
             </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
+
     </div>
-
-
-
-
-    <form v-on:submit.prevent="submitForm">
-        <button type="submit" v-on:click="submit">Add Brewery</button>
-        <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
-    </form>
+    <div class="submitcancel">
+            <div>
+                <button class="button" type="submit" v-on:click="submit">Add Brewery</button>
+                <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
+            </div>
+        </div>
+</form>
 </template>
 
 <script>
@@ -372,9 +321,14 @@ export default {
 }
 </script>
 
-<style>
+<style >
+
+form{
+    width: 100%;
+}
 .form {
     background-color: black;
+
     opacity: .8;
     display: flex;
     align-items: center;
@@ -384,6 +338,8 @@ export default {
 
 .formLeft {
     width: 40vw;
+    text-align: center;
+
 }
 
 .text {
@@ -392,19 +348,16 @@ export default {
 }
 
 .formRight {
-
     display: flex;
     align-items: top;
     justify-content: center;
     width: 40vw;
-
 }
 
 .textEntry {
     width: 75%;
     margin: 3px;
     height: 28px;
-
 }
 
 table {
@@ -421,4 +374,17 @@ tr.border_bottom td {
     width: 75%;
     resize: none;
     margin: 3px;
-}</style>
+}
+
+.button {
+    width: 200px;
+
+
+
+}
+.submitcancel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
