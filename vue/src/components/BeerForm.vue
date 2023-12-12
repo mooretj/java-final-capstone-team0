@@ -116,7 +116,8 @@
     }
   },
     cancelForm() {
-      this.$router.push({ name: "BeerDetailsView", params: { beerId: this.beer.beer_id } });
+      // this.$router.push({ name: "BreweryDetailsView", params: { breweryId: this.$route.params.breweryId } });
+      this.$router.back();
     },
 
     handleErrorResponse(error, verb) {
