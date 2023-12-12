@@ -84,7 +84,7 @@ iframe{
   height: 70vh;
 }
 
-.brewlist{
+.brewlist {
   align-items: stretch;
   display: flex;
   justify-content:start;
