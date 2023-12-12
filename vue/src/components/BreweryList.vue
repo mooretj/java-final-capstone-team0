@@ -16,7 +16,7 @@
     
 
   </div>
-  <div class="addbrewery">
+  <div class="addbrewery" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
   <div class="brewery" v-on:click="$router.push({ name: 'AddBreweryView' })">
     <h2> Add Brewery </h2>
   </div>

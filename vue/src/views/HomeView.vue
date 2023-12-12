@@ -4,7 +4,7 @@
       <img id="taps" src="src/assets/taps.jpg" alt="">
       <div class="centered">
         <h1 id="FindYour">Find Your New Favorite Brewery</h1>
-        <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip">
+        <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip" @keyup.enter='this.$router.push({ name: "BreweryListView" })'>
       </div>
     </div>
 
@@ -84,7 +84,6 @@ h2 {
   color: white;
   text-shadow: black 3px 3px 4px;
   z-index: 1;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
