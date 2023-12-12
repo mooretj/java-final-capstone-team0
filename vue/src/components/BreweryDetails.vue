@@ -98,12 +98,12 @@
                 </tr>
               </table>
                <div class='edit-actions'
-            v-if='this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
-            <div class="edit-contact">
+            v-if='(JSON.stringify(this.$store.state.user) !== "{}" &&  this.$store.state.user.authorities[0].name == "ROLE_ADMIN") || getBrewers'>
+            <div class="edit-contact" >
               <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
             </div>
 
-            <div class="edit-hours">
+            <div class="edit-hours" >
               <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default {
             breweryService.getBrewers(this.$route.params.breweryId)
                 .then(response => {
                 let brewers = response.data;
-                return brewers.includes(this.$store.state.user.authorities[0].id);
+                return brewers.includes(this.$store.state.user.id);
             });
         },
         convertTime(t) {
@@ -253,7 +253,7 @@ export default {
   }
 
 .day {
-font-weight: bold;
+  font-weight: bold;
 }
 
 .BreweryImage {
@@ -287,7 +287,8 @@ h1 {
   margin-bottom: 2.5vw;
   font-size: 3vw;
   text-shadow: black 3px 3px 4px;
-  z-index: 1;}
+  z-index: 1;
+}
 
 
 .details-left {
