@@ -297,7 +297,12 @@ img {
 
 h1 {
   margin-top: 0px;
-}
+  margin-left: 28px;
+  margin-bottom: 0px;
+  font-size: 28px;
+  color: white;
+  text-shadow: black 3px 3px 4px;
+  z-index: 1;}
 
 
 .details-left {

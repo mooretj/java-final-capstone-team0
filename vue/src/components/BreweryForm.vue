@@ -1,6 +1,9 @@
 <template>
-    <form v-on:submit.prevent="submitForm"></form>
+       
+    <form v-on:submit.prevent="submitForm">
+        <div><h1>Add Brewery</h1></div>
     <div class="form">
+        
         <div class="formLeft">
             <div>
                 <input type="text" id="name" class="textEntry" v-model="editBrewery.brewery_name" required
@@ -18,15 +21,11 @@
             <input type="text" id="address" class="textEntry" v-model="editBrewery.brewery_contact.brewery_address"
                 placeholder="Address" />
 
-            <div class="form-input-group">
-                <label for="logoImg">Brewery Logo: </label>
-                <input type="text" id="logoImg" v-model="editBrewery.brewery_logo_img" />
+            <div>
+                <input type="text" id="logoImg" class="textEntry" v-model="editBrewery.brewery_logo_img"
+                    placeholder="Brewery Logo URL" />
             </div>
 
-            <div class="form-input-group">
-                <label for="history">Short History: </label>
-                <input type="text" id="history" v-model="editBrewery.history" />
-            </div>
 
             <div>
                 <input type="text" id="email" class="textEntry" v-model="editBrewery.brewery_contact.email"
@@ -39,144 +38,114 @@
             </div>
 
             <div>
-                <textarea name="history" id="history"  rows="5" placeholder="Brewery History" class="history" v-model="editBrewery.history"></textarea>
+                <textarea name="history" id="history" rows="5" placeholder="Brewery History" class="history"
+                    v-model="editBrewery.history"></textarea>
             </div>
-
         </div>
         <div class="formRight">
-
             <table>
-<tbody>
-<tr>
-<td>            <label for="hours">Hours of Operation</label></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="border_bottom">
-<td>                <label for="sunday">Sunday:</label>
-</td>
-<td>                <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_open"> -
-                <input type="time" id="sunday" :disabled="sundayNull"
-                    v-model="editBrewery.brewery_hours.sunday_close"></td>
-<td>                <label for="sunday">Closed for the day:</label>
-                <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull"></td>
-</tr>
-<tr class="border_bottom">
-
-<td>                    <label for="monday">Monday:</label></td>
-<td>                <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_open"> -
-                <input type="time" id="monday" :disabled="mondayNull"
-                    v-model="editBrewery.brewery_hours.monday_close"></td>
-<td>                <label for="monday">Closed for the day:</label>
-                <input type="checkbox" id="monday" @click="mondayNull = !mondayNull"></td>
-</tr>
-<tr class="border_bottom">
-<td>                <label for="tuesday">Tuesday: </label></td>
-<td>                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_open"> -
-                <input type="time" id="tuesday" :disabled="tuesdayNull"
-                    v-model="editBrewery.brewery_hours.tuesday_close"></td>
-<td>                <label for="tuesday">Closed for the day:</label>
-                <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
-</td>
-</tr>
-
-
-
-
-
-
-
-
-<tr class="border_bottom">
-<td><label for="wednesday">Wednesday: </label></td>
-<td>                <input type="time" id="wednesday" :disabled="wednesdayNull"
-                    v-model="editBrewery.brewery_hours.wednesday_open">
-                -
-                <input type="time" id="wednesday" :disabled="wednesdayNull"
-                    v-model="editBrewery.brewery_hours.wednesday_close"></td>
-<td>                <label for="wednesday">Closed for the day:</label>
-                <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull"></td>
-</tr>
-
-
-
-
-
-
-
-
-<tr class="border_bottom">
-<td><label for="thursday">Thursday: </label></td>
-<td>                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editBrewery.brewery_hours.thursday_open">
-                -
-                <input type="time" id="thursday" :disabled="thursdayNull"
-                    v-model="editBrewery.brewery_hours.thursday_close"></td>
-<td>                <label for="thursday">Closed for the day:</label>
-                <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull"></td>
-</tr>
-
-
-
-
-
-
-<tr class="border_bottom">
-<td><label for="friday">Friday: </label></td>
-<td>                <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_open"> -
-                <input type="time" id="friday" :disabled="fridayNull"
-                    v-model="editBrewery.brewery_hours.friday_close"></td>
-<td>                <label for="friday">Closed for the day:</label>
-                <input type="checkbox" id="friday" @click="fridayNull = !fridayNull"></td>
-</tr>
-
-
-
-
-
-
-
-<tr>
-<td>                <label for="saturday">Saturday: </label></td>
-<td>                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editBrewery.brewery_hours.saturday_open">
-                -
-                <input type="time" id="saturday" :disabled="saturdayNull"
-                    v-model="editBrewery.brewery_hours.saturday_close"></td>
-<td>                <label for="saturday">Closed for the day:</label>
-                <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull"></td>
-</tr>
+                <tbody>
+                    <tr>
+                        <td> <label for="hours">Hours of Operation</label></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="sunday">Sunday:</label>
+                        </td>
+                        <td> <input type="time" id="sunday" :disabled="sundayNull"
+                                v-model="editBrewery.brewery_hours.sunday_open"> -
+                            <input type="time" id="sunday" :disabled="sundayNull"
+                                v-model="editBrewery.brewery_hours.sunday_close">
+                        </td>
+                        <td> <label for="sunday">Closed for the day:</label>
+                            <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="monday">Monday:</label></td>
+                        <td> <input type="time" id="monday" :disabled="mondayNull"
+                                v-model="editBrewery.brewery_hours.monday_open"> -
+                            <input type="time" id="monday" :disabled="mondayNull"
+                                v-model="editBrewery.brewery_hours.monday_close">
+                        </td>
+                        <td> <label for="monday">Closed for the day:</label>
+                            <input type="checkbox" id="monday" @click="mondayNull = !mondayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="tuesday">Tuesday: </label></td>
+                        <td> <input type="time" id="tuesday" :disabled="tuesdayNull"
+                                v-model="editBrewery.brewery_hours.tuesday_open"> -
+                            <input type="time" id="tuesday" :disabled="tuesdayNull"
+                                v-model="editBrewery.brewery_hours.tuesday_close">
+                        </td>
+                        <td> <label for="tuesday">Closed for the day:</label>
+                            <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="wednesday">Wednesday: </label></td>
+                        <td> <input type="time" id="wednesday" :disabled="wednesdayNull"
+                                v-model="editBrewery.brewery_hours.wednesday_open">
+                            -
+                            <input type="time" id="wednesday" :disabled="wednesdayNull"
+                                v-model="editBrewery.brewery_hours.wednesday_close">
+                        </td>
+                        <td> <label for="wednesday">Closed for the day:</label>
+                            <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="thursday">Thursday: </label></td>
+                        <td> <input type="time" id="thursday" :disabled="thursdayNull"
+                                v-model="editBrewery.brewery_hours.thursday_open">
+                            -
+                            <input type="time" id="thursday" :disabled="thursdayNull"
+                                v-model="editBrewery.brewery_hours.thursday_close">
+                        </td>
+                        <td> <label for="thursday">Closed for the day:</label>
+                            <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="friday">Friday: </label></td>
+                        <td> <input type="time" id="friday" :disabled="fridayNull"
+                                v-model="editBrewery.brewery_hours.friday_open"> -
+                            <input type="time" id="friday" :disabled="fridayNull"
+                                v-model="editBrewery.brewery_hours.friday_close">
+                        </td>
+                        <td> <label for="friday">Closed for the day:</label>
+                            <input type="checkbox" id="friday" @click="fridayNull = !fridayNull">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="saturday">Saturday: </label></td>
+                        <td> <input type="time" id="saturday" :disabled="saturdayNull"
+                                v-model="editBrewery.brewery_hours.saturday_open">
+                            -
+                            <input type="time" id="saturday" :disabled="saturdayNull"
+                                v-model="editBrewery.brewery_hours.saturday_close">
+                        </td>
+                        <td> <label for="saturday">Closed for the day:</label>
+                            <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull">
+                        </td>
+                    </tr>
 
 
-</tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                </tbody>
+            </table>
 
         </div>
+
     </div>
-
-
-
-
-    <form v-on:submit.prevent="submitForm">
-        <button type="submit" v-on:click="submit">Add Brewery</button>
-        <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
-    </form>
+    <div class="submitcancel">
+            <div>
+                <button class="button" type="submit" v-on:click="submit">Add Brewery</button>
+                <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
+            </div>
+        </div>
+</form>
 </template>
 
 <script>
@@ -352,9 +321,14 @@ export default {
 }
 </script>
 
-<style>
+<style >
+
+form{
+    width: 100%;
+}
 .form {
     background-color: black;
+
     opacity: .8;
     display: flex;
     align-items: center;
@@ -364,6 +338,8 @@ export default {
 
 .formLeft {
     width: 40vw;
+    text-align: center;
+
 }
 
 .text {
@@ -372,34 +348,43 @@ export default {
 }
 
 .formRight {
-
     display: flex;
     align-items: top;
     justify-content: center;
     width: 40vw;
-    
 }
 
 .textEntry {
     width: 75%;
     margin: 3px;
     height: 28px;
+}
+
+table {
+    border-spacing: 0 10px;
 
 }
 
-table{
-    border-spacing:0 10px;
-
-}
-tr.border_bottom td{
+tr.border_bottom td {
     border-bottom: 1px solid white;
-   
+
 }
 
-.history{
+.history {
     width: 75%;
     resize: none;
     margin: 3px;
 }
 
+.button {
+    width: 200px;
+
+
+
+}
+.submitcancel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>

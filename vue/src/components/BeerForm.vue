@@ -1,4 +1,6 @@
 <template>
+
+<div class="form">
   <div class="text-center">
       <form v-on:submit.prevent="submitForm">
 
@@ -13,35 +15,33 @@
         </div> -->
 
         <div class="form-input-group">
-          <label for="name">Beer Name: </label>
-          <input type="text" id="name" v-model="editBeer.beer_name"  />
+          <input type="text" id="name" v-model="editBeer.beer_name" placeholder="Beer Name"   class="textEntry" />
         </div>
 
         <div class="form-input-group">
-          <label for="description">Description: </label>
-          <input type="text" id="description" v-model="editBeer.beer_description" />
+          <input type="text" id="beerImage" v-model="editBeer.beer_img" placeholder="Beer Image URL"  class="textEntry" />
         </div>
 
         <div class="form-input-group">
-          <label for="img">Beer Image URL: </label>
-          <input type="text" id="beerImage" v-model="editBeer.beer_img" />
+          <input type="abv" id="abv" v-model="editBeer.abv" placeholder="ABV"  class="textEntry" />
         </div>
 
         <div class="form-input-group">
-          <label for="abv">ABV: </label>
-          <input type="abv" id="abv" v-model="editBeer.abv" />
+          <input type="text"  id="beerType" v-model="editBeer.beer_type" placeholder="Beer Type"  class="textEntry" />
         </div>
 
         <div class="form-input-group">
-          <label for="beerType">Beer Type: </label>
-          <input type="text"  id="beerType" v-model="editBeer.beer_type" />
+          <textarea rows="5" type="text" id="description" class="description" v-model="editBeer.beer_description" placeholder="Description"  />
         </div>
 
-        <button class="btn-submit" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
-        <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
 
       </form>
     </div>
+  </div>
+  <div class="submitcancel">
+        <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
+        <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
+      </div>
 </template>
     
 <script>
@@ -171,7 +171,53 @@
 
 
 <style>
+.form {
+  
+    background-color: black;
+    opacity: .8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+
+
+.text {
+  
+    text-align: center;
+    
+
+}
+
+.text-center{
+  width: 75%;
+}
+
+.submitcancel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button{
+    width: 200px;
+}
+
+.textEntry {
+
+    margin: 3px;
+    height: 28px;
+    
+}
+
+
+.description{    
+  width: 75%;
+  resize: none;
+  margin: 3px;
+}
 
 </style>
-
     

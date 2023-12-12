@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <h1>Add Brewery</h1>
+
         <brewery-form v-bind:brewery="brewery"/>
     </div>
 </template>
@@ -47,4 +47,16 @@ export default {
     }
 }
 </script>
+
+<style>
+h1{
+    margin-top: 0px;
+  margin-left: 28px;
+  margin-bottom: 0px;
+  font-size: 28px;
+  color: white;
+  text-shadow: black 3px 3px 4px;
+  z-index: 1;
+}
+</style>
 
