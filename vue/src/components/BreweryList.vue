@@ -8,8 +8,8 @@
     <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
         <div class="brewery">
-          <img :src=brewery.brewery_logo_img alt=""/>
-          <h2>{{ brewery.brewery_name }}</h2>
+          <img class="logo" :src=brewery.brewery_logo_img alt=""/>
+          <h2 class="center">{{ brewery.brewery_name }}</h2>
         </div>
       </router-link>
       </div>
@@ -114,12 +114,13 @@ iframe{
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
   transition: .3s;
 }
+
 .addbrewery {
   margin-top: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
 }
 
 .brewery:hover {
@@ -129,6 +130,14 @@ max-width: 50%;
 h2 {
   font-size: 20px;
   margin: 10px;
+  flex: 1;
+}
+
+img {
+  padding-left: 1.2vw;
+  padding-right: 0.5vw;
+  height: 70px;
+  width: 70px;
 }
 
 .map {
