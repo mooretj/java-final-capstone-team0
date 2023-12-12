@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="brewery-container">
     <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
       <div class="centered">
         <h1 id="FindYour">Find Your New Favorite Brewery</h1>
@@ -140,18 +140,6 @@
          
         </div>
 
-        
-
-        
-        <div class='contact'>
-            <span class='contact-info'>{{ brewery.brewery_contact.brewery_address }}</span>
-            <br>
-            <span class='contact-info'>{{ brewery.brewery_contact.phone }}</span>
-            <br>
-            <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
-            <br>
-            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
-          </div>
 
 
       </div>
@@ -244,7 +232,7 @@ export default {
   width: 100%;
 
 }
-.container {
+.brewery-container {
 object-fit: contain;
 height: 30vw;  
 display: flex;
@@ -290,6 +278,7 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
 
 #two {
@@ -314,6 +303,9 @@ h1 {
 .details-left {
   width: 80%;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
@@ -323,7 +315,7 @@ h1 {
   display: flex;
   
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   margin-right: 25px;
 }
 
@@ -331,13 +323,13 @@ h1 {
   margin-left: 13px;
 }
 
-/* .contact {
+.contact {
   display: flex;
   flex-direction: column;
   justify-content: start;
   font-size: large;
 
-} */
+}
 
 .contact-label {
   margin-bottom: 7vh;
@@ -348,7 +340,7 @@ h1 {
 }
 
 .history {
-  width: 50%;
+  width: 100%;
   font-size: 18px;
 }
 
@@ -363,6 +355,10 @@ table {
 
 .container {
   width: 100%;
+}
+
+.beer{
+  height: auto;
 }
 </style>
   
