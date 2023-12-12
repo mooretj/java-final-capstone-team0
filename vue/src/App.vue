@@ -139,6 +139,7 @@ button {
     height: 5vh;
     padding: 0px 10px;
     transition: .3s;
+    margin: 20px 0px;
   }
 
   button:hover {

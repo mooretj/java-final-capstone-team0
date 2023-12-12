@@ -3,8 +3,8 @@
     <p>Loading...</p>
   </div>
 <div v-else class="container">
-  <div class='list' >
-    <h1>Now on Tap at {{ brewery.brewery_name }}</h1>
+  <div class='list'>
+    <h1 v-if="this.$route.params.breweryId == 0">Beers</h1>
     <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
         <h2>{{ beer.beer_name }}</h2>
@@ -87,6 +87,8 @@ export default {
   background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+  transition: .3s;
+  min-width: 25vw;
 }
 
 .beer:hover {
@@ -96,4 +98,13 @@ export default {
 h2 {
   margin: 10px;
 }
+/* 
+.list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5vw;
+  padding-right: 5vw;;
+  max-width: 50vw;
+  background-image: ;
+} */
 </style>
