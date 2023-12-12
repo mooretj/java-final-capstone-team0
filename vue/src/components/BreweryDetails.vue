@@ -12,7 +12,7 @@
           </div>
 
           <div class="history">
-            <label>Brewery History:</label>&nbsp;
+            <label>Brewery History: </label><br>
             <span>{{ brewery.history }}</span>
           </div>
 
@@ -57,63 +57,55 @@
             <br>
             <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
             <br>
-            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.website }}</a>
+            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
           </div>
 
           <!-- <div class="details-right"> -->
             <div class="hours">
-              <label>Hours of Operation</label>
+              <label class='hours-label'>Hours of Operation:</label>
               <table id="week">
-                <tr>
+                <!-- <tr>
                   <th>Day</th>
                   <th>Open</th>
                   <th>Close</th>
-                </tr>
+                </tr> -->
                 <tr>
-                  <td>Sunday</td>
+                  <td class='day'>Sunday</td>
                   <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_open) }}</td>
                   <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Monday</td>
+                  <td class='day'>Monday</td>
                   <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_open) }}</td>
                   <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Tuesday</td>
+                  <td class='day'>Tuesday</td>
                   <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_open) }}</td>
                   <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Wednesday</td>
+                  <td class='day'>Wednesday</td>
                   <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_open) }}</td>
                   <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Thursday</td>
+                  <td class='day'>Thursday</td>
                   <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_open) }}</td>
                   <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Friday</td>
+                  <td class='day'>Friday</td>
                   <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_open) }}</td>
                   <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_close) }}</td>
                 </tr>
                 <tr>
-                  <td>Saturday</td>
+                  <td class='day'>Saturday</td>
                   <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_open) }}</td>
                   <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_close) }}</td>
                 </tr>
               </table>
-            </div>
-          <!-- </div> -->
-
-          <!-- <div class="beers">
-        <button class="btn-see-beers"
-          v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See Beers</button>
-      </div> -->
-
-          <div class='edit-actions'
+               <div class='edit-actions'
             v-if='this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
             <div class="edit-contact">
               <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
@@ -123,6 +115,15 @@
               <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
             </div>
           </div>
+            </div>
+          <!-- </div> -->
+
+          <!-- <div class="beers">
+        <button class="btn-see-beers"
+          v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See Beers</button>
+      </div> -->
+
+         
         </div>
         <br>
 
@@ -211,11 +212,12 @@ export default {
 
 .bottom-details {
   display: flex;
+  justify-content: space-between;
   }
 
-  .hours {
-  }
-
+.day {
+font-weight: bold;
+}
 
 .BreweryImage {
   display: flex;
@@ -232,10 +234,7 @@ export default {
 }
 
 #two {
-  display: flex;
-  flex-direction: column;
   padding: 20px;
-  align-items: start;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%);
   z-index: 15;
 }
@@ -249,13 +248,42 @@ h1 {
   margin-top: 0px;
 }
 
+
 .details-left {
   width: 700px;
   margin-right: 20px;
 }
 
-.contact-info {
+.hours {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-right: 25px;
+}
 
+.hours-label {
+  margin-left: 13px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: large;
+
+}
+
+.history {
+  font-size: larger;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
 }
 </style>
   

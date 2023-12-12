@@ -17,9 +17,8 @@
 
   </div>
   <div class="addbrewery" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
-  <div class="brewery" v-on:click="$router.push({ name: 'AddBreweryView' })">
-    <h2> Add Brewery </h2>
-  </div>
+  <button class="add-brewery" v-on:click="$router.push({ name: 'AddBreweryView' })"> Add Brewery </button>
+
 </div>
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
@@ -84,7 +83,7 @@ iframe{
   height: 70vh;
 }
 
-.brewlist{
+.brewlist {
   align-items: stretch;
   display: flex;
   justify-content:start;
@@ -116,6 +115,9 @@ align-items: center;
 justify-content: center;
 }
 
+.brewery:hover {
+  border-color: whitesmoke;
+}
 
 h2 {
   font-size: 2vh;
@@ -123,5 +125,6 @@ h2 {
 }
 
 .map {
+  margin-top: 5px;
 }
 </style>
