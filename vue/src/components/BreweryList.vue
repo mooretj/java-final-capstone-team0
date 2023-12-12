@@ -5,13 +5,13 @@
         width="600" height="600"></iframe>
     </div>
     <div class="brewlist">
-    <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
-      <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
-        <div class="brewery">
-          <img class="logo" :src=brewery.brewery_logo_img alt=""/>
-          <h2 class="center">{{ brewery.brewery_name }}</h2>
-        </div>
-      </router-link>
+      <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
+        <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
+          <div class="brewery">
+            <img class="logo" :src=brewery.brewery_logo_img alt=""/>
+            <h2 class="center">{{ brewery.brewery_name }}</h2>
+          </div>
+        </router-link>
       </div>
       
       
@@ -53,13 +53,7 @@ export default {
           this.breweries = response.data;
           this.isLoading = false;
         })
-        .catch(error => {
-          this.handleError();
-        })
-    },
-    handleErrorResponse() {
-      this.isLoading = false;
-      this.$store.commit('SET_NOTIFICATION', `Could not get brewery data from server.`);
+        
     },
     toggleShowList() {
   this.showList = !this.showList;
@@ -79,9 +73,9 @@ export default {
 .brewMap{
   display: flex;
   justify-content: start;
-  height: 70vh;
   border-style: none;
   margin-bottom: 10px;
+  margin-right: 15px;
 }
 iframe{
   width: 50vw;
@@ -89,18 +83,31 @@ iframe{
 }
 
 .brewlist {
-  align-items: stretch;
+  overflow-y: auto;
   display: flex;
-  justify-content:start;
-
   width: 50vw;
-  height: 100%;
+  height: 79vh;
   flex-wrap: wrap;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track{
+  background: whitesmoke;
+}
+::-webkit-scrollbar-thumb{
+  background: rgb(65,65,65);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: rgb(100,100,100);
 }
 
 .brewery {
   cursor: pointer;
-  width: 24vw;
+  width: 23vw;
   align-items: center;
   align-content: center;
   justify-items: center;
