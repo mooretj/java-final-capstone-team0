@@ -9,15 +9,15 @@
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
         <img :src=brewery.brewery_logo_img alt=""/>
         <h2>{{ brewery.brewery_name }}</h2>
-      </div>
       </router-link>
+      </div>
+      
       
     </div>
 
     </div>
     
 
-  </div>
   <div class="addbrewery" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
   <button class="add-brewery" v-on:click="$router.push({ name: 'AddBreweryView' })"> Add Brewery </button>
 
