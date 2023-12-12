@@ -18,6 +18,11 @@
             </div>
 
             <div class="form-input-group">
+                <label for="logoImg">Brewery Logo: </label>
+                <input type="text" id="logoImg" v-model="editBrewery.brewery_logo_img" />
+            </div>
+
+            <div class="form-input-group">
                 <label for="history">Short History: </label>
                 <input type="text" id="history" v-model="editBrewery.history" />
             </div>
@@ -117,6 +122,7 @@
                     brewery_id: this.brewery.brewery_id,
                     brewery_name: this.brewery.brewery_name,
                     brewery_main_img: this.brewery.brewery_main_img,
+                    brewery_logo_img: this.brewery.brewery_logo_img,
                     website: this.brewery.website,
                     history: this.brewery.brewery_history,
                     brewery_contact: {
