@@ -5,7 +5,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <div class="beerName" id="beerName">
-            <h3>{{ review.brewery_name }}: {{ beer.beer_name }}</h3>
+            <h3>{{ review.brewery_name }} - {{ beer.beer_name }}</h3>
           </div>
           <div id="beerCardFront" class="beerCardFront">
             <div id="container">
