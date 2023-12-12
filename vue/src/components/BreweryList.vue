@@ -123,6 +123,6 @@ h2 {
 }
 
 .map {
-  margin-top: 28px;
+  margin-top: 5px;
 }
 </style>

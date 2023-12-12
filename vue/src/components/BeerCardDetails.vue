@@ -233,7 +233,7 @@ p {
   height: 600px;
   padding: px;
   border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     color: black;
     box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
@@ -245,7 +245,7 @@ p {
   background-color: black;
   color: white;
   transform: rotateY(180deg);
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     color: black;
     box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
 }
