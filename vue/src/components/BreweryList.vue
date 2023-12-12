@@ -7,8 +7,10 @@
     <div class="brewlist">
     <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
+        <div class='brewery'>
         <img :src=brewery.brewery_logo_img alt=""/>
         <h2>{{ brewery.brewery_name }}</h2>
+        </div>
       </router-link>
       </div>
       
