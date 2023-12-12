@@ -11,7 +11,7 @@
         <div class="BreweryDetails">
   
             <div class="history">
-                <label>Brewery History:</label>&nbsp;
+                <label>Brewery History:</label><br>
                 <span>{{ brewery.history }}</span>
             </div>
     
@@ -48,7 +48,7 @@ img {
     background-position: center;
     background-size: cover;
     width: 100vw;
-    height: 41.74vw;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +80,7 @@ img {
 
   .BreweryDetails {
     display: none;
-    height:25vw;
+    height:25vh;
     
   }
 
@@ -89,7 +89,7 @@ img {
     backdrop-filter: blur(8px);
   }
     .BreweryDetailsMain:hover img {
-    width: 700px;
+    width: 30vw;
     display: initial;
     
   }
@@ -108,6 +108,7 @@ img {
     align-items: center;
     width: 45vw;
   }
+  
   
   </style>
     

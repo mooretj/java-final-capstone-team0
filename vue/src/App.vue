@@ -85,7 +85,6 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 
@@ -130,4 +129,22 @@ textarea,
 button {
   color: black;
 }
+
+button {
+    font-size: 20px;
+    background-color: rgb(65, 65, 65);
+    color: #CA801B;
+    border: 2px solid black;
+    box-shadow: black 3px 3px 4px;
+    border-radius: 8px;
+    height: 5vh;
+    padding: 0px 10px;
+    transition: .3s;
+    margin: 20px 0px;
+  }
+
+  button:hover {
+    color:whitesmoke;
+    border-color: #CA801B;
+  }
 </style>

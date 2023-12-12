@@ -5,10 +5,11 @@
         width="600" height="600"></iframe>
     </div>
     <div class="brewlist">
-    <div class="brewery" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
+    <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
         <img :src=brewery.brewery_logo_img alt=""/>
         <h2>{{ brewery.brewery_name }}</h2>
+      </div>
       </router-link>
       
     </div>
@@ -18,9 +19,8 @@
 
   </div>
   <div class="addbrewery" v-if='this.$store.state.user.authorities[0].name == "ROLE_ADMIN"'>
-  <div class="brewery" v-on:click="$router.push({ name: 'AddBreweryView' })">
-    <h2> Add Brewery </h2>
-  </div>
+  <button class="add-brewery" v-on:click="$router.push({ name: 'AddBreweryView' })"> Add Brewery </button>
+
 </div>
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
@@ -79,13 +79,14 @@ export default {
   justify-content: start;
   height: 70vh;
   border-style: none;
+  margin-bottom: 10px;
 }
 iframe{
   width: 50vw;
   height: 70vh;
 }
 
-.brewlist{
+.brewlist {
   align-items: stretch;
   display: flex;
   justify-content:start;
@@ -109,6 +110,7 @@ iframe{
   background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+  transition: .3s;
 }
 .addbrewery {
   margin-top: 10px;
@@ -117,13 +119,16 @@ align-items: center;
 justify-content: center;
 }
 
+.brewery:hover {
+  border-color: whitesmoke;
+}
 
 h2 {
-  font-size: 2vh;
+  font-size: 20px;
   margin: 10px;
 }
 
 .map {
-  margin-top: 28px;
+  margin-top: 5px;
 }
 </style>

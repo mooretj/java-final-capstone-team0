@@ -55,6 +55,7 @@ export default {
   display: block;
   margin: auto;
 } 
+
 body {
     width: 100vw;
 }

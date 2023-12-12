@@ -184,6 +184,7 @@ html {
   position: absolute;
   transform: translate(-13px, -10px);
   left: 50%;
+  z-index: 10;
 }
 
 .pint3 {
@@ -209,19 +210,19 @@ html {
 
 #hr2A {
   width: 48%;
-
-  transform: translate(-25.65vw, -8px);
+  transform: translate(-26vw, -8px);
 }
 
 #hr2B {
   width: 48%;
-  transform: translate(25.65vw, -18px);
+  transform: translate(26vw, -18px);
 }
 
 #featuredBrewery{
   margin-top: -70px;
-  height: 800px;
+  height: 85vh;
   background-color: gray;
+  
 }
 #blackout{
   margin-top: -28px;

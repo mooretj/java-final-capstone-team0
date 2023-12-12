@@ -27,7 +27,5 @@ export default {
 </script>
 
 <style scoped>
-body {
-  width: 100vw;
-}
+
 </style>
