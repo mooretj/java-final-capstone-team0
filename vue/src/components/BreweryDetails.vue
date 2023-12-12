@@ -1,8 +1,16 @@
 <template>
+    <div class="container">
+    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
+      <div class="centered">
+        <h1 id="FindYour">Find Your New Favorite Brewery</h1>
+        <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip" @keyup.enter='this.$router.push({ name: "BreweryListView" })'>
+      </div>
+
+  </div>
+  
   <div class="BreweryDetailsMain" id="overlay">
 
     <div class='top-container'>
-      <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
 
       <div id="two" class="BreweryDetails">
 
@@ -50,15 +58,7 @@
         </div>
         <br>
         <div class='bottom-details'>
-          <div class='contact'>
-            <span class='contact-info'>{{ brewery.brewery_contact.brewery_address }}</span>
-            <br>
-            <span class='contact-info'>{{ brewery.brewery_contact.phone }}</span>
-            <br>
-            <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
-            <br>
-            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
-          </div>
+
 
           <!-- <div class="details-right"> -->
             <div class="hours">
@@ -115,7 +115,10 @@
               <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
             </div>
           </div>
+          
             </div>
+
+            
           <!-- </div> -->
 
           <!-- <div class="beers">
@@ -125,11 +128,24 @@
 
          
         </div>
-        <br>
 
+        
+
+        
+        <div class='contact'>
+            <span class='contact-info'>{{ brewery.brewery_contact.brewery_address }}</span>
+            <br>
+            <span class='contact-info'>{{ brewery.brewery_contact.phone }}</span>
+            <br>
+            <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
+            <br>
+            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
+          </div>
 
 
       </div>
+      
+      
     </div>
   </div>
 </template>
@@ -209,9 +225,27 @@ export default {
   width: 100%;
   z-index: 10;
 }
+.BreweryImage{
+  object-fit: cover;
+  width: 100%;
+
+}
+.container {
+object-fit: contain;
+height: 30vw;  
+display: flex;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  
+
+
+}
 
 .bottom-details {
   display: flex;
+
   justify-content: space-between;
   }
 
@@ -220,6 +254,7 @@ font-weight: bold;
 }
 
 .BreweryImage {
+  
   display: flex;
   align-items: center;
   justify-content: start;
@@ -230,13 +265,16 @@ font-weight: bold;
 
 .top-container {
   display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 #two {
+justify-content: center;  display: flex;
   padding: 20px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%);
   z-index: 15;
+  width: 100%;
+
 }
 
 img {
@@ -250,12 +288,16 @@ h1 {
 
 
 .details-left {
-  width: 700px;
+  width: 50%;
   margin-right: 20px;
 }
 
+
+
+
 .hours {
   display: flex;
+  
   flex-direction: column;
   /* align-items: center; */
   margin-right: 25px;
@@ -265,16 +307,17 @@ h1 {
   margin-left: 13px;
 }
 
-.contact {
+/* .contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: large;
 
-}
+} */
 
 .history {
-  font-size: larger;
+  width: 50%;
+  font-size: 18px;
 }
 
 th {

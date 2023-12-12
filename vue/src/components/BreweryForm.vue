@@ -3,98 +3,159 @@
     <div class="form">
         <div class="formLeft">
             <div>
-                <input type="text" id="name" class="textEntry" v-model="editBrewery.brewery_name" required placeholder="Brewery Name"/>
+                <input type="text" id="name" class="textEntry" v-model="editBrewery.brewery_name" required
+                    placeholder="Brewery Name" />
             </div>
 
             <div>
-                <input type="text" id="website" class="textEntry" v-model="editBrewery.website" placeholder="Website URL"/>
+                <input type="text" id="website" class="textEntry" v-model="editBrewery.website" placeholder="Website URL" />
             </div>
 
             <div>
-                <input type="text" id="mainImg" class="textEntry" v-model="editBrewery.brewery_main_img" placeholder="Brewery Image"/>
+                <input type="text" id="mainImg" class="textEntry" v-model="editBrewery.brewery_main_img"
+                    placeholder="Brewery Image" />
             </div>
-            <input type="text" id="address" class="textEntry" v-model="editBrewery.brewery_contact.brewery_address" placeholder="Address"/>
+            <input type="text" id="address" class="textEntry" v-model="editBrewery.brewery_contact.brewery_address"
+                placeholder="Address" />
 
             <div>
             </div>
 
             <div>
-                <input type="text" id="email" class="textEntry" v-model="editBrewery.brewery_contact.email" placeholder="Email"/>
+                <input type="text" id="email" class="textEntry" v-model="editBrewery.brewery_contact.email"
+                    placeholder="Email" />
             </div>
 
             <div>
-                <input type="text" id="phone" class="textEntry" v-model="editBrewery.brewery_contact.phone" placeholder="Phone Number"/>
+                <input type="text" id="phone" class="textEntry" v-model="editBrewery.brewery_contact.phone"
+                    placeholder="Phone Number" />
             </div>
 
             <div>
-                <input type="text" id="history" class="textEntry" v-model="editBrewery.history" placeholder="Brewery History"/>
-
+                <textarea name="history" id="history"  rows="5" placeholder="Brewery History" class="history" v-model="editBrewery.history"></textarea>
             </div>
 
         </div>
         <div class="formRight">
 
-            <label for="hours">Hours of Operation</label>
+            <table>
+<tbody>
+<tr>
+<td>            <label for="hours">Hours of Operation</label></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="border_bottom">
+<td>                <label for="sunday">Sunday:</label>
+</td>
+<td>                <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_open"> -
+                <input type="time" id="sunday" :disabled="sundayNull"
+                    v-model="editBrewery.brewery_hours.sunday_close"></td>
+<td>                <label for="sunday">Closed for the day:</label>
+                <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull"></td>
+</tr>
+<tr class="border_bottom">
 
-<div class="form-input-group">
-    <label for="sunday">Sunday:</label>
-    <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_open"> -
-    <input type="time" id="sunday" :disabled="sundayNull" v-model="editBrewery.brewery_hours.sunday_close">&nbsp;
-    <label for="sunday">Closed for the day:</label>
-    <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull">
-</div>
+<td>                    <label for="monday">Monday:</label></td>
+<td>                <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_open"> -
+                <input type="time" id="monday" :disabled="mondayNull"
+                    v-model="editBrewery.brewery_hours.monday_close"></td>
+<td>                <label for="monday">Closed for the day:</label>
+                <input type="checkbox" id="monday" @click="mondayNull = !mondayNull"></td>
+</tr>
+<tr class="border_bottom">
+<td>                <label for="tuesday">Tuesday: </label></td>
+<td>                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_open"> -
+                <input type="time" id="tuesday" :disabled="tuesdayNull"
+                    v-model="editBrewery.brewery_hours.tuesday_close"></td>
+<td>                <label for="tuesday">Closed for the day:</label>
+                <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
+</td>
+</tr>
 
-<div class="form-input-group">
-    <label for="monday">Monday:</label>
-    <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_open"> -
-    <input type="time" id="monday" :disabled="mondayNull" v-model="editBrewery.brewery_hours.monday_close">&nbsp;
-    <label for="monday">Closed for the day:</label>
-    <input type="checkbox" id="monday" @click="mondayNull = !mondayNull">
-</div>
 
-<div class="form-input-group">
-    <label for="tuesday">Tuesday: </label>
-    <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_open"> -
-    <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editBrewery.brewery_hours.tuesday_close">&nbsp;
-    <label for="tuesday">Closed for the day:</label>
-    <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
-</div>
 
-<div class="form-input-group">
-    <label for="wednesday">Wednesday: </label>
-    <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editBrewery.brewery_hours.wednesday_open">
-    -
-    <input type="time" id="wednesday" :disabled="wednesdayNull"
-        v-model="editBrewery.brewery_hours.wednesday_close">&nbsp;
-    <label for="wednesday">Closed for the day:</label>
-    <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull">
-</div>
 
-<div class="form-input-group">
-    <label for="thursday">Thursday: </label>
-    <input type="time" id="thursday" :disabled="thursdayNull" v-model="editBrewery.brewery_hours.thursday_open"> -
-    <input type="time" id="thursday" :disabled="thursdayNull"
-        v-model="editBrewery.brewery_hours.thursday_close">&nbsp;
-    <label for="thursday">Closed for the day:</label>
-    <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
-</div>
 
-<div class="form-input-group">
-    <label for="friday">Friday: </label>
-    <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_open"> -
-    <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_close">&nbsp;
-    <label for="friday">Closed for the day:</label>
-    <input type="checkbox" id="friday" @click="fridayNull = !fridayNull">
-</div>
 
-<div class="form-input-group">
-    <label for="saturday">Saturday: </label>
-    <input type="time" id="saturday" :disabled="saturdayNull" v-model="editBrewery.brewery_hours.saturday_open"> -
-    <input type="time" id="saturday" :disabled="saturdayNull"
-        v-model="editBrewery.brewery_hours.saturday_close">&nbsp;
-    <label for="saturday">Closed for the day:</label>
-    <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull">
-</div>
+
+
+<tr class="border_bottom">
+<td><label for="wednesday">Wednesday: </label></td>
+<td>                <input type="time" id="wednesday" :disabled="wednesdayNull"
+                    v-model="editBrewery.brewery_hours.wednesday_open">
+                -
+                <input type="time" id="wednesday" :disabled="wednesdayNull"
+                    v-model="editBrewery.brewery_hours.wednesday_close"></td>
+<td>                <label for="wednesday">Closed for the day:</label>
+                <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull"></td>
+</tr>
+
+
+
+
+
+
+
+
+<tr class="border_bottom">
+<td><label for="thursday">Thursday: </label></td>
+<td>                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editBrewery.brewery_hours.thursday_open">
+                -
+                <input type="time" id="thursday" :disabled="thursdayNull"
+                    v-model="editBrewery.brewery_hours.thursday_close"></td>
+<td>                <label for="thursday">Closed for the day:</label>
+                <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull"></td>
+</tr>
+
+
+
+
+
+
+<tr class="border_bottom">
+<td><label for="friday">Friday: </label></td>
+<td>                <input type="time" id="friday" :disabled="fridayNull" v-model="editBrewery.brewery_hours.friday_open"> -
+                <input type="time" id="friday" :disabled="fridayNull"
+                    v-model="editBrewery.brewery_hours.friday_close"></td>
+<td>                <label for="friday">Closed for the day:</label>
+                <input type="checkbox" id="friday" @click="fridayNull = !fridayNull"></td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+<td>                <label for="saturday">Saturday: </label></td>
+<td>                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editBrewery.brewery_hours.saturday_open">
+                -
+                <input type="time" id="saturday" :disabled="saturdayNull"
+                    v-model="editBrewery.brewery_hours.saturday_close"></td>
+<td>                <label for="saturday">Closed for the day:</label>
+                <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull"></td>
+</tr>
+
+
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -106,11 +167,6 @@
 
 
     <form v-on:submit.prevent="submitForm">
-
-
-
-
-
         <button type="submit" v-on:click="submit">Add Brewery</button>
         <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
     </form>
@@ -266,32 +322,52 @@ export default {
 
 <style>
 .form {
+    background-color: black;
+    opacity: .8;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 60vh;
 }
 
 .formLeft {
     width: 40vw;
 }
-.text{
-text-align: center;
+
+.text {
+    text-align: center;
 
 }
 
 .formRight {
+
+    display: flex;
+    align-items: top;
+    justify-content: center;
     width: 40vw;
-}
-
-.textEntry{
-    width: 25vw;
-}
-
-#history{
     
 }
 
+.textEntry {
+    width: 75%;
+    margin: 3px;
+    height: 28px;
 
+}
 
+table{
+    border-spacing:0 10px;
+
+}
+tr.border_bottom td{
+    border-bottom: 1px solid white;
+   
+}
+
+.history{
+    width: 75%;
+    resize: none;
+    margin: 3px;
+}
 
 </style>
