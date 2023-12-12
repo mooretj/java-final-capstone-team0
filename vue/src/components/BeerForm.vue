@@ -72,7 +72,7 @@
           // if (!this.validateForm()) {
           //   return;
           // }
-          if(this.$store.state.user.brewer == true || this.$store.state.user.authorities.name === "ROLE_ADMIN") {
+          if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name === "ROLE_ADMIN") {
           if (this.editBeer.beer_id == 0 ) {
             beerService
               .addBeer(this.editBeer)
