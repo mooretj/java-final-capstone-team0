@@ -85,7 +85,6 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 
@@ -141,6 +140,7 @@ button {
     height: 5vh;
     padding: 0px 10px;
     transition: .3s;
+    margin: 20px 0px;
   }
 
   button:hover {

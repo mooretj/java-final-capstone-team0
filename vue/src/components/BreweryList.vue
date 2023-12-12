@@ -5,9 +5,11 @@
         width="600" height="600"></iframe>
     </div>
     <div class="brewlist">
-    <div class="brewery" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
+    <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
+        <div class="brewery">
         <h2>{{ brewery.brewery_name }}</h2>
+      </div>
       </router-link>
       
     </div>
@@ -77,6 +79,7 @@ export default {
   justify-content: start;
   height: 70vh;
   border-style: none;
+  margin-bottom: 10px;
 }
 iframe{
   width: 50vw;
@@ -107,6 +110,7 @@ iframe{
   background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
+  transition: .3s;
 }
 .addbrewery {
   margin-top: 10px;
@@ -120,7 +124,7 @@ justify-content: center;
 }
 
 h2 {
-  font-size: 2vh;
+  font-size: 20px;
   margin: 10px;
 }
 
