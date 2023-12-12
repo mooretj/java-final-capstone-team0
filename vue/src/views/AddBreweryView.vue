@@ -1,8 +1,5 @@
 <template>
-    <div class="text-center">
-
         <brewery-form v-bind:brewery="brewery"/>
-    </div>
 </template>
 
 <script>
