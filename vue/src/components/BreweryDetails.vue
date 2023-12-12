@@ -1,11 +1,10 @@
 <template>
-    <div class="brewery-container">
-    <img id="BreweryImage" class="BreweryImage" :src=brewery.brewery_main_img alt="">
-      <div class="centered">
-        <h1 id="FindYour">Find Your New Favorite Brewery</h1>
-        <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip" @keyup.enter='this.$router.push({ name: "BreweryListView" })'>
+    <div class="brewery-container" :style="`background-image: url(${brewery.brewery_main_img})`" alt="">
+      <div class="effect"><div class="name">
+            <h1>{{ brewery.brewery_name }}</h1>
+          </div>
+        
       </div>
-
   </div>
   
   <div class="BreweryDetailsMain" id="overlay">
@@ -15,34 +14,16 @@
       <div id="two" class="BreweryDetails">
 
         <div class="details-left">
-          <div class="name">
-            <h1>{{ brewery.brewery_name }}</h1>
-          </div>
+          
 
           <div class="history">
+            <img id="BreweryImage" class="BreweryImage" :src="brewery.brewery_main_img" alt="">
+            <div class="history-details">
             <label>Brewery History: </label><br>
             <span>{{ brewery.history }}</span>
           </div>
-
-          <div class="contact-info">
-            <!-- <label>Contact Info</label>
-        <table>
-          <tr>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Email Address</th>
-            <th>Website</th>
-          </tr>
-          <tr>
-            <td>{{ brewery.brewery_contact.brewery_address }}</td>
-            <td>{{ brewery.brewery_contact.phone }}</td>
-            <td>{{ brewery.brewery_contact.email }}</td>
-            <td><a :href=brewery.website target="_blank">{{ brewery.website }}</a></td>
-          </tr>
-        </table> -->
-
-
           </div>
+
           <div class="beers">
             <BeerList/>
             <!-- <button class="btn-see-beers"
@@ -68,7 +49,7 @@
             
             <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
             
-            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
+            <a class='contact-info' :href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
           </div>
 
           <!-- <div class="details-right"> -->
@@ -227,22 +208,34 @@ export default {
   width: 100%;
   z-index: 10;
 }
-.BreweryImage{
-  object-fit: cover;
-  width: 100%;
 
+.BreweryImage {
+  max-height: 70vh;
+  width: auto;
+  margin: 2vw;
 }
+
+.effect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 25vw;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .brewery-container {
-object-fit: contain;
-height: 30vw;  
-display: flex;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  background-repeat: no-repeat;
+  display: flex;
   position: relative;
   justify-content: center;
   text-align: center;
   color: white;
-  
-
-
+  align-items: center;
 }
 
 .BreweryDetails {
@@ -268,7 +261,7 @@ font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: start;
-  height: 100%;
+  width: 30vw;
   position: relative;
   z-index: 1;
 }
@@ -290,13 +283,10 @@ justify-content: center;  display: flex;
 
 }
 
-img {
-  width: 900px;
-  height: auto;
-}
-
 h1 {
-  margin-top: 0px;
+  margin-bottom: 5vw;
+  font-size: 3vw;
+  text-shadow: black 3px 3px 4px;
 }
 
 
@@ -342,6 +332,9 @@ h1 {
 .history {
   width: 100%;
   font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 th {

@@ -7,8 +7,10 @@
     <div class="brewlist">
     <div class="brewery-for" v-for="brewery in breweries" v-bind:key="brewery.breweryId">
       <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id } }">
-        <img :src=brewery.brewery_logo_img alt=""/>
-        <h2>{{ brewery.brewery_name }}</h2>
+        <div class="brewery">
+          <img :src=brewery.brewery_logo_img alt=""/>
+          <h2>{{ brewery.brewery_name }}</h2>
+        </div>
       </router-link>
       </div>
       
@@ -122,6 +124,7 @@ max-width: 50%;
 
 .brewery:hover {
   border-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 h2 {
