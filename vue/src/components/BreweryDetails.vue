@@ -44,9 +44,10 @@
 
           </div>
           <div class="beers">
-            <button class="btn-see-beers"
+            <BeerList/>
+            <!-- <button class="btn-see-beers"
               v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See
-              Beers</button>
+              Beers</button> -->
           </div>
           <!-- 
       <div class='return'>
@@ -58,7 +59,17 @@
         </div>
         <br>
         <div class='bottom-details'>
+          <div class='contact'>
+            <label class="contact-label">Contact Info:</label>
 
+            <span class='contact-info'>{{ brewery.brewery_contact.brewery_address }}</span>
+            
+            <span class='contact-info'>{{ brewery.brewery_contact.phone }}</span>
+            
+            <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
+            
+            <a class='contact-info' href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
+          </div>
 
           <!-- <div class="details-right"> -->
             <div class="hours">
@@ -152,66 +163,69 @@
   
 <script>
 import breweryService from '../services/BreweryService.js';
+import BeerList from '../components/BeerList.vue';
 import { RouterLink } from 'vue-router';
 
 export default {
-  props: {
-    brewery: { type: Object, required: false }
-  },
-  data() {
-    return {
-      sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
-      mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
-      tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
-      wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
-      thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
-      fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
-      saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
-    };
-  },
-  methods: {
-    getBrewers() {
-      breweryService.getBrewers(this.$route.params.breweryId)
-        .then(response => {
-          let brewers = response.data;
-          return brewers.includes(this.$store.state.user.authorities[0].id);
-        })
+    props: {
+        brewery: { type: Object, required: false }
     },
-    convertTime(t) {
-      let hoursAsNum = Number(t.slice(0, 2));
-      let formattedTime;
-      if (hoursAsNum == 0) {
-        formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
-      }
-      else if (hoursAsNum == 12) {
-        formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
-      }
-      else if (hoursAsNum > 12) {
-        formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
-      }
-      else {
-        formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
-      }
-      return formattedTime;
+    data() {
+        return {
+            sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
+            mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
+            tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
+            wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
+            thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
+            fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
+            saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
+        };
     },
-    editContact() {
-      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-        this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
-      }
-      else {
-        alert("You must be authorized to edit contact information.");
-      }
-    },
-    editHours() {
-      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-        this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
-      }
-      else {
-        alert("You must be authorized to to edit hours of operation.");
-      }
+    methods: {
+        getBrewers() {
+            breweryService.getBrewers(this.$route.params.breweryId)
+                .then(response => {
+                let brewers = response.data;
+                return brewers.includes(this.$store.state.user.authorities[0].id);
+            });
+        },
+        convertTime(t) {
+            let hoursAsNum = Number(t.slice(0, 2));
+            let formattedTime;
+            if (hoursAsNum == 0) {
+                formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
+            }
+            else if (hoursAsNum == 12) {
+                formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
+            }
+            else if (hoursAsNum > 12) {
+                formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+            }
+            else {
+                formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+            }
+            return formattedTime;
+        },
+        editContact() {
+            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+                this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
+            }
+            else {
+                alert("You must be authorized to edit contact information.");
+            }
+        },
+        editHours() {
+            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+                this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
+            }
+            else {
+                alert("You must be authorized to to edit hours of operation.");
+            }
+        }
     }
-  }
-  // components: { RouterLink }
+    // components: { RouterLink }
+    ,
+    components: { BeerList }
 }
 </script>
   
@@ -243,10 +257,18 @@ display: flex;
 
 }
 
+.BreweryDetails {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .bottom-details {
   display: flex;
-
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
   }
 
 .day {
@@ -265,13 +287,15 @@ font-weight: bold;
 
 .top-container {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #two {
 justify-content: center;  display: flex;
   padding: 20px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%);
+  background-color: rgba(0, 0, 0, .6);
   z-index: 15;
   width: 100%;
 
@@ -288,7 +312,7 @@ h1 {
 
 
 .details-left {
-  width: 50%;
+  width: 80%;
   margin-right: 20px;
 }
 
@@ -310,10 +334,18 @@ h1 {
 /* .contact {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   font-size: large;
 
 } */
+
+.contact-label {
+  margin-bottom: 7vh;
+}
+
+.contact-info {
+  margin-bottom: 4vh;
+}
 
 .history {
   width: 50%;
@@ -327,6 +359,10 @@ th {
 table {
   border-collapse: separate;
   border-spacing: 15px;
+}
+
+.container {
+  width: 100%;
 }
 </style>
   
