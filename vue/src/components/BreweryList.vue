@@ -92,8 +92,9 @@ iframe{
   align-items: stretch;
   display: flex;
   justify-content:start;
-  flex-direction: column;
-  width: 25vw;
+
+  width: 50vw;
+  height: 100%;
   flex-wrap: wrap;
 }
 
@@ -112,7 +113,7 @@ iframe{
   background-color: rgba(0, 0, 0, 0.75);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
-  transition: .3s;
+  transition: .2s;
 }
 .addbrewery {
   margin-top: 10px;
