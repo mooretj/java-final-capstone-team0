@@ -11,6 +11,9 @@ public class Brewery {
     private String breweryName;
     @JsonProperty("brewery_main_img")
     private String breweryImg;
+
+    @JsonProperty("brewery_logo_img")
+    private String breweryLogoImg;
     @JsonProperty("website")
     private String website;
     @JsonProperty("brewery_hours")
@@ -76,10 +79,19 @@ public class Brewery {
         this.contact = contact;
     }
 
-    public Brewery(int id, String breweryName, String breweryImg, String website, Hours hours, String history, Contact contact) {
+    public String getBreweryLogoImg() {
+        return breweryLogoImg;
+    }
+
+    public void setBreweryLogoImg(String breweryLogoImg) {
+        this.breweryLogoImg = breweryLogoImg;
+    }
+
+    public Brewery(int id, String breweryName, String breweryImg, String breweryLogoImg, String website, Hours hours, String history, Contact contact) {
         this.id = id;
         this.breweryName = breweryName;
         this.breweryImg = breweryImg;
+        this.breweryLogoImg = breweryLogoImg;
         this.website = website;
         this.hours = hours;
         this.history = history;
@@ -94,6 +106,7 @@ public class Brewery {
                 "id=" + id +
                 ", Brewery Name='" + breweryName +
                 ", Brewery Img =" + breweryImg +
+                ", Brewery Logo Img =" + breweryLogoImg +
                 ", Website=" + website +
                 ", Hours=" + hours +
                 ", History=" + history +

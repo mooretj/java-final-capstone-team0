@@ -24,10 +24,12 @@
   
 <script>
 import beerService from "../services/BeerService";
+import BreweryService from '../services/BreweryService';
 export default {
   data() {
     return {
-      beers: []
+      beers: [],
+      brewery: {}
     }
   },
   methods: {
@@ -53,9 +55,16 @@ export default {
       this.isLoading = false;
       this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
     },
+    getBrewery() {
+      BreweryService.get(this.$route.params.breweryId)
+      .then(response => {
+        this.brewery = response.data;
+      })
+    }
   },
   created() {
     this.getBeers();
+    this.getBrewery();
   }
 };
 </script>
@@ -66,8 +75,10 @@ export default {
 .container {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
+  flex-wrap: wrap;
 }
+
 .beer {
   text-align: center;
   margin: 10px;
