@@ -210,17 +210,17 @@ html {
 #hr2A {
   width: 48%;
 
-  transform: translate(-25.65vw, -8px);
+  transform: translate(-26vw, -8px);
 }
 
 #hr2B {
   width: 48%;
-  transform: translate(25.65vw, -18px);
+  transform: translate(26vw, -18px);
 }
 
 #featuredBrewery{
   margin-top: -70px;
-  height: 800px;
+  height: 41.75vw;
   background-color: gray;
 }
 #blackout{
