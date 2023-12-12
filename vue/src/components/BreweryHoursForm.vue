@@ -1,70 +1,112 @@
 <template>
-    <div class="text-center">
-        <form v-on:submit.prevent="submitForm">
+    <form v-on:submit.prevent="submitForm">
+            <div><h1>Edit Hours of Operation</h1></div>
+                <div class="form">
+                    <div class="formRight">
+                        <table>
+                <tbody>
+                    <tr>
+                        <td> <label for="hours">Hours of Operation</label></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="sunday">Sunday:</label>
+                        </td>
+                        <td> <input type="time" id="sunday" :disabled="sundayNull"
+                                v-model="editHours.sunday_open"> -
+                            <input type="time" id="sunday" :disabled="sundayNull"
+                                v-model="editHours.sunday_close">
+                        </td>
+                        <td> <label for="sunday">Closed for the day:</label>
+                            <input type="checkbox" id="sunday" @click="sundayNull = !sundayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="monday">Monday:</label></td>
+                        <td> <input type="time" id="monday" :disabled="mondayNull"
+                                v-model="editHours.monday_open"> -
+                            <input type="time" id="monday" :disabled="mondayNull"
+                                v-model="editHours.monday_close">
+                        </td>
+                        <td> <label for="monday">Closed for the day:</label>
+                            <input type="checkbox" id="monday" @click="mondayNull = !mondayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td> <label for="tuesday">Tuesday: </label></td>
+                        <td> <input type="time" id="tuesday" :disabled="tuesdayNull"
+                                v-model="editHours.tuesday_open"> -
+                            <input type="time" id="tuesday" :disabled="tuesdayNull"
+                                v-model="editHours.tuesday_close">
+                        </td>
+                        <td> <label for="tuesday">Closed for the day:</label>
+                            <input type="checkbox" id="tuesday" @click="tuesdayNull = !tuesdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="wednesday">Wednesday: </label></td>
+                        <td> <input type="time" id="wednesday" :disabled="wednesdayNull"
+                                v-model="editHours.wednesday_open">
+                            -
+                            <input type="time" id="wednesday" :disabled="wednesdayNull"
+                                v-model="editHours.wednesday_close">
+                        </td>
+                        <td> <label for="wednesday">Closed for the day:</label>
+                            <input type="checkbox" id="wednesday" @click="wednesdayNull = !wednesdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="thursday">Thursday: </label></td>
+                        <td> <input type="time" id="thursday" :disabled="thursdayNull"
+                                v-model="editHours.thursday_open">
+                            -
+                            <input type="time" id="thursday" :disabled="thursdayNull"
+                                v-model="editHours.thursday_close">
+                        </td>
+                        <td> <label for="thursday">Closed for the day:</label>
+                            <input type="checkbox" id="thursday" @click="thursdayNull = !thursdayNull">
+                        </td>
+                    </tr>
+                    <tr class="border_bottom">
+                        <td><label for="friday">Friday: </label></td>
+                        <td> <input type="time" id="friday" :disabled="fridayNull"
+                                v-model="editHours.friday_open"> -
+                            <input type="time" id="friday" :disabled="fridayNull"
+                                v-model="editHours.friday_close">
+                        </td>
+                        <td> <label for="friday">Closed for the day:</label>
+                            <input type="checkbox" id="friday" @click="fridayNull = !fridayNull">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="saturday">Saturday: </label></td>
+                        <td> <input type="time" id="saturday" :disabled="saturdayNull"
+                                v-model="editHours.saturday_open">
+                            -
+                            <input type="time" id="saturday" :disabled="saturdayNull"
+                                v-model="editHours.saturday_close">
+                        </td>
+                        <td> <label for="saturday">Closed for the day:</label>
+                            <input type="checkbox" id="saturday" @click="saturdayNull = !saturdayNull">
+                        </td>
+                    </tr>
 
-            <h1>Edit Hours of Operation</h1>
 
-            <div class="form-input-group">
-                <label for="sunday">Sunday:</label>
-                <input type="time" id="sunday" :disabled="sundayNull" v-model="editHours.sunday_open"> -
-                <input type="time" id="sunday" :disabled="sundayNull" v-model="editHours.sunday_close">&nbsp;
-                <label for="sunday">Closed for the day:</label>
-                <input type="checkbox" id="sunday" :checked="sundayNull" @click="sundayNull = !sundayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="monday">Monday:</label>
-                <input type="time" id="monday" :disabled="mondayNull" v-model="editHours.monday_open"> -
-                <input type="time" id="monday" :disabled="mondayNull" v-model="editHours.monday_close">&nbsp;
-                <label for="monday">Closed for the day:</label>
-                <input type="checkbox" id="monday" :checked="mondayNull" @click="mondayNull = !mondayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="tuesday">Tuesday: </label>
-                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editHours.tuesday_open"> -
-                <input type="time" id="tuesday" :disabled="tuesdayNull" v-model="editHours.tuesday_close">&nbsp;
-                <label for="tuesday">Closed for the day:</label>
-                <input type="checkbox" id="tuesday" :checked="tuesdayNull" @click="tuesdayNull = !tuesdayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="wednesday">Wednesday: </label>
-                <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editHours.wednesday_open"> -
-                <input type="time" id="wednesday" :disabled="wednesdayNull" v-model="editHours.wednesday_close">&nbsp;
-                <label for="wednesday">Closed for the day:</label>
-                <input type="checkbox" id="wednesday" :checked="wednesdayNull" @click="wednesdayNull = !wednesdayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="thursday">Thursday: </label>
-                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editHours.thursday_open"> -
-                <input type="time" id="thursday" :disabled="thursdayNull" v-model="editHours.thursday_close">&nbsp;
-                <label for="thursday">Closed for the day:</label>
-                <input type="checkbox" id="thursday" :checked="thursdayNull" @click="thursdayNull = !thursdayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="friday">Friday: </label>
-                <input type="time" id="friday" :disabled="fridayNull" v-model="editHours.friday_open"> -
-                <input type="time" id="friday" :disabled="fridayNull" v-model="editHours.friday_close">&nbsp;
-                <label for="friday">Closed for the day:</label>
-                <input type="checkbox" id="friday" :checked="fridayNull" @click="fridayNull = !fridayNull">
-            </div>
-
-            <div class="form-input-group">
-                <label for="saturday">Saturday: </label>
-                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editHours.saturday_open"> -
-                <input type="time" id="saturday" :disabled="saturdayNull" v-model="editHours.saturday_close">&nbsp;
-                <label for="saturday">Closed for the day:</label>
-                <input type="checkbox" id="saturday" :checked="saturdayNull" @click="saturdayNull = !saturdayNull">
-            </div>
-
-            <button type="submit" v-on:click="submit">Submit</button>
-            <button class="btn-cancel" type="button" v-on:click="cancelForm">Cancel</button>
+                </tbody>
+            </table>
             
-        </form>
-    </div>
+                    </div>
+                    
+                </div>
+                <div class="submitcancel">
+            <div>
+                <button class="button" type="submit" v-on:click="submit">Submit</button>
+                <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
+            </div>
+        </div>
+    </form>
+   
 </template>
     
 <script>
@@ -181,3 +223,71 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+form{
+    width: 100%;
+}
+.form {
+    background-color: black;
+
+    opacity: .8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.formLeft {
+    width: 40vw;
+    text-align: center;
+
+}
+
+.text {
+    text-align: center;
+
+}
+
+.formRight {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    width: 40vw;
+}
+
+.textEntry {
+    width: 75%;
+    margin: 3px;
+    height: 28px;
+}
+
+table {
+    border-spacing: 0 10px;
+
+}
+
+tr.border_bottom td {
+    border-bottom: 1px solid white;
+
+}
+
+.history {
+    width: 75%;
+    resize: none;
+    margin: 3px;
+}
+
+.button {
+    width: 200px;
+
+
+
+}
+.submitcancel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
