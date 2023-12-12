@@ -112,10 +112,10 @@
 
   
   <style scoped>
-  button{
+  /* button{
     margin: 20px;
     color: black;
-  }
+  } */
 
 img {
       max-height: 300px;

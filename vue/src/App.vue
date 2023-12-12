@@ -28,12 +28,11 @@
     </div>
     <div>
     <p class="aboutus">
-      Tech Elevator Sep 2023 CLE Java CLE java-finalcapstone-team0 
+      Tech Elevator Sep 2023 CLE Java
       <br> 
       tjmoore + joshschaeffer + ianmcgreal + justinfalasca
       <br>
       Copyright 2023 
-
     </p>
   </div>
 
@@ -85,7 +84,6 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 

@@ -113,6 +113,7 @@ iframe{
 display: flex;
 align-items: center;
 justify-content: center;
+max-width: 50%;
 }
 
 .brewery:hover {
@@ -127,4 +128,5 @@ h2 {
 .map {
   margin-top: 5px;
 }
+
 </style>

@@ -4,7 +4,7 @@
   </div>
 <div v-else class="container">
   <div class='list' >
-    <h1>Beers</h1>
+    <h1>Now on Tap at {{ brewery.brewery_name }}</h1>
     <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
         <h2>{{ beer.beer_name }}</h2>
@@ -24,10 +24,12 @@
   
 <script>
 import beerService from "../services/BeerService";
+import BreweryService from '../services/BreweryService';
 export default {
   data() {
     return {
-      beers: []
+      beers: [],
+      brewery: {}
     }
   },
   methods: {
@@ -53,9 +55,16 @@ export default {
       this.isLoading = false;
       this.$store.commit('SET_NOTIFICATION', `Could not get beer data from server.`);
     },
+    getBrewery() {
+      BreweryService.get(this.$route.params.breweryId)
+      .then(response => {
+        this.brewery = response.data;
+      })
+    }
   },
   created() {
     this.getBeers();
+    this.getBrewery();
   }
 };
 </script>
@@ -66,8 +75,10 @@ export default {
 .container {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
+  flex-wrap: wrap;
 }
+
 .beer {
   text-align: center;
   margin: 10px;

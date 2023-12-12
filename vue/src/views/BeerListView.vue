@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       beers: [],
+      brewery: {},
       isLoading: true
     };
   }
