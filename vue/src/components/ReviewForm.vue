@@ -6,25 +6,33 @@
           <form v-on:submit.prevent="submitForm">
     
             <div class="form-input-group">
-              <label for="reviewTitle">Review Title: </label>
-              <input class='textEntry' type="text" id="reviewTitle" v-model="editReview.title" />
+              <!-- <label for="reviewTitle">Review Title: </label> -->
+              <input class='textEntry' type="text" id="reviewTitle" v-model="editReview.title" placeholder="Review Title" />
             </div>
     
             <div class="form-input-group">
-              <label for="reviewBody">Body: </label>
-              <textarea class='review' name='reviewBody' id="reviewBody" rows='10' cols='20' v-model="editReview.body" />
+              <!-- <label for="reviewBody">Body: </label> -->
+              <textarea class='review' name='reviewBody' id="reviewBody" rows='10' cols='20' v-model="editReview.body" placeholder="Review"/>
             </div>
     
             <div class="form-input-group">
               <label for="beerRating">Rating: </label>
-              <input class='rating' type="range"  id="beerRating" name='rating' min='0' max='5' v-model="editReview.rating" />
+              <select class="ratingOptions" name="rating" v-model="editReview.rating" required>
+                <option class="ratingOptions" value="3" disabled selected>Please select a rating</option>
+                <option class="ratingOptions">1</option>
+                <option class="ratingOptions">2</option>
+                <option class="ratingOptions">3</option>
+                <option class="ratingOptions">4</option>
+                <option class="ratingOptions">5</option>
+              </select>
             </div>
     
             <div class='submitcancel'>
-            <button class="submit" >Add Review</button>
-            <button class="cancel" type="button" v-on:click="cancelForm">Cancel</button>
+              <button class="submit" >Add Review</button>
+              <button class="cancel" type="button" v-on:click="cancelForm">Cancel</button>
             </div>
-    
+  
+            
           </form>
         </div>
         </div>
@@ -202,6 +210,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.ratingOptions {
+  color: black;
+}
+
 </style>
 
   

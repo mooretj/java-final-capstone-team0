@@ -17,7 +17,7 @@
     <div class="beer-for" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
         <div class="beer">
-        <h2>{{ beer.beer_name }}</h2>
+        <h2 class="beer-name">{{ beer.beer_name }}</h2>
       </div>
       </router-link>
     </div>
@@ -127,6 +127,11 @@ img#banner {
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
   transition: .2s;
   min-width: 25vw;
+}
+
+.beer-name {
+  font-size: 1.25vw;
+translate: -10px;
 }
 
 .beer:hover {
