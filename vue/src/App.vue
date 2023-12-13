@@ -1,5 +1,5 @@
 <template>
-  <div id="logo">
+  <div id="logo" @click='this.$router.push( { name: "home" })'>
     <img id="logo" src="/src/assets/HopSpotter.png" alt="beerimage">
   </div>
   <header>
@@ -75,6 +75,7 @@ header {
 }
 
 img#logo {
+  cursor: pointer;
   z-index: 0;
   width: 160px;
   margin-top: 5px;

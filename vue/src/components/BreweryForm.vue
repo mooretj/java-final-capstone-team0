@@ -38,7 +38,7 @@
             </div>
 
             <div>
-                <textarea name="history" id="history" rows="5" placeholder="Brewery History" class="history"
+                <textarea name="history" id="history" rows="5" placeholder="About Us" class="history"
                     v-model="editBrewery.history"></textarea>
             </div>
         </div>
