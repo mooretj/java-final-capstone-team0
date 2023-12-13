@@ -198,15 +198,6 @@ html {
   left: 50%;
 }
 
-#hr1A {
-  width: 49%;
-  transform: translate(-52%, -400%);
-}
-
-#hr1B {
-  width: 49%;
-  transform: translate(51.7%, -900%);
-}
 
 #hr2A {
   width: 48%;

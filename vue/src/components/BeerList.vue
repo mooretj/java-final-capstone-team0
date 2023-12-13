@@ -1,8 +1,16 @@
 <template>
+
+<div class="container">
+      <img id="banner" src="/src/assets/glasses.jpg" alt="">
+      <div class="centered">
+        <h1 id="FindYour">Beer List</h1>
+      </div>
+  </div>
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
-<div v-else class="container">
+  
+<div v-else class="lowercontainer">
   <h1 v-if="this.$route.params.breweryId == 0">Beers</h1>
   <div class='list'>
     
@@ -73,12 +81,25 @@ export default {
 
   
 <style scoped>
-.container {
+.lowercontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+img#banner {
+  width: 100%;
+  height: auto;
 }
 
 .list {

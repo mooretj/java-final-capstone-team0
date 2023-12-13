@@ -140,8 +140,9 @@ button {
 }
 
 button {
-    font-size: 20px;
-    background-color: rgb(65, 65, 65);
+  width: 200px;
+    font-size: 18px;
+    background-color: rgb(46, 49, 47);
     color: #CA801B;
     border: 2px solid black;
     box-shadow: black 3px 3px 4px;
@@ -149,11 +150,13 @@ button {
     height: 5vh;
     padding: 0px 10px;
     transition: .3s;
-    margin: 20px 0px;
+    margin: 10px 0px;
   }
 
   button:hover {
     color:whitesmoke;
     border-color: #CA801B;
   }
+
+  
 </style>

@@ -77,6 +77,12 @@ export default {
   margin-bottom: 10px;
   margin-right: 15px;
 }
+
+.logo{
+  width: 100px;
+  height: auto;
+}
+
 iframe{
   width: 50vw;
   height: 70vh;
@@ -117,7 +123,7 @@ iframe{
   margin: 5px;
   border-radius: 10px;
   border: 1px solid #CA801B;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(46, 49, 47, 1);
   color: black;
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 1);
   transition: .2s;

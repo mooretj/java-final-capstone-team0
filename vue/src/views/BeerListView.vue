@@ -1,9 +1,12 @@
 <template>
+
+
   <div class="loading" v-if="isLoading">
     <p>Loading...</p>
   </div>
 
   <div v-else>
+    
     <!-- <h1>Beers</h1> -->
     <beerList />
 
