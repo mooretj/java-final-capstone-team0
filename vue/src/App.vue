@@ -142,7 +142,7 @@ button {
 }
 
 button {
-    font-size: 2vh;
+    font-size: 1.5vh;
     background-color: rgb(65, 65, 65);
     color: #CA801B;
     border: 2px solid black;
@@ -152,6 +152,7 @@ button {
     padding: 0px 10px;
     transition: .3s;
     margin: 10px 0px;
+    width: 200px;
   }
 
   button:hover {

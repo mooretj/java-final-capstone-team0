@@ -79,7 +79,7 @@ export default {
 }
 
 .logo{
-  width: 100px;
+  width: 10vh;
   height: auto;
 }
 
@@ -92,7 +92,7 @@ iframe{
   overflow-y: auto;
   display: flex;
   width: 50vw;
-  height: 79vh;
+  height: 70vh;
   flex-wrap: wrap;
 }
 

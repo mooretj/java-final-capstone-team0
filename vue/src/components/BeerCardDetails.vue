@@ -103,6 +103,7 @@ export default {
 
 img.reviewPic {
   width: 100%;
+  height: auto;
 }
 
 .beerName {
