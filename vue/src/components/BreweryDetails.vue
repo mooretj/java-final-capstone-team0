@@ -44,7 +44,12 @@
             <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
 
             <a class='contact-info' :href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
+
+            <div class="edit-contact">
+                <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
+              </div>
           </div>
+          
 
           <!-- <div class="details-right"> -->
           <div class="hours">
@@ -95,9 +100,7 @@
               v-if='(JSON.stringify(this.$store.state.user) !== "{}" && (this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || getBrewers))'> -->
               <div class='edit-actions'
               v-if="JSON.stringify(this.$store.state.user) !== '{}' && this.$store.state.user.authorities[0].name == 'ROLE_ADMIN'">
-              <div class="edit-contact">
-                <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
-              </div>
+
               <div class="edit-hours">
                 <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
               </div>
