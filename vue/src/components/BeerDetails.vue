@@ -1,12 +1,14 @@
 <template>
-  <div class='top-container'>
-
-    <div class="beer-container" :style="`background-image: url(${beer.beer_img})`" alt="">
-      <div class="effect">
-        <div class="name">
-          <h1>{{ beer.beer_name }}</h1>
-        </div>
+    <div class="container">
+      <img id="banner" src="/src/assets/brews.jpg" alt="">
+      <div class="centered">
+        <h1 id="FindYour">{{ beer.beer_name }}</h1>
       </div>
+  </div>
+
+
+    <div class="beerImage">
+      <img :src=beer.beer_img alt="">
     </div>
     <!-- </div> -->
     <!-- <div class='beer-details'>
@@ -143,45 +145,21 @@ export default {
     color: black;
   } */
 
-.top-container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(0, 0, 0, .6);
-}
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.label {
-  color: #CA801B;
-}
 
-.detail {
-  margin-left: 30px;
-}
 
-.beer-container {
-  background-position: center;
-  background-size: cover;
-  width: 100vw;
-  height: 70vh;
-  background-repeat: no-repeat;
+    .container {
   display: flex;
   position: relative;
   justify-content: center;
   text-align: center;
   color: white;
-  align-items: center;
 }
 
-.beer-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+img#banner {
+  width: 100%;
+  height: auto;
 }
 
 .review-list {
