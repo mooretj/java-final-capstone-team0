@@ -79,7 +79,7 @@ export default {
 }
 
 .logo{
-  width: 100px;
+  width: 10vh;
   height: auto;
 }
 

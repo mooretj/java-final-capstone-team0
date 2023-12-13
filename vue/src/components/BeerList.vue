@@ -11,7 +11,7 @@
   </div>
   
 <div v-else class="lowercontainer">
-  <h1 v-if="this.$route.params.breweryId == 0">Beers</h1>
+  
   <div class='list'>
     
     <div class="beer-for" v-for="beer in beers" v-bind:key="beer.beerId">

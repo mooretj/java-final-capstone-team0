@@ -5,8 +5,9 @@
         <h1 id="FindYour">{{ beer.beer_name }}</h1>
       </div>
   </div>
-
-
+  <div class="all">
+  <div class="content-centered">
+  <div class="beer-content">
     <div class="beerImage">
       <img :src=beer.beer_img alt="">
     </div>
@@ -18,26 +19,29 @@
     <div class='beer-details'>
 
       <div class="description">
-        <h2 class='label'>Description:</h2>&nbsp;
-        <h3 class='detail'>{{ beer.beer_description }}</h3>
-      </div>
+        <label class='label'>Description:</label>
+        <div class='detail'>{{ beer.beer_description }}</div>
+      
+      <div class="stats">
+        <div class="abv inline">
+          <label class='label'>ABV:&nbsp;</label>
+          <div class='detail'>{{ beer.abv }}</div>
+        </div>
 
-      <div class="abv">
-        <h2 class='label'>ABV:</h2>&nbsp;
-        <h3 class='detail'>{{ beer.abv }}</h3>
-      </div>
-
-      <div class="type">
-        <h2 class='label'> Type:</h2>&nbsp;
-        <h3 class='detail'>{{ beer.beer_type }}</h3>
+        <div class="type inline">
+          <label class='label'> Type:&nbsp;</label>
+          <div class='detail'>{{ beer.beer_type }}</div>
+        </div>
       </div>
     </div>
-
+    </div>
+      </div>
+    </div>
 
     <div class='review-list'>
       <ReviewList />
     </div>
-
+    
 
 
     <!-- <div>
@@ -56,6 +60,7 @@
           From This Brewery</button>
       </div>
     </div>
+  </div>
 </template>
   
 <script>
@@ -139,14 +144,72 @@ export default {
 
   
 <style scoped>
-/* button{
-    margin: 20px;
-    color: black;
-  } */
 
+.all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.753);
+}
+  .content-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
 
+  .beer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    width: 55%;
+    padding: 40px;
+   
+  }
 
+  .beer-details {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    
+  }
 
+  img {
+    height: 50vh;
+  }
+
+.inline {
+  display: flex;
+}
+
+label {
+  font-size: large;
+  color: #CA801B;
+}
+
+.stats {
+  margin-top: 10vh;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    text-wrap: wrap;
+    margin-left: 8vw;
+    margin-right: 5vw;
+    padding-left: 30px;
+    border-left: 1px solid #CA801B;
+  }
 
     .container {
   display: flex;

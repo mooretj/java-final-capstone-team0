@@ -164,9 +164,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: black;
-  opacity: .8;
-  height: 60vh;
   width: 100%;
 }
 
