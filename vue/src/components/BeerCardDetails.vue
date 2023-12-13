@@ -9,7 +9,7 @@
           </div>
           <div id="beerCardFront" class="beerCardFront">
             <div id="container">
-              <img :src=beer.beer_img id="reviewPic" class="reviewPic"  alt="">
+              <img id="reviewPic" class="reviewPic" :src='beer.beer_img' alt="">
             </div>
           </div>
 
