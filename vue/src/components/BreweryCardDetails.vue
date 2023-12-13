@@ -45,7 +45,8 @@ img {
     color: #CA801B;
   }
   .name h1 {
-    font-size: 4vw;
+    font-size: 3vw;
+    margin-top: ;
   }
   .BreweryDetailsMain {
     background-position: center;
