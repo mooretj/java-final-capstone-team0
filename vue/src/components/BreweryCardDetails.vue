@@ -11,7 +11,7 @@
         <div class="BreweryDetails">
   
             <div class="history">
-                <label>Brewery History:</label><br>
+                <label>About us:</label><br>
                 <span>{{ brewery.history }}</span>
             </div>
     
