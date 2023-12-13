@@ -1,7 +1,7 @@
 <template>
   <body>
     <div class="container">
-      <img id="taps" src="src/assets/taps.jpg" alt="">
+      <img id="taps" src="/src/assets/taps.jpg" alt="">
       <div class="centered">
         <h1 id="FindYour">Find Your New Favorite Brewery</h1>
         <input type="text" id="addressEntry" name="fname" placeholder="Enter an Address, City, or Zip" @keyup.enter='this.$router.push({ name: "BreweryListView" })'>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="pint2">
-      <img id="taps" src="src/assets/pint.png" alt="">
+      <img id="taps" src="/src/assets/pint.png" alt="">
     </div>
 <div class="line2">
     <hr id="hr2A" class="hr2A">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="pint2">
-      <img id="taps" src="src/assets/pint.png" alt="">
+      <img id="taps" src="/src/assets/pint.png" alt="">
     </div>
 <div class="line2">
     <hr id="hr2A" class="hr2A">
@@ -37,7 +37,7 @@
 
 
       <div class="pint3">
-        <img id="taps" src="src/assets/pint.png" alt="">
+        <img id="taps" src="/src/assets/pint.png" alt="">
       </div>
 
     <hr id="hr2A" class="hr2A">
@@ -94,7 +94,7 @@ h2 {
 
 body {
   width: 100%;
-  background-image: url("src/assets/woodBG.jpg");
+  background-image: url("/src/assets/woodBG.jpg");
   background-color: black;
   background-repeat: no-repeat;
   background-attachment: fixed;
