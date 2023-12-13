@@ -104,6 +104,7 @@ export default {
 img.reviewPic {
   width: 100%;
   height: auto;
+  
 }
 
 .beerName {
@@ -120,14 +121,14 @@ img.reviewPic {
 
 
 .rating {
-  margin-top: -15px;
+  margin-top: -20px;
   text-align: center;
   margin-right: 15px;
 
 }
 
 .outof{
-  margin-top: -10px;
+  margin-top: -20px;
 
 text-align: right;  
 margin-right: 15px;
@@ -147,10 +148,10 @@ label {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 24px;
   margin-top: -5px;
   margin-left: 5px;
-  text-shadow: black 3px 3px 4px;
+  text-shadow: black 1px 1px 4px;
 
 }
 
@@ -185,8 +186,8 @@ h6 {
 
 p {
   margin-right: 15px;
-
-  font-size: 12px;
+margin-top: -5px;
+  font-size: 14px;
   margin-left: 15px;
   font-style: italic;
   font-weight: lighter;
@@ -236,6 +237,7 @@ p {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
+  cursor: pointer;
   width: 400px;
   height: 600px;
   padding: px;
@@ -247,6 +249,8 @@ p {
 
 /* Style the back side */
 .flip-card-back {
+  cursor: pointer;
+
   width: 400px;
   height: 600px;
   background-color: black;
