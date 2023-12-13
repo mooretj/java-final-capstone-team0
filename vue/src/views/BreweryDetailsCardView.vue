@@ -5,6 +5,7 @@
     </div>
 
     <div id="reviews" class="reviews" v-else>
+      
       <!-- <nav> -->
         <!-- <router-link v-bind:to="{ name: 'BreweryDetailsView', params: { breweryId: breweryId } }">Back to Brewery Details</router-link> -->
       <!-- </nav> -->

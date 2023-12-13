@@ -1,10 +1,10 @@
 <template>
 
-   
     <div class="BreweryDetailsMain" id="overlay" :style="`background-image: url(${brewery.brewery_main_img});`">
         <div class="dim">
+            <div class="featuredBrewery">
         <div class="name">
-            <h1>{{ brewery.brewery_name }}</h1>
+            <h1 class="brewery-name">{{ brewery.brewery_name }}</h1>
             <img class="brewery-img" :src="brewery.brewery_main_img" alt=""/>
         </div>
 
@@ -18,7 +18,7 @@
             <div class="brewery link">
                 <button class="btn-see-beers" v-on:click="$router.push({ name: 'BreweryDetailsView', params: { breweryId: brewery.brewery_id }})">See More</button>
             </div>
-
+          </div>
         </div>
     </div>
         
@@ -44,6 +44,9 @@ img {
     h2 {
     color: #CA801B;
   }
+  .name h1 {
+    font-size: 4vw;
+  }
   .BreweryDetailsMain {
     background-position: center;
     background-size: cover;
@@ -59,6 +62,7 @@ img {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: .5s;
@@ -70,34 +74,37 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2vw;
     height: 25vw;
     width: 100%;
     margin: 0px;
     text-shadow: black 3px 3px 4px;
-    
+
   }
 
   .BreweryDetails {
     display: none;
     height:25vh;
-    
+    z-index: 10;
   }
 
     .dim:hover{
     background-color: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(8px);
   }
+
+  .BreweryDetailsMain:hover .brewery-name {
+    font-size: 2vw;
+  }
     .BreweryDetailsMain:hover img {
-    width: 30vw;
-    display: initial;
+    width: 80vh;
+    display: flex;
     
   }
 
   .BreweryDetailsMain:hover .name {
     width: 50vw;
-    font-size: 1vw;
-    justify-content: space-around;
+    font-size: 2vw;
+    justify-content: center;
    background-color: rgba(0, 0, 0, 0);
   }
 
@@ -109,6 +116,12 @@ img {
     width: 45vw;
   }
   
+  .featuredBrewery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   
   </style>
     

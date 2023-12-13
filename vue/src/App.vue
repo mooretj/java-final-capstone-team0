@@ -48,6 +48,8 @@ scrollbar-width:none;
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+
 ::-webkit-scrollbar {
   display: initial;
 }
@@ -140,9 +142,8 @@ button {
 }
 
 button {
-  width: 200px;
-    font-size: 18px;
-    background-color: rgb(46, 49, 47);
+    font-size: 2vh;
+    background-color: rgb(65, 65, 65);
     color: #CA801B;
     border: 2px solid black;
     box-shadow: black 3px 3px 4px;

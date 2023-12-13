@@ -28,10 +28,10 @@
     <hr id="hr2A" class="hr2A">
     <hr id="hr2B" class="hr2B">
   </div>
+    
     <h2 id="LatestReviews">Featured Brewery</h2>
-
-
     <div id="featuredBrewery" class="featuredBrewery">
+      
       <BreweryDetailsCardView/>
     </div>
 
@@ -80,11 +80,13 @@ h2 {
   margin-top: 0px;
   margin-left: 28px;
   margin-bottom: 0px;
+  width: 20vw;
+  position: relative;
   font-size: 28px;
   color: white;
   text-shadow: black 3px 3px 4px;
   z-index: 1;
-
+  pointer-events: none;
 }
 
 
@@ -213,13 +215,12 @@ html {
   margin-top: -70px;
   height: 85vh;
   background-color: gray;
-  
+  z-index: 0;
 }
 #blackout{
   margin-top: -28px;
   height: 20px;
   background-color: black;
 }
-
 
 </style>
