@@ -1,119 +1,118 @@
 <template>
-
-  <div class="form">
-    <button class='add-review' @click='showHide'>Review This</button>
-    <div class="text-center" v-show='isHidden'>
-      <form v-on:submit.prevent="submitForm">
-        <div class="form-input-group">
-          <input type="text" id="reviewTitle" v-model="editReview.title" placeholder="Review Title" class="textEntry" />
+  <button class='add-review' @click='showHide'>Review This</button>
+<div class='form'>
+  
+      <div class="text-center" v-show='isHidden'>
+          <form v-on:submit.prevent="submitForm">
+    
+            <div class="form-input-group">
+              <label for="reviewTitle">Review Title: </label>
+              <input class='textEntry' type="text" id="reviewTitle" v-model="editReview.title" />
+            </div>
+    
+            <div class="form-input-group">
+              <label for="reviewBody">Body: </label>
+              <textarea class='review' name='reviewBody' id="reviewBody" rows='10' cols='20' v-model="editReview.body" />
+            </div>
+    
+            <div class="form-input-group">
+              <label for="beerRating">Rating: </label>
+              <input class='rating' type="range"  id="beerRating" name='rating' min='0' max='5' v-model="editReview.rating" />
+            </div>
+    
+            <div class='submitcancel'>
+            <button class="submit" >Add Review</button>
+            <button class="cancel" type="button" v-on:click="cancelForm">Cancel</button>
+            </div>
+    
+          </form>
         </div>
-
-        <div class="form-input-group">
-          <textarea class="review" name='reviewBody' id="reviewBody" rows='10' cols='20' v-model="editReview.body"
-            placeholder="Review" />
         </div>
-
-        <div class="form-input-group">
-          <div>
-            <label for="beerRating">Beer rating X out of 5 </label>
-          </div>
-          <input class="rating" type="range" id="beerRating" name='rating' min='1' max='5' v-model="editReview.rating"
-            placeholder="Review Title" />
-        </div>
-
-      </form>
-    </div>
-  </div>
-  <div class="submitcancel">
-    <button class="button" type="submit">Add Review</button>
-    <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
-  </div>
-</template>
-
-<script>
-import reviewService from '../services/ReviewService.js';
-
-export default {
-  props: {
-    review: {
-      type: Object,
-      required: true
-    },
-    data() {
-      return {
-        isHidden: false,
-        editReview: {
-            review_id: 0,
-            user_id: this.$store.state.user.id,
-            beer_id: this.$route.params.beerId,
-            title: '',
-            body: '',
-            rating: 0
-        }
-      };
-    },
-    methods: {
-      showHide() {
-            this.isHidden = !this.isHidden;
+    </template>
+  
+  <script>
+  import reviewService from '../services/ReviewService.js';
+  
+  export default {
+      props: {
+        review: {
+          type: Object,
+          required: true
         },
-      submitForm() {
-        // if (!this.validateForm()) {
-        //   return;
-        // }
-        if (this.editReview.reviewId == 0 || this.editReview.reviewId == null) {
-          reviewService
-            .addReview(this.editReview)
-            .then(response => {
-              // if (response.status == 201) {
-                // this.$store.commit(
-                //   'SET_NOTIFICATION',
-                //   {
-                //     message: 'A new beer was added.',
-                //     type: 'success'
-                //   }
-                // );
-                // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
-              // }
+      },
+      data() {
+        return {
+          isHidden: false,
+          editReview: {
+              review_id: 0,
+              user_id: this.$store.state.user.id,
+              beer_id: this.$route.params.beerId,
+              title: '',
+              body: '',
+              rating: 0
+          }
+        };
+      },
+      methods: {
+        showHide() {
+              this.isHidden = !this.isHidden;
+          },
+        submitForm() {
+          // if (!this.validateForm()) {
+          //   return;
+          // }
+          if (this.editReview.reviewId == 0 || this.editReview.reviewId == null) {
+            reviewService
+              .addReview(this.editReview)
+              .then(response => {
+                // if (response.status == 201) {
+                  // this.$store.commit(
+                  //   'SET_NOTIFICATION',
+                  //   {
+                  //     message: 'A new beer was added.',
+                  //     type: 'success'
+                  //   }
+                  // );
+                  // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
+                // }
+                this.isHidden = false;
+              })
+              .catch(error => {
+                this.handleErrorResponse(error, 'adding');
+              });
+          } else {
+            reviewService
+              .updateReview(this.editReview)
+              .then(response => {
+              //   if (response.status == 201) {
+              //     this.$store.commit(
+              //       'SET_NOTIFICATION',
+              //       {
+              //         message: `Message ${this.editReview.title} was updated.`,
+              //         type: 'success'
+              //       }
+              //     );
+              // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
+              //   }
               this.isHidden = false;
-            })
-            .catch(error => {
-              this.handleErrorResponse(error, 'adding');
-            });
-        } else {
-          reviewService
-            .updateReview(this.editReview)
-            .then(response => {
-
-            //   if (response.status == 201) {
-            //     this.$store.commit(
-            //       'SET_NOTIFICATION',
-            //       {
-            //         message: `Message ${this.editReview.title} was updated.`,
-            //         type: 'success'
-            //       }
-            //     );
-            // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
-            //   }
-            this.isHidden = false;
-            })
-            .catch(error => {
-              this.handleErrorResponse(error, 'updating');
-            });
-        }
-  },
-  cancelForm() {
-    this.isHidden = false;
-    // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
-  },
-
-
+              })
+              .catch(error => {
+                this.handleErrorResponse(error, 'updating');
+              });
+          }
+    },
+    cancelForm() {
+      this.isHidden = false;
+      // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
+    },
+  
     handleErrorResponse(error, verb) {
       if (error.response) {
         if (error.response.status == 404) {
-          this.$router.push({ name: 'NotFoundView' });
+          this.$router.push({name: 'NotFoundView'});
         } else {
           this.$store.commit('SET_NOTIFICATION',
-            `Error ${verb} message. Response received was "${error.response.statusText}".`);
+          `Error ${verb} message. Response received was "${error.response.statusText}".`);
         }
       } else if (error.request) {
         this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
@@ -121,10 +120,10 @@ export default {
         this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
       }
     },
-
+  
     validateForm() {
       // let msg = '';
-
+  
       // this.editBeer.beer_name = this.editBeer.beer_name.trim();
       // if (this.editBeer.beer_name.length === 0) {
       //   msg += 'The new beer must have a name. ';
@@ -152,13 +151,13 @@ export default {
       // return true;
     },
   }
-}
-</script>
-
-
-
-
-<style scoped>
+  }
+  </script>
+  
+  
+  
+  
+  <style scoped>
 .form {
   display: flex;
   align-items: center;
@@ -203,3 +202,5 @@ export default {
   justify-content: center;
 }
 </style>
+
+  
