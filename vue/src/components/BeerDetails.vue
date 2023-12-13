@@ -56,7 +56,6 @@
           From This Brewery</button>
       </div>
     </div>
-  </div>
 </template>
   
 <script>
