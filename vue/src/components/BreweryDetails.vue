@@ -45,7 +45,7 @@
 
             <a class='contact-info' :href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
 
-            <div class="edit-contact">
+            <div class="edit-contact" v-if="JSON.stringify(this.$store.state.user) !== '{}' && this.$store.state.user.authorities[0].name == 'ROLE_ADMIN'">
                 <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
               </div>
           </div>
