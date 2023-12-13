@@ -41,7 +41,7 @@
 img {
     display: none;
   }
-    h2 {
+    label {
     color: #CA801B;
   }
   .name h1 {
