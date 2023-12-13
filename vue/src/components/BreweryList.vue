@@ -89,7 +89,7 @@ iframe{
 }
 
 .brewlist {
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   width: 50vw;
   height: 70vh;
