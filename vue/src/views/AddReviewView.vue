@@ -1,8 +1,6 @@
 <template>
-    <div class="text-center">
         <h1>Add a review</h1>
         <review-form v-bind:review='review'/>
-    </div>
 </template>
     
 
@@ -27,3 +25,4 @@
         }
     }
 </script>
+<style scoped></style>

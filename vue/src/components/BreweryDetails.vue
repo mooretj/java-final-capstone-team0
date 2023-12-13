@@ -1,11 +1,11 @@
 <template>
-  <div class="brewery-container" :style="`background-image: url(${brewery.brewery_main_img})`" alt="">
-    <div class="effect">
-      <div class="name">
-        <h1>{{ brewery.brewery_name }}</h1>
+    <div class="container">
+      <img id="banner" src="/src/assets/kegs.jpg" alt="">
+      <div class="centered">
+        <h1 id="FindYour">{{ brewery.brewery_name }}</h1>
       </div>
     </div>
-  </div>
+
 
   <div class="BreweryDetailsMain" id="overlay">
     <div class='top-container'>
@@ -198,8 +198,12 @@ export default {
   display: flex;
   justify-content: center;
   height: auto;
-  width: 100%;
+  width: 99%;
   z-index: 10;
+}
+
+label {
+  color: #CA801B;
 }
 
 .BreweryImage {
@@ -221,7 +225,7 @@ export default {
 .brewery-container {
   background-position: center;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
   background-repeat: no-repeat;
   display: flex;
   position: relative;
@@ -229,6 +233,19 @@ export default {
   text-align: center;
   color: white;
   align-items: center;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+img#banner {
+  width: 100%;
+  height: auto;
 }
 
 .BreweryDetails {
