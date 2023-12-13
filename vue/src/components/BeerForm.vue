@@ -171,7 +171,7 @@
 
 
 
-<style>
+<style scoped>
 .form {
   
     background-color: black;

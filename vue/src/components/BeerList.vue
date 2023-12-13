@@ -6,14 +6,16 @@
   <h1 v-if="this.$route.params.breweryId == 0">Beers</h1>
   <div class='list'>
     
-    <div class="beer" v-for="beer in beers" v-bind:key="beer.beerId">
+    <div class="beer-for" v-for="beer in beers" v-bind:key="beer.beerId">
       <router-link v-bind:to="{ name: 'BeerDetailsView', params: { beerId: beer.beer_id } }">
+        <div class="beer">
         <h2>{{ beer.beer_name }}</h2>
+      </div>
       </router-link>
     </div>
     
   </div>
-<button class="btn-add" v-on:click="addBeer" v-if='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>Add Beer</button>
+<button class="btn-add" v-on:click="addBeer" v-if='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" && this.$route.params.breweryId != 0 || this.$store.state.user.brewer == true '>Add Beer</button>
   <br>
   <!-- <div v-if='this.$route.params.breweryId != 0'>
     <div class='return'>
@@ -89,7 +91,9 @@ export default {
 }
 
 .beer {
+  display: flex;
   text-align: center;
+  align-items: center;
   justify-content: center;
   text-wrap: wrap;
   width: 25vw;
@@ -107,9 +111,5 @@ export default {
 .beer:hover {
   border-color: whitesmoke;
   background-color: rgba(0,0,0,1);
-}
-
-h2 {
-  font-size: 150%;
 }
 </style>

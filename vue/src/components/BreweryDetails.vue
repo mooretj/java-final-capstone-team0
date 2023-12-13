@@ -205,8 +205,12 @@ export default {
   display: flex;
   justify-content: center;
   height: auto;
-  width: 100%;
+  width: 99%;
   z-index: 10;
+}
+
+label {
+  color: #CA801B;
 }
 
 .BreweryImage {
@@ -228,7 +232,7 @@ export default {
 .brewery-container {
   background-position: center;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
   background-repeat: no-repeat;
   display: flex;
   position: relative;
