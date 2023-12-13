@@ -171,7 +171,7 @@
 
 
 
-<style>
+<style scoped>
 .form {
   
     background-color: black;
@@ -179,7 +179,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 60vh;
+    width: 100%;
 }
 
 
@@ -207,12 +209,10 @@
 }
 
 .textEntry {
-
+    width: 75%;
     margin: 3px;
     height: 28px;
-    
 }
-
 
 .description{    
   width: 75%;
