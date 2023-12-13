@@ -9,7 +9,7 @@
           </div>
           <div id="beerCardFront" class="beerCardFront">
             <div id="container">
-              <img id="reviewPic" class="reviewPic" src="src/assets/beer4.jpg" alt="">
+              <img id="reviewPic" class="reviewPic" :src='beer.beer_img' alt="">
             </div>
           </div>
 
@@ -103,6 +103,7 @@ export default {
 
 img.reviewPic {
   width: 100%;
+  height: auto;
 }
 
 .beerName {

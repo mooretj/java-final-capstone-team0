@@ -92,7 +92,7 @@ iframe{
   overflow-y: auto;
   display: flex;
   width: 50vw;
-  height: 79vh;
+  height: 70vh;
   flex-wrap: wrap;
 }
 
@@ -114,11 +114,12 @@ iframe{
 .brewery {
   cursor: pointer;
   width: 23vw;
+  min-width: 300px;
   align-items: center;
   align-content: center;
   justify-items: center;
   justify-content: center;
-  height: 10vh;
+  height: auto;
   display: flex;
   margin: 5px;
   border-radius: 10px;

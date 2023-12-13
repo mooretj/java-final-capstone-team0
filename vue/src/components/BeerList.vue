@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div class="container" v-if='this.$route.params.breweryId == 0'>
       <img id="banner" src="/src/assets/glasses.jpg" alt="">
       <div class="centered">
         <h1 id="FindYour">Beer List</h1>
@@ -11,7 +11,6 @@
   </div>
   
 <div v-else class="lowercontainer">
-  
   <div class='list'>
     
     <div class="beer-for" v-for="beer in beers" v-bind:key="beer.beerId">
