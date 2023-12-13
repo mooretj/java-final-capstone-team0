@@ -46,7 +46,6 @@ img {
   }
   .name h1 {
     font-size: 3vw;
-    margin-top: ;
   }
   .BreweryDetailsMain {
     background-position: center;

@@ -150,7 +150,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.753);
+  background-color: rgba(0, 0, 0, 0.6);
 }
   .content-centered {
     display: flex;
@@ -179,6 +179,8 @@ export default {
 
   img {
     height: 50vh;
+    padding-right: 8vw;
+    border-right: 1px solid #CA801B;
   }
 
 .inline {
@@ -186,7 +188,7 @@ export default {
 }
 
 label {
-  font-size: large;
+  font-size: 18px;
   color: #CA801B;
 }
 
@@ -205,10 +207,9 @@ label {
     display: flex;
     flex-direction: column;
     text-wrap: wrap;
-    margin-left: 8vw;
     margin-right: 5vw;
     padding-left: 30px;
-    border-left: 1px solid #CA801B;
+    
   }
 
     .container {

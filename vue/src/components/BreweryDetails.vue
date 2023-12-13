@@ -276,6 +276,8 @@ img#banner {
   justify-content: start;
   width: 30vw;
   position: relative;
+  padding-right: 8vw;
+  border-right: 1px solid #CA801B;
   z-index: 1;
 }
 
@@ -284,7 +286,7 @@ img#banner {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 98%;
 }
 
 #two {
