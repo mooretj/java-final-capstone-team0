@@ -81,6 +81,8 @@ export default {
   width: 100%;
 }
 
+
+
 .list {
   display: flex;
   justify-content: center;
