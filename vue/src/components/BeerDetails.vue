@@ -8,9 +8,7 @@
   <div class="all">
   <div class="content-centered">
   <div class="beer-content">
-    <div class="beerImage">
-      <img :src=beer.beer_img alt="">
-    </div>
+      <img class="beerImage" :src=beer.beer_img alt="">
     <!-- </div> -->
     <!-- <div class='beer-details'>
     <div class="beerImage">
@@ -177,7 +175,7 @@ export default {
     
   }
 
-  img {
+  .beerImage {
     height: 50vh;
     padding-right: 8vw;
     border-right: 1px solid #CA801B;

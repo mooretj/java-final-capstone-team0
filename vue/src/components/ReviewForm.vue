@@ -1,4 +1,5 @@
 <template>
+  <div class="all">
   <button class='add-review' @click='showHide'>Review This</button>
 <div class='form'>
   
@@ -36,6 +37,7 @@
           </form>
         </div>
         </div>
+      </div>
     </template>
   
   <script>
@@ -167,6 +169,13 @@
   
   
   <style scoped>
+
+  .all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 .form {
   display: flex;
   align-items: center;
