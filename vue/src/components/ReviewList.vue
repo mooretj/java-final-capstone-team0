@@ -1,5 +1,6 @@
 <template>
-    <div class="loading" v-if="isLoading">
+    
+    <div class="loading" v-if=false>
         <p>Loading...</p>
     </div>
 
@@ -9,16 +10,25 @@
             <h2>{{ review.title }}</h2>
             <h4>{{ review.body }}</h4>
             <div class="rating">
-            <h3 class='username' >- {{ review.username }}</h3>
-            <div class='pints-rating'>
-                <p>{{ review.rating }}/5 pints</p>
-                <img src="../assets/pint.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"
-                    v-for="n in review.rating" v-bind:key="n" />
-                    </div>
+                <h3 class='username'>- {{ review.username }}</h3>
+                <div class='pints-rating'>
+                    <p>{{ review.rating }}/5 pints</p>
+                    <img src="../assets/pint.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"
+                        v-for="n in review.rating" v-bind:key="n" />
+                </div>
             </div>
         </div>
-        <reviews v-bind:reviews='reviews' />
+        <div class='review-actions'>
+            
+            <div >
+                <ReviewForm />
+            </div>
+        </div>
+
+
+        <!-- <reviews v-bind:reviews='reviews' /> -->
     </div>
+
 
     <!-- <div class='return'>
         <button @click="this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.$route.params.beerId } })">Back to
@@ -28,13 +38,22 @@
     
 <script>
 import reviewService from "../services/ReviewService";
+import ReviewForm from "../components/ReviewForm.vue";
 export default {
+    prop: {
+        review: {}
+    },
+    components: {
+        ReviewForm
+    },
     data() {
         return {
-            reviews: []
-        }
+            
+            reviews: [],
+                }
     },
     methods: {
+        
         getReviews() {
             reviewService.listBeerReviews(this.$route.params.beerId)
                 .then(response => {

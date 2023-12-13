@@ -1,5 +1,7 @@
 <template>
-    <div class="text-center">
+
+<button class='add-review' @click='showHide'>Review This</button>
+    <div class="text-center" v-show='isHidden'>
         <form v-on:submit.prevent="submitForm">
   
           <div class="form-input-group">
@@ -36,17 +38,21 @@ export default {
     },
     data() {
       return {
+        isHidden: false,
         editReview: {
-            review_id: this.review.review_id,
-            user_id: this.review.user_id,
-            beer_id: this.review.beer_id,
-            title: this.review.title,
-            body: this.review.body,
-            rating: this.review.rating
+            review_id: 0,
+            user_id: this.$store.state.user.id,
+            beer_id: this.$route.params.beerId,
+            title: '',
+            body: '',
+            rating: 0
         }
       };
     },
     methods: {
+      showHide() {
+            this.isHidden = !this.isHidden;
+        },
       submitForm() {
         // if (!this.validateForm()) {
         //   return;
@@ -63,8 +69,9 @@ export default {
                 //     type: 'success'
                 //   }
                 // );
-                this.$router.push({ name: "BeerDetailsView", params: { beerId: this.review.beer_id}});
+                // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
               // }
+              this.isHidden = false;
             })
             .catch(error => {
               this.handleErrorResponse(error, 'adding');
@@ -81,8 +88,9 @@ export default {
             //         type: 'success'
             //       }
             //     );
-                this.$router.push({ name: "BeerDetailsView", params: {beerId: this.review.beer_id}});
+            // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
             //   }
+            this.isHidden = false;
             })
             .catch(error => {
               this.handleErrorResponse(error, 'updating');
@@ -90,7 +98,8 @@ export default {
         }
   },
   cancelForm() {
-    this.$router.push({name: "BeerDetailsView", params: {beerId: this.review.beer_id}});
+    this.isHidden = false;
+    // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
   },
 
   handleErrorResponse(error, verb) {

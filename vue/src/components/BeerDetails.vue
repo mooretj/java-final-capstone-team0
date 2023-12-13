@@ -37,41 +37,44 @@
     </div>
 
 
-  <div class='review-actions'>
-    <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: { beerId: beerId } })">Review
-      This</button>
-  </div>
-  <!-- <div>
+
+    <!-- <div>
       <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
     </div> -->
+    <div class='buttons'>
+      <div class="actions"
+        v-show='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
+        <button class="btn-edit" @click="editBeer">Edit</button>
+        <button class="btn-delete" @click="deleteBeer">Delete</button>
+      </div>
 
-  <div class="actions"
-    v-show='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
-    <button class="btn-edit" @click="editBeer">Edit</button>
-    <button class="btn-delete" @click="deleteBeer">Delete</button>
+      <div class='return'>
+        <button
+          @click="this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id } })">More
+          From This Brewery</button>
+      </div>
+    </div>
   </div>
-
-  <div class='return'>
-    <button @click="this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id } })">More
-      From This Brewery</button>
-  </div>
-</div>
 </template>
   
 <script>
 import beerService from '../services/BeerService.js';
 import ReviewList from '../components/ReviewList.vue';
+
 export default {
+  data() {
+    return {
+
+    }
+  },
   components: {
     ReviewList
   },
   props: {
-    beer: { type: Object, required: true }
-  },
-  computed: {
-
+    beer: { type: Object, required: true },
   },
   methods: {
+
     editBeer() {
       if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
         this.$router.push({ name: 'EditBeerView', params: { beerId: this.$route.params.beerId } })
@@ -146,6 +149,12 @@ export default {
   background-color: rgb(0, 0, 0, .6);
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .label {
   color: #CA801B;
 }
@@ -172,7 +181,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 .review-list {
