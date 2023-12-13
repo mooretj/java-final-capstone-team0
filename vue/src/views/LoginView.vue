@@ -73,4 +73,10 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
