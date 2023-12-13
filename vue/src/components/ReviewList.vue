@@ -81,7 +81,7 @@ export default {
 .review-display {
     display: flex;
     flex-direction: column;
-    font-size: x-large;
+    font-size: large;
     padding: 10px;
     margin: 5px 15px 5px 15px;
     border-radius: 20px;
