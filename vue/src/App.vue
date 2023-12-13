@@ -1,6 +1,6 @@
 <template>
   <div id="logo">
-    <img id="logo" src="src/assets/HopSpotter.png" alt="beerimage">
+    <img id="logo" src="/src/assets/HopSpotter.png" alt="beerimage">
   </div>
   <header>
     <div id="topnav" class="topnav">
