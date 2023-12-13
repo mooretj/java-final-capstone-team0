@@ -1,4 +1,12 @@
 <template>
+    <div class="container">
+      <img id="banner" src="/src/assets/brews.jpg" alt="">
+      <div class="centered">
+        <h1 id="FindYour">{{ beer.beer_name }}</h1>
+      </div>
+  </div>
+
+
     <div class="beerImage">
       <img :src=beer.beer_img alt="">
     </div>
@@ -117,9 +125,22 @@
     color: black;
   } */
 
-img {
-      max-height: 300px;
-    }
+
+
+
+
+    .container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+img#banner {
+  width: 100%;
+  height: auto;
+}
 
   </style>
   

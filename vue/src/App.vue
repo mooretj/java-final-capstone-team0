@@ -151,11 +151,13 @@ button {
     height: 5vh;
     padding: 0px 10px;
     transition: .3s;
-    margin: 20px 0px;
+    margin: 10px 0px;
   }
 
   button:hover {
     color:whitesmoke;
     border-color: #CA801B;
   }
+
+  
 </style>

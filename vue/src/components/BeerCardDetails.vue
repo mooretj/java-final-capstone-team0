@@ -16,9 +16,9 @@
           <h4>{{ review.title }}</h4>
           <h5 class='username'>- {{ review.username }}</h5>
           <div class="rating">
-            <p>{{ review.rating }}/5 pints</p>
             <img src="../assets/pint.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar"
               v-for="n in review.rating" v-bind:key="n" />
+              <p class="outof">{{ review.rating }} out of 5 pints</p>
           </div>
           <p>{{ review.body }}
           </p>
@@ -113,18 +113,23 @@ img.reviewPic {
   position: absolute;
   transform: translate(0px, 15px);
   left: 20px;
+  margin-right: 15px;
+
 }
 
-img.ratingPic {
-  text-align: center;
 
-  width: 30px;
+.rating {
+  margin-top: -15px;
+  text-align: center;
+  margin-right: 15px;
+
 }
 
-.ratingPics {
-  margin-top: -30px;
+.outof{
+  margin-top: -10px;
 
-  text-align: center;
+text-align: right;  
+margin-right: 15px;
 }
 
 .beer {
@@ -163,7 +168,7 @@ h4 {
 
 h5 {
   font-size: 14px;
-  margin-top: -30px;
+  margin-top: -40px;
   margin-right: 20px;
   color: rgb(200, 200, 200);
   text-align: right;
@@ -178,6 +183,7 @@ h6 {
 }
 
 p {
+  margin-right: 15px;
 
   font-size: 12px;
   margin-left: 15px;
