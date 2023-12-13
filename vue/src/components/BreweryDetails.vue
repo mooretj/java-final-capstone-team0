@@ -1,31 +1,25 @@
 <template>
-    <div class="brewery-container" :style="`background-image: url(${brewery.brewery_main_img})`" alt="">
-      <div class="effect"><div class="name">
-            <h1>{{ brewery.brewery_name }}</h1>
-          </div>
-        
+  <div class="brewery-container" :style="`background-image: url(${brewery.brewery_main_img})`" alt="">
+    <div class="effect">
+      <div class="name">
+        <h1>{{ brewery.brewery_name }}</h1>
       </div>
+    </div>
   </div>
-  
+
   <div class="BreweryDetailsMain" id="overlay">
-
     <div class='top-container'>
-
       <div id="two" class="BreweryDetails">
-
         <div class="details-left">
-          
-
           <div class="history">
             <img id="BreweryImage" class="BreweryImage" :src="brewery.brewery_main_img" alt="">
             <div class="history-details">
-            <label>Brewery History: </label><br>
-            <span>{{ brewery.history }}</span>
+              <label>Brewery History: </label><br>
+              <span>{{ brewery.history }}</span>
+            </div>
           </div>
-          </div>
-
           <div class="beers">
-            <BeerList/>
+            <BeerList />
             <!-- <button class="btn-see-beers"
               v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See
               Beers</button> -->
@@ -44,73 +38,74 @@
             <label class="contact-label">Contact Info:</label>
 
             <span class='contact-info'>{{ brewery.brewery_contact.brewery_address }}</span>
-            
+
             <span class='contact-info'>{{ brewery.brewery_contact.phone }}</span>
-            
+
             <span class='contact-info'>{{ brewery.brewery_contact.email }}</span>
-            
+
             <a class='contact-info' :href=brewery.website target='_blank'>{{ brewery.brewery_name }} Website</a>
           </div>
 
           <!-- <div class="details-right"> -->
-            <div class="hours">
-              <label class='hours-label'>Hours of Operation:</label>
-              <table id="week">
-                <!-- <tr>
+          <div class="hours">
+            <label class='hours-label'>Hours of Operation:</label>
+            <table id="week">
+              <!-- <tr>
                   <th>Day</th>
                   <th>Open</th>
                   <th>Close</th>
                 </tr> -->
-                <tr>
-                  <td class='day'>Sunday</td>
-                  <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_open) }}</td>
-                  <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Monday</td>
-                  <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_open) }}</td>
-                  <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Tuesday</td>
-                  <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_open) }}</td>
-                  <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Wednesday</td>
-                  <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_open) }}</td>
-                  <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Thursday</td>
-                  <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_open) }}</td>
-                  <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Friday</td>
-                  <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_open) }}</td>
-                  <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_close) }}</td>
-                </tr>
-                <tr>
-                  <td class='day'>Saturday</td>
-                  <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_open) }}</td>
-                  <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_close) }}</td>
-                </tr>
-              </table>
-               <div class='edit-actions'
-            v-if='(JSON.stringify(this.$store.state.user) !== "{}" &&  this.$store.state.user.authorities[0].name == "ROLE_ADMIN") || getBrewers'>
-            <div class="edit-contact" >
-              <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
+              <tr>
+                <td class='day'>Sunday</td>
+                <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_open) }}</td>
+                <td>{{ sundayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.sunday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Monday</td>
+                <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_open) }}</td>
+                <td>{{ mondayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.monday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Tuesday</td>
+                <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_open) }}</td>
+                <td>{{ tuesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.tuesday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Wednesday</td>
+                <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_open) }}</td>
+                <td>{{ wednesdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.wednesday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Thursday</td>
+                <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_open) }}</td>
+                <td>{{ thursdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.thursday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Friday</td>
+                <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_open) }}</td>
+                <td>{{ fridayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.friday_close) }}</td>
+              </tr>
+              <tr>
+                <td class='day'>Saturday</td>
+                <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_open) }}</td>
+                <td>{{ saturdayNull ? "CLOSED" : this.convertTime(brewery.brewery_hours.saturday_close) }}</td>
+              </tr>
+            </table>
+            <!-- <div class='edit-actions'
+              v-if='(JSON.stringify(this.$store.state.user) !== "{}" && (this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || getBrewers))'> -->
+              <div class='edit-actions'
+              v-if="JSON.stringify(this.$store.state.user) !== '{}' && this.$store.state.user.authorities[0].name == 'ROLE_ADMIN'">
+              <div class="edit-contact">
+                <button class="btn-edit-contact" v-on:click="editContact">Edit Contact Info</button>
+              </div>
+              <div class="edit-hours">
+                <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
+              </div>
             </div>
 
-            <div class="edit-hours" >
-              <button class="btn-edit-hours" v-on:click="editHours">Edit Hours of Operation</button>
-            </div>
           </div>
-          
-            </div>
 
-            
+
           <!-- </div> -->
 
           <!-- <div class="beers">
@@ -118,14 +113,14 @@
           v-on:click="$router.push({ name: 'BeerListView', params: { breweryId: brewery.brewery_id } })">See Beers</button>
       </div> -->
 
-         
+
         </div>
 
 
 
       </div>
-      
-      
+
+
     </div>
   </div>
 </template>
@@ -136,65 +131,63 @@ import BeerList from '../components/BeerList.vue';
 import { RouterLink } from 'vue-router';
 
 export default {
-    props: {
-        brewery: { type: Object, required: false }
+  props: {
+    brewery: { type: Object, required: false }
+  },
+  data() {
+    return {
+      sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
+      mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
+      tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
+      wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
+      thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
+      fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
+      saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
+    };
+  },
+  methods: {
+    getBrewers() {
+      breweryService.getBrewers(this.$route.params.breweryId)
+        .then(response => {
+          let brewers = response.data;
+          return brewers.includes(this.$store.state.user.id);
+        });
     },
-    data() {
-        return {
-            sundayNull: this.brewery.brewery_hours.sunday_open == "00:00:00" && this.brewery.brewery_hours.sunday_close == "00:00:00",
-            mondayNull: this.brewery.brewery_hours.monday_open == "00:00:00" && this.brewery.brewery_hours.monday_close == "00:00:00",
-            tuesdayNull: this.brewery.brewery_hours.tuesday_open == "00:00:00" && this.brewery.brewery_hours.tuesday_close == "00:00:00",
-            wednesdayNull: this.brewery.brewery_hours.wednesday_open == "00:00:00" && this.brewery.brewery_hours.wednesday_close == "00:00:00",
-            thursdayNull: this.brewery.brewery_hours.thursday_open == "00:00:00" && this.brewery.brewery_hours.thursday_close == "00:00:00",
-            fridayNull: this.brewery.brewery_hours.friday_open == "00:00:00" && this.brewery.brewery_hours.friday_close == "00:00:00",
-            saturdayNull: this.brewery.brewery_hours.saturday_open == "00:00:00" && this.brewery.brewery_hours.saturday_close == "00:00:00"
-        };
+    convertTime(t) {
+      const hoursAsNum = Number(t.slice(0, 2));
+      if (hoursAsNum == 0) {
+        return "12".concat(t.slice(2, 5)).concat(" AM");
+      }
+      else if (hoursAsNum == 12) {
+        return "12".concat(t.slice(2, 5)).concat(" PM");
+      }
+      else if (hoursAsNum > 12) {
+        return String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
+      }
+      else {
+        return String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
+      }
     },
-    methods: {
-        getBrewers() {
-            breweryService.getBrewers(this.$route.params.breweryId)
-                .then(response => {
-                let brewers = response.data;
-                return brewers.includes(this.$store.state.user.id);
-            });
-        },
-        convertTime(t) {
-            let hoursAsNum = Number(t.slice(0, 2));
-            let formattedTime;
-            if (hoursAsNum == 0) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" AM");
-            }
-            else if (hoursAsNum == 12) {
-                formattedTime = "12".concat(t.slice(2, 5)).concat(" PM");
-            }
-            else if (hoursAsNum > 12) {
-                formattedTime = String(hoursAsNum - 12).concat(t.slice(2, 5)).concat(" PM");
-            }
-            else {
-                formattedTime = String(hoursAsNum).concat(t.slice(2, 5)).concat(" AM");
-            }
-            return formattedTime;
-        },
-        editContact() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to edit contact information.");
-            }
-        },
-        editHours() {
-            if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-                this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
-            }
-            else {
-                alert("You must be authorized to to edit hours of operation.");
-            }
-        }
+    editContact() {
+      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+        this.$router.push({ name: 'EditContactView', params: { breweryId: this.brewery.brewery_id } });
+      }
+      else {
+        alert("You must be authorized to edit contact information.");
+      }
+    },
+    editHours() {
+      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+        this.$router.push({ name: 'EditHoursView', params: { breweryId: this.brewery.brewery_id } });
+      }
+      else {
+        alert("You must be authorized to to edit hours of operation.");
+      }
     }
-    // components: { RouterLink }
-    ,
-    components: { BeerList }
+  }
+  // components: { RouterLink }
+  ,
+  components: { BeerList }
 }
 </script>
   
@@ -250,14 +243,14 @@ export default {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  }
+}
 
 .day {
   font-weight: bold;
 }
 
 .BreweryImage {
-  
+
   display: flex;
   align-items: center;
   justify-content: start;
@@ -275,7 +268,8 @@ export default {
 }
 
 #two {
-justify-content: center;  display: flex;
+  justify-content: center;
+  display: flex;
   padding: 20px;
   background-color: rgba(0, 0, 0, .6);
   z-index: 15;
@@ -304,7 +298,7 @@ h1 {
 
 .hours {
   display: flex;
-  
+
   flex-direction: column;
   align-items: center;
   margin-right: 25px;
@@ -351,7 +345,7 @@ table {
   width: 100%;
 }
 
-.beer{
+.beer {
   height: auto;
 }
 </style>
