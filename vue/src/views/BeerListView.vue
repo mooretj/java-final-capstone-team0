@@ -7,6 +7,7 @@
 
   <div v-else>
     
+    
     <!-- <h1>Beers</h1> -->
     <beerList />
 
