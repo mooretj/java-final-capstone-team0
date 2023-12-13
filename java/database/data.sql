@@ -323,7 +323,7 @@ INSERT INTO review (user_id, beer_id, title, body, rating) VALUES (1, 32, 'Hoppy
 
 
 
-INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (10,'Dortmunder Gold','your image here','A classic award-winning balance of sweet malt and dry hop flavors, proudly waving the flag for Cleveland and refreshing beer drinkers everywhere since 1988.','5.8','Light Lager',true);
+INSERT INTO beer (brewery_id,beer_name,beer_img,beer_description,abv,beer_type,is_available) VALUES (10,'Dortmunder Gold','https://brewpigeon.com/cdn/shop/products/dort1_300x.png?v=1612297498','A classic award-winning balance of sweet malt and dry hop flavors, proudly waving the flag for Cleveland and refreshing beer drinkers everywhere since 1988.','5.8','Light Lager',true);
 
 INSERT INTO review (user_id, beer_id, title, body, rating) VALUES (1, 33, 'Award-Winning Classic', 'Dortmunder Gold is a classic award-winning balance of sweet malt and dry hop flavors. Proudly waving the flag for Cleveland and refreshing beer drinkers everywhere since 1988.', 5);
 

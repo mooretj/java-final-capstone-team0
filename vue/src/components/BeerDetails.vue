@@ -10,64 +10,84 @@
     <div class="beerImage">
       <img :src=beer.beer_img alt="">
     </div>
+    <!-- </div> -->
+    <!-- <div class='beer-details'>
+    <div class="beerImage">
+      <img class='beer-img' :src=beer.beer_img alt="">
+    </div> -->
+    <div class='beer-details'>
 
-      <h1>{{ beer.beer_name }}</h1>
-
-    <div class="description">
-      <label>Beer Description:</label>&nbsp;
-      <span>{{ beer.beer_description }}</span>
-    </div>
-
-    <div class="abv">
-      <label>Beer ABV:</label>&nbsp;
-      <span>{{ beer.abv }}</span>
-    </div>
-
-    <div class="type">
-      <label>Beer Type:</label>&nbsp;
-      <span>{{ beer.beer_type }}</span>
-    </div>
-
-    <div class='review-actions'>
-      <button class='add-review' @click="$router.push({ name: 'AddReviewView', params: {beerId: beerId} })">Review This</button>
+      <div class="description">
+        <h2 class='label'>Description:</h2>&nbsp;
+        <h3 class='detail'>{{ beer.beer_description }}</h3>
       </div>
-      <div>
+
+      <div class="abv">
+        <h2 class='label'>ABV:</h2>&nbsp;
+        <h3 class='detail'>{{ beer.abv }}</h3>
+      </div>
+
+      <div class="type">
+        <h2 class='label'> Type:</h2>&nbsp;
+        <h3 class='detail'>{{ beer.beer_type }}</h3>
+      </div>
+    </div>
+
+
+    <div class='review-list'>
+      <ReviewList />
+    </div>
+
+
+
+    <!-- <div>
       <button class='reviews' @click="$router.push({ name: 'ReviewListView', params: {beerId: beerId} })">See Reviews</button>
-    </div>
+    </div> -->
+    <div class='buttons'>
+      <div class="actions"
+        v-show='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
+        <button class="btn-edit" @click="editBeer">Edit</button>
+        <button class="btn-delete" @click="deleteBeer">Delete</button>
+      </div>
 
-    <div class="actions" v-if='JSON.stringify(this.$store.state.user) !== "{}" && this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.brewer == true'>
-      <button class="btn-edit" @click="editBeer">Edit</button>
-      <button class="btn-delete" @click="deleteBeer">Delete</button>
+      <div class='return'>
+        <button
+          @click="this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id } })">More
+          From This Brewery</button>
+      </div>
     </div>
-
-    <div class='return'>
-      <button @click="this.$router.push({ name: 'BreweryDetailsView', params: {breweryId: this.beer.brewery_id} })">More From This Brewery</button>
-    </div>
-
-  </template>
+  </div>
+</template>
   
-  <script>
-  import beerService from '../services/BeerService.js';
-  export default {
-    props: {
-      beer: { type: Object, required: true }
-    },
-    computed: {
+<script>
+import beerService from '../services/BeerService.js';
+import ReviewList from '../components/ReviewList.vue';
 
+export default {
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    ReviewList
+  },
+  props: {
+    beer: { type: Object, required: true },
+  },
+  methods: {
+
+    editBeer() {
+      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+        this.$router.push({ name: 'EditBeerView', params: { beerId: this.$route.params.beerId } })
+      }
+      else {
+        alert("You must be authorized to do that.")
+      }
     },
-    methods: {
-      editBeer() {
-        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-          this.$router.push({ name: 'EditBeerView', params: {beerId: this.$route.params.beerId} })
-        }
-        else {
-          alert("You must be authorized to do that.")
-        }
-      },
-      deleteBeer() {
-        if(this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
-        if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) 
-        {
+    deleteBeer() {
+      if (this.$store.state.user.brewer == true || this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+        if (confirm("Are you sure you want to delete this beer? This action cannot be undone.")) {
           beerService
             .deleteBeer(this.beer.beer_id)
             .then(response => {
@@ -97,30 +117,30 @@
       else {
         alert("You must be a authorized to do that.")
       }
-      },
+    },
 
-      handleErrorResponse(error, verb) {
-        if (error.response) {
-          if (error.response.status == 404) {
-            this.$router.push({name: 'NotFoundView'});
-          } else {
-            this.$store.commit('SET_NOTIFICATION',
-            `Error ${verb} message. Response received was "${error.response.statusText}".`);
-          }
-        } else if (error.request) {
-          this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        if (error.response.status == 404) {
+          this.$router.push({ name: 'NotFoundView' });
         } else {
-          this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
+          this.$store.commit('SET_NOTIFICATION',
+            `Error ${verb} message. Response received was "${error.response.statusText}".`);
         }
-      },
-    }
-  };
-  </script>
+      } else if (error.request) {
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
+      } else {
+        this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
+      }
+    },
+  }
+};
+</script>
   
 
   
-  <style scoped>
-  /* button{
+<style scoped>
+/* button{
     margin: 20px;
     color: black;
   } */
@@ -142,5 +162,10 @@ img#banner {
   height: auto;
 }
 
-  </style>
+.review-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
   

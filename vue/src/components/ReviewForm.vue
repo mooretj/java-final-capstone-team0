@@ -1,6 +1,8 @@
 <template>
+
   <div class="form">
-    <div class="text-center">
+    <button class='add-review' @click='showHide'>Review This</button>
+    <div class="text-center" v-show='isHidden'>
       <form v-on:submit.prevent="submitForm">
         <div class="form-input-group">
           <input type="text" id="reviewTitle" v-model="editReview.title" placeholder="Review Title" class="textEntry" />
@@ -37,46 +39,51 @@ export default {
       type: Object,
       required: true
     },
-  },
-  data() {
-    return {
-      editReview: {
-        review_id: this.review.review_id,
-        user_id: this.review.user_id,
-        beer_id: this.review.beer_id,
-        title: this.review.title,
-        body: this.review.body,
-        rating: this.review.rating
-      }
-    };
-  },
-  methods: {
-    submitForm() {
-      // if (!this.validateForm()) {
-      //   return;
-      // }
-      if (this.editReview.reviewId == 0 || this.editReview.reviewId == null) {
-        reviewService
-          .addReview(this.editReview)
-          .then(response => {
-            // if (response.status == 201) {
-            // this.$store.commit(
-            //   'SET_NOTIFICATION',
-            //   {
-            //     message: 'A new beer was added.',
-            //     type: 'success'
-            //   }
-            // );
-            this.$router.push({ name: "BeerDetailsView", params: { beerId: this.review.beer_id } });
-            // }
-          })
-          .catch(error => {
-            this.handleErrorResponse(error, 'adding');
-          });
-      } else {
-        reviewService
-          .updateReview(this.editReview)
-          .then(response => {
+    data() {
+      return {
+        isHidden: false,
+        editReview: {
+            review_id: 0,
+            user_id: this.$store.state.user.id,
+            beer_id: this.$route.params.beerId,
+            title: '',
+            body: '',
+            rating: 0
+        }
+      };
+    },
+    methods: {
+      showHide() {
+            this.isHidden = !this.isHidden;
+        },
+      submitForm() {
+        // if (!this.validateForm()) {
+        //   return;
+        // }
+        if (this.editReview.reviewId == 0 || this.editReview.reviewId == null) {
+          reviewService
+            .addReview(this.editReview)
+            .then(response => {
+              // if (response.status == 201) {
+                // this.$store.commit(
+                //   'SET_NOTIFICATION',
+                //   {
+                //     message: 'A new beer was added.',
+                //     type: 'success'
+                //   }
+                // );
+                // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
+              // }
+              this.isHidden = false;
+            })
+            .catch(error => {
+              this.handleErrorResponse(error, 'adding');
+            });
+        } else {
+          reviewService
+            .updateReview(this.editReview)
+            .then(response => {
+
             //   if (response.status == 201) {
             //     this.$store.commit(
             //       'SET_NOTIFICATION',
@@ -85,17 +92,20 @@ export default {
             //         type: 'success'
             //       }
             //     );
-            this.$router.push({ name: "BeerDetailsView", params: { beerId: this.review.beer_id } });
+            // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
             //   }
-          })
-          .catch(error => {
-            this.handleErrorResponse(error, 'updating');
-          });
-      }
-    },
-    cancelForm() {
-      this.$router.push({ name: "BeerDetailsView", params: { beerId: this.review.beer_id } });
-    },
+            this.isHidden = false;
+            })
+            .catch(error => {
+              this.handleErrorResponse(error, 'updating');
+            });
+        }
+  },
+  cancelForm() {
+    this.isHidden = false;
+    // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
+  },
+
 
     handleErrorResponse(error, verb) {
       if (error.response) {
