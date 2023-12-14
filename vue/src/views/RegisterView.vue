@@ -17,7 +17,7 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <div class="check-brewer-input">
+      <div class="form-input-group">
         <label for="isBrewer">Brewer:</label>
         <input type="checkbox" id="brewer-check" v-model="user.brewer" />
       </div>
@@ -80,8 +80,25 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  opacity: .75;
 }
 label {
   margin-right: 0.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#register {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: rgba(0, 0, 0, 0.801);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
