@@ -23,7 +23,7 @@
       <div class="stats">
         <div class="abv inline">
           <label class='label'>ABV:&nbsp;</label>
-          <div class='detail'>{{ beer.abv }}</div>
+          <div class='detail'>{{ beer.abv }}%</div>
         </div>
 
         <div class="type inline">
