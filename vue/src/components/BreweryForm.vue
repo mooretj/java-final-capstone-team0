@@ -336,6 +336,7 @@ form{
     height: 60vh;
 }
 
+
 .formLeft {
     width: 40vw;
     text-align: center;

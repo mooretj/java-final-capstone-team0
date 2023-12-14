@@ -38,6 +38,12 @@
           <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
           <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
         </div>
+        
+        <div class="submitcancel">
+        <button class="button">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
+        <button class="button" v-on:click="cancelForm">Cancel</button>
+      </div>
+
       </form>
     
   </div>
@@ -103,7 +109,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
+                  this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.$route.params.breweryId }});
                 // }
               })
               .catch(error => {
@@ -189,11 +195,8 @@
   width: 70%;
 }
 
-.text {
-  
+.text { 
     text-align: center;
-    
-
 }
 
 .text-center{
