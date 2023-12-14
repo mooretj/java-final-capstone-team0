@@ -91,7 +91,7 @@
                   // this.$router.push({name: "BeerDetailsView", params: {beerId: this.$route.params.beerId}});
                 // }
                 this.isHidden = false;
-                this.$router.go(0);
+                // this.$router.go(0);
               })
               .catch(error => {
                 this.handleErrorResponse(error, 'adding');
