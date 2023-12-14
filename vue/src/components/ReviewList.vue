@@ -89,10 +89,12 @@ export default {
 .rating {
     display: flex;
     justify-content: space-between;
+    padding-right: 15px;
 }
 
 .username {
     margin-top: 35px;
+    padding-left: 15px;
 }
 
 img {
@@ -106,5 +108,7 @@ h2 {
 h4 {
     margin-top: 5px;
     margin-bottom: -20px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 </style>

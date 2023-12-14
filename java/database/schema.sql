@@ -71,7 +71,7 @@ CREATE TABLE beer (
 	beer_description varchar(500) NOT NULL,
 	abv decimal(3, 1) NOT NULL,
 	beer_type varchar(50),
-	is_available boolean
+	is_available boolean DEFAULT TRUE
 );
 
 CREATE TABLE brewery_beer (
