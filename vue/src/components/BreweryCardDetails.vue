@@ -45,7 +45,7 @@ img {
     color: #CA801B;
   }
   .name h1 {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .BreweryDetailsMain {
     background-position: center;
@@ -85,6 +85,7 @@ img {
     display: none;
     height:25vh;
     z-index: 10;
+    font-size: 1.25vw;
   }
 
     .dim:hover{

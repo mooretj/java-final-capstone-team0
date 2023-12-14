@@ -135,7 +135,7 @@ margin-right: 15px;
 }
 
 .beer {
-  font-size: 18px;
+  font-size: 22px;
   display: flex;
   flex-direction: column;
   margin: 10px 10px;
@@ -169,7 +169,7 @@ h4 {
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 16px;
   margin-top: -30px;
   margin-right: 20px;
   color: rgb(200, 200, 200);
@@ -177,7 +177,7 @@ h5 {
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 18px;
   margin-top: -20px;
   color: rgb(200, 200, 200);
   text-align: center;
@@ -186,8 +186,8 @@ h6 {
 
 p {
   margin-right: 15px;
-margin-top: -5px;
-  font-size: 14px;
+margin-top: -15px;
+  font-size: 16px;
   margin-left: 15px;
   font-style: italic;
   font-weight: lighter;

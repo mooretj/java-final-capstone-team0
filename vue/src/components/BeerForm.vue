@@ -1,9 +1,9 @@
 <template>
 
-<div class="form">
+
   <div class="text-center">
       <form v-on:submit.prevent="submitForm">
-
+      <div class="form">
         <!-- <div class="form-input-group">
           <label for="beerId">Beer ID: </label>
           <input type="text" id="beerId" v-model="editBeer.beer_id" />
@@ -14,34 +14,34 @@
           <input type="text" id="breweryId" v-model="editBeer.brewery_id" />
         </div> -->
 
-        <div class="form-input-group">
-          <input type="text" id="name" v-model="editBeer.beer_name" placeholder="Beer Name"   class="textEntry" />
+          <div class="form-input-group">
+            <input type="text" id="name" v-model="editBeer.beer_name" placeholder="Beer Name"   class="textEntry" />
+          </div>
+
+          <div class="form-input-group">
+            <input type="text" id="beerImage" v-model="editBeer.beer_img" placeholder="Beer Image URL"  class="textEntry" />
+          </div>
+
+          <div class="form-input-group">
+            <input type="abv" id="abv" v-model="editBeer.abv" placeholder="ABV"  class="textEntry" />
+          </div>
+
+          <div class="form-input-group">
+            <input type="text"  id="beerType" v-model="editBeer.beer_type" placeholder="Beer Type"  class="textEntry" />
+          </div>
+
+          <div class="form-input-group">
+            <textarea rows="5" type="text" id="description" class="description" v-model="editBeer.beer_description" placeholder="Description"  />
+          </div>
         </div>
-
-        <div class="form-input-group">
-          <input type="text" id="beerImage" v-model="editBeer.beer_img" placeholder="Beer Image URL"  class="textEntry" />
+        <div class="submitcancel">
+          <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
+          <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
         </div>
-
-        <div class="form-input-group">
-          <input type="abv" id="abv" v-model="editBeer.abv" placeholder="ABV"  class="textEntry" />
-        </div>
-
-        <div class="form-input-group">
-          <input type="text"  id="beerType" v-model="editBeer.beer_type" placeholder="Beer Type"  class="textEntry" />
-        </div>
-
-        <div class="form-input-group">
-          <textarea rows="5" type="text" id="description" class="description" v-model="editBeer.beer_description" placeholder="Description"  />
-        </div>
-
-
       </form>
-    </div>
+    
   </div>
-  <div class="submitcancel">
-        <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
-        <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
-      </div>
+  
 </template>
     
 <script>
@@ -85,7 +85,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.push({ name: 'BeerListView', params: { breweryId: this.beer.brewery_id }});
+                  this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id }});
                 // }
               })
               .catch(error => {
@@ -173,18 +173,21 @@
 
 <style scoped>
 .form {
-  
+    height: 60vh;
     background-color: black;
     opacity: .8;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 60vh;
     width: 100%;
 }
 
-
+.form-input-group {
+  
+  width: 70%;
+}
 
 .text {
   
@@ -194,10 +197,11 @@
 }
 
 .text-center{
-  width: 75%;
+  width: 100%;
 }
 
 .submitcancel{
+    opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,19 +209,22 @@
 
 
 .button{
+  opacity: 1;
     width: 200px;
 }
 
 .textEntry {
-    width: 75%;
+    width: 100%;
     margin: 3px;
     height: 28px;
+    font-size: 22px;
 }
 
 .description{    
-  width: 75%;
+  width: 100%;
   resize: none;
   margin: 3px;
+  font-size: 22px;
 }
 
 </style>

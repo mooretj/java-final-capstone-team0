@@ -261,7 +261,7 @@ img#banner {
 
 .bottom-details {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -289,6 +289,12 @@ img#banner {
   width: 98%;
 }
 
+.hours-label {
+  width: 100%;
+  justify-content: start;
+  align-items: start;
+}
+
 #two {
   justify-content: center;
   display: flex;
@@ -296,6 +302,7 @@ img#banner {
   background-color: rgba(0, 0, 0, .6);
   z-index: 15;
   width: 100%;
+  font-size: 22px;
 
 }
 
@@ -334,21 +341,21 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  font-size: large;
+  font-size: 22px;
 
 }
 
 .contact-label {
-  margin-bottom: 7vh;
+  margin-bottom: 3vh;
 }
 
 .contact-info {
-  margin-bottom: 4vh;
+  margin-bottom: 2vh;
 }
 
 .history {
   width: 100%;
-  font-size: 18px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;

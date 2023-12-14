@@ -118,7 +118,7 @@ div #topnav {
   color: gray;
   align-items: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-shadow: black 2px 2px 2px;
 }
 
@@ -128,11 +128,12 @@ div #nav {
   align-items: flex-end;
   color: gray;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
+  margin-top: 15px;
 }
 
 .aboutus{
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -144,8 +145,8 @@ button {
 
 button {
   cursor: pointer;
-    font-size: 1.5vh;
-    background-color: rgb(65, 65, 65);
+    font-size: 2vh;
+    background-color: rgb(46, 49, 47);
     color: #CA801B;
     border: 2px solid black;
     box-shadow: black 3px 3px 4px;

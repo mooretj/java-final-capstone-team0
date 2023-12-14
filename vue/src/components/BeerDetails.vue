@@ -149,6 +149,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
 }
   .content-centered {
     display: flex;
@@ -175,6 +176,12 @@ export default {
     
   }
 
+  .detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .beerImage {
     height: 50vh;
     padding-right: 8vw;
@@ -186,7 +193,7 @@ export default {
 }
 
 label {
-  font-size: 18px;
+  font-size: 22px;
   color: #CA801B;
 }
 
