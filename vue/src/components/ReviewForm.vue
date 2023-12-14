@@ -186,18 +186,19 @@
 
 .form-input-group{
   width: 100vw;
+  font-size: 22px;
 }
 
 .textEntry {
   width: 50%;
-
+  font-size: 22px;
   margin: 3px;
   height: 28px;
 }
 
 .review {
   width: 50%;
-
+  font-size: 22px;
   resize: none;
   margin: 3px;
 }

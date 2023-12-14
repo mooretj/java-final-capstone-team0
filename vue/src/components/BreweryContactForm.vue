@@ -88,7 +88,7 @@ export default {
     }
     .form {
         background-color: black;
-
+        
         opacity: .8;
         display: flex;
         align-items: center;
@@ -99,7 +99,7 @@ export default {
     .formLeft {
         width: 40vw;
         text-align: center;
-
+        
     }
 
     .text {
@@ -118,6 +118,7 @@ export default {
         width: 75%;
         margin: 3px;
         height: 28px;
+        
     }
 
     table {
@@ -149,5 +150,6 @@ export default {
     }
     input {
         width: 100%;
+        font-size: 22px;
     }
 </style>
