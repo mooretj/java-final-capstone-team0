@@ -53,7 +53,7 @@
       </div>
 
       <div class='return'>
-        <button
+        <button class='back-to-brewery'
           @click="this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id } })">More
           From This Brewery</button>
       </div>
@@ -234,6 +234,10 @@ img#banner {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.back-to-brewery {
+  width: 300px;
 }
 </style>
   

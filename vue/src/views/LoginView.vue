@@ -1,5 +1,5 @@
 <template>
-
+<div class='topContainer'>
   <div id="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
@@ -27,6 +27,7 @@
       
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -69,15 +70,35 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  opacity: .75;
 }
 label {
   margin-right: 0.5rem;
 }
 
+button {
+  opacity: 1.0;
+}
+.topContainer {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #login {
-  width: 100%;
+  background-color: rgba(0, 0, 0, 0.801);
+  
+  height: 60vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+form {
+  
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 </style>
