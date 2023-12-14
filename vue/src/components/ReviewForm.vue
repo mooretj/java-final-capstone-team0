@@ -65,7 +65,12 @@
       },
       methods: {
         showHide() {
+          if(JSON.stringify(this.$store.state.user) !== "{}") {
               this.isHidden = !this.isHidden;
+          }
+          else {
+          alert("You must be logged in to do that.")
+          }
           },
         submitForm() {
           // if (!this.validateForm()) {

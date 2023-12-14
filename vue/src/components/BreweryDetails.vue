@@ -377,5 +377,9 @@ table {
 .beer {
   height: auto;
 }
+
+.btn-edit-hours {
+  width: 300px;
+}
 </style>
   

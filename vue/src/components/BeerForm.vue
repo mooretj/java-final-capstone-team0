@@ -39,10 +39,6 @@
           <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
         </div>
         
-        <div class="submitcancel">
-        <button class="button">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
-        <button class="button" v-on:click="cancelForm">Cancel</button>
-      </div>
 
       </form>
     
