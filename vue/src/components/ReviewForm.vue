@@ -47,7 +47,7 @@
       props: {
         review: {
           type: Object,
-          required: true
+          required: false
         },
       },
       data() {
