@@ -102,7 +102,7 @@ public class Review {
     @Override
     public String toString() {
         return "Review{" +
-                "Review Id=" + userId +
+                "Review Id=" + reviewId +
                 ", User Id=" + userId +
                 ", Beer Id=" + beerId +
                 ", Title='" + title + '\'' +

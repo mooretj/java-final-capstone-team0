@@ -135,7 +135,7 @@ margin-right: 15px;
 }
 
 .beer {
-  font-size: 22px;
+  font-size: 19px;
   display: flex;
   flex-direction: column;
   margin: 10px 10px;
@@ -187,7 +187,7 @@ h6 {
 p {
   margin-right: 15px;
 margin-top: -15px;
-  font-size: 16px;
+  font-size: 15px;
   margin-left: 15px;
   font-style: italic;
   font-weight: lighter;
@@ -240,7 +240,6 @@ margin-top: -15px;
   cursor: pointer;
   width: 400px;
   height: 600px;
-  padding: px;
   border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.85);
     color: black;
