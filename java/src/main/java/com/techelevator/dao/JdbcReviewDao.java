@@ -24,16 +24,16 @@ public class JdbcReviewDao implements ReviewDao {
     public Review getReviewById(int reviewId) {
         Review review = null;
 
-        String sql = "SELECT review_id, users.user_id, review.beer_id, title, body, rating, username, brewery_name " +
+        String sql = "SELECT review_id, user_id, beer_id, title, body, rating " +
                 "FROM review " +
-                "JOIN users ON review.user_id = users.user_id " +
-                "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
-                "JOIN brewery ON brewery_beer.brewery_id = brewery.brewery_id " +
-                "WHERE review.review_id = ?";
+//                "JOIN users ON review.user_id = users.user_id " +
+//                "JOIN brewery_beer ON review.beer_id = brewery_beer.beer_id " +
+//                "JOIN brewery ON brewery_beer.brewery_id = brewery.brewery_id " +
+                "WHERE review_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
             if (results.next()) {
-                review = mapRowToReview(results);
+                review = singleMapReview(results);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -122,6 +122,17 @@ public class JdbcReviewDao implements ReviewDao {
         review.setRating(rs.getInt("rating"));
         review.setUsername(rs.getString("username"));
         review.setBreweryName(rs.getString("brewery_name"));
+        return review;
+    }
+
+    private Review singleMapReview(SqlRowSet rs) {
+        Review review = new Review();
+        review.setReviewId(rs.getInt("review_id"));
+        review.setUserId(rs.getInt("user_id"));
+        review.setBeerId(rs.getInt("beer_id"));
+        review.setTitle(rs.getString("title"));
+        review.setBody(rs.getString("body"));
+        review.setRating(rs.getInt("rating"));
         return review;
     }
 }
