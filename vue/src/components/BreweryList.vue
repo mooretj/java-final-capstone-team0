@@ -144,7 +144,7 @@ iframe{
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 26px;
   margin: 10px;
   flex: 1;
 }

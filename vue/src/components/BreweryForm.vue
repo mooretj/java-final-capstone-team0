@@ -358,6 +358,7 @@ form{
     width: 75%;
     margin: 3px;
     height: 28px;
+    font-size: 22px;
 }
 
 table {
@@ -374,6 +375,7 @@ tr.border_bottom td {
     width: 75%;
     resize: none;
     margin: 3px;
+    font-size: 22px;;
 }
 
 .button {
