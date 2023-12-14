@@ -129,7 +129,7 @@ div #nav {
   color: gray;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 20px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .aboutus{
@@ -156,6 +156,7 @@ button {
     transition: .3s;
     margin: 10px 0px;
     width: 200px;
+    opacity: 1;
   }
 
   button:hover {
