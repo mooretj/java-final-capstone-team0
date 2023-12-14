@@ -14,7 +14,7 @@
           <div class="history">
             <img id="BreweryImage" class="BreweryImage" :src="brewery.brewery_main_img" alt="">
             <div class="history-details">
-              <label>About us: </label><br>
+              <label>About Us: </label><br>
               <span>{{ brewery.history }}</span>
             </div>
           </div>
