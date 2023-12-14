@@ -33,10 +33,10 @@
           <div class="form-input-group">
             <textarea rows="5" type="text" id="description" class="description" v-model="editBeer.beer_description" placeholder="Description"  />
           </div>
-        </div>
-        <div class="submitcancel">
+          <div class="submitcancel">
           <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
           <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
+        </div>
         </div>
         
 
@@ -176,8 +176,7 @@
 <style scoped>
 .form {
     height: 60vh;
-    background-color: black;
-    opacity: .8;
+    background-color: rgba(0, 0, 0, 0.808);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,7 +186,7 @@
 }
 
 .form-input-group {
-  
+  opacity: .75;
   width: 70%;
 }
 
