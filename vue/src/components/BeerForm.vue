@@ -33,15 +33,16 @@
         <div class="form-input-group">
           <textarea rows="5" type="text" id="description" class="description" v-model="editBeer.beer_description" placeholder="Description"  />
         </div>
-
+        
+        <div class="submitcancel">
+        <button class="button">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
+        <button class="button" v-on:click="cancelForm">Cancel</button>
+      </div>
 
       </form>
     </div>
   </div>
-  <div class="submitcancel">
-        <button class="button" type="submit">{{ this.editBeer.beer_id == 0 || this.editBeer.beer_id == null? "Add Beer" : "Edit Beer"}}</button>
-        <button class="button" type="button" v-on:click="cancelForm">Cancel</button>
-      </div>
+  
 </template>
     
 <script>
@@ -85,7 +86,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.push({ name: 'BeerListView', params: { breweryId: this.beer.brewery_id }});
+                  this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.beer.brewery_id }});
                 // }
               })
               .catch(error => {
@@ -103,7 +104,7 @@
                   //     type: 'success'
                   //   }
                   // );
-                  this.$router.push({ name: 'BeerDetailsView', params: { beerId: this.editBeer.beer_id }});
+                  this.$router.push({ name: 'BreweryDetailsView', params: { breweryId: this.$route.params.breweryId }});
                 // }
               })
               .catch(error => {
@@ -186,11 +187,8 @@
 
 
 
-.text {
-  
+.text { 
     text-align: center;
-    
-
 }
 
 .text-center{
