@@ -11,7 +11,6 @@ public class Brewery {
     private String breweryName;
     @JsonProperty("brewery_main_img")
     private String breweryImg;
-
     @JsonProperty("brewery_logo_img")
     private String breweryLogoImg;
     @JsonProperty("website")

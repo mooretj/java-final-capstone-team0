@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.Contact;
+import com.techelevator.model.Hours;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,11 +14,20 @@ import java.util.List;
 
 public class JdbcBreweryDaoTests extends BaseDaoTests{
 
-    private static final Brewery BREWERY_1 = new Brewery(1,"brewery1", "breweryImage", "testsite1.com", LocalTime.parse("08:01"), LocalTime.parse("23:01"), "Lorem Ipsum 1");
-    private static final Brewery BREWERY_2 = new Brewery(2,"brewery2", "breweryImage", "testsite2.com", LocalTime.parse("08:02"), LocalTime.parse("23:02"), "Lorem Ipsum 2");
-    private static final Brewery BREWERY_3 = new Brewery(3,"brewery3", "breweryImage", "testsite3.com", LocalTime.parse("08:03"), LocalTime.parse("23:03"), "Lorem Ipsum 3");
+    private static Contact contact1;
+    private static Contact contact2;
+    private static Contact contact3;
+    private static Hours hours1;
+    private static Hours hours2;
+    private static Hours hours3;
+    private static final Brewery BREWERY_1 = new Brewery(1,"brewery1", "breweryImage", "logoImage1", "testsite1.com", hours1, "Lorem Ipsum", contact1);
+    private static final Brewery BREWERY_2 = new Brewery(2,"brewery2", "logoImage2", "breweryImage", "testsite2.com", hours2, "Lorem Ipsum 2", contact2);
+    private static final Brewery BREWERY_3 = new Brewery(3,"brewery3", "logoImage3", "breweryImage", "testsite3.com", hours3, "Lorem Ipsum 3", contact3);
 
     private Brewery testBrewery;
+
+    private Contact contact0;
+    private Hours hours0;
 
     private JdbcBreweryDao sut;
 
@@ -24,7 +35,7 @@ public class JdbcBreweryDaoTests extends BaseDaoTests{
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcBreweryDao(jdbcTemplate);
-        testBrewery = new Brewery(0, "Test Brewery", "Test Image", "Test Website", LocalTime.parse("00:00"), LocalTime.parse("23:59"), "Test History");
+        testBrewery = new Brewery(0, "Test Brewery", "Test Image", "Test Website", hours0, "Test History", contact0);
     }
 
     @Test
@@ -69,8 +80,8 @@ public class JdbcBreweryDaoTests extends BaseDaoTests{
         Assert.assertEquals("Brewery name doesn't match", expected.getBreweryName(), actual.getBreweryName());
         Assert.assertEquals("Brewery image doesn't match", expected.getBreweryImg(), actual.getBreweryImg());
         Assert.assertEquals("Brewery website doesn't match", expected.getWebsite(), actual.getWebsite());
-        Assert.assertEquals("Brewery Open Hour doesn't match", expected.getOpenHour(), actual.getOpenHour());
-        Assert.assertEquals("Brewery Close Hour doesn't match", expected.getCloseHour(), actual.getCloseHour());
+        Assert.assertEquals("Brewery Hours don't match", expected.getHours(), actual.getHours());
         Assert.assertEquals("Brewery history doesn't match", expected.getHistory(), actual.getHistory());
+        Assert.assertEquals("Brewery Contact Doesn't match", expected.getContact(), actual.getContact());
     }
 }
